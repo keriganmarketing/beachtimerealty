@@ -10,6 +10,20 @@ class ComposerStaticInit6baba5f1686ce8f60bbdb381b80a78e6
         'de85a44be454aa97188dad52ed888bed' => __DIR__ . '/..' . '/panique/laravel-sass/sass-compiler.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'I' => 
+        array (
+            'Includes\\Modules\\' => 17,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Includes\\Modules\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/inc/modules',
+        ),
+    );
+
     public static $classMap = array (
         'scss_formatter' => __DIR__ . '/..' . '/leafo/scssphp/scss.inc.php',
         'scss_formatter_compressed' => __DIR__ . '/..' . '/leafo/scssphp/scss.inc.php',
@@ -23,6 +37,8 @@ class ComposerStaticInit6baba5f1686ce8f60bbdb381b80a78e6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6baba5f1686ce8f60bbdb381b80a78e6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6baba5f1686ce8f60bbdb381b80a78e6::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit6baba5f1686ce8f60bbdb381b80a78e6::$classMap;
 
         }, null, ClassLoader::class);

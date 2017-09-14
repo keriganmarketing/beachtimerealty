@@ -1,9 +1,10 @@
 <?php
+
+namespace Includes\Modules\CPT;
+
 /**
  * CustomPostType Class
  */
-
-//TODO: namespace PSJCG\Helpers;
 
 class CustomPostType
 {

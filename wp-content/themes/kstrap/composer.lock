@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "dde66be1a9b75ff932575b3d5b1ec7cc",
     "content-hash": "ac546aadc787b4b82b7e7cff29c017de",
     "packages": [],
     "packages-dev": [
@@ -51,7 +52,7 @@
             ],
             "description": "scssphp is a compiler for SCSS written in PHP.",
             "homepage": "http://leafo.net/scssphp/",
-            "time": "2014-08-05T05:45:15+00:00"
+            "time": "2014-08-05 05:45:15"
         },
         {
             "name": "panique/laravel-sass",
@@ -95,7 +96,7 @@
                 "sass",
                 "scss"
             ],
-            "time": "2014-11-09T01:35:34+00:00"
+            "time": "2014-11-09 01:35:34"
         }
     ],
     "aliases": [],

@@ -1,4 +1,7 @@
 <?php
+
+use Includes\Modules\Slider\Slider;
+
 /**
  * @package KMA
  * @subpackage kstrap
