@@ -107,16 +107,28 @@ html {
   }
 
   .slider, .carousel-item {
-    height: 200px;
+    height: 210px;
 
     @media screen and (min-width: map-get($grid-breakpoints, md)) {
-      height:250px;
+      height:300px;
     }
     @media screen and (min-width: map-get($grid-breakpoints, lg)) {
       height:750px;
     }
     @media screen and (min-width: map-get($grid-breakpoints, xl)) {
       height:800px;
+    }
+  }
+
+  .tagline {
+    position: absolute;
+    width:100%;
+    text-align: center;
+    z-index: 2;
+    padding:2rem;
+
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+      margin-top: 12rem;
     }
   }
 

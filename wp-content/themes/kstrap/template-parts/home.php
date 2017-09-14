@@ -13,17 +13,15 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="section-wrapper slider" >
-
+            <div class="tagline" >
+                <img src="<?php echo get_template_directory_uri().'/img/tagline.png'; ?>" alt="Selling the Beach at the Beach" class="img-fluid" >
+            </div>
             <?php
                 $slider = new Slider();
                 echo $slider->getSlider('home-page-slider');
             ?>
-
         </div>
         <div class="section-wrapper quick-search">
-            <div class="tagline" >
-                <img src="<?php echo get_template_directory().'/img/tagline.png'; ?>" alt="Selling the Beach at the Beach" >
-            </div>
             <div class="quick-search-box">
 	            <?php include(locate_template('template-parts/partials/quick-search.php')); ?>
             </div>
