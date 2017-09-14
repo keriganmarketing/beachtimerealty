@@ -1,0 +1,55 @@
+// Theme Specific Styles
+
+// Full page Layout
+html {
+  height: 100%;
+}
+
+body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: initial;
+}
+
+body * {
+  font-family: 'Raleway', sans-serif;
+}
+
+#app {
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+//Sticky Header
+#top {
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+    position: fixed;
+  }
+
+}
+
+.navbar-menu {
+  background-color: #FFF;
+  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+    background-color: transparent;
+  }
+}
+
+#mid {
+  position: relative;
+  flex: 1 0 auto;
+  z-index: 2;
+
+  .content {
+    padding: 1rem 0;
+  }
+}
+
+#bot {
+  position: relative;
+  z-index: 1;
+}
