@@ -12,7 +12,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
 ?>
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <div class="section-wrapper full-bg" >
+        <div class="section-wrapper slider" >
 
             <?php
                 $slider = new Slider();
@@ -20,7 +20,46 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
             ?>
 
         </div>
-    </article><!-- #post-## -->
+        <div class="section-wrapper quick-search">
+            <div class="tagline" >
+                <img src="<?php echo get_template_directory().'/img/tagline.png'; ?>" alt="Selling the Beach at the Beach" >
+            </div>
+            <div class="quick-search-box">
+	            <?php include(locate_template('template-parts/partials/quick-search.php')); ?>
+            </div>
+        </div>
+        <div class="section-wrapper feature-buttons">
+	        <?php include(locate_template('template-parts/partials/feature-buttons.php')); ?>
+        </div>
+        <div class="section-wrapper featured-properties">
+            <?php include(locate_template('template-parts/partials/featured-listings.php')); ?>
+        </div>
+        <div class="section-wrapper home-page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1><?php echo $headline; ?></h1>
+                        <?php the_content(); ?>
+                    </div>
+                    <div class="col-lg-4">
+	                    <?php include(locate_template('template-parts/partials/random-testimonial.php')); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-wrapper orange-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+	                    <?php include(locate_template('template-parts/partials/facebook-minifeed.php')); ?>
+                    </div>
+                    <div class="col-lg-6">
+	                    <?php include(locate_template('template-parts/partials/hot-property-signup.php')); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
 </div>
 <?php
 include(locate_template('template-parts/partials/bot.php'));

@@ -1,11 +1,12 @@
 .carousel-item {
-    height: 22rem;
+    height: 100%;
     overflow: visible;
-    @media screen and (min-width: map-get($grid-breakpoints, md)){
+    @media screen and (min-width: map-get($grid-breakpoints, lg)){
         height: 100vh;
     }
+    background-size: cover;
+    background-position: center;
 }
-
 .carousel-caption {
     right: 0;
     bottom: 0;

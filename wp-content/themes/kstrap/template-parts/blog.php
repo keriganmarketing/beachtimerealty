@@ -35,7 +35,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                 </div>
             </div>
         </section>
-    </article><!-- #post-## -->
+    </article>
 </div>
 <?php
 include(locate_template('template-parts/partials/bot.php'));
