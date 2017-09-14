@@ -9,46 +9,6 @@ use Includes\Modules\Social\SocialSettingsPage;
  * @version 1.2
  */
 ?>
-<div id="sticky-footer" class="unstuck">
-    <!--<div id="bot">
-                <div class="container">
-                    <div id="botnav" class="row no-gutters justify-content-center ">
-                        <nav class="navbar navbar-toggleable-md">
-                            <?php wp_nav_menu([
-                                    'theme_location'  => 'menu-1',
-                                    'container_class' => '',
-                                    'container_id'    => 'navbar-footer',
-                                    'menu_class'      => 'nav justify-content-center',
-                                    'fallback_cb'     => '',
-                                    'menu_id'         => 'menu-1',
-                                    'walker'          => new WP_Bootstrap_Navwalker(),
-                                ]); ?>
-                        </nav>
-                    </div>
-                </div>
-            </div>-->
-    <div id="bot-bot">
-        <div class="container-fluid">
-            <div class="row no-gutters justify-content-center justify-content-lg-start align-items-middle">
-                <div class="col-md-3 my-auto text-center text-md-left">
-                    <div class="social">
-                        <?php
-                        $socialLinks = new SocialSettingsPage();
-                        $socialIcons = $socialLinks->getSocialLinks('svg', 'circle');
-                        if (is_array($socialIcons)) {
-                            foreach ($socialIcons as $socialId => $socialLink) {
-                                echo '<a class="' . $socialId . '" href="' . $socialLink[0] . '" target="_blank" >' . $socialLink[1] . '</a>';
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="col-md-6 my-auto mx-auto justify-content-center text-center">
-                    <p class="copyright">&copy;<?php echo date('Y'); ?> Kerigan Marketing Associates. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-3 my-auto justify-content-center justify-content-sm-end text-center text-sm-right">
-                    <p class="siteby"><svg version="1.1" id="kma" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="14" width="20" viewBox="0 0 12.5 8.7" style="enable-background:new 0 0 12.5 8.7;" xml:space="preserve">
-=======
 <div class="sticky-footer" >
     <div id="bot">
         <div class="container">

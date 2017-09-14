@@ -27,7 +27,7 @@ html {
   position: relative;
   z-index: 100;
 
-  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+  @media screen and (min-width: map-get($grid-breakpoints, lg)) {
     position: fixed;
   }
 
@@ -52,13 +52,15 @@ html {
   }
 }
 
-.sticky-header.smaller {
-  #top {
-    background-color: #FFF;
-  }
-  .navbar-brand {
-    img {
-      height: 75px;
+@media screen and (min-width: map-get($grid-breakpoints, lg)) {
+  .sticky-header.smaller {
+    #top {
+      background-color: #FFF;
+    }
+    .navbar-brand {
+      img {
+        height: 75px;
+      }
     }
   }
 }
