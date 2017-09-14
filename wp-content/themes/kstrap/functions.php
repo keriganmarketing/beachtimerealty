@@ -1,14 +1,11 @@
 <?php
 
 use Includes\Modules\Slider\Slider;
+use Includes\Modules\Navwalker\NavWalker;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
 
 require('vendor/autoload.php');
-require('inc/bootstrap-wp-navwalker.php');
-// include('inc/CustomPostType/CustomPostType.php');
-// include('inc/modules/testimonials/testimonials.php');
-// include('inc/modules/slider/Slider.php');
 
 $socialLinks = new SocialSettingsPage();
 if (is_admin()) {
@@ -57,14 +54,13 @@ function kstrap_setup()
     }
 
     add_action('wp_head', 'kstrap_inline');
-
-    wp_register_script('scripts', get_template_directory_uri() . '/app.js', [], '0.0.1', true);
 }
 
 add_action('after_setup_theme', 'kstrap_setup');
 
 function kstrap_scripts()
 {
+    wp_register_script('scripts', get_template_directory_uri() . '/app.js', [], '0.0.1', true);
     wp_enqueue_script('scripts');
     //wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
