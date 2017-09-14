@@ -80,6 +80,28 @@ window.jQuery = window.$ = __webpack_require__(3);
 global.Tether = __WEBPACK_IMPORTED_MODULE_0_tether___default.a;
 
 __webpack_require__(2);
+
+//for sticky header
+$(window).scroll(function (event) {
+    var scroll = $(window).scrollTop();
+    if (scroll > 10) {
+        $('.sticky-header').addClass('smaller');
+    } else {
+        $('.sticky-header').removeClass('smaller');
+    }
+});
+
+//for sticky footer
+$(document).ready(function (event) {
+    var app = $('#app').height();
+    var win = $(window).height();
+
+    console.log(app);
+    console.log(win);
+    if (app > win) {
+        $(".sticky-footer").addClass('unstuck');
+    }
+});
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
 
 /***/ }),

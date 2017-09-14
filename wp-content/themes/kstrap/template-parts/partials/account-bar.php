@@ -14,6 +14,6 @@
 			<a class="nav-item" href="<?php echo wp_logout_url( '/' ); ?>">Log Out</a>
 		</div>
 	<?php }else{ ?>
-		<p><a href="/my-account/login/">login</a> to save properties</p>
+		<p class="text-center nav-item"><a href="/my-account/login/">login</a> to save properties</p>
 	<?php } ?>
 </div>
