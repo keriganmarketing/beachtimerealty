@@ -26,6 +26,7 @@ html {
 
       .btn {
         text-transform: uppercase;
+        cursor: pointer;
       }
 
       .btn-rounded {
@@ -83,6 +84,7 @@ html {
   .sticky-header.smaller {
     #top {
       background-color: #FFF;
+      box-shadow: 0 3px 5px rgba(0,0,0,.3);
     }
     .navbar-brand {
       img {
@@ -175,6 +177,7 @@ html {
       border-top:1px solid #FFF;
 
       @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+        padding:.1rem 0 0;
         background-color: transparent;
         border:none;
       }
