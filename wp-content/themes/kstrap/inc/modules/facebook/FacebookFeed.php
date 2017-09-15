@@ -1,4 +1,6 @@
 <?php
+namespace Includes\Modules\Facebook;
+
 use GuzzleHttp\Client;
 
 class FacebookFeed
@@ -41,7 +43,9 @@ class FacebookFeed
             $returned  = json_decode($response->getBody());
             $photo_url = $returned->image[0]->url;
         } else {
-            $response  = $client->request('GET', '/' . $fbpost->id . '/?fields=object_id&access_token=' . $access_token);
+            $response  = $client->request('GET', '/'
+                                          . $fbpost->id
+                                          . '/?fields=object_id&access_token='. $access_token);
             $returned  = json_decode($response->getBody());
             $object_id = $returned->object_id;
             $photo_url = 'https://graph.facebook.com/v2.9/' . $object_id . '/picture?access_token=' . $access_token;

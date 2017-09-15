@@ -16,7 +16,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title"><?php echo $headline; ?></h1>
-                    <?php echo ($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
+                    <?php echo($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
                 </div>
             </div>
         </section>
@@ -25,11 +25,11 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                 <div class="row">
                 <?php
 
-                    while ( have_posts() ) : the_post();
+                while (have_posts()) :
+                    the_post();
 
-                        get_template_part( 'template-parts/partials/loop', get_post_format() );
-
-                    endwhile;
+                    get_template_part('template-parts/partials/loop', get_post_format());
+                endwhile;
 
                 ?>
                 </div>

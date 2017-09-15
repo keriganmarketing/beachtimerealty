@@ -26,12 +26,12 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
         </div>
         <div class="section-wrapper quick-search">
             <div class="quick-search-box">
-	            <?php include(locate_template('template-parts/partials/quick-search.php')); ?>
+            <?php include(locate_template('template-parts/partials/quick-search.php')); ?>
             </div>
         </div>
         <div class="dotted-border"></div>
         <div class="section-wrapper feature-buttons">
-	        <?php include(locate_template('template-parts/partials/feature-buttons.php')); ?>
+        <?php include(locate_template('template-parts/partials/feature-buttons.php')); ?>
         </div>
         <div class="section-wrapper featured-properties">
             <?php include(locate_template('template-parts/partials/featured-listings.php')); ?>
@@ -44,7 +44,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                         <?php the_content(); ?>
                     </div>
                     <div class="col-lg-4">
-	                    <?php include(locate_template('template-parts/partials/random-testimonial.php')); ?>
+                    <?php include(locate_template('template-parts/partials/random-testimonial.php')); ?>
                     </div>
                 </div>
             </div>
@@ -54,10 +54,10 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-	                    <?php include(locate_template('template-parts/partials/facebook-minifeed.php')); ?>
+                    <?php include(locate_template('template-parts/partials/facebook-minifeed.php')); ?>
                     </div>
                     <div class="col-lg-6">
-	                    <?php include(locate_template('template-parts/partials/hot-property-signup.php')); ?>
+                    <?php include(locate_template('template-parts/partials/hot-property-signup.php')); ?>
                     </div>
                 </div>
             </div>
