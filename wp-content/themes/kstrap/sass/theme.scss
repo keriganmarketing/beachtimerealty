@@ -10,12 +10,18 @@ html {
     overflow-x: initial;
 
     * {
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Work Sans', sans-serif;
+    }
 
-      #app {
-        height:100vh;
-        display: flex;
-        flex-direction: column;
+    #app {
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: 1400px) {
+        .container.wide {
+          width: 1400px;
+          max-width: 100%;
+        }
       }
     }
   }
@@ -38,9 +44,22 @@ html {
       margin-top: -1.25rem;
     }
 
-    img {
-      height: 132px;
+    @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+      padding:1rem;
     }
+
+    img {
+      height: 90px;
+
+      @media screen and (min-width: map-get($grid-breakpoints, md)) {
+        height: 115px;
+      }
+      @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+        height: 132px;
+      }
+
+    }
+
   }
 
   * {
@@ -81,18 +100,24 @@ html {
 }
 
 #top {
+  background-color: #FFF;
+
+  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+    background-color: transparent;
+  }
 
   .navbar-menu {
-    background-color: #FFF;
-    @media screen and (min-width: map-get($grid-breakpoints, md)) {
-      background-color: transparent;
-    }
+
   }
 }
 
 #mid {
   position: relative;
   z-index: 2;
+
+  .section-wrapper {
+    clear: both;
+  }
 
   .content {
     padding: 1rem 0;
@@ -138,12 +163,142 @@ html {
 
   }
 
-  .feature-buttons {
+  .dotted-border {
+    background-color: #FFF;
+    padding:.5rem 0;
+    height:3px;
+    width:100%;
+    background-image: linear-gradient(to right, #f3e933 33%, rgba(255,255,255,0) 0%);
+    background-position: center;
+    background-size: 8px 3px;
+    background-repeat: repeat-x;
+  }
 
+  .feature-buttons {
+    padding: 2rem 0 0;
+
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+      padding: 4rem 0 0;
+    }
+
+    .button {
+      margin:1rem 0;
+      border: 2px solid #196AAB;
+      border-radius: 50%;
+      overflow: hidden;
+      height: 0;
+      padding-bottom: 100%;
+      background-size: cover;
+      background-position: center;
+
+      .button-content {
+        text-align: center;
+        text-transform: uppercase;
+        padding: 33% 0;
+        position: relative;
+        z-index: 2;
+        float: left;
+        width: 100%;
+
+        h2 {
+          font-size: .9em;
+          color: #FFF;
+          font-weight: 400;
+          margin:auto;
+
+          @media screen and (min-width: 375px) {
+            font-size: 1em;
+          }
+          @media screen and (min-width: 414px) {
+            font-size: 1.2em;
+            max-width: 200px;
+          }
+          @media screen and (min-width: 768px) {
+            font-size: 2em;
+            max-width: 90%;
+          }
+          @media screen and (min-width: 1024px) {
+            font-size: 1.5em;
+          }
+          @media screen and (min-width: 1200px) {
+            font-size: 1.7em;
+          }
+        }
+
+
+        .wave {
+          padding: .5rem 0;
+          margin: auto;
+          max-width: 76px;
+
+          path {
+            fill: #FFF;
+            opacity:.6;
+          }
+        }
+
+      }
+
+      .button-overlay::after {
+        content: "";
+        -webkit-transition: background-color .5s;
+        -moz-transition: background-color .5s;
+        -ms-transition: background-color .5s;
+        -o-transition: background-color .5s;
+        transition: background-color .5s;
+        background-color: rgba(0,0,0,.5);
+        position: relative;
+        z-index: 1;
+        height: 100vh;
+        width: 100vh;
+        display: block;
+      }
+
+      .button-link {
+        position: absolute;
+        border-radius:50%;
+        z-index: 3;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+      }
+
+    }
+
+    .button:hover {
+      .button-overlay::after {
+        background-color: rgba(0,0,0,.2);
+      }
+    }
+
+    .button.luxury-beachfront {
+      background-image: url('/wp-content/themes/kstrap/img/luxury-button.jpg');
+    }
+    .button.condos {
+      background-image: url('/wp-content/themes/kstrap/img/condos-button.jpg');
+    }
+    .button.commercial {
+      background-image: url('/wp-content/themes/kstrap/img/commercial-button.jpg');
+    }
+    .button.lots-land {
+      background-image: url('/wp-content/themes/kstrap/img/lots-button.jpg');
+    }
+
+
+    .umbrella {
+      max-width: 90px;
+      margin: 2rem auto -1rem;
+
+      path {
+        fill: #196CAE;
+      }
+    }
   }
 
   .featured-properties {
-
+    min-height: 300px;
+    background: url('/wp-content/themes/kstrap/img/blue-wave.jpg') center;
   }
 }
 
