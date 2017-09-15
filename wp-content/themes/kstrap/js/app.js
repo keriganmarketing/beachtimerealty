@@ -4,6 +4,8 @@ import tether from 'tether';
 global.Tether = tether;
 
 require('bootstrap');
+require('select2');
+$.fn.select2.defaults.set("theme", "bootstrap");
 
 //for sticky header
 $(window).scroll(function (event) {
@@ -25,4 +27,9 @@ $(document).ready(function (event) {
     if (app > win ) {
         $(".sticky-footer").addClass('unstuck');
     }
+});
+
+//Select2
+$(document).ready(function (event) {
+    $('.select2').select2();
 });
