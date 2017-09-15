@@ -26,5 +26,8 @@ License URI:        http://opensource.org/licenses/MIT
 // Module Styles
 @import "../inc/modules/slider/slider";
 
+// Select2
+@import "../node_modules/select2/src/scss/core";
+
 // Theme
 @import "theme.scss";

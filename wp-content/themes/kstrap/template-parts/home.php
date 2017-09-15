@@ -64,5 +64,4 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
         </div>
     </article>
 </div>
-<?php
-include(locate_template('template-parts/partials/bot.php'));
+<?php include(locate_template('template-parts/partials/bot.php')); ?>

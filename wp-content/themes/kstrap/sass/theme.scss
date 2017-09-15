@@ -161,6 +161,21 @@ html {
 
   .quick-search {
 
+    .quick-search-container {
+      padding: 1rem 0;
+      background-color: #d85035;
+      border-top:1px solid #FFF;
+
+      @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+        background-color: transparent;
+        border:none;
+      }
+
+      .select2-container.select2-container--bootstrap {
+        border: 1px solid #196AAB;
+        padding: .5rem .5rem .3rem;
+      }
+    }
   }
 
   .dotted-border {
