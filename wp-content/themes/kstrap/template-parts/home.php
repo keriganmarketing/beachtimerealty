@@ -29,6 +29,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
 	            <?php include(locate_template('template-parts/partials/quick-search.php')); ?>
             </div>
         </div>
+        <div class="dotted-border"></div>
         <div class="section-wrapper feature-buttons">
 	        <?php include(locate_template('template-parts/partials/feature-buttons.php')); ?>
         </div>
@@ -48,6 +49,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                 </div>
             </div>
         </div>
+        <div class="dotted-border"></div>
         <div class="section-wrapper orange-section">
             <div class="container">
                 <div class="row">

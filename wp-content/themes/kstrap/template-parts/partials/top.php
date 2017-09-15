@@ -44,11 +44,12 @@ use Includes\Modules\NavWalker\NavWalker;
                 <div class="col-3 hidden-lg-up">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobilemenu"
                             aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="icon-box">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </span>
+                        <span class="icon-box">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </span>
+                        <span class="icon-label">menu</span>
                     </button>
                 </div>
                 <div class="col-lg-5 hidden-md-down">
