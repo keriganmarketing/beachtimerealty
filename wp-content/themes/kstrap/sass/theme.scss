@@ -23,6 +23,14 @@ html {
           max-width: 100%;
         }
       }
+
+      .btn {
+        text-transform: uppercase;
+      }
+
+      .btn-rounded {
+        border-radius:24px;
+      }
     }
   }
 }
@@ -171,9 +179,44 @@ html {
         border:none;
       }
 
-      .select2-container.select2-container--bootstrap {
-        border: 1px solid #196AAB;
-        padding: .5rem .5rem .3rem;
+      form {
+        max-width: 775px;
+        margin: auto;
+
+        .row {
+          margin:0 -8px;
+          .col-md-5, .col-6, .col, .col-md-2  {
+            padding:0 8px;
+          }
+        }
+
+        @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+          margin: -20rem auto 0;
+        }
+
+        .select2-container.select2-container--bootstrap {
+          border: 1px solid #196AAB;
+          padding: 0;
+          background-color: #FFF;
+          height: 60px;
+
+          .select2-selection--single {
+            height: 58px;
+
+            .select2-selection__rendered {
+              display: block;
+              padding: 1rem 30px 1rem 1rem;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
+
+        .btn-rounded {
+          height: 60px;
+          border-radius: 30px;
+        }
       }
     }
   }
@@ -371,4 +414,27 @@ html {
 
 .sticky-footer.unstuck {
   position: relative;
+}
+
+//select2 adds to DOM dynamically
+.select2-dropdown {
+  border: 1px solid #1a4e94;
+  border-radius: 0;
+  margin-top: -23px;
+
+  .select2-search--dropdown {
+    display: block;
+    padding: 0;
+
+    .select2-search__field {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem;
+      margin-top:-4px;
+    }
+    .select2-search__field:focus {
+      box-shadow: none;
+    }
+  }
+
 }
