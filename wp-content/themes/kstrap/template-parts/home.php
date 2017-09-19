@@ -54,9 +54,11 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
+                        <h2 class="section-title line-right">Recent&nbsp;News</h2>
 	                    <?php include(locate_template('template-parts/partials/facebook-minifeed.php')); ?>
                     </div>
                     <div class="col-lg-6">
+                        <h2 class="section-title line-right">Hot&nbsp;Property&nbsp;Alerts</h2>
 	                    <?php include(locate_template('template-parts/partials/hot-property-signup.php')); ?>
                     </div>
                 </div>

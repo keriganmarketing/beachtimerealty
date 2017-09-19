@@ -415,6 +415,31 @@ html {
 
   }
 
+  .home-page-content {
+    padding: 2rem 1rem 0;
+
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+      padding: 4rem 1rem 2rem;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, xl)) {
+      padding: 6rem 1rem 6rem;
+    }
+  }
+
+  .orange-section {
+    background-color: #d85035;
+    padding: 2rem 1rem 0;
+
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+      padding: 4rem 1rem 2rem;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, xl)) {
+      padding: 5rem 1rem 4rem;
+    }
+  }
+
   .support-mast {
     padding-top:1rem;
     padding-bottom: 1rem;
@@ -525,9 +550,14 @@ html {
 }
 
 #bot {
+  padding:2rem;
   background-color: #123f7b;
   position: relative;
   z-index: 1;
+
+  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+    padding:3rem;
+  }
 
   .social {
     svg {
@@ -546,6 +576,27 @@ html {
 
 #bot-bot {
   background-color: #1a4e94;
+
+  .footer-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: map-get($grid-breakpoints, md)) {
+      justify-content: flex-start;
+    }
+
+    .footer-logo {
+      width: 50px;
+      max-width: 100%;
+      padding:.5rem .5rem 0;
+
+      path, polygon {
+        fill: rgba(0, 0, 0, .8);
+        fill-rule: evenodd;
+      }
+    }
+  }
 
   p, a {
     margin: 0;
