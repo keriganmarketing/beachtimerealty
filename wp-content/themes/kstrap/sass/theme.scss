@@ -32,6 +32,18 @@ html {
       .btn-rounded {
         border-radius:24px;
       }
+
+      .btn.btn-primary.btn-outlined {
+        background-color: transparent;
+        border-radius: 2rem;
+        padding: 1rem 1.5rem;
+        color: #0275d8;
+      }
+      .btn.btn-primary.btn-reversed {
+        border-color: #FFF;
+        color: #FFF;
+      }
+
     }
   }
 }
@@ -127,6 +139,38 @@ html {
 
   .section-wrapper {
     clear: both;
+
+    .section-title {
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 1.5em;
+      display: flex;
+      align-items: center;
+      @media screen and (min-width: map-get($grid-breakpoints, md)) {
+        font-size: 2.5em;
+      }
+
+    }
+
+    .section-title.line-right::after,
+    .section-title.line-left::before {
+      content: "";
+      border-bottom: 3px solid rgba(255,255,255,.5);
+      width: 100%;
+      display: block;
+      margin-right: 1rem;
+      position: relative;
+    }
+
+    .section-title.line-right::after {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+
+    .section-button {
+      padding: 3rem 0;
+    }
   }
 
   .content {
@@ -346,7 +390,6 @@ html {
       background-image: url('/wp-content/themes/kstrap/img/lots-button.jpg');
     }
 
-
     .umbrella {
       max-width: 90px;
       margin: 2rem auto -1rem;
@@ -358,8 +401,79 @@ html {
   }
 
   .featured-properties {
-    min-height: 300px;
     background: url('/wp-content/themes/kstrap/img/blue-wave.jpg') center;
+    padding: 2rem 1rem 0;
+
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+      padding: 4rem 1rem 2rem;
+    }
+  }
+}
+
+.mini-listing-container {
+  background-color: #FFF;
+
+  .tile-section {
+    p {
+      margin:0;
+    }
+  }
+
+  .tile-section.address {
+    padding: 1rem .5rem;
+    text-transform: uppercase;
+  }
+
+  .tile-section.price {
+    padding: .5rem 1.5rem;
+    background-color: #0e89c9;
+    border-radius: 2rem;
+    color: #FFF;
+    margin: 0 auto;
+    display: inline-block;
+    font-size: 1.5em;
+    width: 255px;
+    max-width: 95%;
+  }
+
+  .tile-section.attributes {
+    margin-top: -1.5rem;
+    padding: 2.5rem .5rem 1rem;
+    background-color: #fff3f1;
+
+    span {
+      display: block;
+      color: #df6e58;
+    }
+
+    .icon {
+      padding:0 .5rem;
+
+      svg {
+        width: 50px;
+        max-width: 100%;
+
+        rect, polyline, polygon, path {
+          fill: none;
+          stroke: #df6e58;
+          stroke-miterlimit: 10;
+          stroke-width: 4
+        }
+      }
+    }
+
+    .icon-data {
+      font-size: 1.2em;
+    }
+
+    .icon-label {
+      font-size: .9em;
+    }
+  }
+
+  .tile-section.mls {
+    padding:.5rem 0;
+    color: rgba(0,0,0,.6);
   }
 }
 
