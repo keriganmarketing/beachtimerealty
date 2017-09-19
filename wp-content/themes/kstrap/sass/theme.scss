@@ -412,6 +412,23 @@ html {
 
 .mini-listing-container {
   background-color: #FFF;
+  border-bottom: .25rem #FFF solid;
+  -webkit-transition: border-bottom .5s;
+  -moz-transition: border-bottom .5s;
+  -ms-transition: border-bottom .5s;
+  -o-transition: border-bottom .5s;
+  transition: border-bottom .5s;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,.5);
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,.5);
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+
+  a.listing-link {
+    position: absolute;
+    height: 100%;
+    left: 1rem;
+    right: 1rem;
+    z-index: 100;
+  }
 
   .tile-section {
     p {
@@ -422,6 +439,7 @@ html {
   .tile-section.address {
     padding: 1rem .5rem;
     text-transform: uppercase;
+    font-size: 1.1em;
   }
 
   .tile-section.price {
@@ -431,7 +449,7 @@ html {
     color: #FFF;
     margin: 0 auto;
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1.7em;
     width: 255px;
     max-width: 95%;
   }
@@ -472,9 +490,13 @@ html {
   }
 
   .tile-section.mls {
-    padding:.5rem 0;
+    padding:.5rem 0 .25rem;
     color: rgba(0,0,0,.6);
   }
+}
+
+.mini-listing-container:hover {
+  border-bottom: .25rem #df6e58 solid;
 }
 
 #bot {
