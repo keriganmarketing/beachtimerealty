@@ -5,8 +5,10 @@
  * @since 1.0
  * @version 1.2
  */
+get_header();
 
-wp_footer(); ?>
+if ($_GET) {
+    print_r($_GET);
+}
 
-</body>
-</html>
+get_footer();

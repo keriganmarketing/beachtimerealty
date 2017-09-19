@@ -7,7 +7,7 @@
  */
 include(locate_template('template-parts/partials/top.php'));
 
-$tax = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+$tax = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
 $headline = $tax->name;
 $subhead = '';
 ?>
@@ -17,7 +17,7 @@ $subhead = '';
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title"><?php echo $headline; ?></h1>
-                    <?php echo ($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
+                    <?php echo($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
                 </div>
             </div>
         </section>

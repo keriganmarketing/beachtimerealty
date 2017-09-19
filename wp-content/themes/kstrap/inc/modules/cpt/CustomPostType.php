@@ -328,9 +328,10 @@ class CustomPostType
                     return;
                 }
 
-                if (! wp_verify_nonce($_POST['custom_post_type'], plugin_basename(__FILE__))) {
-                    return;
-                }
+                // not sure if we need this
+                // if (! wp_verify_nonce($_POST['custom_post_type'], plugin_basename(__FILE__))) {
+                //     return;
+                // }
 
                 global $post;
 

@@ -1,4 +1,6 @@
 <?php
+namespace Includes\Modules\Facebook;
+
 use GuzzleHttp\Client;
 
 class FaceBookEvents
@@ -18,5 +20,3 @@ class FaceBookEvents
         return $feed;
     }
 }
-
-
