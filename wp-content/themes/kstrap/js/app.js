@@ -41,8 +41,10 @@ $(document).ready(function (event) {
 $(document).ready(function (event) {
 
     var omniBox;
-    $.getJSON("http://mls.kerigan.com/api/buildomni", function(json){
-        omniBox = $.map(json, function(el) { return el });
+    $.getJSON("http://mls.kerigan.com/api/buildomni", function (json) {
+        omniBox = $.map(json, function (el) {
+            return el
+        });
 
         $('.select2-omni-field').select2({
             placeholder: 'City, area, subdivision or zip',
@@ -62,25 +64,23 @@ $(document).ready(function (event) {
     });
 
     $('.select2-price-min').on('select2:select', function (e) {
-        var maxVal = $('.select2-price-min').val();
-        console.log (maxVal);
-        if(maxVal < 1000000){
-            maxVal = +maxVal + +100000;
-        }else{
-            maxVal = +maxVal + +1000000;
+        var minVal = $('.select2-price-min').val();
+        var maxVal = $('.select2-price-max').val();
+
+        if (maxVal == undefined || minVal >= maxVal) {
+            maxVal = (maxVal == undefined || minVal >= maxVal ? +minVal + +100000 : +minVal + +1000000);
+            $('.select2-price-max').val(maxVal).trigger("change");
         }
-        $('.select2-price-max').val(maxVal).trigger("change");
     });
 
     $('.select2-price-max').on('select2:select', function (e) {
+        var minVal = $('.select2-price-min').val();
         var maxVal = $('.select2-price-max').val();
-        console.log (maxVal);
-        if(maxVal < 2000000){
-            maxVal = +maxVal - +100000;
-        }else{
-            maxVal = +maxVal - +1000000;
+
+        if (minVal == undefined || minVal >= maxVal) {
+            minVal = (minVal == undefined || minVal >= maxVal ? +maxVal - +100000 : +maxVal - +1000000);
+            $('.select2-price-min').val(minVal).trigger("change");
         }
-        $('.select2-price-min').val(maxVal).trigger("change");
     });
 
 });
