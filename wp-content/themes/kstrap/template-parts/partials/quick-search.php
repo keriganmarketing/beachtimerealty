@@ -9,27 +9,47 @@
 <div class="quick-search-container">
     <div class="container">
         <form action="/test-search-results" method="get">
-            <div class="form-group">
-                <input type="hidden" name="qs" value="true">
-                <select class="form-control form-control-lg select2-omni-field" name="omniField" >
-                    <option value="something">Something</option>
-                    <option value="something2">Something else</option>
-                </select>
+            <input type="hidden" name="qs" value="true">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <select class="form-control form-control-lg select2-omni-field" name="omniField" >
+                            <option value="">City, area, subdivision or zip</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <select class="form-control form-control-lg select2-property-type" name="propertyType" >
+                            <option value="">Property type</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-6 col-md-5">
                     <div class="form-group">
-                        <select class="form-control form-control-lg select2-property-type" name="propertyType" >
-                            <option value="something">Something</option>
-                            <option value="something2">Something else</option>
+                        <select class="form-control form-control-lg select2-price-min" name="minPrice" >
+                            <option value="">Min price</option>
+	                        <?php for($i = 0; $i <= 1000000; $i+=100000){
+		                        echo '<option value="' . $i . '">$' . number_format( $i, 0, ".", ",") . '</option>';
+	                        } ?>
+	                        <?php for($i = 2000000; $i <= 5000000; $i+=1000000){
+		                        echo '<option value="' . $i . '">$' . number_format( $i, 0, ".", ",") . '</option>';
+	                        } ?>
                         </select>
                     </div>
                 </div>
                 <div class="col-6 col-md-5">
                     <div class="form-group">
-                        <select class="form-control form-control-lg select2-price-range" name="priceRange">
-                            <option value="something">$10,000 > $100,000</option>
-                            <option value="something2">$100,000 > $200,000</option>
+                        <select class="form-control form-control-lg select2-price-max" name="maxPrice">
+                            <option value="">Max price</option>
+	                        <?php for($i = 100000; $i <= 1000000; $i+=100000){
+		                        echo '<option value="' . $i . '">$' . number_format( $i, 0, ".", ",") . '</option>';
+	                        } ?>
+	                        <?php for($i = 2000000; $i <= 5000000; $i+=1000000){
+		                        echo '<option value="' . $i . '">$' . number_format( $i, 0, ".", ",") . '</option>';
+	                        } ?>
                         </select>
                     </div>
                 </div>
