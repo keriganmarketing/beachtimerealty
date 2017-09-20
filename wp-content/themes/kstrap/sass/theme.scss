@@ -429,6 +429,42 @@ html {
     h1 {
       color: #d85035;
     }
+
+    .random-testimonial {
+
+      .testimonial-content {
+        padding: 3rem .5rem .5rem 3rem;
+        font-family: $font-family-serif;
+        font-size: 1.3em;
+        color: #196cad;
+        line-height: 1.8em;
+      }
+
+      .testimonial-author {
+        text-align: right;
+        padding: 0 .5rem;
+        font-family: $font-family-serif;
+        font-size: 1.1em;
+        color: #196cad;
+      }
+
+      .open-quote {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+
+        svg {
+          max-width:50%;
+          height: auto;
+
+          path, polygon {
+            fill: #8dcdff;
+            opacity: .2;
+          }
+        }
+      }
+    }
   }
 
   .orange-section {
@@ -597,6 +633,11 @@ html {
         fill: #FFF !important;
       }
     }
+  }
+
+  .footer-function-buttons,
+  .office {
+    padding-bottom:2rem;
   }
 
 }

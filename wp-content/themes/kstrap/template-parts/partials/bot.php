@@ -13,30 +13,30 @@ use Includes\Modules\Social\SocialSettingsPage;
     <div id="bot">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 offices">
+                <div class="col-lg-6 offices text-center text-md-left">
                     <h3>Offices</h3>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 office text-center text-md-left">
                             <p class="address">9902 S. Thomas Dr.<br>
                                 Panama City Beach, FL 32408</p>
-                            <p class="phone office" ><span class="address-label" >office:</span> 850-381-3156</p>
-                            <p class="phone fax" ><span class="address-label" >fax:</span> 850-123-1234</p>
+                            <p class="phone-office" ><span class="address-label" >office:</span> 850-381-3156</p>
+                            <p class="phone-fax" ><span class="address-label" >fax:</span> 850-123-1234</p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 office text-center text-md-left">
                             <p class="address">1863 Annabella Dr #A<br>
                                 Panama City Beach, FL 32407</p>
-                            <p class="phone office" ><span class="address-label" >office:</span> 850-381-3156</p>
-                            <p class="phone fax" ><span class="address-label" >fax:</span> 850-123-1234</p>
+                            <p class="phone-office" ><span class="address-label" >office:</span> 850-381-3156</p>
+                            <p class="phone-fax" ><span class="address-label" >fax:</span> 850-123-1234</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 footer-function-buttons">
                             <a href="/properties/" class="btn btn-primary btn-outlined btn-block btn-reversed">Property Search</a>
                             <a href="/properties/map-search/" class="btn btn-primary btn-outlined btn-block btn-reversed">Map Search</a>
                         </div>
-                        <div class="col-md-6 text-md-right">
+                        <div class="col-md-6 text-center text-md-right">
                             <p><a class="footer-nav-item" href="/our-team/">Our Team</a></p>
                             <p><a class="footer-nav-item" href="/beach-blog/">Beach Blog</a></p>
                             <div class="social">
