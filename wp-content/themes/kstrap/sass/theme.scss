@@ -611,6 +611,18 @@ html {
     font-size: 20px;
   }
 
+  h3 {
+    .umbrella {
+      display: inline-block;
+      height:auto;
+      width: 24px;
+      margin-right: .25rem;
+      path {
+        fill: #8dcdff;
+      }
+    }
+  }
+
   p {
     color:#FFF;
     margin:0;
@@ -703,7 +715,7 @@ html {
 .select2-dropdown {
   border: 1px solid #1a4e94;
   border-radius: 0;
-  margin-top: -55px;
+  margin-top: -23px;
 
   .select2-search--dropdown {
     display: block;
