@@ -10373,7 +10373,15 @@ $(document).ready(function (event) {
 
 //Select2
 $(document).ready(function (event) {
-    $('.select2').select2();
+    $('.select2-omni-field').select2({
+        placeholder: 'City, area, subdivision or zip'
+    });
+    $('.select2-property-type').select2({
+        placeholder: 'Property Type'
+    });
+    $('.select2-price-range').select2({
+        placeholder: 'Price Range'
+    });
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(6)))
 
