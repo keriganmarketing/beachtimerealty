@@ -56,6 +56,14 @@ class Testimonials
         //TODO: make this work...
     }
 
+    public function getTestimonials($args) {
+    	$outputArray = [];
+
+
+
+    	return $outputArray;
+    }
+
     /**
      * @return null
      */
