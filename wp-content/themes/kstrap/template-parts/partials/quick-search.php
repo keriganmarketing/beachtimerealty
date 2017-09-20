@@ -11,7 +11,7 @@
         <form action="/test-search-results" method="get">
             <div class="form-group">
                 <input type="hidden" name="qs" value="true">
-                <select class="form-control form-control-lg select2" name="omniField" placeholder="City, area, subdivision or zip" >
+                <select class="form-control form-control-lg select2-omni-field" name="omniField" >
                     <option value="something">Something</option>
                     <option value="something2">Something else</option>
                 </select>
@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-6 col-md-5">
                     <div class="form-group">
-                        <select class="form-control form-control-lg select2" name="propertyType" placeholder="Property type" >
+                        <select class="form-control form-control-lg select2-property-type" name="propertyType" >
                             <option value="something">Something</option>
                             <option value="something2">Something else</option>
                         </select>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-6 col-md-5">
                     <div class="form-group">
-                        <select class="form-control form-control-lg select2" name="priceRange" placeholder="Price range" >
+                        <select class="form-control form-control-lg select2-price-range" name="priceRange">
                             <option value="something">$10,000 > $100,000</option>
                             <option value="something2">$100,000 > $200,000</option>
                         </select>

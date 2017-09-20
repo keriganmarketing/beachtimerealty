@@ -12,14 +12,12 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
 ?>
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <section class="hero is-light">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title"><?php echo $headline; ?></h1>
-                    <?php echo($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
-                </div>
+        <div class="section-wrapper support-mast">
+            <div class="container">
+                <h1 class="title"><?php echo $headline; ?></h1>
+				<?php echo ($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
             </div>
-        </section>
+        </div>
         <section id="content" class="content section">
             <div class="container">
                 <div class="row">

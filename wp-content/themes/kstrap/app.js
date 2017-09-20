@@ -10344,13 +10344,17 @@ __webpack_require__(4);
 $.fn.select2.defaults.set("theme", "bootstrap");
 
 //for sticky header
-$(window).scroll(function (event) {
+function sizeHeader() {
     var scroll = $(window).scrollTop();
     if (scroll > 10) {
         $('.sticky-header').addClass('smaller');
     } else {
         $('.sticky-header').removeClass('smaller');
     }
+}
+
+$(window).scroll(function (event) {
+    sizeHeader();
 });
 
 //for sticky footer
@@ -10363,11 +10367,21 @@ $(document).ready(function (event) {
     if (app > win) {
         $(".sticky-footer").addClass('unstuck');
     }
+
+    sizeHeader();
 });
 
 //Select2
 $(document).ready(function (event) {
-    $('.select2').select2();
+    $('.select2-omni-field').select2({
+        placeholder: 'City, area, subdivision or zip'
+    });
+    $('.select2-property-type').select2({
+        placeholder: 'Property Type'
+    });
+    $('.select2-price-range').select2({
+        placeholder: 'Price Range'
+    });
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(6)))
 

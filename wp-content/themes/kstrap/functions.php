@@ -15,7 +15,6 @@ if (is_admin()) {
 $testimonials = new Testimonials();
 $testimonials->createPostType();
 $testimonials->createAdminColumns();
-$testimonials->createShortcode();
 
 $slider = new Slider();
 $slider->createPostType();

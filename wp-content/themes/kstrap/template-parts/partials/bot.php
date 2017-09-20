@@ -12,26 +12,35 @@ use Includes\Modules\Social\SocialSettingsPage;
 <div class="sticky-footer" >
     <div id="bot">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3>Offices</h3>
+            <div class="row align-items-center">
+                <div class="col-lg-6 offices text-center text-md-left">
+                    <h3><span class="umbrella">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.75 54.75"><path class="cls-1" d="M33.11.49l-.2,0-.26,0-.24,0h0C15.78,3,2.88,12.62,0,23.55a10.75,10.75,0,0,1,10.78-2A24.23,24.23,0,0,1,24.16,3.37,24.24,24.24,0,0,0,10.78,21.56a19.45,19.45,0,0,1,14.2-2h0a26.13,26.13,0,0,1,9.35-3.06c.3,3.24,2.06,17.28,6.71,38.1l1.91.1a334.58,334.58,0,0,1-6.75-38.43,35.81,35.81,0,0,1,8.48.24,16.23,16.23,0,0,1,14.34-2C54.21,2,42.22.32,36.12.34,42.22.32,54.21,2,59,14.57c0,0,6.33-5.27,10.72-2.05C63.6,3.44,49.09-1.66,33.11.49Zm-.71.09-.14,0Zm-3.71,1A35.83,35.83,0,0,1,32.23.62h0a35.83,35.83,0,0,0-3.53.91,30.4,30.4,0,0,0-4.46,1.8A30.4,30.4,0,0,1,28.7,1.53Zm9.36,1.74A8.75,8.75,0,0,0,32.42.58h0A8.75,8.75,0,0,1,38.06,3.27Z"/></svg>
+                        </span>Offices</h3>
                     <div class="row">
-                        <div class="col-md-6">
-
+                        <div class="col-md-6 office text-center text-md-left">
+                            <p class="address">9902 S. Thomas Dr.<br>
+                                Panama City Beach, FL 32408</p>
+                            <p class="phone-office" ><span class="address-label" >office:</span> 850-381-3156</p>
+                            <p class="phone-fax" ><span class="address-label" >fax:</span> 850-123-1234</p>
                         </div>
-                        <div class="col-md-6">
-
+                        <div class="col-md-6 office text-center text-md-left">
+                            <p class="address">1863 Annabella Dr #A<br>
+                                Panama City Beach, FL 32407</p>
+                            <p class="phone-office" ><span class="address-label" >office:</span> 850-381-3156</p>
+                            <p class="phone-fax" ><span class="address-label" >fax:</span> 850-123-1234</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 footer-function-buttons">
                             <a href="/properties/" class="btn btn-primary btn-outlined btn-block btn-reversed">Property Search</a>
                             <a href="/properties/map-search/" class="btn btn-primary btn-outlined btn-block btn-reversed">Map Search</a>
                         </div>
-                        <div class="col-md-6 text-md-right">
-                            <?php //TODO: bottom nav?>
+                        <div class="col-md-6 text-center text-md-right">
+                            <p><a class="footer-nav-item" href="/our-team/">Our Team</a></p>
+                            <p><a class="footer-nav-item" href="/beach-blog/">Beach Blog</a></p>
                             <div class="social">
                                 <?php
                                 $socialLinks = new SocialSettingsPage();
@@ -53,7 +62,6 @@ use Includes\Modules\Social\SocialSettingsPage;
         <div class="container">
             <div class="row no-gutters justify-content-center justify-content-lg-start align-items-middle">
                 <div class="col-md-3 my-auto text-center text-md-left">
-                    <?php //TODO: real estate logo ?>
                     <div class="footer-logos">
                         <span class="footer-logo">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.21 32.84">
