@@ -10,6 +10,7 @@
     <div class="container">
         <form action="/test-search-results" method="get">
             <div class="form-group">
+                <input type="hidden" name="qs" value="true">
                 <select class="form-control form-control-lg select2" name="omniField" placeholder="City, area, subdivision or zip" >
                     <option value="something">Something</option>
                     <option value="something2">Something else</option>
