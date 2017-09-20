@@ -39,7 +39,18 @@ $(document).ready(function (event) {
 //Select2
 $(document).ready(function (event) {
     $('.select2-omni-field').select2({
-        placeholder: 'City, area, subdivision or zip'
+        placeholder: 'City, area, subdivision or zip',
+        ajax: {
+            url: 'http://mls.kerigan.com/api/buildomni',
+            dataType: 'json',
+            data: function (params) {
+              var query = {
+                search: params.term
+              }
+              // Query parameters will be ?search=[term]&type=public
+              return query;
+            }
+        }
     });
     $('.select2-property-type').select2({
         placeholder: 'Property Type'

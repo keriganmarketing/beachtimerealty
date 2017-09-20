@@ -23,5 +23,7 @@ class QuickSearch
         $omni         = $this->searchCriteria['omniField'];
         $propertyType = $this->searchCriteria['propertyType'];
         $priceRange   = $this->searchCriteria['priceRange'];
+
+        echo '<pre>',print_r($this->searchCriteria),'</pre>';
     }
 }
