@@ -11,13 +11,8 @@ use Includes\Modules\MLS\QuickSearch;
 
 get_header();
 
-if ($_GET['qs']) {
-    $searchCriteria = $_GET;
-    $qs             = new QuickSearch($searchCriteria);
-    $results        = $qs->create();
-    $listings       = $results->data;
+if (isset($_GET['mls'])) {
 
-    echo '<pre>',print_r($results),'</pre>';
 }
 
 get_footer();
