@@ -1,10 +1,14 @@
 <?php
+
+use Includes\Modules\MLS\FullListing;
+
 /**
  * @package KMA
  * @subpackage kstrap
  * @since 1.0
  * @version 1.2
  */
+
 query_posts('posts_per_page=1&post_type=post');
 get_header();
 include(locate_template('template-parts/partials/top.php'));
@@ -17,7 +21,12 @@ include(locate_template('template-parts/partials/top.php'));
             <div class="container">
                 <div class="entry-content">
                     <?php
-                        echo $_GET['mls'];
+                    if (isset($_GET['mls'])) {
+	                    $mlsNumber = $_GET['mls'];
+	                    $fl = new FullListing($mlsNumber);
+	                    $results = $fl->create();
+	                    echo '<pre>',print_r($results),'</pre>';
+                    }
                     ?>
                 </div><!-- .entry-content -->
             </div>
