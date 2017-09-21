@@ -32,22 +32,14 @@ class VirtualPage {
 
 	private function addRewriteRules() {
 
-		add_action('init', function () {
-			add_rewrite_tag('%'.$this->slug.'%', '([^&]+)');
-//			add_rewrite_rule(
-//				'interesting-things/?$',
-//				'index.php?'.$this->slug.'=interesting-things',
-//				'top'
-//			);
-
-			// An alternative approach.
-			 add_rewrite_rule(
-			   '^[0-9]{1,6}$',
-			   'index.php?'.$this->slug.'=$matches[1]',
-			   'top'
-			 );
-
-		});
+		add_action( 'init', function () {
+			add_rewrite_tag( '%' . $this->slug . '%', '([^&]+)' );
+			add_rewrite_rule(
+				'^[0-9]{1,6}$',
+				'index.php?' . $this->slug . '=$matches[1]',
+				'top'
+			);
+		} );
 
 	}
 
@@ -59,12 +51,13 @@ class VirtualPage {
 
 			if (array_key_exists($this->slug, $wp_query->query_vars)) {
 
-				get_header();
-				include locate_template('template-parts/content-listing.php');
-				get_footer();
+				$new_template = locate_template('template-parts/content-listing.php');
 
 				if ($new_template != '') {
+
+					status_header( 200 );
 					return $new_template;
+
 				} else {
 					// This is not a valid virtualpage value, so set the header and template
 					// for a 404 page.

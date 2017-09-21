@@ -5,7 +5,8 @@
  * @since 1.0
  * @version 1.2
  */
-
+query_posts('posts_per_page=1&post_type=post');
+get_header();
 include(locate_template('template-parts/partials/top.php'));
 ?>
 <div id="mid" >
@@ -24,4 +25,4 @@ include(locate_template('template-parts/partials/top.php'));
     </article><!-- #post-## -->
 </div>
 <?php include(locate_template('template-parts/partials/bot.php'));
-
+get_footer();
