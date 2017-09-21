@@ -17,7 +17,7 @@ if ($_GET['qs']) {
     $results        = $qs->create();
     $listings       = $results->data;
 
-    echo '<pre>',print_r($listings),'</pre>';
+    echo '<pre>',print_r($results),'</pre>';
 }
 
 get_footer();

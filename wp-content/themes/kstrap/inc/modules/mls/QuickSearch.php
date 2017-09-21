@@ -26,13 +26,14 @@ class QuickSearch
         $propertyType = implode('|', $this->getPropertyTypes($this->searchCriteria['propertyType']));
         $minPrice     = $this->searchCriteria['minPrice'];
         $maxPrice     = $this->searchCriteria['maxPrice'];
+        $page         = isset($this->searchCriteria['pg']) ? $this->searchCriteria['pg'] : 1;
 
         $client       = new Client(['base_uri' => 'http://mls.kerigan.com/api/']);
 
         // make the API call
         $raw = $client->request(
             'GET',
-            'search?city='. $omni .'&class='. $propertyType .'&status=Active&minPrice='. $minPrice .'&maxPrice='. $maxPrice
+            'search?city='. $omni .'&class='. $propertyType .'&status=Active&minPrice='. $minPrice .'&maxPrice='. $maxPrice .'&page='. $page
         );
 
         $results = json_decode($raw->getBody());
