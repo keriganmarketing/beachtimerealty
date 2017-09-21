@@ -238,12 +238,12 @@ html {
     .quick-search-container {
       padding: 1rem 0;
       background-color: #d85035;
-      border-top:1px solid #FFF;
+      border-top: 1px solid #FFF;
 
       @media screen and (min-width: map-get($grid-breakpoints, lg)) {
-        padding:.1rem 0 0;
+        padding: .1rem 0 0;
         background-color: transparent;
-        border:none;
+        border: none;
       }
 
       form {
@@ -251,9 +251,9 @@ html {
         margin: auto;
 
         .row {
-          margin:0 -8px;
-          .col-md-5, .col-md-7, .col-6, .col, .col-md-2  {
-            padding:0 8px;
+          margin: 0 -8px;
+          .col-md-5, .col-md-7, .col-6, .col, .col-md-2 {
+            padding: 0 8px;
           }
         }
 
@@ -284,6 +284,52 @@ html {
         .btn-rounded {
           height: 60px;
           border-radius: 30px;
+        }
+      }
+
+      //select2 adds to DOM dynamically
+      .select2-dropdown {
+        border: 1px solid #1a4e94;
+        border-radius: 0;
+      }
+
+      .select2-dropdown.select2-dropdown--below {
+        margin-top: -55px;
+
+        .select2-search--dropdown {
+          display: block;
+          padding: 0;
+
+          .select2-search__field {
+            border: none;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem;
+            margin-top: -4px;
+          }
+          .select2-search__field:focus {
+            box-shadow: none;
+          }
+        }
+      }
+
+      .select2-dropdown.select2-dropdown--above {
+
+        .select2-search--dropdown {
+          display: block;
+          padding: 0;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          margin-bottom: -57px;
+
+          .select2-search__field {
+            border: none;
+            border-top: 1px solid #ddd;
+            padding: 1rem;
+          }
+          .select2-search__field:focus {
+            box-shadow: none;
+          }
         }
       }
     }
@@ -729,27 +775,4 @@ html {
 
 .sticky-footer.unstuck {
   position: relative;
-}
-
-//select2 adds to DOM dynamically
-.select2-dropdown {
-  border: 1px solid #1a4e94;
-  border-radius: 0;
-  margin-top: -23px;
-
-  .select2-search--dropdown {
-    display: block;
-    padding: 0;
-
-    .select2-search__field {
-      border: none;
-      border-bottom: 1px solid #ddd;
-      padding: 1rem;
-      margin-top:-4px;
-    }
-    .select2-search__field:focus {
-      box-shadow: none;
-    }
-  }
-
 }

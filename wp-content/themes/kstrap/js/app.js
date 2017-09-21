@@ -48,19 +48,24 @@ $(document).ready(function (event) {
 
         $('.select2-omni-field').select2({
             placeholder: 'City, area, subdivision or zip',
-            data: omniBox
+            data: omniBox,
+            cache: true,
+            dropdownParent: $('.quick-search-container')
         });
 
     });
 
     $('.select2-property-type').select2({
-        placeholder: 'Property type'
+        placeholder: 'Property type',
+        dropdownParent: $('.quick-search-container')
     });
     $('.select2-price-min').select2({
-        placeholder: 'Min price'
+        placeholder: 'Min price',
+        dropdownParent: $('.quick-search-container')
     });
     $('.select2-price-max').select2({
-        placeholder: 'Max price'
+        placeholder: 'Max price',
+        dropdownParent: $('.quick-search-container')
     });
 
     $('.select2-price-min').on('select2:select', function (e) {
