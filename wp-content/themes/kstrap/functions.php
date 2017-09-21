@@ -5,6 +5,7 @@ use Includes\Modules\Navwalker\NavWalker;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
 use Includes\Modules\Members\Members;
+use Includes\Modules\CPT\VirtualPage;
 
 require('vendor/autoload.php');
 
@@ -22,6 +23,8 @@ $slider->createPostType();
 $slider->createAdminColumns();
 
 $members = new Members();
+
+$listingPage = new VirtualPage('mls');
 
 function kstrap_setup()
 {
