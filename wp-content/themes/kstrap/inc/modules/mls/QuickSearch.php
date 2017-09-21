@@ -1,6 +1,8 @@
 <?php
 namespace Includes\Modules\MLS;
 
+use GuzzleHttp\Client;
+
 /**
 * MLS Search - Made by Daron Adkins
 */
@@ -21,9 +23,41 @@ class QuickSearch
     public function create()
     {
         $omni         = $this->searchCriteria['omniField'];
-        $propertyType = $this->searchCriteria['propertyType'];
-        $priceRange   = $this->searchCriteria['priceRange'];
+        $propertyType = implode('|', $this->getPropertyTypes($this->searchCriteria['propertyType']));
+        $minPrice     = $this->searchCriteria['minPrice'];
+        $maxPrice     = $this->searchCriteria['maxPrice'];
 
-        echo '<pre>',print_r($this->searchCriteria),'</pre>';
+        $client       = new Client(['base_uri' => 'http://mls.kerigan.com/api/']);
+
+        // make the API call
+        $raw = $client->request(
+            'GET',
+            'search?city='. $omni .'&class='. $propertyType .'&status=Active&minPrice='. $minPrice .'&maxPrice='. $maxPrice
+        );
+
+        $results = json_decode($raw->getBody());
+
+        return $results;
+    }
+
+    private function getPropertyTypes($class = null)
+    {
+        $typeArray = [
+            'Single Family Home'   => ['Detached Single Family'],
+            'Condo / Townhome'     => ['Condominium', 'Townhouse', 'Townhomes'],
+            'Commercial'           => ['Office', 'Retail', 'Industrial', 'Income Producing', 'Unimproved Commercial', 'Business Only', 'Auto Repair', 'Improved Commercial', 'Hotel/Motel'],
+            'Lots / Land'          => ['Vacant Land', 'Residential Lots', 'Land', 'Land/Acres', 'Lots/Land'],
+            'Multi-Family Home'    => ['Duplex Multi-Units', 'Triplex Multi-Units'],
+            'Rental'               => ['Apartment', 'House', 'Duplex', 'Triplex', 'Quadruplex', 'Apartments/Multi-family'],
+            'Manufactured'         => ['Mobile Home', 'Mobile/Manufactured'],
+            'Farms / Agricultural' => ['Farm', 'Agricultural', 'Farm/Ranch', 'Farm/Timberland'],
+            'Other'                => ['Attached Single Unit', 'Attached Single Family', 'Dock/Wet Slip', 'Dry Storage', 'Mobile/Trailer Park', 'Mobile Home Park', 'Residential Income', 'Parking Space', 'RV/Mobile Park']
+        ];
+
+        if ($class != null) {
+            return $typeArray[$class];
+        }
+
+        return $typeArray;
     }
 }

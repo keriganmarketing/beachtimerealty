@@ -14,9 +14,10 @@ get_header();
 if ($_GET['qs']) {
     $searchCriteria = $_GET;
     $qs             = new QuickSearch($searchCriteria);
-    $test           = $qs->create();
+    $results        = $qs->create();
+    $listings       = $results->data;
 
-    echo '<pre>',print_r($test),'</pre>';
+    echo '<pre>',print_r($listings),'</pre>';
 }
 
 get_footer();
