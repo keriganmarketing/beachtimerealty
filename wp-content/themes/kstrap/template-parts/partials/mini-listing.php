@@ -5,23 +5,6 @@
  * Date: 9/19/2017
  * Time: 1:29 PM
  */
-
-$result = (object) [
-	'status'          => 'Active',
-	'preferred_image' => 'http://cdn.resize.sparkplatform.com/bc/1024x768/true/20170823152242322341000000-o.jpg',
-	'mls_account'     => '662356',
-	'street_number'   => '5436',
-	'street_name'     => 'Hopetown',
-	'unit_number'     => '',
-	'city'            => 'Panama City Beach',
-	'state'           => 'FL',
-	'price'           => '449555',
-	'bedrooms'        => '3',
-	'bathrooms'       => '4',
-	'sq_ft'           => '2428',
-	'lot_dimensions'  => '1x1',
-	'lot_acreage'     => '.5'
-];
 ?>
 
 <div class="mini-listing-container">
@@ -68,13 +51,11 @@ $result = (object) [
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 203.2 156.3" style="enable-background:new 0 0 203.2 156.3;"
                                  xml:space="preserve">
-                            <g>
                                 <rect x="8.5" y="73.7" class="st0" width="187" height="37.8"/>
                                 <rect x="108.1" y="40.8" class="st1" width="71.5" height="18.9"/>
                                 <rect x="24.5" y="40.8" class="st1" width="71.5" height="18.9"/>
                                 <polyline points="179.6,127.6 179.6,111.5 24.5,111.9 24.5,128 	"/>
                                 <polygon points="11.5,73.3 22.2,59.6 181.9,59.6 192.5,73.3 	"/>
-                            </g>
                             </svg>
                         </span>
                         <span class="baths-num icon-data"><?php echo $result->bedrooms; ?></span>
@@ -86,11 +67,9 @@ $result = (object) [
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 203.2 156.3" style="enable-background:new 0 0 203.2 156.3;"
                                  xml:space="preserve">
-                            <g id="Layer_2">
-                                <path class="st0" d="M49.9,39.5v-11h-25v30h171c0,0,0,29-15.8,46.3c-22.4,24.6-49.8,24.8-49.8,24.8H73.9c0,0-32.5-2.8-51-26.3
+                                <path d="M49.9,39.5v-11h-25v30h171c0,0,0,29-15.8,46.3c-22.4,24.6-49.8,24.8-49.8,24.8H73.9c0,0-32.5-2.8-51-26.3
                                     C7.7,83.9,7.2,58.5,7.2,58.5h17.8"/>
-                                <polyline class="st0" points="47.9,134.8 65.2,129.8 142.9,129.7 161.2,134.8 	"/>
-                            </g>
+                                <polyline points="47.9,134.8 65.2,129.8 142.9,129.7 161.2,134.8 	"/>
                             </svg>
                         </span>
                         <span class="baths-num icon-data"><?php echo $result->bathrooms; ?></span>
@@ -102,12 +81,9 @@ $result = (object) [
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 203.2 156.3" style="enable-background:new 0 0 203.2 156.3;"
                                  xml:space="preserve">
-                            <g>
-                                <polyline class="st0"
-                                          points="7.9,33.2 7.9,21.5 195.9,21.5 195.9,132.3 7.9,132.3 7.9,61.3 	"/>
-                                <line class="st0" x1="144.9" y1="21.5" x2="144.9" y2="48.5"/>
+                                <polyline points="7.9,33.2 7.9,21.5 195.9,21.5 195.9,132.3 7.9,132.3 7.9,61.3 	"/>
+                                <line x1="144.9" y1="21.5" x2="144.9" y2="48.5"/>
                                 <polyline points="196.3,76.8 101.9,78.2 101.9,55.5 101.9,97.5 	"/>
-                            </g>
                             </svg>
                         </span>
                         <span class="baths-num icon-data"><?php echo number_format( $result->sq_ft ); ?></span>
@@ -120,12 +96,9 @@ $result = (object) [
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 203.2 156.3" style="enable-background:new 0 0 203.2 156.3;"
                                  xml:space="preserve">
-                            <g>
-                                <polyline class="st0"
-                                          points="7.9,33.2 7.9,21.5 195.9,21.5 195.9,132.3 7.9,132.3 7.9,61.3 	"/>
-                                <line class="st0" x1="144.9" y1="21.5" x2="144.9" y2="48.5"/>
+                                <polyline points="7.9,33.2 7.9,21.5 195.9,21.5 195.9,132.3 7.9,132.3 7.9,61.3 	"/>
+                                <line x1="144.9" y1="21.5" x2="144.9" y2="48.5"/>
                                 <polyline points="196.3,76.8 101.9,78.2 101.9,55.5 101.9,97.5 	"/>
-                            </g>
                             </svg>
                         </span>
                         <span class="baths-num icon-data"><?php echo number_format( $result->sq_ft ); ?></span>
@@ -137,12 +110,10 @@ $result = (object) [
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 203.2 156.3" style="enable-background:new 0 0 203.2 156.3;"
                                  xml:space="preserve">
-                            <g>
                                 <polygon points="142.9,37.9 101.3,69.5 59.7,37.9 101.3,6.3 	"/>
                                 <polygon points="89.5,78.3 47.9,109.8 6.3,78.3 47.9,46.7 	"/>
                                 <polygon points="196.3,78.3 154.7,109.8 113.1,78.3 154.7,46.7 	"/>
                                 <polygon points="142.9,118.6 101.3,150.2 59.7,118.6 101.3,87 	"/>
-                            </g>
                             </svg>
                         </span>
                         <span class="lot-dim-num icon-data"><?php echo $result->lot_dimensions ?></span>
@@ -155,12 +126,10 @@ $result = (object) [
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 203.2 156.3" style="enable-background:new 0 0 203.2 156.3;"
                                  xml:space="preserve">
-                            <g>
                                 <polygon points="142.9,37.9 101.3,69.5 59.7,37.9 101.3,6.3 	"/>
                                 <polygon points="89.5,78.3 47.9,109.8 6.3,78.3 47.9,46.7 	"/>
                                 <polygon points="196.3,78.3 154.7,109.8 113.1,78.3 154.7,46.7 	"/>
                                 <polygon points="142.9,118.6 101.3,150.2 59.7,118.6 101.3,87 	"/>
-                            </g>
                             </svg>
                         </span>
                         <span class="lot-dim-num icon-data"><?php echo( strlen( $result->lot_dimensions ) > 8 ? substr( $result->lot_dimensions,
@@ -173,22 +142,12 @@ $result = (object) [
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 203.2 156.3" style="enable-background:new 0 0 203.2 156.3;"
                                  xml:space="preserve">
-                            <style type="text/css">
-                                rect, polyline, polygon, path {
-                                    fill: none;
-                                    stroke: #938E81;
-                                    stroke-miterlimit: 10;
-                                    stroke-width: 4
-                                }
-                            </style>
-                            <g>
                                 <polygon points="44.4,25 15.7,62.5 29.9,62.5 10.2,101.5 27.9,101.5 7.4,137.5 97.9,137.5 72.9,100.5 92.9,100.5
                                     61.9,61.5 77.9,61.5 	"/>
                                 <polygon points="84.5,6.5 60,41.6 68.6,51.3 77.9,61.5 61.9,61.5 92.9,100.5 72.9,100.5 97.9,137.5 101.5,137.5
                                     119.9,98.5 102.2,98.5 121.9,50.5 107.7,50.5 112,42 	"/>
                                 <polygon points="136.4,7.5 107.7,50.5 121.9,50.5 102.2,98.5 119.9,98.5 99.4,144.5 189.9,143.5 164.9,97.5
                                     184.9,97.5 153.9,48.5 169.9,48.5 	"/>
-                            </g>
                             </svg>
                         </span>
                         <span class="acres-num icon-data"><?php echo $result->acreage; ?></span>

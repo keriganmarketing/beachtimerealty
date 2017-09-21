@@ -8,7 +8,7 @@
 ?>
 <div class="quick-search-container">
     <div class="container">
-        <form action="/test-search-results" method="get">
+        <form action="/properties/" method="get">
             <input type="hidden" name="qs" value="true">
             <div class="row">
                 <div class="col-md-7">

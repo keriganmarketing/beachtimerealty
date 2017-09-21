@@ -17,7 +17,7 @@
     <?php
     } else {
         ?>
-        <p class="text-center nav-item"><a href="/my-account/login/">login</a> to save properties</p>
+        <p class="text-center nav-item"><a href="/my-account/user-login/">login</a> to save properties</p>
     <?php
     }
     ?>

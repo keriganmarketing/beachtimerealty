@@ -768,11 +768,11 @@ html {
 }
 
 .sticky-footer {
-  position: absolute;
+  position: relative;
   width:100%;
   bottom:0;
 }
 
-.sticky-footer.unstuck {
-  position: relative;
+.sticky-footer.stuck {
+  position: absolute;
 }

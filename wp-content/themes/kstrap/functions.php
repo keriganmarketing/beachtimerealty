@@ -4,6 +4,7 @@ use Includes\Modules\Slider\Slider;
 use Includes\Modules\Navwalker\NavWalker;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
+use Includes\Modules\Members\Members;
 
 require('vendor/autoload.php');
 
@@ -20,7 +21,7 @@ $slider = new Slider();
 $slider->createPostType();
 $slider->createAdminColumns();
 
-
+$members = new Members();
 
 function kstrap_setup()
 {

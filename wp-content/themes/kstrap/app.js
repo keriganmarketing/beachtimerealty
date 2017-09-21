@@ -10364,9 +10364,12 @@ $(document).ready(function (event) {
 
     var app = $('#app').height();
     var win = $(window).height();
-    if (app > win) {
-        $(".sticky-footer").addClass('unstuck');
+    if (app < win) {
+        $(".sticky-footer").addClass('stuck');
     }
+
+    console.log(app);
+    console.log(win);
 
     sizeHeader();
 });
