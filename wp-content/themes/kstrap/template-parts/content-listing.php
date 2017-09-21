@@ -1,10 +1,20 @@
 <?php
+
+use Includes\Modules\MLS\FullListing;
+
 /**
  * @package KMA
  * @subpackage kstrap
  * @since 1.0
  * @version 1.2
  */
+
+if (isset($_GET['mls'])) {
+    $mlsNumber = $_GET['mls'];
+    $fl = new FullListing($mlsNumber);
+    $results = $fl->create();
+    echo '<pre>',print_r($results),'</pre>';
+}
 
 include(locate_template('template-parts/partials/top.php'));
 ?>

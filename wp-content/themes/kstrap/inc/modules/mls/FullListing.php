@@ -20,14 +20,14 @@ class FullListing
     }
 
 
-    public function show()
+    public function create()
     {
         $client       = new Client(['base_uri' => 'http://mls.kerigan.com/api/listing/']);
 
         // make the API call
         $raw = $client->request(
             'GET',
-            '?mls='. $this->mlsNumber
+            $this->mlsNumber
         );
 
         $results = json_decode($raw->getBody());
