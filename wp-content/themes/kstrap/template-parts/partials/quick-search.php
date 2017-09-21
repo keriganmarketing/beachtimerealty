@@ -22,6 +22,15 @@
                     <div class="form-group">
                         <select class="form-control form-control-lg select2-property-type" name="propertyType" >
                             <option value="">Property type</option>
+                            <option value="Single Family Home">Single Family Home</option>
+                            <option value="Condo / Townhome">Condo / Townhome</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Lots / Land">Lots / Land</option>
+                            <option value="Multi-Family Home">Multi-Family Home</option>
+                            <option value="Rental">Rental</option>
+                            <option value="Manufactured">Manufactured</option>
+                            <option value="Farms / Agricultural">Farms / Agricultural</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                 </div>
