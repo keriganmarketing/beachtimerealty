@@ -380,9 +380,9 @@ class SocialSettingsPage
         );
     }
 
-    public function getSocialLinks($format = 'svg', $shape = 'square')
+    public function getSocialLinks($format = 'svg', $shape = 'square', $data = '')
     {
-        $supportedPlatforms = get_option('social_option_name');
+        $supportedPlatforms = ($data != '' ? $data : get_option('social_option_name'));
 
         $socialArray = [];
         if (is_array($supportedPlatforms)) {
@@ -395,7 +395,6 @@ class SocialSettingsPage
                 }
             }
         }
-
         return $socialArray;
     }
 }

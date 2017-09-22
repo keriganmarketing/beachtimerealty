@@ -104,16 +104,16 @@ class Agents {
 
 	public function getTeam( $args = [] ) {
 
-		$request = get_posts( [
+		$request = [
 			'post_type'      => 'agent',
-			'posts_per_page' => - 1,
+			'posts_per_page' => -1,
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
 			'offset'         => 0,
 			'post_status'    => 'publish',
-		] );
+		];
 
-		$request = array_merge( $request, $args );
+		$request = get_posts( array_merge( $request, $args ) );
 
 		$output = [];
 		foreach ( $request as $item ) {
@@ -164,17 +164,17 @@ class Agents {
 			'posts_per_page' => 1,
 		] );
 
-		return $output;
+		return $output[0];
 	}
 
 	public function getOffices( $args = [], $limit = 0 ) {
 
-		$request = get_terms( [
+		$request = [
 			'taxonomy'   => 'office',
 			'hide_empty' => false,
-		] );
+		];
 
-		$request = array_merge( $request, $args );
+		$request = get_terms( array_merge( $request, $args ) );
 
 		//chop to limit manually since SCP Order is ganked.
 		if ( $limit != 0 ) {
