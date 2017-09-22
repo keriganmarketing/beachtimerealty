@@ -610,6 +610,10 @@ html {
       li {
         color: #e75f44;
 
+        .fa {
+          margin-right: .75rem;
+        }
+
         a {
           color: #123f7b;
         }
@@ -619,6 +623,22 @@ html {
     .card-footer {
       justify-content: space-between;
       display: flex;
+    }
+  }
+
+  .agent-profile {
+
+    .social.agent {
+      margin: 1rem 0 0;
+
+      svg {
+        width: 35px;
+        margin: 0 .25rem 0;
+      }
+    }
+
+    #mylistings {
+      padding-top:2rem;
     }
   }
 
