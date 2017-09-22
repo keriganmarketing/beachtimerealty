@@ -722,16 +722,39 @@ html {
     .icon-label {
       font-size: .9em;
     }
+
   }
 
   .tile-section.mls {
     padding:.5rem 0 .25rem;
     color: rgba(0,0,0,.6);
   }
+
+
 }
 
 .mini-listing-container:hover {
   border-bottom: .25rem #df6e58 solid;
+}
+
+.contact-map {
+
+  #contact-map {
+    height: 300px;
+
+    @media screen and (min-width: map-get($grid-breakpoints, md)) {
+      height: 400px;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+      height: 500px;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, xl)) {
+      height: 550px;
+    }
+
+  }
 }
 
 #bot {
