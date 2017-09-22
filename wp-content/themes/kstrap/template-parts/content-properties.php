@@ -7,21 +7,24 @@ use Includes\Modules\MLS\QuickSearch;
 * @version 1.2
 */
 include(locate_template('template-parts/partials/top.php'));
+
+$currentPage  = (isset($_GET['pg']) ? $_GET['pg'] : 1);
 $searchCriteria = (isset($_GET['qs']) ? $_GET : [
-'omniField'    => 'Panama City Beach',
-'status'       => 'Active',
-'propertyType' => 'Single Family Home',
-'minPrice'     => 0,
-'maxPrice'     => 9000000000
+    'omniField'    => 'Panama City Beach',
+    'status'       => 'Active',
+    'propertyType' => 'Single Family Home',
+    'minPrice'     => 0,
+    'maxPrice'     => 9000000000,
+    'pg'           => $currentPage
 ]);
-print_r($searchCriteria);
+
 $qs           = new QuickSearch($searchCriteria);
 $results      = $qs->create();
 $listings     = $results->data;
 $lastPage     = $results->last_page;
 $totalResults = $results->total;
-$currentPage  = (isset($_GET['pg']) ? $_GET['pg'] : 1);
-$currentUrl   = preg_replace("/&pg=\d+/", "", $_SERVER['REQUEST_URI']);
+
+$currentUrl   = preg_replace("/&pg=\d+/", "", $_SERVER['REQUEST_URI']) . (isset($_GET['qs']) ? '' : '?browse=true');
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
 $subhead  = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
 ?>
