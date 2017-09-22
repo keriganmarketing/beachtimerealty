@@ -40,8 +40,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                     <div class="row">
                         <?php foreach ($listings as $result) {
     ?>
-                            <div class="col-sm-6 col-lg-3 text-center">
-                                <?php include(locate_template('template-parts/partials/mini-listing.php')); ?>
+                            <div class="col-sm-6 col-lg-3 text-center"> <?php include(locate_template('template-parts/partials/mini-listing.php')); ?>
                             </div>
                         <?php
 } ?>
