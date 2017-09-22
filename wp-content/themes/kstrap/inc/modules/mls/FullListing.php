@@ -22,7 +22,7 @@ class FullListing
 
     public function create()
     {
-        $client       = new Client(['base_uri' => 'http://mls.kerigan.com/api/listing/']);
+        $client = new Client(['base_uri' => 'http://mls.kerigan.com/api/listing/']);
 
         // make the API call
         $raw = $client->request(
