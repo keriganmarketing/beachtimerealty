@@ -12,11 +12,13 @@ if (have_posts()) :
         get_template_part('template-parts/blog', get_post_format());
     } else {
         while (have_posts()) :
-             the_post();
+            the_post();
 
             if (is_front_page()) {
                 get_template_part('template-parts/home');
-            } else {
+            } elseif(is_single()) {
+	            get_template_part('template-parts/content', get_post_type());
+            }else{
                 get_template_part('template-parts/content', $post->post_name);
             }
         endwhile;

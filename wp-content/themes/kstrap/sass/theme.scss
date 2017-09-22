@@ -197,8 +197,17 @@ html {
     }
   }
 
-  .content {
-    padding: 1rem 0;
+  .content.section {
+    padding: 2rem 0;
+
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+      padding: 6rem 0;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, xl)) {
+      padding: 6rem 0;
+    }
+
   }
 
   .slider {
@@ -571,6 +580,46 @@ html {
       padding-top: 12rem;
     }
 
+  }
+
+  .mini-agent {
+
+    .card-image {
+      overflow: hidden;
+      max-height: 300px;
+
+      img {
+        width:100%;
+        min-height: 100%;
+      }
+    }
+
+    .card-title {
+      color: #e75f44;
+    }
+
+    .card-subtitle {
+      color: #2d2d2d;
+    }
+
+    .contact-info {
+      padding: 1rem 0 0;
+      margin: 0;
+      list-style-type: none;
+
+      li {
+        color: #e75f44;
+
+        a {
+          color: #123f7b;
+        }
+      }
+    }
+
+    .card-footer {
+      justify-content: space-between;
+      display: flex;
+    }
   }
 
 }

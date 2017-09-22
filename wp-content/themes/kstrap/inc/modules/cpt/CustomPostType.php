@@ -194,6 +194,7 @@ class CustomPostType {
 	private function createField( $label, $type, $meta, $data ) {
 		$isMulti     = ( is_array( $type ) ? true : false );
 		$fieldIdName = $this->uglify( $data['id'] ) . '_' . $this->uglify( $label );
+		$fieldValue  = ( isset($meta[ $fieldIdName ][0]) ? $meta[ $fieldIdName ][0] : '');
 
 		if ( $isMulti ) {
 			$templateFile = $this->dir . '/templates/' . $type['type'] . '.php';
@@ -207,10 +208,10 @@ class CustomPostType {
 			if ( $type != 'wysiwyg' ) {
 				$field = str_replace( '{field-name}', $fieldIdName, $field );
 				$field = str_replace( '{field-label}', $label, $field );
-				$field = str_replace( '{field-value}', $meta[ $fieldIdName ][0], $field );
+				$field = str_replace( '{field-value}', $fieldValue, $field );
 			} else {
 				$editor = wp_editor(
-					$meta[ $fieldIdName ][0],
+					$fieldValue,
 					$fieldIdName,
 					[
 						'quicktags'     => [ 'buttons' => 'em,strong,link' ],
@@ -223,7 +224,7 @@ class CustomPostType {
 			}
 
 			if ( $type == 'boolean' ) {
-				$checked = ( $meta[ $fieldIdName ][0] == 'on' ? 'checked' : '' );
+				$checked = ( $fieldValue == 'on' ? 'checked' : '' );
 				$field   = str_replace( '{field-checked}', $checked, $field );
 			}
 
@@ -239,7 +240,7 @@ class CustomPostType {
 					$optionField = str_replace( '{field-name}', $fieldIdName, $optionField );
 					$optionField = str_replace( '{field-value}', $option, $optionField );
 
-					if ( $option == $meta[ $fieldIdName ][0] ) {
+					if ( $option == $fieldValue ) {
 						$optionField = str_replace( '{field-selected}',
 							( $type['type'] == 'select' ? 'selected' : 'checked' ), $optionField );
 					}
@@ -336,7 +337,9 @@ class CustomPostType {
 					return;
 				}
 
-				if ( ! wp_verify_nonce( $_POST['custom_post_type'], plugin_basename( __FILE__ ) ) ) {
+				$nonce = (isset($_POST['custom_post_type']) ? $_POST['custom_post_type'] : '');
+
+				if ( ! wp_verify_nonce( $nonce, plugin_basename( __FILE__ ) ) ) {
 					return;
 				}
 
