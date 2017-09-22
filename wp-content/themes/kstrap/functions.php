@@ -4,6 +4,7 @@ use Includes\Modules\Slider\Slider;
 use Includes\Modules\Navwalker\NavWalker;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
+use Includes\Modules\Agents\Agents;
 use Includes\Modules\Members\Members;
 use Includes\Modules\CPT\VirtualPage;
 
@@ -21,6 +22,9 @@ $testimonials->createAdminColumns();
 $slider = new Slider();
 $slider->createPostType();
 $slider->createAdminColumns();
+
+$agents = new Agents();
+$agents->createPostType();
 
 $members = new Members();
 
