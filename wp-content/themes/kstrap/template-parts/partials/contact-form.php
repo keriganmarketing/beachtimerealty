@@ -33,7 +33,7 @@ $selectedAgent   = (isset($_GET['selected_agent']) ? $_GET['selected_agent'] : $
 //SELECT OPTIONS
 $agents     = new Agents();
 $agentArray = $agents->getAgentNames();
-$agentOptions = '';
+$agentOptions = '<option value="first">First Available</option>';
 foreach ($agentArray as $agent) {
     $agentOptions .= '<option value="' . $agent . '" ' . ($selectedAgent == $agent ? 'selected' : '') . ' >' . $agent . '</option>';
 }

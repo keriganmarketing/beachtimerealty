@@ -23,7 +23,7 @@
                     <button type="submit" class="btn btn-primary btn-outlined mb-2" ><i class="fa fa-star" aria-hidden="true"></i> <?php echo $buttonText; ?></button>
                 </form>
             <?php } ?>
-            <button type="button" class="btn btn-primary hidden-md-up mb-2" data-toggle="modal" data-target="#lightbox" >View more photos</button>
+            <button type="button" class="btn btn-primary btn-outlined hidden-md-up mb-2" data-toggle="modal" data-target="#lightbox" >View more photos</button>
         </div>
     </div>
     <div class="col-md-6 flex-order-md-first text-center text-md-left">

@@ -68,15 +68,15 @@ $modalImages .= '</div>';
 
 $modalControl = '
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-              <div class="carousel-control-prev-icon" aria-hidden="true"></div>
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
               <span class="sr-only">Previous</span>
             </a>
             <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-              <div class="carousel-control-next-icon" aria-hidden="true"></div>
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
               <span class="sr-only">Next</span>
             </a>';
 
-$modalContent = '<div id="myCarousel" class="carousel slide" style="display: block;" >' . $modalIndicators . $modalImages . $modalControl . '</div>';
+$modalContent = '<div id="myCarousel" class="carousel slide" style="display: block;" >' . $modalImages . $modalIndicators . $modalControl . '</div>';
 
 ?>
 
@@ -90,7 +90,7 @@ $modalContent = '<div id="myCarousel" class="carousel slide" style="display: blo
             </div>
             <?php if (isset($listingInfo->videos)) { ?>
                 <div class="modal-footer text-xs-center">
-                    <a href="<?php echo $listingInfo->videos; ?>" target="_blank" class="btn btn-lg btn-danger">Open
+                    <a href="<?php echo $listingInfo->videos; ?>" target="_blank" class="btn btn-primary btn-block btn-outlined">Open
                         Virtual Tour</a>
                 </div>
             <?php } ?>
