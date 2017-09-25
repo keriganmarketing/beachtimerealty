@@ -105,7 +105,7 @@ if ($formSubmitted) { //FORM WAS SUBMITTED
     <hr>
     <div class="row">
         <div class="col-sm-6">
-
+            <p style="margin-bottom: 1.75rem;">Select an agent or contact.</p>
             <div class="form-group <?php echo($selectedAgent == '' && $formSubmitted ? 'has-error' : ''); ?>"
                  id="agent-select-dd" >
                 <label for="your_agent" class="sr-only">Your Agent</label>
@@ -123,9 +123,8 @@ if ($formSubmitted) { //FORM WAS SUBMITTED
         </div>
         <div class="col-12">
             <div class="form-group">
-                <input type="text" name="secu"
-                       style="position: absolute; height: 1px; top: -50px; left: -50px; width: 1px; padding: 0; margin: 0; visibility: hidden;">
-                <button type="submit" class="btn btn-primary btn-md pull-md-right">SEND</button>
+                <input type="text" name="secu" style="position: absolute; height: 1px; top: -50px; left: -50px; width: 1px; padding: 0; margin: 0; visibility: hidden;">
+                <button type="submit" class="btn btn-primary btn-block btn-outlined">SEND</button>
             </div>
         </div>
     </div>

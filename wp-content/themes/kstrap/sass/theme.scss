@@ -48,6 +48,23 @@ html {
         color: #ccc;
       }
 
+      select.form-control.custom-select {
+        padding: .75rem 1.75rem .75rem .75rem;
+        height: calc(3.5rem + 2px) !important;
+      }
+
+      @media screen and (min-width: map-get($grid-breakpoints, md)) {
+        .flex-order-md-first {
+          order:1;
+        }
+        .flex-order-md-second {
+          order:2;
+        }
+        .flex-order-md-third {
+          order:3;
+        }
+      }
+
     }
   }
 }
@@ -639,6 +656,22 @@ html {
 
     #mylistings {
       padding-top:2rem;
+    }
+  }
+
+  .full-listing {
+    padding: 0;
+
+    @media screen and (min-width: map-get($grid-breakpoints, xl)) {
+      padding: 0 6rem;
+    }
+
+    #listing-map {
+      min-height: 200px;
+      height: 350px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 2.25rem;
     }
   }
 
