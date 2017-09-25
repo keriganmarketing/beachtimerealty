@@ -8,6 +8,12 @@ if (isset($_GET['mls'])) {
     $listingInfo = $fl->create();
     echo '<!--', print_r($listingInfo), '-->';
     $isOurs = false;
+
+    $user_id     = get_current_user_id();
+//    $buttonText  = $listing->isInBucket($user_id, $listingInfo->mls_account) ? 'REMOVE FROM BUCKET' : 'SAVE TO BUCKET';
+    $buttonText = 'SAVE TO BUCKET';
+    $title       = $listingInfo->street_number . ' ' . $listingInfo->street_name;
+
 }
 
 

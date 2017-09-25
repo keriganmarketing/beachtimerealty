@@ -32,7 +32,7 @@ html {
       .btn.btn-primary.btn-outlined {
         background-color: transparent;
         border-radius: 2rem;
-        padding: 1rem 1.5rem;
+        padding: 1rem 1.5rem .9rem;
         color: #0275d8;
       }
       .btn.btn-primary.btn-reversed {
@@ -49,7 +49,7 @@ html {
       }
 
       select.form-control.custom-select {
-        padding: .75rem 1.75rem .75rem .75rem;
+        padding: 1.25rem 1.75rem 1rem .75rem;
         height: calc(3.5rem + 2px) !important;
       }
 

@@ -22,17 +22,14 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
             <div class="container">
                 <div class="entry-content">
                     <?php
-                    the_content(sprintf(
-                        /* translators: %s: Name of current post. */
-                        wp_kses(__('Continue reading %s <span class="meta-nav">&rarr;</span>', 'kmaevent'), [ 'span' => [ 'class' => [] ] ]),
-                        the_title('<span class="screen-reader-text">"', '"</span>', false)
-                    ));
-
-                    wp_link_pages([
-                        'before' => '<div class="page-links">' . esc_html__('Pages:', 'kmaevent'),
-                        'after'  => '</div>',
-                    ]);
+                    the_content();
                     ?>
+                    <hr>
+                    <div class="account-actions text-center">
+                        <a class="btn btn-sm btn-primary btn-rounded mr-1" href="/my-account/edit-account/">Edit my account information</a>
+                        <a class="btn btn-sm btn-primary btn-rounded" href="/my-account/change-password/">Change my password</a>
+                    </div>
+                    <hr>
                 </div><!-- .entry-content -->
             </div>
         </section>

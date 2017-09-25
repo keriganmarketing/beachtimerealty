@@ -3,6 +3,8 @@
 
 namespace Includes\Modules\Members;
 
+use Includes\Modules\Agents\Agents;
+
 class Members {
 
 	private $loginPage;
@@ -61,10 +63,10 @@ class Members {
 				'link_after'        => '</div>',
 
 				// classes & ids
-				'form_id'           => 'beachy-bucket-login',
+				'form_id'           => 'account-login',
 				'form_class'        => 'form-inline',
 				'button_id'         => '',
-				'button_class'      => 'btn btn-primary',
+				'button_class'      => 'btn btn-primary btn-outlined',
 
 				// other
 				'strip_breaks'      => true,
@@ -72,7 +74,7 @@ class Members {
 				'remember_check'    => false,
 				'n'                 => "\n",
 				't'                 => "\t",
-				'redirect_to'       => "/beachy-bucket/",
+				'redirect_to'       => "/my-account/",
 				'login_form_action' => true,
 				'heading'           => 'Login',
 				'button_text'       => 'Log In',
@@ -226,7 +228,7 @@ class Members {
 				'form_id'          => 'beachy-registration',
 				'form_class'       => 'form form-inline',
 				'button_id'        => '',
-				'button_class'     => 'btn btn-primary',
+				'button_class'     => 'btn btn-primary btn-outlined',
 
 				// required field tags and text
 				'req_mark'         => '<span class="req">*</span>',
@@ -272,16 +274,14 @@ class Members {
 
 			$rows = array();
 
-//			$agents       = new mlsTeam();
-//			$agentArray   = $agents->getAgentNames();
-			$agentOptions = '
-		<option value="" selected >My Agent</option>
-		<option value="First Available">First Available</option>';
+			$agents       = new Agents();
+			$agentArray   = $agents->getAgentNames();
+			$agentOptions = '<option value="" selected >My Agent</option>';
 
-//			$selectedAgent = ( isset( $currentUser['selected_agent'][0] ) ? $currentUser['selected_agent'][0] : null );
-//			foreach ( $agentArray as $agent ) {
-//				$agentOptions .= '<option value="' . $agent . '" ' . ( $selectedAgent == $agent ? 'selected' : '' ) . ' >' . $agent . '</option>';
-//			}
+			$selectedAgent = ( isset( $currentUser['selected_agent'][0] ) ? $currentUser['selected_agent'][0] : null );
+			foreach ( $agentArray as $agent ) {
+				$agentOptions .= '<option value="' . $agent . '" ' . ( $selectedAgent == $agent ? 'selected' : '' ) . ' >' . $agent . '</option>';
+			}
 
 			//echo '<pre>',print_r($agentArray),'</pre>';
 
@@ -350,7 +350,7 @@ class Members {
 				'row_before'   => '<div class="col-md-6">',
 				'label'        => '<label for="selected_agent" class="sr-only">Choose a Username *</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<select name="selected_agent" id="selected_agent" class="select form-control" required placeholder="My Agent" >' . $agentOptions . '</select>',
+				'field'        => '<select name="selected_agent" id="selected_agent" class="select form-control custom-select" required placeholder="My Agent" >' . $agentOptions . '</select>',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);
