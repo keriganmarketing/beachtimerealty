@@ -54,10 +54,12 @@ class Testimonials {
 
 	public function getRandomTestimonial() {
 
-		return $this->getTestimonials( [
+		$request =  $this->getTestimonials( [
 			'order'          => 'rand',
 			'posts_per_page' => 1
 		] );
+
+        return $request[0];
 
 	}
 
@@ -77,11 +79,13 @@ class Testimonials {
 		$postArray = get_posts( $request );
 
 		foreach ( $postArray as $post ) {
-			$outputArray['content']       = $post->post_content;
-			$outputArray['author']        = get_post_meta( $post->ID, 'author_info_name', true );
-			$outputArray['company']       = get_post_meta( $post->ID, 'author_info_company', true );
-			$outputArray['featured']      = get_post_meta( $post->ID, 'author_info_featured', true );
-			$outputArray['short_version'] = get_post_meta( $post->ID, 'author_info_short_version', true );
+            $outputArray[] = [
+                'content'       => $post->post_content,
+                'author'        => get_post_meta($post->ID, 'author_info_name', true),
+                'company'       => get_post_meta($post->ID, 'author_info_company', true),
+                'featured'      => get_post_meta($post->ID, 'author_info_featured', true),
+                'short_version' => get_post_meta($post->ID, 'author_info_short_version', true)
+            ];
 		}
 
 		return $outputArray;
