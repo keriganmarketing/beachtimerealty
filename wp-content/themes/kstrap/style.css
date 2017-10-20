@@ -14814,6 +14814,40 @@ html body #app select.form-control.custom-select {
   color: rgba(0, 0, 0, 0.6);
 }
 
+.mini-listing-container .all-testimonials .testimonial .testimonial-content {
+  padding: 3rem .5rem .5rem 3rem;
+  font-family: "Courgette", Times, serif;
+  font-size: 1.3em;
+  color: #196cad;
+  line-height: 1.8em;
+}
+
+.mini-listing-container .all-testimonials .testimonial .testimonial-author {
+  text-align: right;
+  padding: 0 .5rem;
+  font-family: "Courgette", Times, serif;
+  font-size: 1.1em;
+  color: #196cad;
+}
+
+.mini-listing-container .all-testimonials .testimonial .open-quote {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.mini-listing-container .all-testimonials .testimonial .open-quote svg {
+  max-width: 100px;
+  height: auto;
+}
+
+.mini-listing-container .all-testimonials .testimonial .open-quote svg path,
+.mini-listing-container .all-testimonials .testimonial .open-quote svg polygon {
+  fill: #8dcdff;
+  opacity: .2;
+}
+
 .mini-listing-container:hover {
   border-bottom: .25rem #df6e58 solid;
 }
