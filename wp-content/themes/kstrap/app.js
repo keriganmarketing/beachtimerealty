@@ -10377,7 +10377,7 @@ $(document).ready(function (event) {
 //Select2
 $(document).ready(function (event) {
     var omniBox;
-    $.getJSON("https://mothership.dev/api/v1/omnibar", function (json) {
+    $.getJSON("http://mothership.kerigan.com/api/v1/omnibar", function (json) {
         omniBox = $.map(json, function (el) {
             return el;
         });

@@ -28,7 +28,7 @@ class QuickSearch
         $maxPrice     = $this->searchCriteria['maxPrice'];
         $page         = isset($this->searchCriteria['pg']) ? $this->searchCriteria['pg'] : 1;
 
-        $client       = new Client(['base_uri' => 'http://mothership.dev/api/v1/']);
+        $client       = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
 
         // make the API call
         $apiCall = $client->request(
