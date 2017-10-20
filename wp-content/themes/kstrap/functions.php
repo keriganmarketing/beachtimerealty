@@ -1,12 +1,12 @@
 <?php
 
-use Includes\Modules\Slider\Slider;
+use Includes\Modules\Agents\Agents;
+use Includes\Modules\CPT\VirtualPage;
+use Includes\Modules\Members\Members;
 use Includes\Modules\Navwalker\NavWalker;
+use Includes\Modules\Slider\Slider;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
-use Includes\Modules\Agents\Agents;
-use Includes\Modules\Members\Members;
-use Includes\Modules\CPT\VirtualPage;
 
 require('vendor/autoload.php');
 
