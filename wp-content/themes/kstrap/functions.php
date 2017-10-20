@@ -1,13 +1,12 @@
 <?php
 
+use Includes\Modules\Agents\Agents;
 use Includes\Modules\Slider\Slider;
-use Includes\Modules\Navwalker\NavWalker;
+use Includes\Modules\CPT\VirtualPage;
+use Includes\Modules\Members\Members;
+use Includes\Modules\MLS\FeaturedListings;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
-use Includes\Modules\Agents\Agents;
-use Includes\Modules\Members\Members;
-use Includes\Modules\CPT\VirtualPage;
-use Includes\Modules\MLS\FeaturedListings;
 
 require('vendor/autoload.php');
 
