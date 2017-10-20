@@ -19,10 +19,9 @@ class FullListing
         $this->mlsNumber   = $mlsNumber;
     }
 
-
     public function create()
     {
-        $client = new Client(['base_uri' => 'http://mls.kerigan.com/api/listing/']);
+        $client = new Client(['base_uri' => 'http://mothership.dev/api/v1/listing/']);
 
         // make the API call
         $raw = $client->request(

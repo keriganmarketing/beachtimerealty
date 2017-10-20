@@ -28,15 +28,15 @@ class QuickSearch
         $maxPrice     = $this->searchCriteria['maxPrice'];
         $page         = isset($this->searchCriteria['pg']) ? $this->searchCriteria['pg'] : 1;
 
-        $client       = new Client(['base_uri' => 'http://mls.kerigan.com/api/']);
+        $client       = new Client(['base_uri' => 'http://mothership.dev/api/v1/']);
 
         // make the API call
-        $raw = $client->request(
+        $apiCall = $client->request(
             'GET',
             'search?city='. $omni .'&class='. $propertyType .'&status=Active&minPrice='. $minPrice .'&maxPrice='. $maxPrice .'&page='. $page
         );
 
-        $results = json_decode($raw->getBody());
+        $results = json_decode($apiCall->getBody());
 
         return $results;
     }
