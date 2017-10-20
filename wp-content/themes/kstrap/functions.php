@@ -7,6 +7,7 @@ use Includes\Modules\Testimonials\Testimonials;
 use Includes\Modules\Agents\Agents;
 use Includes\Modules\Members\Members;
 use Includes\Modules\CPT\VirtualPage;
+use Includes\Modules\MLS\FeaturedListings;
 
 require('vendor/autoload.php');
 
@@ -25,6 +26,10 @@ $slider->createAdminColumns();
 
 $agents = new Agents();
 $agents->createPostType();
+
+$featuredListings = new FeaturedListings();
+$featuredListings->createPostType();
+$featuredListings->createAdminColumns();
 
 $members = new Members();
 

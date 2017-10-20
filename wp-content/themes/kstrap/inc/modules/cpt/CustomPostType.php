@@ -353,7 +353,10 @@ class CustomPostType {
 						// Loop through all fields
 						foreach ( $fields as $label => $type ) {
 							$fieldIdName = $this->uglify( $title ) . '_' . $this->uglify( $label );
-							update_post_meta( $post->ID, $fieldIdName, $_POST['custom_meta'][ $fieldIdName ] );
+							$newvalue  = (isset($_POST['custom_meta'][ $fieldIdName ]) ? $_POST['custom_meta'][ $fieldIdName ] : null);
+							if($newvalue) {
+                                update_post_meta($post->ID, $fieldIdName, $newvalue);
+                            }
 						}
 					}
 				}
