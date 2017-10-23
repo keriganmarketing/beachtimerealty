@@ -1019,6 +1019,18 @@ html {
 
 }
 
+#map-search {
+  height: 400px;
+
+  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+    height: 500px;
+  }
+  @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+    height: 600px;
+  }
+
+}
+
 #bot-bot {
   background-color: #1a4e94;
 
