@@ -14,6 +14,7 @@ $headline = ($post->page_information_headline != '' ? $post->page_information_he
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
 ?>
 <div id="mid" >
+    <h1>Changed!</h1>
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="section-wrapper slider" >
             <div class="tagline" >
