@@ -23,17 +23,18 @@ class QuickSearch
     public function create()
     {
         $omni         = $this->searchCriteria['omniField'];
-        $status       = $this->searchCriteria['status'];
-        $propertyType = implode('|', $this->getPropertyTypes($this->searchCriteria['propertyType']));
-        $minPrice     = $this->searchCriteria['minPrice'];
-        $maxPrice     = $this->searchCriteria['maxPrice'];
-        $bedrooms     = $this->searchCriteria['bedrooms'];
-        $bathrooms    = $this->searchCriteria['bathrooms'];
-        $sqft         = $this->searchCriteria['sq_ft'];
-        $acreage      = $this->searchCriteria['acreage'];
-        $waterfront   = $this->searchCriteria['waterfront'];
-        $pool         = $this->searchCriteria['pool'];
-        $page         = isset($this->searchCriteria['pg']) ? $this->searchCriteria['pg'] : 1;
+        $status       = $this->searchCriteria['status'] ?? '';
+        $propertyType = isset($this->searchCriteria['propertyType']) ?
+            implode('|', $this->getPropertyTypes($this->searchCriteria['propertyType'])) : '';
+        $minPrice     = $this->searchCriteria['minPrice'] ?? '';
+        $maxPrice     = $this->searchCriteria['maxPrice'] ?? '';
+        $bedrooms     = $this->searchCriteria['bedrooms'] ?? '';
+        $bathrooms    = $this->searchCriteria['bathrooms'] ?? '';
+        $sqft         = $this->searchCriteria['sq_ft'] ?? '';
+        $acreage      = $this->searchCriteria['acreage'] ?? '';
+        $waterfront   = $this->searchCriteria['waterfront'] ?? '';
+        $pool         = $this->searchCriteria['pool'] ?? '';
+        $page         = $this->searchCriteria['pg']) ?? 1;
 
         $client       = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
 
