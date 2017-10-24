@@ -161,7 +161,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="radio-box status">
-                        <div class="row no-gutters">
+                        <div class="row">
                             <?php $status = (isset($_GET['status']) ? $_GET['status'] : array()); ?>
                             <label class="sr-only" for="bathrooms">Status</label>
                             <div class="col-12 col-md-2 label input-group-addon" >Status</div>

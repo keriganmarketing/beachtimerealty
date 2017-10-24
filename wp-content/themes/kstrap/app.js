@@ -10377,10 +10377,6 @@ $(document).ready(function (event) {
 //Select2
 $(document).ready(function (event) {
 
-    function toggler(menuVar) {
-        $('#' + menuVar).toggle();
-    }
-
     $('.select2-omni-field').select2({
         placeholder: 'City, area, subdivision or zip',
         ajax: {
