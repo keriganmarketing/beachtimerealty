@@ -23,9 +23,16 @@ class QuickSearch
     public function create()
     {
         $omni         = $this->searchCriteria['omniField'];
+        $status       = $this->searchCriteria['status'];
         $propertyType = implode('|', $this->getPropertyTypes($this->searchCriteria['propertyType']));
         $minPrice     = $this->searchCriteria['minPrice'];
         $maxPrice     = $this->searchCriteria['maxPrice'];
+        $bedrooms     = $this->searchCriteria['bedrooms'];
+        $bathrooms    = $this->searchCriteria['bathrooms'];
+        $sqft         = $this->searchCriteria['sq_ft'];
+        $acreage      = $this->searchCriteria['acreage'];
+        $waterfront   = $this->searchCriteria['waterfront'];
+        $pool         = $this->searchCriteria['pool'];
         $page         = isset($this->searchCriteria['pg']) ? $this->searchCriteria['pg'] : 1;
 
         $client       = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
@@ -33,7 +40,13 @@ class QuickSearch
         // make the API call
         $apiCall = $client->request(
             'GET',
-            'search?city='. $omni .'&class='. $propertyType .'&status=Active&minPrice='. $minPrice .'&maxPrice='. $maxPrice .'&page='. $page
+            'search?'
+            .'city='. $omni
+            .'&propertyType='. $propertyType
+            .'&status=Active'
+            .'&minPrice='. $minPrice
+            .'&maxPrice='. $maxPrice
+            .'&page='.     $page
         );
 
         $results = json_decode($apiCall->getBody());
