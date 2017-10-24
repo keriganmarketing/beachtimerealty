@@ -34,7 +34,7 @@ class QuickSearch
         $acreage      = $this->searchCriteria['acreage'] ?? '';
         $waterfront   = $this->searchCriteria['waterfront'] ?? '';
         $pool         = $this->searchCriteria['pool'] ?? '';
-        $page         = $this->searchCriteria['pg']) ?? 1;
+        $page         = $this->searchCriteria['pg'] ?? 1;
 
         $client       = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
 
