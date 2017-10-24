@@ -42,20 +42,6 @@ $(document).ready(function (event) {
 
 //Select2
 $(document).ready(function (event) {
-    // var omniBox;
-    // $.getJSON("http://mothership.kerigan.com/api/v1/omnibar", function (json) {
-    //     omniBox = $.map(json, function (el) {
-    //         return el
-    //     });
-    //
-    //     $('.select2-omni-field').select2({
-    //         placeholder: 'City, area, subdivision or zip',
-    //         data: omniBox,
-    //         cache: true,
-    //         dropdownParent: $('.quick-search-container')
-    //     });
-    //
-    // });
 
     $('.select2-omni-field').select2({
         placeholder: 'City, area, subdivision or zip',
@@ -65,15 +51,20 @@ $(document).ready(function (event) {
             delay: 250,
             cache: true,
             data: function (params) {
-                console.log(params);
                 var query = {
                     search: params.term,
                     type: 'public'
                 }
-
-                // Query parameters will be ?search=[term]&type=public
                 return query;
             }
+        },
+        "language": {
+            "noResults": function(){
+                return "No Results Found <a href='#' class='btn btn-danger'>Use it anyway</a>";
+            }
+        },
+        escapeMarkup: function (markup) {
+            return markup;
         },
         minimumInputLength: 3,
         dropdownParent: $('.quick-search-container')
