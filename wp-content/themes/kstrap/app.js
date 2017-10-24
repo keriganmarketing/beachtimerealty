@@ -10396,7 +10396,7 @@ $(document).ready(function (event) {
         ajax: {
             url: 'http://mothership.kerigan.com/api/v1/omnibar',
             dataType: 'json',
-            delay: 100,
+            delay: 250,
             cache: true,
             data: function data(params) {
                 console.log(params);
