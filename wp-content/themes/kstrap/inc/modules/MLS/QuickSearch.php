@@ -25,7 +25,7 @@ class QuickSearch
         $omni         = $this->searchCriteria['omniField'] ?? '';
         $status       = isset($this->searchCriteria['status']) ?
             implode('|', $this->searchCriteria['status']) : '';
-        $propertyType = isset($this->searchCriteria['propertyType']) ?
+        $propertyType = $this->searchCriteria['propertyType'] != '' ?
             implode('|', $this->getPropertyTypes($this->searchCriteria['propertyType'])) : '';
         $minPrice     = $this->searchCriteria['minPrice'] ?? '';
         $maxPrice     = $this->searchCriteria['maxPrice'] ?? '';
