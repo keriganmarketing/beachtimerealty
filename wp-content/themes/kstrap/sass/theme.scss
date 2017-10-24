@@ -804,20 +804,35 @@ html {
   }
 
   .label.input-group-addon {
-    border-right: 1px solid #CCC !important;
-    border-radius: 4px 4px 0 0 !important;
+    border-right: 1px solid #196AAB !important;
   }
 
   .col.form-check.form-check-inline {
     padding: 15px 1.5rem 10px;
-    border: 1px solid #CCC;
+    border: 1px solid #196AAB;
     border-top: 0;
-    border-radius: 0 0 4px 4px;
     text-align: center;
   }
 
   .input-container {
     padding:0 0 15px;
+  }
+
+  @media screen and (min-width:768px){
+    .radio-box {
+      padding: 0 15px 15px;
+    }
+
+    .label.input-group-addon {
+      border-right: 1px solid #196AAB !important;
+    }
+
+    .col.form-check.form-check-inline {
+      padding: 0 1.5rem;
+      border: 1px solid #196AAB;
+      border-left: 0;
+      text-align: center;
+    }
   }
 }
 
