@@ -52,8 +52,8 @@ class QuickSearch
             .'&bathrooms='.    $bathrooms
             .'&sq_ft='.        $sq_ft
             .'&acreage='.      $acreage
-            .'&waterfront='    $waterfront
-            .'&pool='          $pool
+            .'&waterfront='.   $waterfront
+            .'&pool='.         $pool
             .'&page='.         $page
         );
 
