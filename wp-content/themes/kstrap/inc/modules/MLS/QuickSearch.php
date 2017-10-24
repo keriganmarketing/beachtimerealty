@@ -45,7 +45,7 @@ class QuickSearch
             'search?'
             .'city='.          $omni
             .'&propertyType='. $propertyType
-            .'&status[]='.     $status
+            .'&status='.     $status
             .'&minPrice='.     $minPrice
             .'&maxPrice='.     $maxPrice
             .'&page='.         $page
