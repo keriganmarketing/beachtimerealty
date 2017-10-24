@@ -106,23 +106,6 @@ include(locate_template('template-parts/partials/bot.php'));
 
     }
 
-    function loadDoc(request,mlsnum) {
-        var mls = mlsnum,
-          requestedDoc = request,
-          xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                //document.getElementById(placement).innerHTML = this.responseText;
-                console.log(this.responseText);
-                var response = this.responseText;
-                return response;
-            }
-        };
-        xhttp.open("GET", requestedDoc+'?mlsnum='+mls, true);
-        xhttp.send();
-    }
-
     //add the pins
     function addMarker(lat,lng,type,mlsnum,status) {
         var pinLocation = new google.maps.LatLng(parseFloat(lat),parseFloat(lng)),
@@ -147,16 +130,7 @@ include(locate_template('template-parts/partials/bot.php'));
                 pin = 'http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1';
         }
 
-        var infowindow = new google.maps.InfoWindow({
-            maxWidth: 300,
-            padding: 0,
-            borderRadius: 0,
-            arrowSize: 10,
-            borderWidth: 0,
-            hideCloseButton: true,
-            backgroundClassName: 'transparent',
-            content: contentString
-        });
+        var infowindow = new google.maps.InfoWindow();
 
         var marker = new google.maps.Marker({
             position: pinLocation,
@@ -167,25 +141,30 @@ include(locate_template('template-parts/partials/bot.php'));
         markers.push(marker);
 
         marker.addListener('click', function(){
-            var requestedDoc = '/wp-content/themes/kstrap/template-parts/partials/mini-listing.php',
+            var requestedDoc = '/wp-content/themes/kstrap/template-parts/partials/map-listing.php?mls=' + mlsnum,
               xhttp = new XMLHttpRequest();
 
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    //document.getElementById(placement).innerHTML = this.responseText;
 
                     var response = this.responseText.replace(/(\r\n|\n|\r)/gm,"");
 
                     infowindow.close(); // Close previously opened infowindow
-                    infowindow.setContent('<div class="listing-tile map-search">' + response + '</div>');
+                    infowindow.setOptions({
+                        padding: 0,
+                        borderRadius: 0,
+                        arrowSize: 10,
+                        borderWidth: 0,
+                        pixelOffset: new google.maps.Size(15, 60),
+                        backgroundClassName: 'transparent',
+                        content: contentString
+                    })
+                    infowindow.setContent('<div class="map-listing text-center">' + response + '</div>');
                     infowindow.open(map, marker);
-                    //console.log(response);
                 }
             };
             xhttp.open("GET", requestedDoc+'?mlsnum='+mls, true);
             xhttp.send();
-
-
 
         });
 
