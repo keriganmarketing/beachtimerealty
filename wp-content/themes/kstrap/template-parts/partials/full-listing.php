@@ -32,17 +32,17 @@ if (isset($_GET['mls'])) {
                 </div>
                 <div class="row">
                     <div class="col">
-                        <?php if (in_array($listingInfo->property_type, array('G', 'A'), false)) { ?>
+                        <?php if (in_array($listingInfo->class, array('G', 'A'), false)) { ?>
                             <div class="listing-residential">
                                 <?php include(locate_template('template-parts/partials/full-listing-residential.php')); ?>
                             </div>
                         <?php } ?>
-                        <?php if (in_array($listingInfo->property_type, array('C'), false)) { ?>
+                        <?php if (in_array($listingInfo->class, array('C'), false)) { ?>
                             <div class="listing-land">
                                 <?php include(locate_template('template-parts/partials/full-listing-land.php')); ?>
                             </div>
                         <?php } ?>
-                        <?php if (in_array($listingInfo->property_type, array('E', 'J', 'F'), false)) { ?>
+                        <?php if (in_array($listingInfo->class, array('E', 'J', 'F'), false)) { ?>
                             <div class="listing-commercial">
                                 <?php include(locate_template('template-parts/partials/full-listing-commercial.php')); ?>
                             </div>

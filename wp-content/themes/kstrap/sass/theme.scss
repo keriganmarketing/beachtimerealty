@@ -299,75 +299,80 @@ html {
           margin: -20rem auto 0;
         }
 
-        .select2-container.select2-container--bootstrap {
-          border: 1px solid #196AAB;
-          padding: 0;
-          background-color: #FFF;
-          height: 60px;
-
-          .select2-selection--single {
-            height: 58px;
-
-            .select2-selection__rendered {
-              display: block;
-              padding: 1rem 30px 1rem 1rem;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              background: url('/wp-content/themes/kstrap/img/down-arrow.png') 94% 54% no-repeat;
-            }
-          }
-        }
-
         .btn-rounded {
           height: 60px;
           border-radius: 30px;
         }
       }
+    }
+  }
 
-      //select2 adds to DOM dynamically
-      .select2-dropdown {
-        border: 1px solid #1a4e94;
-        border-radius: 0;
-      }
+  form {
+    .select2-container.select2-container--bootstrap {
+      border: 1px solid #196AAB;
+      padding: 0;
+      background-color: #FFF;
+      height: 60px;
+      width:100% !important;
 
-      .select2-dropdown.select2-dropdown--below {
-        margin-top: -55px;
+      .select2-selection--single {
+        height: 58px;
 
-        .select2-search--dropdown {
+        .select2-selection__rendered {
           display: block;
-          padding: 0;
-
-          .select2-search__field {
-            border: none;
-            border-bottom: 1px solid #ddd;
-            padding: 1rem;
-            margin-top: -4px;
-          }
-          .select2-search__field:focus {
-            box-shadow: none;
-          }
+          padding: 1rem 30px 1rem 1rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          background: url('/wp-content/themes/kstrap/img/down-arrow.png') 94% 54% no-repeat;
         }
       }
+    }
+  }
 
-      .select2-dropdown.select2-dropdown--above {
+  .search-control {
+    //select2 adds to DOM dynamically
+    .select2-dropdown {
+      border: 1px solid #1a4e94;
+      border-radius: 0;
+    }
 
-        .select2-search--dropdown {
-          display: block;
-          padding: 0;
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-          margin-bottom: -57px;
+    .select2-dropdown.select2-dropdown--below {
+      margin-top: -55px;
 
-          .select2-search__field {
-            border: none;
-            border-top: 1px solid #ddd;
-            padding: 1rem;
-          }
-          .select2-search__field:focus {
-            box-shadow: none;
-          }
+      .select2-search--dropdown {
+        display: block;
+        padding: 0;
+
+        .select2-search__field {
+          border: none;
+          border-bottom: 1px solid #ddd;
+          padding: 1rem;
+          margin-top: -4px;
+        }
+        .select2-search__field:focus {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .select2-dropdown.select2-dropdown--above {
+
+      .select2-search--dropdown {
+        display: block;
+        padding: 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin-bottom: -57px;
+
+        .select2-search__field {
+          border: none;
+          border-top: 1px solid #ddd;
+          padding: 1rem;
+        }
+        .select2-search__field:focus {
+          box-shadow: none;
         }
       }
     }
@@ -772,6 +777,48 @@ html {
     }
   }
 
+}
+
+.advanced-menu,
+.search-bar {
+  width: 100%;
+  padding: 1rem;
+}
+
+.search-bar {
+  background-color: aliceblue;
+}
+
+#advanced-menu {
+  width:100%;
+  display: block;
+}
+#advanced-menu.hidden {
+  display:none;
+  .input-group-addon {
+    width: 200px;
+  }
+
+  .radio-box {
+    padding: 0 15px 7px;
+  }
+
+  .label.input-group-addon {
+    border-right: 1px solid #CCC !important;
+    border-radius: 4px 4px 0 0 !important;
+  }
+
+  .col.form-check.form-check-inline {
+    padding: 15px 1.5rem 10px;
+    border: 1px solid #CCC;
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
+    text-align: center;
+  }
+
+  .input-container {
+    padding:0 0 15px;
+  }
 }
 
 .all-testimonials {

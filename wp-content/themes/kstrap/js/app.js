@@ -67,20 +67,24 @@ $(document).ready(function (event) {
             return markup;
         },
         minimumInputLength: 3,
-        dropdownParent: $('.quick-search-container')
+        dropdownParent: $('.search-control')
     });
 
     $('.select2-property-type').select2({
         placeholder: 'Property type',
-        dropdownParent: $('.quick-search-container')
+        dropdownParent: $('.search-control')
     });
     $('.select2-price-min').select2({
         placeholder: 'Min price',
-        dropdownParent: $('.quick-search-container')
+        dropdownParent: $('.search-control')
     });
     $('.select2-price-max').select2({
         placeholder: 'Max price',
-        dropdownParent: $('.quick-search-container')
+        dropdownParent: $('.search-control')
+    });
+    $('.select2-generic').select2({
+        placeholder: 'Any',
+        dropdownParent: $('.search-control')
     });
 
     $('.select2-price-min').on('select2:select', function (e) {
