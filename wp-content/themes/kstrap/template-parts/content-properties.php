@@ -36,6 +36,7 @@ $subhead  = ($post->page_information_subhead != '' ? $post->page_information_sub
                 <?php echo($subhead != '' ? '<p class="subtitle">' . $subhead . '</p>' : null); ?>
             </div>
         </div>
+        <?php include(locate_template('template-parts/partials/full-search.php')); ?>
         <section id="content" class="content section">
             <div class="container-fluid">
                 <div class="entry-content">

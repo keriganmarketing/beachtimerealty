@@ -2,12 +2,14 @@
 
 use Includes\Modules\Agents\Agents;
 use Includes\Modules\Social\SocialSettingsPage;
+use GuzzleHttp\Client;
 
 /**
  * @package KMA
  * @subpackage kstrap
  * @since 1.0
  * @version 1.2
+ * B0678
  */
 include(locate_template('template-parts/partials/top.php'));
 
@@ -90,11 +92,34 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
 
                         </div>
                     </div>
-                    <div id="mylistings">
-                        <h2>My Listings</h2>
-                        <?php //TODO ?>
-                    </div>
+
                 </div><!-- .entry-content -->
+            </div>
+        </section>
+        <section id="mylistings" class="section-wrapper featured-properties" >
+            <div class="container-fluid">
+                <h2 class="section-title text-center line-left line-right">My&nbsp;Listings</h2>
+                <div div class="row">
+
+                    <?php
+                    $short_id = 'B0678';
+                    $client   = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
+
+                    // make the API call
+                    $apiCall = $client->request(
+                        'GET',
+                        'agentlistings?agentId=' . $short_id
+                    );
+
+                    $results = json_decode($apiCall->getBody());
+
+                    foreach($results as $result){ ?>
+                        <div class="col-sm-6 col-lg-3 text-center">
+                            <?php include( locate_template( 'template-parts/partials/mini-listing.php' ) ); ?>
+                        </div>
+                    <?php } ?>
+
+                </div>
             </div>
         </section>
     </article><!-- #post-## -->
