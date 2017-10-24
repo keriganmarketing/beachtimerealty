@@ -9,7 +9,7 @@ class FacebookFeed
      * @param int $limit
      * @return array
      */
-    public function fetch($limit = 5)
+    public function fetch($limit = 60)
     {
         $client = new Client([
             'base_uri' => 'https://graph.facebook.com/v2.9'

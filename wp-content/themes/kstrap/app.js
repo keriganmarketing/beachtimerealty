@@ -10376,18 +10376,40 @@ $(document).ready(function (event) {
 
 //Select2
 $(document).ready(function (event) {
-    var omniBox;
-    $.getJSON("http://mothership.kerigan.com/api/v1/omnibar", function (json) {
-        omniBox = $.map(json, function (el) {
-            return el;
-        });
+    // var omniBox;
+    // $.getJSON("http://mothership.kerigan.com/api/v1/omnibar", function (json) {
+    //     omniBox = $.map(json, function (el) {
+    //         return el
+    //     });
+    //
+    //     $('.select2-omni-field').select2({
+    //         placeholder: 'City, area, subdivision or zip',
+    //         data: omniBox,
+    //         cache: true,
+    //         dropdownParent: $('.quick-search-container')
+    //     });
+    //
+    // });
 
-        $('.select2-omni-field').select2({
-            placeholder: 'City, area, subdivision or zip',
-            data: omniBox,
+    $('.select2-omni-field').select2({
+        placeholder: 'City, area, subdivision or zip',
+        ajax: {
+            url: 'http://mothership.kerigan.com/api/v1/omnibar',
+            dataType: 'json',
+            delay: 100,
             cache: true,
-            dropdownParent: $('.quick-search-container')
-        });
+            data: function data(params) {
+                console.log(params);
+                var query = {
+                    search: params.term,
+                    type: 'public'
+
+                    // Query parameters will be ?search=[term]&type=public
+                };return query;
+            }
+        },
+        minimumInputLength: 3,
+        dropdownParent: $('.quick-search-container')
     });
 
     $('.select2-property-type').select2({
@@ -10406,21 +10428,37 @@ $(document).ready(function (event) {
     $('.select2-price-min').on('select2:select', function (e) {
         var minVal = $('.select2-price-min').val();
         var maxVal = $('.select2-price-max').val();
+        console.log('min:' + minVal);
+        console.log('max:' + maxVal);
 
-        if (maxVal == undefined || minVal >= maxVal) {
-            maxVal = maxVal == undefined || minVal >= maxVal ? +minVal + +100000 : +minVal + +1000000;
+        if (maxVal === undefined || +minVal >= +maxVal) {
+            if (minVal <= 900000) {
+                maxVal = +minVal + +100000;
+            } else {
+                maxVal = +minVal + +1000000;
+            }
             $('.select2-price-max').val(maxVal).trigger("change");
         }
+        console.log('min:' + minVal);
+        console.log('max:' + maxVal);
     });
 
     $('.select2-price-max').on('select2:select', function (e) {
         var minVal = $('.select2-price-min').val();
         var maxVal = $('.select2-price-max').val();
+        console.log('min:' + minVal);
+        console.log('max:' + maxVal);
 
-        if (minVal == undefined || minVal >= maxVal) {
-            minVal = minVal == undefined || minVal >= maxVal ? +maxVal - +100000 : +maxVal - +1000000;
+        if (minVal === undefined || +minVal >= +maxVal) {
+            if (maxVal <= 1000000) {
+                minVal = +maxVal - +100000;
+            } else {
+                minVal = +maxVal - +1000000;
+            }
             $('.select2-price-min').val(minVal).trigger("change");
         }
+        console.log('min:' + minVal);
+        console.log('max:' + maxVal);
     });
 
     //listings
