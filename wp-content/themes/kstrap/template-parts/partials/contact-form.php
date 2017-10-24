@@ -1,19 +1,13 @@
 <?php
 
 use Includes\Modules\Agents\Agents;
-
-/**
- * Created by PhpStorm.
- * User: Bryan
- * Date: 9/22/2017
- * Time: 5:08 PM
- */
+use Includes\Modules\Leads\RequestInfo;
 
 //DEFAULT FORM VARS
-$yourname            = (isset($_GET['your_name']) ? $_GET['your_name'] : '');
-$youremail           = (isset($_GET['your_email']) ? $_GET['your_email'] : '');
-$phone               = (isset($_GET['phone']) ? $_GET['phone'] : '');
-$reason              = (isset($_GET['reason']) ? $_GET['reason'] : '');
+$yourname            = (isset($_GET['full_name']) ? $_GET['full_name'] : '');
+$youremail           = (isset($_GET['email_address']) ? $_GET['email_address'] : '');
+$phone               = (isset($_GET['phone_number']) ? $_GET['phone_number'] : '');
+$reason              = (isset($_GET['reason_for_contact']) ? $_GET['reason_for_contact'] : '');
 $mlsnumber           = (isset($_GET['mls_number']) ? $_GET['mls_number'] : '');
 $emailformattedbadly = false;
 $passCheck           = false;
@@ -51,8 +45,10 @@ foreach($reasonArray as $reasonValue => $reasonText){
 $formID        = (isset($_POST['formID']) ? $_POST['formID'] : '');
 $securityFlag  = (isset($_POST['secu']) ? $_POST['secu'] : '');
 $formSubmitted = ($formID == 'requestinfo' && $securityFlag == '' ? true : false);
+
 if ($formSubmitted) { //FORM WAS SUBMITTED
-    //TODO...
+    $leads = new RequestInfo();
+    $leads->handleLead($_POST);
 }
 
 ?>
@@ -62,33 +58,33 @@ if ($formSubmitted) { //FORM WAS SUBMITTED
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="your_name" class="sr-only">Name<span class="req">*</span></label>
-                <input name="your_name" type="text"
+                <label for="full_name" class="sr-only">Name<span class="req">*</span></label>
+                <input name="full_name" type="text"
                        class="form-control <?php echo($yourname == '' && $formSubmitted ? 'has-error' : ''); ?>"
                        value="<?php echo($yourname != '' ? $yourname : ''); ?>" required placeholder="Name *">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="your_email" class="sr-only">Email address<span class="req">*</span></label>
-                <input name="your_email" type="email"
+                <label for="email_address" class="sr-only">Email address<span class="req">*</span></label>
+                <input name="email_address" type="email"
                        class="form-control <?php echo($youremail == '' && $formSubmitted || $emailformattedbadly ? 'has-error' : ''); ?>"
                        value="<?php echo(! $passCheck ? $youremail : ''); ?>" required placeholder="Email address *">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="phone" class="sr-only">Phone Number</label>
+                <label for="phone_number" class="sr-only">Phone Number</label>
                 <div class="phone-group">
-                    <input type="tel" name="phone" class="form-control ph"
+                    <input type="tel" name="phone_number" class="form-control ph"
                            value="<?php echo(! $passCheck ? $phone : ''); ?>" placeholder="Phone Number">
                 </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group <?php echo($reason == '' && $formSubmitted ? 'has-error' : ''); ?>">
-                <label for="reason" class="sr-only">Reason for contact<span class="req">*</span></label>
-                <select class="form-control custom-select" name="reason" id="reason" required>
+                <label for="reason_for_contact" class="sr-only">Reason for contact<span class="req">*</span></label>
+                <select class="form-control custom-select" name="reason_for_contact" id="reason" required>
                     <option value="">Reason for contact *</option>
                     <?php echo $reasonOptions; ?>
                 </select>
@@ -108,16 +104,16 @@ if ($formSubmitted) { //FORM WAS SUBMITTED
             <p style="margin-bottom: 1.75rem;">Select an agent or contact.</p>
             <div class="form-group <?php echo($selectedAgent == '' && $formSubmitted ? 'has-error' : ''); ?>"
                  id="agent-select-dd" >
-                <label for="your_agent" class="sr-only">Your Agent</label>
-                <select class="form-control custom-select" name="your_agent" required>
+                <label for="selected_agent" class="sr-only">Your Agent</label>
+                <select class="form-control custom-select" name="selected_agent" required>
                     <?php echo $agentOptions; ?>
                 </select>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="additional_info" class="sr-only">Additional Info</label>
-                <textarea name="additional_info" rows="4" class="form-control" placeholder="Message"
+                <label for="message" class="sr-only">Additional Info</label>
+                <textarea name="message" rows="4" class="form-control" placeholder="Message"
                           style="height: 110px;"><?php echo($message != '' ? stripslashes($message) : ''); ?></textarea>
             </div>
         </div>

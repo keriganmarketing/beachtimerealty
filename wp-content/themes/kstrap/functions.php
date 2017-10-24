@@ -4,11 +4,19 @@ use Includes\Modules\Agents\Agents;
 use Includes\Modules\Slider\Slider;
 use Includes\Modules\CPT\VirtualPage;
 use Includes\Modules\Members\Members;
+use Includes\Modules\Leads\RequestInfo;
+use Includes\Modules\Leads\HomeValuation;
 use Includes\Modules\MLS\FeaturedListings;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
 
 require('vendor/autoload.php');
+
+$leads = new RequestInfo;
+$leads->setupAdmin();
+
+$leads = new HomeValuation;
+$leads->setupAdmin();
 
 $socialLinks = new SocialSettingsPage();
 if (is_admin()) {
