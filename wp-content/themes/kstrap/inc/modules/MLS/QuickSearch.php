@@ -42,12 +42,12 @@ class QuickSearch
         $apiCall = $client->request(
             'GET',
             'search?'
-            .'city='. $omni
+            .'city='.          $omni
             .'&propertyType='. $propertyType
-            .'&status=Active'
-            .'&minPrice='. $minPrice
-            .'&maxPrice='. $maxPrice
-            .'&page='.     $page
+            .'&status='.       $status
+            .'&minPrice='.     $minPrice
+            .'&maxPrice='.     $maxPrice
+            .'&page='.         $page
         );
 
         $results = json_decode($apiCall->getBody());
