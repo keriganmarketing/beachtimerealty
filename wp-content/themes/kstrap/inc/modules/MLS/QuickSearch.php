@@ -23,8 +23,6 @@ class QuickSearch
     public function create()
     {
         $omni         = $this->searchCriteria['omniField'] ?? '';
-        $status       = isset($this->searchCriteria['status']) ?
-            implode('|', $this->searchCriteria['status']) : '';
         $propertyType = $this->searchCriteria['propertyType'] != '' ?
             implode('|', $this->getPropertyTypes($this->searchCriteria['propertyType'])) : '';
         $minPrice     = $this->searchCriteria['minPrice'] ?? '';
@@ -36,6 +34,16 @@ class QuickSearch
         $waterfront   = $this->searchCriteria['waterfront'] ?? '';
         $pool         = $this->searchCriteria['pool'] ?? '';
         $page         = $this->searchCriteria['pg'] ?? 1;
+
+        /*
+         * If multiple statuses are selected, create a string from the indexes.
+         * Otherwise, just use the specified status.
+         */
+        if (is_array($this->searchCriteria['status'])) {
+            $status = implode('|', $this->searchCriteria['status']);
+        } else {
+            $status = $this->searchCriteria['status'];
+        }
 
         $client       = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
 
