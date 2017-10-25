@@ -83,6 +83,7 @@
                             <div class="input-group mb-2 mb-sm-0">
                                 <div class="input-group-addon">Total H/C Sqft</div>
                                 <select name="sq_ft" id="sq_ft" class="form-control select2-generic" >
+                                    <option value="" >Any</option>
 	                                <?php for($i = 800; $i < 10000; $i+=200){
 		                                echo '<option value="' . $i . '">' . number_format( $i, 0, ".", ",") . '</option>';
 	                                } ?>
@@ -95,6 +96,7 @@
                             <div class="input-group mb-2 mb-sm-0">
                                 <div class="input-group-addon">Acreage</div>
                                 <select name="acreage" id="acreage" class="form-control select2-generic" >
+                                    <option value="" >Any</option>
 	                                <?php $acreageArray = array(
                                         '.5' => '1/2 or more acres',
                                         '1' => '1 or more acres',
@@ -211,131 +213,9 @@
         <input type="hidden" name="sortBy" value="date_modified">
         <input type="hidden" name="orderBy" value="ASC">
     </form>
-
-	<?php if (isset($_GET['q'])) { ?>
-        <div class="search-criteria">
-            <form class="form form-inline text-right" method="get" >
-			<?php
-			if(isset($_GET['city']) && $_GET['city']!= '') {
-
-				if(is_array($_GET['city'])){
-					for($i=0;$i<count($_GET['city']);$i++){
-						echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" ';
-						echo ' data-call="city|' . urlencode(trim($_GET['city'][$i])) . '" >' . stripslashes( $_GET['city'][$i]);
-						echo '</a><input type="hidden" name="city[]" value="'.stripslashes( $_GET['city'][$i] ).'" > ';
-					}
-				}
-
-			}
-
-			if(isset($_GET['status']) && $_GET['status']!= '') {
-
-				if(is_array($_GET['status'])){
-					for($i=0;$i<count($_GET['status']);$i++){
-					    if($_GET['status'][$i]!='') {
-						    echo '<a class="criterion btn btn-default btn-sm hidden-sm-down"';
-						    echo ' data-call="status|' . urlencode( trim( $_GET['status'][ $i ] ) ) . '" >' . stripslashes( $_GET['status'][ $i ] );
-						    echo '</a><input type="hidden" name="status[]" value="' . stripslashes( $_GET['status'][ $i ] ) . '" > ';
-					    }
-					}
-				}
-
-			}
-
-			if(isset($_GET['pool']) && $_GET['pool']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="pool" >Pool</a><input type="hidden" name="pool" value="'.$_GET['pool'].'" > ';
-			}
-			if(isset($_GET['waterfront']) && $_GET['waterfront']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="waterfront" >Waterfront</a><input type="hidden" name="waterfront" value="'.$_GET['waterfront'].'" > ';
-			}
-			if(isset($_GET['class']) && $_GET['class']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="class" >' . $_GET['class'] . '</a><input type="hidden" name="class" value="'.$_GET['class'].'" > ';
-			}
-			if(isset($_GET['min_price']) && $_GET['min_price']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="min_price" >$' . number_format($_GET['min_price']) . ' Min</a><input type="hidden" name="min_price" value="'.$_GET['min_price'].'" > ';
-			}
-			if(isset($_GET['max_price']) && $_GET['max_price']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="max_price" >$' . number_format($_GET['max_price']) . ' Max</a><input type="hidden" name="max_price" value="'.$_GET['max_price'].'" > ';
-			}
-			if(isset($_GET['bedrooms']) && $_GET['bedrooms']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="bedrooms" >' . $_GET['bedrooms'] . '+ Beds</a><input type="hidden" name="bedrooms[ value="'.$_GET['bedrooms'].'" > ';
-			}
-			if(isset($_GET['bathrooms']) && $_GET['bathrooms']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="bathrooms" >' . $_GET['bathrooms'] . '+ Baths</a><input type="hidden" name="bathrooms" value="'.$_GET['bathrooms'].'" > ';
-			}
-			if(isset($_GET['sq_ft']) && $_GET['sq_ft']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="sq_ft" >' . $_GET['sq_ft'] . '+ Sqft</a><input type="hidden" name="sq_ft" value="'.$_GET['sq_ft'].'" > ';
-			}
-			if(isset($_GET['acreage']) && $_GET['acreage']!= '') {
-				echo '<a class="criterion btn btn-default btn-sm hidden-sm-down" data-call="acreage" >' . $_GET['acreage'] . '+ Acres</a><input type="hidden" name="acreage" value="'.$_GET['acreage'].'" > ';
-			}
-
-			?>
-                <div id="sortbox" class="ml-auto">
-                    <div class="input-group input-group-sm">
-                        <select class="form-control form-control-sm" name="sortBy" >
-                            <option value="date_modified" <?php if($_GET['sortBy']=='date_modified'){ echo 'selected'; } ?> >Updated</option>
-                            <option value="price" <?php if($_GET['sortBy']=='price'){ echo 'selected'; } ?>>Cheapest</option>
-                        </select>
-                        <span class="input-group-btn"><button type="submit" class="btn btn-sm btn-default" >Sort</button></span>
-                    </div>
-                </div>
-                <input type="hidden" name="orderBy" value="ASC">
-                <input type="hidden" name="q" value="search" >
-            </form>
-        </div>
-	<?php } ?>
-
 </div>
 <script type="text/javascript">
     function toggler(menuVar){
         $('#'+menuVar).toggle();
     }
-
-    function removeParam(key, sourceURL) {
-        var arrayString = '|',
-            rtn = sourceURL.split("?")[0],
-            param,
-            paramval,
-            keyparts,
-            params_arr = [],
-            queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
-
-	    if(key.indexOf(arrayString) != -1){
-
-            if (queryString !== "") {
-                params_arr = queryString.split("&");
-                for (var i = params_arr.length - 1; i >= 0; i -= 1) {
-
-                    keyparts = key.split("|");
-                    param = params_arr[i].split("=")[0];
-                    paramval = params_arr[i].split("=")[1];
-
-                    if (paramval === keyparts[1] ) {
-                        console.log(paramval);
-                        params_arr.splice(i, 1);
-                    }
-                }
-                rtn = rtn + "?" + params_arr.join("&");
-            }
-
-        }else {
-
-            if (queryString !== "") {
-                params_arr = queryString.split("&");
-                for (var i = params_arr.length - 1; i >= 0; i -= 1) {
-                    param = params_arr[i].split("=")[0];
-                    if (param === key) {
-                        params_arr.splice(i, 1);
-                    }
-                }
-                rtn = rtn + "?" + params_arr.join("&");
-            }
-
-        }
-
-        //return rtn;
-        window.location = rtn;
-    }
-
 </script>
