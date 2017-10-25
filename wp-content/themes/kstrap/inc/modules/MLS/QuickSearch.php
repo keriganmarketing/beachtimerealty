@@ -68,6 +68,8 @@ class QuickSearch
             .'&waterfront='.   $waterfront
             .'&pool='.         $pool
             .'&page='.         $page
+            .'&sortBy='.       $sortBy
+            .'&orderBy='.      $orderBy
         );
 
         $results = json_decode($apiCall->getBody());
