@@ -39,10 +39,12 @@ class QuickSearch
          * If multiple statuses are selected, create a string from the indexes.
          * Otherwise, just use the specified status or just default to "Active".
          */
-        if (is_array($this->searchCriteria['status'])) {
-            $status = implode('|', $this->searchCriteria['status']);
-        } else {
-            $status = $this->searchCriteria['status'] ?? 'Active';
+        if (isset($this->searchCriteria['status'])) {
+            if (is_array($this->searchCriteria['status'])) {
+                $status = implode('|', $this->searchCriteria['status']);
+            } else {
+                $status = $this->searchCriteria['status'];
+            }
         }
 
         $client       = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
