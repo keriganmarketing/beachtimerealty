@@ -34,6 +34,8 @@ class QuickSearch
         $waterfront   = $this->searchCriteria['waterfront'] ?? '';
         $pool         = $this->searchCriteria['pool'] ?? '';
         $page         = $this->searchCriteria['pg'] ?? 1;
+        $sortBy       = $this->searchCriteria['sortBy'] ?? 'date_modified';
+        $orderBy      = $this->searchCriteria['orderBy'] ?? 'DESC';
         $status       = '';
 
         /*
