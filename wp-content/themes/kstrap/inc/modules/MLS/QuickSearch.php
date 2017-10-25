@@ -29,7 +29,7 @@ class QuickSearch
         $maxPrice     = $this->searchCriteria['maxPrice'] ?? '';
         $bedrooms     = $this->searchCriteria['bedrooms'] ?? '';
         $bathrooms    = $this->searchCriteria['bathrooms'] ?? '';
-        $sq_ft         = $this->searchCriteria['sq_ft'] ?? '';
+        $sq_ft        = $this->searchCriteria['sq_ft'] ?? '';
         $acreage      = $this->searchCriteria['acreage'] ?? '';
         $waterfront   = $this->searchCriteria['waterfront'] ?? '';
         $pool         = $this->searchCriteria['pool'] ?? '';

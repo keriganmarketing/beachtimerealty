@@ -12,13 +12,14 @@ use Includes\Modules\CPT\CustomPostType;
 
 class FeaturedListings
 {
-
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    public function createPostType() {
-
-        $listing = new CustomPostType( 'Featured Listing',
+    public function createPostType()
+    {
+        $listing = new CustomPostType(
+            'Featured Listing',
             [
                 'supports'           => ['title'],
                 'menu_icon'          => 'dashicons-welcome-add-page',
@@ -32,7 +33,6 @@ class FeaturedListings
                 '_builtin'           => false,
             ]
         );
-
     }
 
     public function createAdminColumns()
@@ -45,16 +45,15 @@ class FeaturedListings
             return $defaults;
         }, 0);
 
-        add_filter( 'enter_title_here', function ( $title ){
+        add_filter('enter_title_here', function ($title) {
             $screen = get_current_screen();
 
-            if  ( 'featured_listing' == $screen->post_type ) {
+            if ('featured_listing' == $screen->post_type) {
                 $title = 'MLS Number';
             }
 
             return $title;
-        } );
-
+        });
     }
 
     public function getFeaturedListings($args = [])
@@ -68,17 +67,14 @@ class FeaturedListings
             'post_status'    => 'publish',
         ];
 
-        $request = get_posts( array_merge( $request, $args ) );
+        $request = get_posts(array_merge($request, $args));
 
         $featuredArray = [];
-        foreach ( $request as $item ) {
-            $mlsNumber = ( isset( $item->post_title ) ? $item->post_title : null );
+        foreach ($request as $item) {
+            $mlsNumber = (isset($item->post_title) ? $item->post_title : null);
             array_push($featuredArray, $mlsNumber);
         }
 
         return $featuredArray;
     }
-
-
-
 }
