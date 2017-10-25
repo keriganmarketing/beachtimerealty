@@ -34,6 +34,7 @@ class QuickSearch
         $waterfront   = $this->searchCriteria['waterfront'] ?? '';
         $pool         = $this->searchCriteria['pool'] ?? '';
         $page         = $this->searchCriteria['pg'] ?? 1;
+        $status       = '';
 
         /*
          * If multiple statuses are selected, create a string from the indexes.
