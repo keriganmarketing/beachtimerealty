@@ -48,7 +48,7 @@ $(document).ready(function (event) {
         ajax: {
             url: 'http://mothership.kerigan.com/api/v1/omnibar',
             dataType: 'json',
-            delay: 250,
+            delay: 175,
             cache: true,
             data: function (params) {
                 var query = {
