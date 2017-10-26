@@ -10380,7 +10380,7 @@ $(document).ready(function (event) {
     $('.select2-omni-field').select2({
         placeholder: 'City, area, subdivision or zip',
         ajax: {
-            url: 'http://mothership.kerigan.com/api/v1/omnibar',
+            url: 'https://mothership.kerigan.com/api/v1/omnibar',
             dataType: 'json',
             delay: 175,
             cache: true,
