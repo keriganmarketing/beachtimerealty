@@ -2,6 +2,7 @@
 
 namespace Includes\Modules\Agents;
 
+use GuzzleHttp\Client;
 use Includes\Modules\CPT\CustomPostType;
 
 // Exit if accessed directly.
@@ -67,7 +68,8 @@ class Agents {
 				'Photo'        => 'image',
 				'Email'        => 'text',
 				'Website'      => 'text',
-				'Phone'        => 'text',
+				'Office Phone' => 'text',
+                'Cell Phone'   => 'text',
 			]
 		);
 
@@ -131,28 +133,30 @@ class Agents {
 			}
 
 			array_push( $output, [
-				'id'         => ( isset( $itemID ) ? $item->ID : null ),
-				'mls_name'   => ( isset( $item->post_title ) ? $item->post_title : null ),
-				'name'       => ( isset( $item->contact_info_display_name ) ? $item->contact_info_display_name : null ),
-				'aka'        => ( isset( $item->contact_info_aka ) ? $item->contact_info_aka : null ),
-				'title'      => ( isset( $item->contact_info_title ) ? $item->contact_info_title : null ),
-				'email'      => ( isset( $item->contact_info_email ) ? $item->contact_info_email : null ),
-				'website'    => ( isset( $item->contact_info_website ) ? $item->contact_info_website : null ),
-				'phone'      => ( isset( $item->contact_info_phone ) ? $item->contact_info_phone : null ),
-				'slug'       => ( isset( $item->post_name ) ? $item->post_name : null ),
-				'thumbnail'  => ( isset( $item->contact_info_photo ) ? $item->contact_info_photo : null ),
-				'short_ids'  => ( isset( $item->contact_info_mls_ids ) ? $item->contact_info_mls_ids : null ),
-				'link'       => get_permalink( $item->ID ),
-				'social'     => [
-					'facebook'    => ( isset( $item->social_media_info_facebook ) ? $item->social_media_info_facebook : null ),
-					'twitter'     => ( isset( $item->social_media_info_twitter ) ? $item->social_media_info_twitter : null ),
-					'linkedin'    => ( isset( $item->social_media_info_linkedin ) ? $item->social_media_info_linkedin : null ),
-					'instagram'   => ( isset( $item->social_media_info_instagram ) ? $item->social_media_info_instagram : null ),
-					'youtube'     => ( isset( $item->social_media_info_youtube ) ? $item->social_media_info_youtube : null ),
-					'google_plus' => ( isset( $item->social_media_info_google ) ? $item->social_media_info_google : null ),
-				],
-				'categories' => $categories
-			] );
+                'id'           => (isset($itemID) ? $item->ID : null),
+                'mls_name'     => (isset($item->post_title) ? $item->post_title : null),
+                'name'         => (isset($item->contact_info_display_name) ? $item->contact_info_display_name : null),
+                'aka'          => (isset($item->contact_info_aka) ? $item->contact_info_aka : null),
+                'title'        => (isset($item->contact_info_title) ? $item->contact_info_title : null),
+                'email_address'=> (isset($item->contact_info_email) ? $item->contact_info_email : null),
+                'website'      => (isset($item->contact_info_website) ? $item->contact_info_website : null),
+                'office_phone' => (isset($item->contact_info_office_phone) ? $item->contact_info_office_phone : null),
+                'cell_phone'   => (isset($item->contact_info_cell_phone) ? $item->contact_info_cell_phone : null),
+                'slug'         => (isset($item->post_name) ? $item->post_name : null),
+                'thumbnail'    => (isset($item->contact_info_photo) ? $item->contact_info_photo : get_template_directory_uri() . '/img/agent-placeholder.jpg'),
+                'short_ids'    => (isset($item->contact_info_mls_ids) ? $item->contact_info_mls_ids : null),
+                'link'         => get_permalink($item->ID),
+                'bio'          => (isset($item->post_content) ? $item->post_content : null),
+                'social'       => [
+                    'facebook'    => (isset($item->social_media_info_facebook) ? $item->social_media_info_facebook : null),
+                    'twitter'     => (isset($item->social_media_info_twitter) ? $item->social_media_info_twitter : null),
+                    'linkedin'    => (isset($item->social_media_info_linkedin) ? $item->social_media_info_linkedin : null),
+                    'instagram'   => (isset($item->social_media_info_instagram) ? $item->social_media_info_instagram : null),
+                    'youtube'     => (isset($item->social_media_info_youtube) ? $item->social_media_info_youtube : null),
+                    'google_plus' => (isset($item->social_media_info_google) ? $item->social_media_info_google : null),
+                ],
+                'categories'   => $categories
+            ]);
 
 		}
 
@@ -189,6 +193,7 @@ class Agents {
 			$output[]    = [
 				'id'        => $item->term_id,
 				'name'      => $item->name,
+                'bio'       => $item->post_content,
 				'slug'      => $item->slug,
 				'address'   => get_term_meta( $item->term_id, 'office_address', true ),
 				'phone'     => get_term_meta( $item->term_id, 'office_phone_number', true ),
@@ -201,5 +206,52 @@ class Agents {
 		return $output;
 
 	}
+
+	public function getAgentListings( $agentIds ){
+
+        $client   = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
+
+        // make the API call
+        $apiCall = $client->request(
+            'GET',
+            'agentlistings?agentId=' . $agentIds
+        );
+
+        return json_decode($apiCall->getBody());
+
+    }
+
+    protected function setAgentSeo( $agentData ){
+
+	    global $metaTitle;
+        $metaTitle = $agentData['meta_title'];
+
+        add_filter('wpseo_title', function ($metaTitle) {
+            global $post;
+            $newTitle = $metaTitle;
+            return $newTitle;
+        }, 100, 1);
+
+
+    }
+
+    public function assembleAgentData( $agentName ){
+
+        $agent    = $this->getSingleAgent( $agentName );
+        $agentIds = trim(implode('|', explode(',', $agent['short_ids'])));
+
+        $agentMLSInfo = false; //TODO: Get data from MLS
+
+        $agentData['meta_title']       = $agent['name'] . ' | ' . $agent['title'] . ' | ' . get_bloginfo('name');
+        $agentData['meta_description'] = strip_tags($agent['bio']);
+        $agentData['listings']         = ($agent['short_ids'] != '' ? $this->getAgentListings($agentIds) : [] );
+
+        if(is_array($agent)) {
+            $agentData = array_merge($agent, $agentData);
+        }
+        $this->setAgentSeo($agentData);
+        return $agentData;
+
+    }
 
 }

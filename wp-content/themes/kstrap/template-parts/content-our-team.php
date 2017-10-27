@@ -34,15 +34,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                     <div class="row">
                         <?php foreach ($agents as $agent) { ?>
                             <div class="col-sm-6 col-lg-4 mb-5">
-                                <?php
-                                $agentEmail = ( $agentMLSInfo != false ? $agentMLSInfo->email : '' );
-                                $agentEmail = ( $agent['email'] != '' ? $agent['email'] : $agentEmail );
-
-                                $agentPhone = ( $agentMLSInfo != false ? $agentMLSInfo->cell_phone != '' : '' );
-                                $agentPhone = ( $agentMLSInfo != false && $agentPhone == '' ? $agentMLSInfo->office_phone : $agentPhone );
-                                $agentPhone = ( $agent['phone'] != '' ? $agent['phone'] : $agentPhone );
-
-                                ?>
+                                <?php $agentData = $team->assembleAgentData( $agent['mls_name'] ); ?>
                                 <?php include(locate_template('template-parts/partials/mini-agent.php')); ?>
                             </div>
                         <?php } ?>
