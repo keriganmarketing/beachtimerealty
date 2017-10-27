@@ -33,7 +33,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
 
                     <div class="row">
                         <?php foreach ($agents as $agent) { ?>
-                            <div class="col-sm-6 col-lg-4">
+                            <div class="col-sm-6 col-lg-4 mb-5">
                                 <?php
                                 $agentEmail = ( $agentMLSInfo != false ? $agentMLSInfo->email : '' );
                                 $agentEmail = ( $agent['email'] != '' ? $agent['email'] : $agentEmail );

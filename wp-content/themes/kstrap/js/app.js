@@ -58,11 +58,6 @@ $(document).ready(function (event) {
                 return query;
             }
         },
-        "language": {
-            "noResults": function(){
-                return "No Results Found <a href='#' class='btn btn-danger'>Use it anyway</a>";
-            }
-        },
         escapeMarkup: function (markup) {
             return markup;
         },

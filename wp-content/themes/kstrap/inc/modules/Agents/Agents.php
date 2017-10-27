@@ -61,6 +61,7 @@ class Agents {
 			'Contact Info',
 			[
 				'Display Name' => 'text',
+				'MLS IDs'      => 'text',
 				'AKA'          => 'text',
 				'Title'        => 'text',
 				'Photo'        => 'image',
@@ -87,7 +88,7 @@ class Agents {
 	public function getAgentNames() {
 		$request = get_posts( [
 			'post_type'      => 'agent',
-			'posts_per_page' => - 1,
+			'posts_per_page' => -1,
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
 			'offset'         => 0,
@@ -140,6 +141,7 @@ class Agents {
 				'phone'      => ( isset( $item->contact_info_phone ) ? $item->contact_info_phone : null ),
 				'slug'       => ( isset( $item->post_name ) ? $item->post_name : null ),
 				'thumbnail'  => ( isset( $item->contact_info_photo ) ? $item->contact_info_photo : null ),
+				'short_ids'  => ( isset( $item->contact_info_mls_ids ) ? $item->contact_info_mls_ids : null ),
 				'link'       => get_permalink( $item->ID ),
 				'social'     => [
 					'facebook'    => ( isset( $item->social_media_info_facebook ) ? $item->social_media_info_facebook : null ),

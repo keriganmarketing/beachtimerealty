@@ -8,7 +8,7 @@
 ?>
 <div class="card mini-agent" >
 	<div class="card-image">
-		<img class="card-img-top" src="<?php echo ($agent['thumbnail'] != '' ? $agent['thumbnail'] : get_template_directory_uri().'/img/beachybeach-placeholder.jpg' ); ?>" alt="<?php echo $agent['name']; ?>" >
+		<img class="card-img-top" src="<?php echo ($agent['thumbnail'] != '' ? $agent['thumbnail'] : get_template_directory_uri().'/img/agent-placeholder.jpg' ); ?>" alt="<?php echo $agent['name']; ?>" >
 	</div>
 	<div class="card-block">
 		<h4 class="card-title"><?php echo $agent['name']; ?></h4>

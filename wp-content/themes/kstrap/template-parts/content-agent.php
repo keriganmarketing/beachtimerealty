@@ -23,6 +23,9 @@ $metaDescription = strip_tags($post->post_content);
 $ogPhoto = ($agent['thumbnail'] != '' ? $agent['thumbnail'] : get_template_directory_uri().'/img/beachybeach-placeholder.jpg' );
 $ogUrl = get_the_permalink();
 
+$agentIds = explode(',',$agent['short_ids']);
+$agentIds = implode('|',$agentIds);
+
 $agentEmail = ( $agentMLSInfo != false ? $agentMLSInfo->email : '' );
 $agentEmail = ( $agent['email'] != '' ? $agent['email'] : $agentEmail );
 
@@ -102,13 +105,12 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                 <div div class="row">
 
                     <?php
-                    $short_id = 'B0678';
                     $client   = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/']);
 
                     // make the API call
                     $apiCall = $client->request(
                         'GET',
-                        'agentlistings?agentId=' . $short_id
+                        'agentlistings?agentId=' . $agentIds
                     );
 
                     $results = json_decode($apiCall->getBody());

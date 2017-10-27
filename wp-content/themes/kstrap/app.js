@@ -10392,11 +10392,6 @@ $(document).ready(function (event) {
                 return query;
             }
         },
-        "language": {
-            "noResults": function noResults() {
-                return "No Results Found <a href='#' class='btn btn-danger'>Use it anyway</a>";
-            }
-        },
         escapeMarkup: function escapeMarkup(markup) {
             return markup;
         },
