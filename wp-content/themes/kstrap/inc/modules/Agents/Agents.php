@@ -329,7 +329,7 @@ class Agents {
     public function updateAgent($agentData)
     {
         $agentMothershipData = $this->getFromMothership($agentData['mls_name']);
-        $agentMothershipData['name'] = $agentData['display_name'];
+        $agentMothershipData['name'] = $agentData['mls_name'];
         $this->updateAgentsByMotherShip( $agentMothershipData, $agentData['post_id']);
     }
 
