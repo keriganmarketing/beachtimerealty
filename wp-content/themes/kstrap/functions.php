@@ -2,6 +2,8 @@
 
 use Includes\Modules\Agents\Agents;
 use Includes\Modules\Slider\Slider;
+use Includes\Modules\Helpers\CleanWP;
+use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\CPT\VirtualPage;
 use Includes\Modules\Members\Members;
 use Includes\Modules\Leads\RequestInfo;
@@ -12,11 +14,17 @@ use Includes\Modules\Testimonials\Testimonials;
 
 require('vendor/autoload.php');
 
+new CleanWP();
+
 $leads = new RequestInfo;
 $leads->setupAdmin();
 
 $leads = new HomeValuation;
 $leads->setupAdmin();
+
+$layouts = new Layouts();
+$layouts->createPostType();
+//$layouts->createDefaultFormats();
 
 $socialLinks = new SocialSettingsPage();
 if (is_admin()) {
