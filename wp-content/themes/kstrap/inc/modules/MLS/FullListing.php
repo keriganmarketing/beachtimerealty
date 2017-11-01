@@ -51,10 +51,10 @@ class FullListing
         }
 
         if (in_array($listingInfo->listing_member_shortid, $mlsArray)) {
-            return 'listing_member_short_id';
+            return 'listing_member_shortid';
         }
         if (in_array($listingInfo->colisting_member_shortid, $mlsArray)) {
-            return 'colisting_member_short_id';
+            return 'colisting_member_shortid';
         }
 
         return false;

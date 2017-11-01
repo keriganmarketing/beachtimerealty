@@ -23,7 +23,6 @@ if (isset($_GET['mls'])) {
 
 }
 
-
 ?>
 <div class="container-fluid">
     <div class="full-listing">

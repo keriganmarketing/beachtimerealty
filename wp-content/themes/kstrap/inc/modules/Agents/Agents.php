@@ -99,7 +99,7 @@ class Agents {
 
 		$output = [];
 		foreach ( $request as $item ) {
-			array_push( $output, ( isset( $item->post_title ) ? $item->post_title : null ) );
+			array_push( $output, ( isset( $item->contact_info_display_name ) ? $item->contact_info_display_name : null ) );
 		}
 
 		return $output;
