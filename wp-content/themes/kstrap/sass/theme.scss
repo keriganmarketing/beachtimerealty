@@ -186,6 +186,12 @@ html {
 #mid {
   position: relative;
 
+  .entry-content {
+    h2, h3 {
+      margin-top:2.5rem;
+    }
+  }
+
   .section-wrapper {
     clear: both;
 

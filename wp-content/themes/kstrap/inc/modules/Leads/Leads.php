@@ -22,12 +22,12 @@ class Leads
         date_default_timezone_set('America/New_York');
 
         $this->postType   = 'Lead';
-        $this->domain     = 'fbcpsj.org';
+        $this->domain     = 'beachtimerealty.com';
 
         //separate multiple email addresses with a ';'
-        $this->adminEmail = 'bbaird85@gmail.com';
+        $this->adminEmail = 'bryan@kerigan.com';
         $this->ccEmail    = ''; //Admin email only
-        $this->bccEmail   = 'bbaird85@gmail.com';
+        $this->bccEmail   = 'support@kerigan.com';
 
         //use this to merge in additional fields
         $this->assembleLeadData([
