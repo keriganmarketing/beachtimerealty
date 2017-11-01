@@ -2,6 +2,7 @@
 namespace Includes\Modules\MLS;
 
 use GuzzleHttp\Client;
+use Includes\Modules\Agents\Agents;
 
 /**
 * MLS Listing - Made by Daron Adkins
@@ -49,10 +50,11 @@ class FullListing
 
         }
 
-        if (in_array($listingInfo->listing_member_shortid, $mlsArray) ||
-            in_array($listingInfo->colisting_member_shortid, $mlsArray)
-        ) {
-            return true;
+        if (in_array($listingInfo->listing_member_shortid, $mlsArray)) {
+            return 'listing_member_short_id';
+        }
+        if (in_array($listingInfo->colisting_member_shortid, $mlsArray)) {
+            return 'colisting_member_short_id';
         }
 
         return false;

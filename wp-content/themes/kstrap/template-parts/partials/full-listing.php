@@ -1,13 +1,20 @@
 <?php
 
+use Includes\Modules\Agents\Agents;
 use Includes\Modules\MLS\FullListing;
 
 if (isset($_GET['mls'])) {
     $mlsNumber   = $_GET['mls'];
-    $fl          = new FullListing($mlsNumber);
-    $listingInfo = $fl->create();
-    echo '<!--', print_r($listingInfo), '-->';
-    $isOurs = false;
+    $fullListing = new FullListing($mlsNumber);
+    $listingInfo = $fullListing->create();
+
+    $isOurs = $fullListing->isOurs($listingInfo);
+    if($isOurs){
+        $listingMember = ($isOurs == 'listing_member_shortid' ? $listingInfo->listing_member_shortid : $listingInfo->colisting_member_shortid);
+        $agents = new Agents;
+        $mlsData = $agents->getAgentById($listingMember);
+        $agentData = $agents->assembleAgentData($mlsData->data[0]->first_name. ' ' .$mlsData->data[0]->last_name);
+    }
 
     $user_id     = get_current_user_id();
 //    $buttonText  = $listing->isInBucket($user_id, $listingInfo->mls_account) ? 'REMOVE FROM BUCKET' : 'SAVE TO BUCKET';
@@ -48,10 +55,10 @@ if (isset($_GET['mls'])) {
                             </div>
                         <?php } ?>
                     </div>
-                    <?php if ($isOurs) { ?>
+                    <?php if ($isOurs && isset($agentData['name'])) { ?>
                         <div class="col-md-5">
                             <div class="listing-agent-box">
-                                <?php //include(locate_template('template-parts/partials/full-listing-agent.php')); ?>
+                                <?php include(locate_template('template-parts/partials/mini-agent.php')); ?>
                             </div>
                         </div>
                     <?php } ?>
