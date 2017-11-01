@@ -163,7 +163,7 @@ include(locate_template('template-parts/partials/bot.php'));
                     infowindow.open(map, marker);
                 }
             };
-            xhttp.open("GET", requestedDoc+'?mlsnum='+mls, true);
+            xhttp.open("GET", requestedDoc, true);
             xhttp.send();
 
         });

@@ -7,6 +7,7 @@ use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\CPT\VirtualPage;
 use Includes\Modules\Members\Members;
 use Includes\Modules\Leads\RequestInfo;
+use Includes\Modules\MLS\AdminSettings;
 use Includes\Modules\Leads\HomeValuation;
 use Includes\Modules\MLS\FeaturedListings;
 use Includes\Modules\Social\SocialSettingsPage;
@@ -49,6 +50,9 @@ $featuredListings->createAdminColumns();
 $members = new Members();
 
 $listingPage = new VirtualPage('mls');
+
+$idxSettings = new AdminSettings();
+$idxSettings->setupPage();
 
 function kstrap_setup()
 {
