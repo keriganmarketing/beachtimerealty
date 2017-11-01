@@ -12,7 +12,7 @@ $randomTestimonial = $testimonial->getRandomTestimonial();
 		</svg>
 	</div>
 	<div class="testimonial-content">
-		<?php echo $randomTestimonial['content']; ?>
+		<?php echo wp_trim_words($randomTestimonial['content'], 33, '... <a href="/our-team/testimonials/">read more</a>' ); ?>
 	</div>
 	<div class="testimonial-author">
 		<p>&mdash;<?php echo $randomTestimonial['author']; ?>
