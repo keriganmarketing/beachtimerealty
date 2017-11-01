@@ -21,11 +21,12 @@ $listings = $featuredLiastings->getFeaturedListings();
         foreach($listings as $mlsNumber){
             $fl     = new FullListing($mlsNumber);
             $result = $fl->create();
+            if($result){
             ?>
 			<div class="col-sm-6 col-lg-3 text-center">
 				<?php include( locate_template( 'template-parts/partials/mini-listing.php' ) ); ?>
 			</div>
-		<?php } ?>
+		<?php } } ?>
 	</div>
 	<div class="section-bottom">
 		<div class="section-button text-center">
