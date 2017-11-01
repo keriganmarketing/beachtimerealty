@@ -39,6 +39,7 @@ if(!$mapResults) {
                     <?php the_content(); ?>
                 </div><!-- .entry-content -->
             </div>
+            <?php include(locate_template('template-parts/partials/full-search.php')); ?>
             <div id="map-search" ></div>
         </section>
     </article><!-- #post-## -->
@@ -96,6 +97,7 @@ include(locate_template('template-parts/partials/bot.php'));
             zoom: 11,
             center: myLatLng,
             disableDefaultUI: true,
+            zoomControl: true,
             // This is where you would paste any style found on Snazzy Maps.
 
         };
