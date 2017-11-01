@@ -9,14 +9,15 @@ $now = time();
 ?>
 <div class="facebook-feed">
 	<?php foreach ($results->data as $result) {
-		$trimmed = wp_trim_words( $result->message, $num_words = 25, '...' );
+        $message = $result->message ?? 'This just in...';
+		$trimmed = wp_trim_words( $message, $num_words = 25, '...' );
 		?>
 
         <div class="facebook-feed-item" id="<?php echo $result->id; ?>" >
 
             <div class="row">
                 <div class="col-4">
-                    <img src="<?php echo $result->picture; ?>" class="img-fluid" alt="<?php echo $result->caption; ?>" >
+                    <img src="<?php echo $result->picture; ?>" class="img-fluid" alt="<?php echo $result->caption ?? 'The photo'; ?>" >
                 </div>
                 <div class="col-8">
                     <p class="time-posted">posted <?php echo human_time_diff($now,strtotime($result->created_time)); ?> ago</p>
