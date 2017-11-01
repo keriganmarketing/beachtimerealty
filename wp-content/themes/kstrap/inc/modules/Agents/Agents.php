@@ -221,7 +221,7 @@ class Agents {
 
     }
 
-    protected function setAgentSeo( $agentData ){
+    public function setAgentSeo( $agentData ){
 
         global $metaTitle;
         $metaTitle = $agentData['name'] . ' | ' . $agentData['title'] . ' | ' . get_bloginfo('name');
