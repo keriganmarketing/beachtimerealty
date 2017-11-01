@@ -51,7 +51,6 @@ class AdminSettings
                 $agentData = $agents->assembleAgentData( $agent['mls_name'] );
                 $agents->updateAgent($agentData);
             }
-            echo '<pre>',print_r($agentArray),'</pre>';
             $this->status = 'DONE!';
         }
 

@@ -331,6 +331,7 @@ class Agents {
         $agentMothershipData = $this->getFromMothership($agentData['mls_name']);
         $agentMothershipData['name'] = $agentData['mls_name'];
         $this->updateAgentsByMotherShip( $agentMothershipData, $agentData['post_id']);
+        echo '<pre>',print_r($agentMothershipData),'</pre>';
     }
 
     public function getAgentById($shortId)
