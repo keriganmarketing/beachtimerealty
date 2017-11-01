@@ -133,7 +133,7 @@ class Agents {
 			}
 
 			array_push( $output, [
-                'post_id'           => (isset($itemID) ? $item->ID : null),
+                'post_id'      => (isset($itemID) ? $item->ID : null),
                 'mls_name'     => (isset($item->post_title) ? $item->post_title : null),
                 'name'         => (isset($item->contact_info_display_name) ? $item->contact_info_display_name : null),
                 'aka'          => (isset($item->contact_info_aka) ? $item->contact_info_aka : null),
@@ -329,7 +329,7 @@ class Agents {
     public function updateAgent($agentData)
     {
         $agentMothershipData = $this->getFromMothership($agentData['mls_name']);
-        $agentMothershipData['name'] = $agentData['mls_name'];
+        $agentMothershipData['name'] = $agentData['display_name'];
         $this->updateAgentsByMotherShip( $agentMothershipData, $agentData['post_id']);
     }
 
