@@ -15,7 +15,7 @@ include(locate_template('template-parts/partials/top.php'));
 $agents = new Agents();
 $agentData = $agents->assembleAgentData( $post->post_title );
 $agents->setAgentSeo($agentData);
-$agentData['listings'] = ($agentData['short_ids'] != '' ? $wpTeam->getAgentListings($agentData['short_ids']) : '' );
+$agentData['listings'] = ($agentData['short_ids'] != '' ? $agents->getAgentListings($agentData['short_ids']) : '' );
 
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
