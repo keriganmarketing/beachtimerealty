@@ -1,6 +1,7 @@
 <?php
 
 use GuzzleHttp\Client;
+use Includes\Modules\MLS\QuickSearch;
 
 /**
  * @package KMA
@@ -12,18 +13,6 @@ include(locate_template('template-parts/partials/top.php'));
 
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
-
-$mapResults = (isset($_SESSION['map_search']) ? true : false);
-if(!$mapResults) {
-    $client  = new Client(['base_uri' => 'http://mothership.kerigan.com/api/v1/allMapListings']);
-    $raw     = $client->request(
-        'GET'
-    );
-    $results = json_decode($raw->getBody());
-    $_SESSION['map_search'] = serialize($results);
-}else{
-    $results = unserialize($_SESSION['map_search']);
-}
 ?>
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -404,25 +393,28 @@ include(locate_template('template-parts/partials/bot.php'));
 </script>
 <script async defer>
 
+    <?php
+    $propertyType = (isset($_GET['propertyType']) && $_GET['propertyType'] != '') ? implode('|', QuickSearch::getPropertyTypes($_GET['propertyType'])) : '';
+    ?>
     //get mothership data
     $.ajax({
         type: 'get',
         dataType: 'json',
         url: 'https://mothership.kerigan.com/api/v1/allMapListings',
         data: {
-            qs: true,
-            city: '<?php echo (isset($_GET['omniField']) ? $_GET['omniField'] : null); ?>',
-            //propertyType: '<?php echo (isset($_GET['propertyType']) ? $_GET['propertyType'] : null); ?>',
-            minPrice: '<?php echo (isset($_GET['minPrice']) ? $_GET['minPrice'] : null); ?>',
-            maxPrice: '<?php echo (isset($_GET['maxPrice']) ? $_GET['maxPrice'] : null); ?>',
-            sq_ft: '<?php echo (isset($_GET['sq_ft']) ? $_GET['sq_ft'] : null); ?>',
-            acreage: '<?php echo (isset($_GET['acreage']) ? $_GET['acreage'] : null); ?>',
-            bathrooms: '<?php echo (isset($_GET['bathrooms']) ? $_GET['bathrooms'] : null); ?>',
-            bedrooms: '<?php echo (isset($_GET['bedrooms']) ? $_GET['bedrooms'] : null); ?>',
-            //status: '<?php echo (isset($_GET['status']) ? $_GET['status'] : null); ?>', convert to array
+            // qs: true,
+            city: '<?= (isset($_GET['omniField']) ? $_GET['omniField'] : null); ?>',
+            propertyType: '<?= $propertyType ?>',
+            minPrice: '<?= (isset($_GET['minPrice']) ? $_GET['minPrice'] : null); ?>',
+            maxPrice: '<?= (isset($_GET['maxPrice']) ? $_GET['maxPrice'] : null); ?>',
+            sq_ft: '<?= (isset($_GET['sq_ft']) ? $_GET['sq_ft'] : null); ?>',
+            acreage: '<?= (isset($_GET['acreage']) ? $_GET['acreage'] : null); ?>',
+            bathrooms: '<?= (isset($_GET['bathrooms']) ? $_GET['bathrooms'] : null); ?>',
+            bedrooms: '<?= (isset($_GET['bedrooms']) ? $_GET['bedrooms'] : null); ?>',
+            //status: '<?= (isset($_GET['status']) ? $_GET['status'] : null); ?>', convert to array
             status: 'Active',
-            waterfront: '<?php echo (isset($_GET['waterfront']) ? $_GET['waterfront'] : null); ?>',
-            waterfront: '<?php echo (isset($_GET['pool']) ? $_GET['pool'] : null); ?>',
+            waterfront: '<?= (isset($_GET['waterfront']) ? $_GET['waterfront'] : null); ?>',
+            pool: '<?= (isset($_GET['pool']) ? $_GET['pool'] : null); ?>',
         },
         success: function (data) {
             refreshMap(data);
