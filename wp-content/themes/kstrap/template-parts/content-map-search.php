@@ -102,7 +102,7 @@ include(locate_template('template-parts/partials/bot.php'));
                 if (this.readyState == 4 && this.status == 200) {
                     var response = this.responseText.replace(/(\r\n|\n|\r)/gm, "");
                     infowindow.close(); // Close previously opened infowindow
-                    infowindow.setContent('<div class="listing-tile map-search">' + response + '</div>');
+                    infowindow.setContent('<div class="listing-tile map-search text-center">' + response + '</div>');
                     infowindow.setPosition(pinLocation);
                     infowindow.open(map);
                 }
