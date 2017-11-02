@@ -12,7 +12,16 @@ include(locate_template('template-parts/partials/top.php'));
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
 
-$listings = (new FavoriteProperty())->getSavedListings(get_current_user_id());
+$favoriteProperty = new FavoriteProperty();
+$listings = $favoriteProperty->getSavedListings(get_current_user_id());
+
+if(isset($_POST['user_id']) && isset($_POST['mls_account'])){
+    if(isset($_POST['action']) && $_POST['action'] == 'remove'){
+        echo "<meta http-equiv='refresh' content='0'>";
+        $favoriteProperty->handleFavorite($_POST['user_id'], $_POST['mls_account']);
+    }
+}
+
 ?>
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -37,8 +46,9 @@ $listings = (new FavoriteProperty())->getSavedListings(get_current_user_id());
                             <?php include(locate_template('template-parts/partials/mini-listing.php')); ?>
                             <div class="favorite-item-actions">
                                 <form class="form mb-2" method="post" >
+                                    <input type="hidden" name="action" value="remove">
                                     <input type="hidden" name="user_id" value="<?php echo get_current_user_id(); ?>" />
-                                    <input type="hidden" name="mls_account" value="<?php echo $mlsNumber; ?>" />
+                                    <input type="hidden" name="mls_account" value="<?php echo $result->mls_account; ?>" />
                                     <button type="submit" class="btn btn-secondary btn-rounded" >Remove from favorites</button>
                                 </form>
                             </div>
