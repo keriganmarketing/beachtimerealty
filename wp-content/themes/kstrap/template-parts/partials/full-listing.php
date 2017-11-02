@@ -1,22 +1,23 @@
 <?php
 
 use Includes\Modules\MLS\FullListing;
+use Includes\Modules\MLS\FavoriteProperty;
 
 if (isset($_GET['mls'])) {
     $mlsNumber   = $_GET['mls'];
     $fl          = new FullListing($mlsNumber);
     $listingInfo = $fl->create();
-    echo '<!--', print_r($listingInfo), '-->';
-    $isOurs = false;
+    $isOurs      = false;
 
     $user_id     = get_current_user_id();
-//    $buttonText  = $listing->isInBucket($user_id, $listingInfo->mls_account) ? 'REMOVE FROM BUCKET' : 'SAVE TO BUCKET';
-    $buttonText = 'SAVE TO BUCKET';
+    $buttonText  = $listing->isInFavorites($user_id, $listingInfo->mls_account) ? 'REMOVE FROM BUCKET' : 'SAVE TO BUCKET';
     $title       = $listingInfo->street_number . ' ' . $listingInfo->street_name;
-
+    if (isset($_POST['user_id'])) {
+        echo '<pre>',print_r($_POST),'</pre>';
+        $favorite  = new FavoriteProperty();
+        $favorite->handleFavorite($_POST['user_id'], $_POST['mls_number']);
+    }
 }
-
-
 ?>
 <div class="container-fluid">
     <div class="full-listing">

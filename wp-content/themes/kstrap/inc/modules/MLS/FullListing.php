@@ -60,15 +60,11 @@ class FullListing
 
     public function isInFavorites($user_id, $mls_number)
     {
-        $bb = new Favorite();
+        $favorite = new FavoriteProperty();
 
-        $results = $bb->findFavorite($user_id, $mls_number);
+        $results = $favorite->findFavorite($user_id, $mls_number);
 
-        if (empty($results)) {
-            return false;
-        }
-
-        return true;
+        return empty($results);
     }
 
     public function setListingSeo( $listingInfo )
