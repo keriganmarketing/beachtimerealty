@@ -67,7 +67,7 @@ class FavoriteProperty
         );
     }
 
-    public function findFavoriteItem($user_id, $mls_account)
+    public function findFavorite($user_id, $mls_account)
     {
         global $wpdb;
 
