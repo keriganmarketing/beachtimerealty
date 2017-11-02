@@ -13,6 +13,11 @@ html {
       display: flex;
       flex-direction: column;
 
+      .container-fluid {
+        max-width: 100%;
+        width: 1800px;
+      }
+
       @media screen and (min-width: 1400px) {
         .container.wide {
           width: 1400px;
