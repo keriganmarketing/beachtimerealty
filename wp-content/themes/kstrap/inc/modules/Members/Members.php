@@ -34,6 +34,11 @@ class Members {
 		$this->hideAdminBar();
 		$this->setEmailContentType();
 
+        add_filter('wpmem_email_headers', function() {
+            return "Content-Type: text/html";
+        });
+
+
 	}
 
 	private function setLoginForm() {
@@ -204,10 +209,7 @@ class Members {
 
 	private function setRegisterForm() {
 		add_filter( 'wpmem_register_form_args', function ( $args, $toggle ) {
-			/**
-			 * This example adds a div wrapper around each
-			 * row in the registration form.
-			 */
+
 			$args = array(
 
 				// wrappers
@@ -272,6 +274,13 @@ class Members {
 			$currentUserInfo = get_userdata( get_current_user_id() );
 			//echo '<pre>',print_r($currentUser),'</pre>';
 
+            $first_name = (isset($_POST['first_name']) ? $_POST['first_name'] : '');
+            $last_name  = (isset($_POST['last_name']) ? $_POST['last_name'] : '');
+            $phone1     = (isset($_POST['phone1']) ? $_POST['phone1'] : '');
+            $user_email = (isset($_POST['user_email']) ? $_POST['user_email'] : '');
+
+            echo (isset($_POST['quicksignup']) && $_POST['quicksignup'] == true ? '<h2>Got it!</h2><p>Now just choose a password and click register. Then, start saving properties.</p>' : '');
+
 			$rows = array();
 
 			$agents       = new Agents();
@@ -290,7 +299,7 @@ class Members {
 				'row_before'   => '<div class="col-md-6">',
 				'label'        => '<label for="first_name" class="sr-only">First Name *</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<input name="first_name" type="text" id="first_name" value="' . ( $currentUser['first_name'][0] != '' ? $currentUser['first_name'][0] : '' ) . '" class="textbox form-control" required placeholder="First Name *" />',
+				'field'        => '<input name="first_name" type="text" id="first_name" value="' . ( $currentUser['first_name'][0] != '' ? $currentUser['first_name'][0] : $first_name ) . '" class="textbox form-control" required placeholder="First Name *" />',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);
@@ -300,7 +309,7 @@ class Members {
 				'row_before'   => '<div class="col-md-6">',
 				'label'        => '<label for="last_name" class="sr-only">Last Name *</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<input name="last_name" type="text" id="last_name" value="' . ( $currentUser['last_name'][0] != '' ? $currentUser['last_name'][0] : '' ) . '" class="textbox form-control" required placeholder="Last Name *" />',
+				'field'        => '<input name="last_name" type="text" id="last_name" value="' . ( $currentUser['last_name'][0] != '' ? $currentUser['last_name'][0] : $last_name ) . '" class="textbox form-control" required placeholder="Last Name *" />',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);
@@ -310,7 +319,7 @@ class Members {
 				'row_before'   => '<div class="col-md-6">',
 				'label'        => '<label for="phone1" class="sr-only">Phone Number *</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<input name="phone1" type="text" id="phone1" value="' . ( isset( $currentUser['phone1'][0] ) ? $currentUser['phone1'][0] : '' ) . '" class="textbox form-control" required placeholder="Phone Number *" />',
+				'field'        => '<input name="phone1" type="text" id="phone1" value="' . ( isset( $currentUser['phone1'][0] ) ? $currentUser['phone1'][0] : $phone1 ) . '" class="textbox form-control" required placeholder="Phone Number *" />',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);
@@ -320,7 +329,7 @@ class Members {
 				'row_before'   => '<div class="col-md-6">',
 				'label'        => '<label for="user_email" class="sr-only">Email Address *</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<input name="user_email" type="text" id="user_email" value="' . ( isset( $currentUserInfo->user_email ) ? $currentUserInfo->user_email : '' ) . '" class="textbox form-control" required placeholder="Email Address *" />',
+				'field'        => '<input name="user_email" type="text" id="user_email" value="' . ( isset( $currentUserInfo->user_email ) ? $currentUserInfo->user_email : $user_email ) . '" class="textbox form-control" required placeholder="Email Address *" />',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);
@@ -340,7 +349,7 @@ class Members {
 				'row_before'   => '<div class="col-md-6">',
 				'label'        => '<label for="user_login" class="sr-only">Choose a Username *</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<input name="user_login" type="text" id="user_login" value="' . ( isset( $currentUserInfo->user_login ) ? $currentUserInfo->user_login : '' ) . '" class="textbox form-control" required ' . ( ! is_page( 8254 ) ? 'disabled' : '' ) . ' placeholder="Choose a Username *" />',
+				'field'        => '<input name="user_login" type="text" id="user_login" value="' . ( isset( $currentUserInfo->user_login ) ? $currentUserInfo->user_login : '' ) . '" class="textbox form-control" required ' . ( ! is_page( $this->registerPage ) ? 'disabled' : '' ) . ' placeholder="Choose a Username *" />',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);
