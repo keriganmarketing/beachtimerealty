@@ -6,7 +6,8 @@
  * Time: 1:56 PM
  */
 ?>
-<table class="table table-striped listing-data">
+<div class="card">
+<table class="table listing-data">
 	<tbody>
 	<tr><td class="title">MLS#</td><td class="data"><?php echo $listingInfo->mls_account; ?></td></tr>
 	<tr><td class="title">Property Type</td><td class="data"><?php echo $listingInfo->property_type; ?></td></tr>
@@ -27,3 +28,4 @@
 	<?php } ?>
     </tbody>
 </table>
+</div>

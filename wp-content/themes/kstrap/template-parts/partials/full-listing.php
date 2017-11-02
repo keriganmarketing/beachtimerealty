@@ -67,7 +67,7 @@ if (isset($_GET['mls'])) {
             </div>
         </div>
         <hr>
-        <div class="row location-info">
+        <div class="row location-info card-deck">
             <?php include(locate_template('template-parts/partials/full-listing-location.php')); ?>
         </div>
     </div>

@@ -7,8 +7,12 @@
  */
 ?>
 <div class="col" >
-	<h3>Location Information</h3>
-	<table class="table table-striped listing-data">
+    <div class="card">
+        <div class="card-header">
+            <strong>Location Information</strong>
+        </div>
+
+	<table class="table listing-data mb-0">
 		<tbody>
 		<?php if( isset($listingInfo->lot_description) ){ ?>
             <tr><td class="title">Area</td><td class="data">$<?php echo $listingInfo->lot_description; ?></td></tr>
@@ -42,9 +46,11 @@
 		<?php } ?>
 		</tbody>
 	</table>
+    </div>
 </div>
 <div class="col-md-7">
-    <div id="listing-map" style="height: 100%; min-height:200px; height: 350px;"></div>
+    <div class="card">
+    <div id="listing-map" style="height: 100%; min-height:200px; height: 392px; margin-top:0;"></div>
 	<script type="text/javascript">
 
         var map,
@@ -102,4 +108,5 @@
 
 	</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4&callback=initMap" ></script>
+</div>
 </div>
