@@ -36,11 +36,15 @@
             <span class="state"><?php echo $result->state; ?></span>
         </div>
 
+        <?php if ($result->price > 0){ ?>
         <div class="tile-section price">
             <p>
                 <span class="price"><?php echo( $result->price > 0 ? '$' . number_format( $result->price ) : '' ); ?></span>
             </p>
         </div>
+        <?php }else{
+            echo '<p></p>';
+        } ?>
 
         <div class="tile-section attributes">
             <div class="row">
