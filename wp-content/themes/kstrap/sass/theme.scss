@@ -186,6 +186,12 @@ html {
 #mid {
   position: relative;
 
+  .entry-content {
+    h2, h3 {
+      margin-top:2.5rem;
+    }
+  }
+
   .section-wrapper {
     clear: both;
 
@@ -1046,6 +1052,7 @@ html {
 }
 #map-search {
   .gm-style {
+
     .gm-style-iw {
       overflow: hidden;
       width: 320px !important;
@@ -1056,6 +1063,9 @@ html {
 
       .mini-listing-container {
         margin:0 !important;
+        img {
+          max-width: 100% !important;
+        }
       }
     }
     .gm-style-iw > div {

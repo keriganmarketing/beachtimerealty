@@ -99,7 +99,7 @@ class Agents {
 
 		$output = [];
 		foreach ( $request as $item ) {
-			array_push( $output, ( isset( $item->post_title ) ? $item->post_title : null ) );
+			array_push( $output, ( isset( $item->contact_info_display_name ) ? $item->contact_info_display_name : null ) );
 		}
 
 		return $output;
@@ -170,7 +170,12 @@ class Agents {
 			'posts_per_page' => 1,
 		] );
 
-		return $output[0];
+        if(isset($output[0])){
+            return $output[0];
+        }else{
+            return false;
+        }
+
 	}
 
 	public function getOffices( $args = [], $limit = 0 ) {
@@ -331,7 +336,7 @@ class Agents {
         $agentMothershipData = $this->getFromMothership($agentData['mls_name']);
         $agentMothershipData['name'] = $agentData['mls_name'];
         $this->updateAgentsByMotherShip( $agentMothershipData, $agentData['post_id']);
-        echo '<pre>',print_r($agentMothershipData),'</pre>';
+        //echo '<pre>',print_r($agentMothershipData),'</pre>';
     }
 
     public function getAgentById($shortId)
@@ -345,7 +350,9 @@ class Agents {
             .'shortId='. $shortId
         );
 
-        return json_decode($apiCall->getBody());
+        $agentData = json_decode($apiCall->getBody());
+        return $agentData;
+
 
     }
 

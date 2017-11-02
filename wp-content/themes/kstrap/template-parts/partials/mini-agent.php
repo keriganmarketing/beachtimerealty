@@ -20,8 +20,11 @@
 
 	</div>
 	<div class="card-footer">
-		<form class="form form-inline" action="/contact/" method="get" style="display:inline-block;" >
-			<input type="hidden" name="reason" value="Just reaching out" />
+		<form class="form form-inline" action="/contact-us/" method="get" style="display:inline-block;" >
+			<input type="hidden" name="reason_for_contact" value="<?php echo (isset($_GET['mls']) ? 'Property inquiry' : 'Just reaching out'); ?>" />
+            <?php if(isset($_GET['mls'])){ ?>
+                <input type="hidden" name="mls_number" value="<?php echo $_GET['mls']; ?>" />
+            <?php } ?>
 			<input type="hidden" name="user_id" value="<?php echo get_current_user_id(); ?>" />
 			<input type="hidden" name="selected_agent" value="<?php echo $agentData['name']; ?>" />
 			<button type="submit" class="btn btn-primary btn-rounded" >Contact Me</button>

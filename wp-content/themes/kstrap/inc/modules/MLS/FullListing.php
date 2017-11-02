@@ -2,6 +2,7 @@
 namespace Includes\Modules\MLS;
 
 use GuzzleHttp\Client;
+use Includes\Modules\Agents\Agents;
 
 /**
 * MLS Listing - Made by Daron Adkins
@@ -21,7 +22,7 @@ class FullListing
 
     public function create()
     {
-        $client = new Client(['base_uri' => 'https://mothership.kerigan.com/api/v1/listing/']);
+        $client = new Client(['base_uri' => 'https://mothership.kerigan.com/api/v1/listing/','http_errors' => false]);
 
         // make the API call
         $raw = $client->request(
@@ -49,10 +50,11 @@ class FullListing
 
         }
 
-        if (in_array($listingInfo->listing_member_shortid, $mlsArray) ||
-            in_array($listingInfo->colisting_member_shortid, $mlsArray)
-        ) {
-            return true;
+        if (in_array($listingInfo->listing_member_shortid, $mlsArray)) {
+            return 'listing_member_shortid';
+        }
+        if (in_array($listingInfo->colisting_member_shortid, $mlsArray)) {
+            return 'colisting_member_shortid';
         }
 
         return false;
