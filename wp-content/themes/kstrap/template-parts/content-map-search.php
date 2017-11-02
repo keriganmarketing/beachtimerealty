@@ -166,7 +166,7 @@ include(locate_template('template-parts/partials/bot.php'));
             borderRadius: 0,
             arrowSize: 10,
             borderWidth: 0,
-            pixelOffset: new google.maps.Size(12, -30),
+            pixelOffset: new google.maps.Size(15, 10),
             backgroundClassName: 'transparent',
         });
 

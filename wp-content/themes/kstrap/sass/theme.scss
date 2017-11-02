@@ -1052,6 +1052,7 @@ html {
 }
 #map-search {
   .gm-style {
+
     .gm-style-iw {
       overflow: hidden;
       width: 320px !important;
@@ -1062,6 +1063,9 @@ html {
 
       .mini-listing-container {
         margin:0 !important;
+        img {
+          max-width: 100% !important;
+        }
       }
     }
     .gm-style-iw > div {
