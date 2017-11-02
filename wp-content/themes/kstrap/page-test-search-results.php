@@ -1,6 +1,7 @@
 <?php
 
 use Includes\Modules\MLS\QuickSearch;
+use Includes\Modules\Notifications\ListingUpdated;
 
 /**
  * @package KMA
@@ -11,8 +12,6 @@ use Includes\Modules\MLS\QuickSearch;
 
 get_header();
 
-if (isset($_GET['mls'])) {
-
-}
+$l = (new ListingUpdated())->notify();
 
 get_footer();

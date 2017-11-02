@@ -2,9 +2,9 @@
 
 use Includes\Modules\Agents\Agents;
 use Includes\Modules\Slider\Slider;
+use Includes\Modules\CPT\VirtualPage;
 use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
-use Includes\Modules\CPT\VirtualPage;
 use Includes\Modules\Members\Members;
 use Includes\Modules\Leads\RequestInfo;
 use Includes\Modules\MLS\AdminSettings;
@@ -95,5 +95,16 @@ function kstrap_scripts()
     wp_enqueue_script('scripts');
     //wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
+
+// if (! wp_next_scheduled('send_notifications')) {
+//     wp_schedule_event(time(), 'daily', 'notifications_hook');
+// }
+
+// add_action('notifications_hook', 'send_notifications');
+
+// function send_notifications()
+// {
+//     wp_mail('your@email.com', 'Automatic email', 'Automatic scheduled email from WordPress.');
+// }
 
 add_action('wp_enqueue_scripts', 'kstrap_scripts');
