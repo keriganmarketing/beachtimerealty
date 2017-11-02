@@ -73,6 +73,8 @@ if (isset($_GET['mls'])) {
                 </div>
                 <hr>
                 <?php include(locate_template('template-parts/partials/full-listing-features.php')); ?>
+                <hr>
+                <?php include(locate_template('template-parts/partials/mortgage-calculator.php')); ?>
             </div>
         </div>
         <hr>

@@ -8,6 +8,8 @@ require('bootstrap');
 require('select2');
 $.fn.select2.defaults.set("theme", "bootstrap");
 
+require('./mortgageCalculator.js');
+
 //for sticky header
 function sizeHeader() {
 
