@@ -50,6 +50,8 @@ include(locate_template('template-parts/partials/bot.php'));
 <script type="text/javascript">
     var map,
       bounds,
+      marker,
+      infowindow,
       mapElement,
       markers = [],
       markerClusterer,
@@ -90,107 +92,343 @@ include(locate_template('template-parts/partials/bot.php'));
           textSize: 14
       }]];
 
-    function initMap() {
+    //load property template on click
+    function bindPropertyWindow(marker, mlsnum, pinLocation){
+        marker.addListener('click', function() {
+            var requestedDoc = '<?php echo get_template_directory_uri() ?>/template-parts/partials/map-listing.php',
+              xhttp = new XMLHttpRequest();
 
-        var myLatLng = {lat: 30.250795, lng: -85.940390 };
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = this.responseText.replace(/(\r\n|\n|\r)/gm, "");
+                    infowindow.close(); // Close previously opened infowindow
+                    infowindow.setContent('<div class="listing-tile map-search">' + response + '</div>');
+                    infowindow.setPosition(pinLocation);
+                    infowindow.open(map);
+                }
+            };
+            xhttp.open("GET", requestedDoc + '?mls=' + mlsnum, true);
+            xhttp.send();
+        });
+    }
+
+    function refreshMap(data) {
+        if (markerClusterer) {
+            markerClusterer.clearMarkers();
+        }
+        var markers = [];
+
+        for (i = 0; i < data.length; i++) {
+            var lat = data[i].latitude,
+              lng = data[i].longitude,
+              type = data[i].class,
+              mlsnum = data[i].mls_account,
+              status = data[i].status.toLowerCase();
+            if(lat > 29 && lat < 32 && lng > -90 && lng < -83) {
+
+                var pinLocation =  new google.maps.LatLng(parseFloat(lat),parseFloat(lng)),
+                  pin;
+
+                switch(type) {
+                    case 'G':
+                    case 'A':
+                    case 'H':
+                        pin = '<?php echo get_template_directory_uri() ?>/img/residential-'+status+'-pin.png';
+                        break;
+                    case 'E':
+                    case 'J':
+                    case 'F':
+                        pin = '<?php echo get_template_directory_uri() ?>/img/commercial-'+status+'-pin.png';
+                        break;
+                    case 'C':
+                        pin = '<?php echo get_template_directory_uri() ?>/img/land-'+status+'-pin.png';
+                        break;
+                    default:
+                        pin = 'http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1';
+                }
+
+                marker = new google.maps.Marker({
+                    position: pinLocation,
+                    map: map,
+                    icon: pin
+                });
+
+                bindPropertyWindow(marker, mlsnum, pinLocation);
+                markers.push(marker);
+                bounds.extend(pinLocation);
+                map.fitBounds(bounds);
+
+            }
+        }
+
+        infowindow = new google.maps.InfoWindow({
+            padding: 0,
+            borderRadius: 0,
+            arrowSize: 10,
+            borderWidth: 0,
+            pixelOffset: new google.maps.Size(12, -30),
+            backgroundClassName: 'transparent',
+        });
+
+        markerClusterer = new MarkerClusterer(map, markers, {
+            maxZoom: 14,
+            gridSize: 60,
+            styles: styles[0]
+        });
+
+    }
+
+    function initializeMap() {
+
         var mapOptions = {
             zoom: 11,
-            center: myLatLng,
+            center: {lat: 30.250795, lng: -85.940390 },
             disableDefaultUI: true,
             zoomControl: true,
-            // This is where you would paste any style found on Snazzy Maps.
-
+            styles: [
+                {
+                    "featureType": "all",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        },
+                        {
+                            "color": "#efebe2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#efebe2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#efebe2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.attraction",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#efebe2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.business",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#efebe2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.government",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#dfdcd5"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.medical",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#dfdcd5"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#bad294"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.place_of_worship",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#efebe2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.school",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#efebe2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.sports_complex",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#efebe2"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#ffffff"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#dedede"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway.controlled_access",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#ffffff"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#a5d7e0"
+                        }
+                    ]
+                }
+            ]
         };
 
         mapElement = document.getElementById('map-search');
         map = new google.maps.Map(mapElement, mapOptions);
         bounds = new google.maps.LatLngBounds();
 
-    }
-
-    //add the pins
-    function addMarker(lat,lng,type,mlsnum,status) {
-        var pinLocation = new google.maps.LatLng(parseFloat(lat),parseFloat(lng)),
-          contentString = '',
-          mls = mlsnum,
-          pin;
-
-        switch(type) {
-            case 'G':
-            case 'A':
-                pin = '/wp-content/themes/kstrap/img/residential-'+status+'-pin.png';
-                break;
-            case 'E':
-            case 'J':
-            case 'F':
-                pin = '/wp-content/themes/kstrap/img/commercial-'+status+'-pin.png';
-                break;
-            case 'C':
-                pin = '/wp-content/themes/kstrap/img/land-'+status+'-pin.png';
-                break;
-            default:
-                pin = 'http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1';
-        }
-
-        var infowindow = new google.maps.InfoWindow();
-
-        var marker = new google.maps.Marker({
-            position: pinLocation,
-            map: map,
-            icon: pin
-        });
-
-        markers.push(marker);
-
-        marker.addListener('click', function(){
-            var requestedDoc = '/wp-content/themes/kstrap/template-parts/partials/map-listing.php?mls=' + mlsnum,
-              xhttp = new XMLHttpRequest();
-
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-
-                    var response = this.responseText.replace(/(\r\n|\n|\r)/gm,"");
-
-                    infowindow.close(); // Close previously opened infowindow
-                    infowindow.setOptions({
-                        padding: 0,
-                        borderRadius: 0,
-                        arrowSize: 10,
-                        borderWidth: 0,
-                        pixelOffset: new google.maps.Size(15, 60),
-                        backgroundClassName: 'transparent',
-                        content: contentString
-                    })
-                    infowindow.setContent('<div class="map-listing text-center">' + response + '</div>');
-                    infowindow.open(map, marker);
-                }
-            };
-            xhttp.open("GET", requestedDoc, true);
-            xhttp.send();
-
-        });
-
-        bounds.extend(pinLocation);
-        map.fitBounds(bounds);
+        refreshMap([]);
 
     }
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4&callback=initMap" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js" ></script>
-<script defer>
-    <?php
-    foreach ($results as $result) {
-    $latBounds = ( $result->latitude > 29 && $result->latitude < 32 ? true : false );
-    $lngBounds = ( $result->longitude > - 90 && $result->longitude < - 83 ? true : false );
-    if($latBounds && $lngBounds){ ?>
-    addMarker('<?php echo $result->latitude; ?>', '<?php echo $result->longitude; ?>', '<?php echo $result->class; ?>', '<?php echo $result->mls_account; ?>', '<?php echo strtolower( $result->status ); ?>');
-    <?php } } ?>
+<script async defer>
 
-    markerClusterer = new MarkerClusterer(map, markers, {
-        maxZoom: 14,
-        gridSize: 60,
-        styles: styles[0]
+    //get mothership data
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: 'https://mothership.kerigan.com/api/v1/allMapListings',
+        data: {
+            qs: true,
+            city: '<?php echo (isset($_GET['omniField']) ? $_GET['omniField'] : null); ?>',
+            //propertyType: '<?php echo (isset($_GET['propertyType']) ? $_GET['propertyType'] : null); ?>',
+            minPrice: '<?php echo (isset($_GET['minPrice']) ? $_GET['minPrice'] : null); ?>',
+            maxPrice: '<?php echo (isset($_GET['maxPrice']) ? $_GET['maxPrice'] : null); ?>',
+            sq_ft: '<?php echo (isset($_GET['sq_ft']) ? $_GET['sq_ft'] : null); ?>',
+            acreage: '<?php echo (isset($_GET['acreage']) ? $_GET['acreage'] : null); ?>',
+            bathrooms: '<?php echo (isset($_GET['bathrooms']) ? $_GET['bathrooms'] : null); ?>',
+            bedrooms: '<?php echo (isset($_GET['bedrooms']) ? $_GET['bedrooms'] : null); ?>',
+            //status: '<?php echo (isset($_GET['status']) ? $_GET['status'] : null); ?>', convert to array
+            status: 'Active',
+            waterfront: '<?php echo (isset($_GET['waterfront']) ? $_GET['waterfront'] : null); ?>',
+            waterfront: '<?php echo (isset($_GET['pool']) ? $_GET['pool'] : null); ?>',
+        },
+        success: function (data) {
+            refreshMap(data);
+        }
     });
 
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js" ></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4&callback=initializeMap" ></script>
