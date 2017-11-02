@@ -24,7 +24,7 @@ class QuickSearch
     {
         $omni         = $this->searchCriteria['omniField'] ?? '';
         $propertyType = isset($this->searchCriteria['propertyType']) && $this->searchCriteria['propertyType'] != '' ?
-            implode('|', $this->getPropertyTypes($this->searchCriteria['propertyType'])) : '';
+            implode('|', self::getPropertyTypes($this->searchCriteria['propertyType'])) : '';
         $minPrice     = $this->searchCriteria['minPrice'] ?? '';
         $maxPrice     = $this->searchCriteria['maxPrice'] ?? '';
         $bedrooms     = $this->searchCriteria['bedrooms'] ?? '';
@@ -77,7 +77,7 @@ class QuickSearch
         return $results;
     }
 
-    private function getPropertyTypes($class = null)
+    public static function getPropertyTypes($class = null)
     {
         $typeArray = [
             'Single Family Home'   => ['Detached Single Family'],
