@@ -5,6 +5,7 @@
     <div class="search-control"></div>
     <form class="form-inline" method="get" id="mainsearch" >
         <div class="search-bar">
+            <div class="container-fluid">
             <div class="row">
                 <input type="hidden" name="qs" value="true" >
                 <div class="col-md-6">
@@ -39,8 +40,10 @@
                     </div>
                 </div>
             </div>
+            </div>
 	    </div>
         <div id="advanced-menu" class="advanced-menu hidden">
+            <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-4 col-lg-6">
                     <div class="row">
@@ -209,11 +212,13 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
         <input type="hidden" name="sortBy" value="date_modified">
         <input type="hidden" name="orderBy" value="ASC">
     </form>
 </div>
+
 <script type="text/javascript">
     function toggler(menuVar){
         $('#'+menuVar).toggle();
