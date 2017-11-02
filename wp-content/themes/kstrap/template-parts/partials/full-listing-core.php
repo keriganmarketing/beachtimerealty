@@ -13,13 +13,13 @@
                 <input type="hidden" name="reason" value="Property inquiry" />
                 <input type="hidden" name="user_id" value="<?php echo get_current_user_id(); ?>" />
                 <input type="hidden" name="mls_number" value="<?php echo $listingInfo->mls_account; ?>" />
-                <input type="hidden" name="selected_agent" value="<?php echo ($isOurs ? $agent->full_name : ''); ?>" />
+                <input type="hidden" name="selected_agent" value="<?php echo ($isOurs ? $agentData->full_name : ''); ?>" />
                 <button type="submit" class="btn btn-primary btn-outlined mb-2" >Request Info</button>
             </form>
             <?php if(is_user_logged_in()){?>
                 <form class="form form-inline" method="post" style="display:inline-block;" >
                     <input type="hidden" name="user_id" value="<?php echo get_current_user_id(); ?>" />
-                    <input type="hidden" name="mls_account" value="<?php echo $listingInfo->mls_account; ?>" />
+                    <input type="hidden" name="mls_number" value="<?php echo $listingInfo->mls_account; ?>" />
                     <button type="submit" class="btn btn-primary btn-outlined mb-2" ><i class="fa fa-star" aria-hidden="true"></i> <?php echo $buttonText; ?></button>
                 </form>
             <?php } ?>

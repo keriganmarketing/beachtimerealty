@@ -42,12 +42,12 @@ class FullListing
 
         $mlsArray = array();
         foreach ($agentArray as $agent) {
-
-            $agentIds = explode(',',$agent['short_ids']);
-            foreach($agentIds as $agentId){
-                $mlsArray[] = $agentId;
+            $agentIds = explode(',', $agent['short_ids']);
+            foreach ($agentIds as $agentId) {
+                if ($agentId != '') {
+                    $mlsArray[] = $agentId;
+                }
             }
-
         }
 
         if (in_array($listingInfo->listing_member_shortid, $mlsArray)) {
@@ -62,20 +62,15 @@ class FullListing
 
     public function isInFavorites($user_id, $mls_number)
     {
-        $bb = new Favorite();
+        $favorite = new FavoriteProperty();
 
-        $results = $bb->findFavorite($user_id, $mls_number);
+        $results = $favorite->findFavorite($user_id, $mls_number);
 
-        if (empty($results)) {
-            return false;
-        }
-
-        return true;
+        return (! empty($results));
     }
 
-    public function setListingSeo( $listingInfo )
+    public function setListingSeo($listingInfo)
     {
-
         global $metaTitle;
         $title = $listingInfo->street_number . ' ' . $listingInfo->street_name;
         $title = ($listingInfo->unit_number != '' ? $title . ' ' . $listingInfo->unit_number : $title);
@@ -104,6 +99,5 @@ class FullListing
         add_filter('wpseo_opengraph_url', function ($ogUrl) {
             return $ogUrl;
         }, 100, 1);
-
     }
 }
