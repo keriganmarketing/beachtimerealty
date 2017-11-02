@@ -80,7 +80,7 @@ class FavoriteProperty
         return $results;
     }
 
-    public function getNumberOfFavoriteItems($user_id)
+    public static function getNumberOfFavorites($user_id)
     {
         global $wpdb;
         $count    = $wpdb->get_results("SELECT COUNT(id) as items FROM favorite_properties WHERE user_id = {$user_id}");
@@ -130,9 +130,9 @@ class FavoriteProperty
 
             // We need to use 2 functions to get all the data we need because...Wordpress...yeah...
             for ($i = 0; $i < sizeOf($userIDs); $i++) {
-                $userData[$i]             = get_user_meta($userIDs[$i]);
-                $userData[$i]['id']       = $userIDs[$i];
-                $userData[$i]['email']    = get_userdata($userIDs[$i])->user_email;
+                $userData[$i]              = get_user_meta($userIDs[$i]);
+                $userData[$i]['id']        = $userIDs[$i];
+                $userData[$i]['email']     = get_userdata($userIDs[$i])->user_email;
                 $userData[$i]['favorites'] = $this->savedProperties($userIDs[$i]);
             }
         }
