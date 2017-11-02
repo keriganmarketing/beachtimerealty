@@ -1,6 +1,8 @@
 <?php
 namespace Includes\Modules\MLS;
 
+use GuzzleHttp\Client;
+
 class FavoriteProperty
 {
     public function handleFavorite($user_id, $mls_account)
@@ -94,7 +96,7 @@ class FavoriteProperty
      * @param  integer $user_id
      * @return array
      */
-    public function listingsSavedByUser($user_id)
+    public function getSavedListings($user_id)
     {
         global $wpdb;
 
@@ -106,7 +108,17 @@ class FavoriteProperty
             array_push($mlsNumbers, $result->mls_account);
         }
 
-        return $mlsNumbers;
+        $mlsString = implode('|', $mlsNumbers);
+
+        $client = new Client(['base_uri' => 'https://mothership.kerigan.com/api/v1/listings']);
+        $raw = $client->request(
+            'GET',
+            '?mlsNumbers='.$mlsString
+        );
+
+        $listings = json_decode($raw->getBody());
+
+        return $listings;
     }
 
     /**
