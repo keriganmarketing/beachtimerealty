@@ -27,7 +27,7 @@ $now     = time();
 				<?php echo ($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
             </div>
         </div>
-        <section id="content" class="content section">
+        <section id="content" class="content section news">
             <div class="container">
                 <div class="row">
                 <?php

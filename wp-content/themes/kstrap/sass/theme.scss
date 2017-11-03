@@ -472,7 +472,7 @@ html {
         -ms-transition: background-color .5s;
         -o-transition: background-color .5s;
         transition: background-color .5s;
-        background-color: rgba(0,0,0,.5);
+        background-color: rgba(0,0,0,.3);
         position: relative;
         z-index: 1;
         height: 100vh;
@@ -1237,6 +1237,35 @@ html {
     }
   }
 
+}
+
+.section.news {
+  .article-image {
+    .card-image {
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background-color: #fff;
+      text-align: center;
+
+      img {
+        height: auto !important;
+        width: auto !important;
+        margin: auto;
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+    .card-image.image.video.is-4by3 {
+      iframe {
+        border: none;
+        overflow: hidden;
+        position: absolute;
+        top: 2.5rem;
+        left: 0;
+        margin: auto;
+      }
+    }
+  }
 }
 
 #bot {

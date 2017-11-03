@@ -3,7 +3,7 @@
         <?php if($result->type != 'video') { ?>
             <div class="card-image embed-responsive embed-responsive-4by3">
                 <a href="<?php echo $result->link; ?>" target="_blank">
-                    <img src="<?php echo $photo_url; ?>" alt="<?php echo $result->caption; ?>" class="embed-responsive-item" >
+                    <img src="<?php echo $photo_url; ?>" alt="<?php echo isset($result->caption) ? $result->caption : ''; ?>" class="embed-responsive-item" >
                 </a>
             </div>
         <?php } else { ?>

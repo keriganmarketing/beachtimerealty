@@ -285,7 +285,7 @@ class Members {
 
 			$agents       = new Agents();
 			$agentArray   = $agents->getAgentNames();
-			$agentOptions = '<option value="" selected >My Agent</option>';
+			$agentOptions = '<option value="" selected >First Available</option>';
 
 			$selectedAgent = ( isset( $currentUser['selected_agent'][0] ) ? $currentUser['selected_agent'][0] : null );
 			foreach ( $agentArray as $agent ) {
