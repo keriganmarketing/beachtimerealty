@@ -10,7 +10,7 @@ include(locate_template('template-parts/partials/top.php'));
 
 $currentPage  = (isset($_GET['pg']) ? $_GET['pg'] : 1);
 $searchCriteria = (isset($_GET['qs']) ? $_GET : [
-    'omniField'    => get_post_meta($post->ID,'community_info_database_name',true) !='' ? get_post_meta($post->ID,'community_info_database_name',true) !='' : $post->post_title,
+    'omniField'    => get_post_meta($post->ID,'community_info_database_name',true) !='' ? get_post_meta($post->ID,'community_info_database_name',true) : $post->post_title,
     'status'       => 'Active',
     'pg'           => $currentPage
 ]);

@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="tel" class="form-control" placeholder="Phone Number" name="phone1" required>
+            <input type="tel" class="form-control phone-mask" placeholder="Phone Number" name="phone1" required>
         </div>
         <div class="form-group">
             <input type="email" class="form-control" placeholder="Email Address" name="user_email" required>

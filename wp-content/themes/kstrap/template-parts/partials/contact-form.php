@@ -76,7 +76,7 @@ if ($formSubmitted) { //FORM WAS SUBMITTED
             <div class="form-group">
                 <label for="phone_number" class="sr-only">Phone Number</label>
                 <div class="phone-group">
-                    <input type="tel" name="phone_number" class="form-control ph"
+                    <input type="tel" name="phone_number" class="form-control ph phone-mask"
                            value="<?php echo(! $passCheck ? $phone : ''); ?>" placeholder="Phone Number">
                 </div>
             </div>
