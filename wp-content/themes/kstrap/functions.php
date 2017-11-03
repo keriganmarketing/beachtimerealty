@@ -54,6 +54,9 @@ $listingPage = new VirtualPage('mls');
 $idxSettings = new AdminSettings();
 $idxSettings->setupPage();
 
+$communities = new Communities();
+$communities->createPostType();
+
 function kstrap_setup()
 {
     load_theme_textdomain('kstrap', get_template_directory() . '/languages');
