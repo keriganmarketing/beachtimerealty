@@ -27528,7 +27528,13 @@ global.Tether = __WEBPACK_IMPORTED_MODULE_0_tether___default.a;
 
 __webpack_require__(128);
 __webpack_require__(177);
+
 $.fn.select2.defaults.set("theme", "bootstrap");
+$.fn.select2.amd.require(['select2/selection/multiple', 'select2/selection/search', 'select2/dropdown', 'select2/dropdown/attachContainer', 'select2/dropdown/closeOnSelect', 'select2/utils'], function (MultipleSelection, Search, Dropdown, AttachContainer, CloseOnSelect, Utils) {
+    var SelectionAdapter = Utils.Decorate(MultipleSelection, Search);
+
+    var DropdownAdapter = Utils.Decorate(Utils.Decorate(Dropdown, CloseOnSelect), AttachContainer);
+});
 
 
 
@@ -27587,25 +27593,6 @@ $(document).ready(function (event) {
         },
         minimumInputLength: 3,
         dropdownParent: $('.search-control')
-    }).on('select2-open', function () {
-
-        // however much room you determine you need to prevent jumping
-        var requireHeight = 450;
-        var viewportBottom = $(window).scrollTop() + $(window).height();
-
-        // figure out if we need to make changes
-        if (viewportBottom < requireHeight) {
-            // determine how much padding we should add (via marginBottom)
-            var marginBottom = requireHeight - viewportBottom;
-
-            // adding padding so we can scroll down
-            $(".aLwrElmntOrCntntWrppr").css("marginBottom", marginBottom + "px");
-
-            // animate to just above the select2, now with plenty of room below
-            $('html, body').animate({
-                scrollTop: $("#mySelect2").offset().top - 10
-            }, 1000);
-        }
     });
 
     $('.select2-property-type').select2({
