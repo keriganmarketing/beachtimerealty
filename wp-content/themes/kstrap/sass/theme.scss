@@ -1147,7 +1147,8 @@ html {
 
     @media screen and (min-width: map-get($grid-breakpoints, md)) {
       order:1;
-
+    }
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
       .form-group{
         label {
           order:1;
@@ -1171,17 +1172,20 @@ html {
       top: 50%;
       text-align: center;
       height: 60px;
-      margin-top: -22px;
+      margin-top: -35px;
 
       .payment-label {
         display: block;
-        font-style: .9em;
+        font-size: .8em;
         text-transform: uppercase;
+        color:#999;
       }
       #mon_payment {
         display: block;
+        font-size: 1.5em;
         #payment_num {
-          font-size: 1.75rem;
+          line-height: 1em;
+          font-size: 1.25em;
         }
       }
     }
@@ -1216,7 +1220,8 @@ html {
   .mort-cal-right{
     @media screen and (min-width: map-get($grid-breakpoints, md)) {
       order:3;
-
+    }
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
       .form-group{
         label {
           order:2;

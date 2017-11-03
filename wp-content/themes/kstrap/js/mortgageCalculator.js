@@ -197,7 +197,7 @@ function mortCal() {
 };
 
 window.submitable = false;
-$('#mortform').submit(function (event) {
+$('#calcform').submit(function (event) {
     event.preventDefault();
 });
 

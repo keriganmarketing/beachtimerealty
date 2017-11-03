@@ -75,12 +75,13 @@ if (isset($_GET['mls'])) {
                 <hr>
                 <?php include(locate_template('template-parts/partials/full-listing-features.php')); ?>
             </div>
-            <hr>
-            <?php include(locate_template('template-parts/partials/mortgage-calculator.php')); ?>
+
         </div>
         <hr>
         <div class="row location-info card-deck">
             <?php include(locate_template('template-parts/partials/full-listing-location.php')); ?>
         </div>
+        <hr>
+        <?php include(locate_template('template-parts/partials/mortgage-calculator.php')); ?>
     </div>
 </div>
