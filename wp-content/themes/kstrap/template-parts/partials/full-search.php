@@ -36,10 +36,34 @@
                 </div>
                 <div class="col text-right">
                     <div class="input-container">
-                    <div class="button-group mt-2 mb-2 text-center text-lg-right">
-                        <button type="button" class="btn btn-secondary dropdown-toggle btn-rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggler('advanced-menu');">Advanced</button>
-                        <button type="submit" class="btn btn-primary btn-rounded" >Search</button>
-                    </div>
+                        <div class="button-group mt-2 mb-2 text-center text-lg-right">
+                            <?php if($post->post_name == 'map-search'){ ?>
+                                <a class="btn btn-secondary btn-rounded"
+                                   href="/properties/?searchType=grid<?php
+                                   if(isset($_GET)){
+                                       foreach($_GET as $key => $var){
+                                           if($key!='searchType') {
+                                               echo '&' . $key . '=' . $var;
+                                           }
+                                       }
+                                   }
+                                   ?>" >grid view</a>
+                            <?php }else{ ?>
+                                <a class="btn btn-secondary btn-rounded"
+                                   href="/properties/map-search/?searchType=map<?php
+                                   if(isset($_GET)){
+                                       foreach($_GET as $key => $var){
+                                           if($key!='searchType') {
+                                               echo '&' . $key . '=' . $var;
+                                           }
+                                       }
+                                   }
+                                   ?>" >map view</a>
+                            <?php } ?>
+
+                            <button type="button" class="btn btn-secondary dropdown-toggle btn-rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggler('advanced-menu');">Advanced</button>
+                            <button type="submit" class="btn btn-primary btn-rounded" >Search</button>
+                        </div>
                     </div>
                 </div>
             </div>
