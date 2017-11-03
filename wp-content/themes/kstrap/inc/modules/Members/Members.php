@@ -16,6 +16,10 @@ class Members {
 
 	public function __construct() {
 
+        if ( ! current_user_can( 'manage_options' ) ) {
+            show_admin_bar( false );
+        }
+
 		//Set vars
 		$this->loginPage          = 30;
 		$this->registerPage       = 84;
@@ -208,6 +212,18 @@ class Members {
 	}
 
 	private function setRegisterForm() {
+
+        add_action( 'wpmem_pre_register_data', function ( $fields ) {
+
+            global $wpmem_themsg; //error message
+
+            //echo '<pre>',print_r($fields),'</pre>';
+
+            return;
+        } );
+
+
+
 		add_filter( 'wpmem_register_form_args', function ( $args, $toggle ) {
 
 			$args = array(
