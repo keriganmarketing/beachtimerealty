@@ -184,7 +184,9 @@ html {
   }
 
   .navbar-menu {
-
+    .dropdown-menu {
+      margin-top: 0;
+    }
   }
 }
 
@@ -1246,6 +1248,13 @@ html {
       margin-bottom: 1rem;
       background-color: #fff;
       text-align: center;
+
+      a {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 0;
+      }
 
       img {
         height: auto !important;
