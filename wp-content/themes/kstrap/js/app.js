@@ -66,13 +66,7 @@ $(document).ready(function (event) {
             return markup;
         },
         minimumInputLength: 3,
-        dropdownParent: $('.search-control'),
-        createTag: function (params) {
-            return {
-                id: params.term,
-                text: 'search for ' + params.term + ' anyway?'
-            }
-        }
+        dropdownParent: $('.search-control')
     });
 
     $('.select2-property-type').select2({

@@ -357,9 +357,11 @@ html {
     }
 
     .select2-dropdown {
-      max-height: 400px;
-      overflow: hidden;
-      overflow-y: scroll;
+      .select2-results {
+        max-height: 400px;
+        overflow: hidden;
+        overflow-y: scroll;
+      }
     }
 
     .select2-dropdown.select2-dropdown--below {
