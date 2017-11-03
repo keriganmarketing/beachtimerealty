@@ -1133,6 +1133,107 @@ html {
   }
 }
 
+#mortgage-calculator {
+
+  label {
+    text-align: left;
+    padding:0 1rem;
+  }
+  span.custom-control-description {
+    padding-left: .75rem;
+  }
+
+  .mort-cal-left {
+
+    @media screen and (min-width: map-get($grid-breakpoints, md)) {
+      order:1;
+
+      .form-group{
+        label {
+          order:1;
+          text-align: right;
+        }
+        div {
+          order:2;
+        }
+      }
+    }
+  }
+  .mort-cal-center{
+    @media screen and (min-width: map-get($grid-breakpoints, md)) {
+      order:2;
+    }
+
+    #payment {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      text-align: center;
+      height: 60px;
+      margin-top: -22px;
+
+      .payment-label {
+        display: block;
+        font-style: .9em;
+        text-transform: uppercase;
+      }
+      #mon_payment {
+        display: block;
+        #payment_num {
+          font-size: 1.75rem;
+        }
+      }
+    }
+    #labels {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      div#left {
+        position: absolute;
+        text-align: left;
+        left: 1rem;
+        bottom: 1rem;
+        width:40%;
+      }
+
+      div#right {
+        position: absolute;
+        text-align: right;
+        right: 1rem;
+        bottom: 1rem;
+        width:40%;
+      }
+    }
+
+    div#cal-button {
+      display: none;
+    }
+
+  }
+  .mort-cal-right{
+    @media screen and (min-width: map-get($grid-breakpoints, md)) {
+      order:3;
+
+      .form-group{
+        label {
+          order:2;
+          text-align: left;
+        }
+        label.custom-control {
+          margin-bottom: 0;
+        }
+        div {
+          order:1;
+        }
+      }
+    }
+  }
+
+}
+
 #bot {
   padding:2rem;
   background-color: #123f7b;

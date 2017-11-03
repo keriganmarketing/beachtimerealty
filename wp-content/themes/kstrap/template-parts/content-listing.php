@@ -23,3 +23,5 @@ include(locate_template('template-parts/partials/top.php'));
 </div>
 <?php include(locate_template('template-parts/partials/bot.php'));
 get_footer();
+?>
+<script src="/wp-content/themes/kstrap/js/mortgageCalculator.js" ></script>

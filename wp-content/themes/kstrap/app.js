@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 182);
+/******/ 	return __webpack_require__(__webpack_require__.s = 181);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1899,7 +1899,7 @@ function loadLocale(name) {
             module && module.exports) {
         try {
             oldLocale = globalLocale._abbr;
-            __webpack_require__(177)("./" + name);
+            __webpack_require__(176)("./" + name);
             // because defineLocale currently also sets the global locale, we
             // want to undo that for lazy loaded locales
             getSetGlobalLocale(oldLocale);
@@ -4534,7 +4534,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(181)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(180)(module)))
 
 /***/ }),
 /* 1 */
@@ -4544,9 +4544,9 @@ return hooks;
 
 
 module.exports = __webpack_require__(6);
-module.exports.easing = __webpack_require__(160);
-module.exports.canvas = __webpack_require__(159);
-module.exports.options = __webpack_require__(161);
+module.exports.easing = __webpack_require__(159);
+module.exports.canvas = __webpack_require__(158);
+module.exports.options = __webpack_require__(160);
 
 
 /***/ }),
@@ -4698,10 +4698,10 @@ module.exports = Element;
 
 
 module.exports = {};
-module.exports.Arc = __webpack_require__(155);
-module.exports.Line = __webpack_require__(156);
-module.exports.Point = __webpack_require__(157);
-module.exports.Rectangle = __webpack_require__(158);
+module.exports.Arc = __webpack_require__(154);
+module.exports.Line = __webpack_require__(155);
+module.exports.Point = __webpack_require__(156);
+module.exports.Rectangle = __webpack_require__(157);
 
 
 /***/ }),
@@ -5606,8 +5606,8 @@ module.exports = {
 
 
 var helpers = __webpack_require__(1);
-var basic = __webpack_require__(162);
-var dom = __webpack_require__(163);
+var basic = __webpack_require__(161);
+var dom = __webpack_require__(162);
 
 // @TODO Make possible to select another platform at build time.
 var implementation = dom._enabled ? dom : basic;
@@ -5684,8 +5684,8 @@ module.exports = helpers.extend({
 /***/ (function(module, exports, __webpack_require__) {
 
 /* MIT license */
-var convert = __webpack_require__(175);
-var string = __webpack_require__(173);
+var convert = __webpack_require__(174);
+var string = __webpack_require__(172);
 
 var Color = function (obj) {
 	if (obj instanceof Color) {
@@ -27516,19 +27516,21 @@ return zhTw;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tether__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tether__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tether___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_tether__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_chart_js__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_chart_js__);
 window.jQuery = window.$ = __webpack_require__(10);
 
 
 
 global.Tether = __WEBPACK_IMPORTED_MODULE_0_tether___default.a;
 
-__webpack_require__(129);
-__webpack_require__(178);
+__webpack_require__(128);
+__webpack_require__(177);
 $.fn.select2.defaults.set("theme", "bootstrap");
 
-__webpack_require__(128);
+
 
 //for sticky header
 function sizeHeader() {
@@ -27670,7 +27672,7 @@ $(document).ready(function (event) {
         $('#myCarousel').carousel(Number(target));
     });
 });
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(180)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(179)))
 
 /***/ }),
 /* 127 */
@@ -27680,245 +27682,6 @@ $(document).ready(function (event) {
 
 /***/ }),
 /* 128 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-function calc(payment, taxespaid, insurancepaid, hoadues, pmi) {
-    $(function () {
-        var _options;
-
-        console.log("Payment: " + payment + "%");
-        console.log("Taxes: " + taxespaid + "%");
-        console.log("Insurance: " + insurancepaid + "%");
-        console.log("HOA: " + hoadues + "%");
-        console.log("PMI: " + pmi + "%");
-
-        var data = [{
-            value: Math.round(payment),
-            label: "P&I",
-            color: "#1D68AA"
-        }];
-
-        if (taxespaid != '') {
-            data.push({
-                value: Math.round(taxespaid),
-                label: "Taxes",
-                color: "#3987C9"
-            });
-        }
-        if (insurancepaid != '') {
-            data.push({
-                value: Math.round(insurancepaid),
-                label: "Insurance",
-                color: "#AACBE9"
-            });
-        }
-        if (hoadues != '') {
-            data.push({
-                value: Math.round(hoadues),
-                label: "HOA",
-                color: "#777777"
-            });
-        }
-        if (pmi != '') {
-            data.push({
-                value: Math.round(pmi),
-                label: "PMI",
-                color: "#999999"
-            });
-        }
-
-        tooltipDefaults = {
-            background: 'rgba(0,0,0,0.6)',
-            fontFamily: "'Arial'",
-            fontStyle: "normal",
-            fontColor: 'white',
-            fontSize: '12px',
-            display: 'block',
-            padding: {
-                top: 10,
-                right: 10,
-                bottom: 10,
-                left: 10
-            },
-            offset: {
-                left: 30,
-                top: 0
-            },
-            border: {
-                width: 0,
-                color: '#000'
-            }
-        };
-
-        var options = (_options = {
-            animation: true,
-            segmentShowStroke: false,
-            segmentStrokeColor: "#fff",
-            segmentStrokeWidth: 0,
-            percentageInnerCutout: 80
-        }, _defineProperty(_options, "animation", true), _defineProperty(_options, "animationSteps", 100), _defineProperty(_options, "animationEasing", "easeOutQuart"), _defineProperty(_options, "animateRotate", true), _defineProperty(_options, "animateScale", false), _defineProperty(_options, "tooltipEvents", ["mousemove", "touchstart", "touchmove"]), _defineProperty(_options, "onAnimationComplete", null), _defineProperty(_options, "tooltipTitleFontStyle", "bold"), _defineProperty(_options, "scaleFontStyle", "bold"), _defineProperty(_options, "responsive", false), _defineProperty(_options, "tooltipTemplate", "<%if (label){%> <%=label%>: <%}%><%= value %>%"), _defineProperty(_options, "tooltipCornerRadius", 0), _defineProperty(_options, "tooltipFillColor", "rgba(66,188,123,0.9)"), _defineProperty(_options, "responsive", true), _defineProperty(_options, "tooltipXOffset", 0), _defineProperty(_options, "tooltipCaretSize", 10), _options);
-
-        //Get the context of the canvas element we want to select
-        var c = $('#mortCal');
-        var ct = c.get(0).getContext('2d');
-        var ctx = document.getElementById("mortCal").getContext("2d");
-        /*************************************************************************/
-        myNewChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ct).Doughnut(data, options);
-    });
-
-    $(function () {
-        //console.log('it works');
-        var P = document.mortcalc.balance.value;
-        var DP = document.mortcalc.downpayment.value;
-        $("#downpaypercent").val(Math.round(DP / P * 100) + "%");
-    });
-}
-
-$(function () {
-    console.log("ready!");
-    mortCal();
-});
-
-function updatePercent() {
-    var P = document.mortcalc.balance.value;
-    var DP = document.mortcalc.downpayment.value;
-    $("#downpaypercent").val(Math.round(DP / P * 100) + "%");
-}
-function updatePayment() {
-    if (isNaN(document.mortcalc.downpaypercent.value)) {
-        var R = document.mortcalc.downpaypercent.value.substring(0, document.mortcalc.downpaypercent.value.length - 1);
-    } else {
-        R = document.mortcalc.downpaypercent.value;
-    }
-    var P = document.mortcalc.balance.value;
-    $("#downpayment").val(Math.round(R / 100 * P));
-}
-
-function mortCal() {
-    $(function () {
-        //console.log('it works');
-        var P = document.mortcalc.balance.value,
-            DP = document.mortcalc.downpayment.value,
-            T = document.getElementById('includetaxes'),
-            IFPMI = document.getElementById('includepmi'),
-            PT = document.mortcalc.prop_taxes.value,
-            HI = document.mortcalc.home_insurance.value,
-            HD = document.mortcalc.hoa_dues.value;
-
-        $("#downpaypercent").val(Math.round(DP / P * 100) + "%");
-
-        price = document.mortcalc.balance.value - document.mortcalc.downpayment.value;
-        intRate = document.mortcalc.rate.value / 100 / 12;
-        months = document.mortcalc.term.value;
-        taxespaid = PT / 100 * P / 12;
-        insurancepaid = HI / 12;
-        hoadues = HD / 1;
-
-        if (DP / P >= .2) {
-            pmi = 0;
-        } else {
-            pmi = Math.floor(princ * 0.0005);
-        }
-
-        var pi = Math.floor(princ * intRate / (1 - Math.pow(1 + intRate, -months)));
-        var payment = pi;
-
-        if (T.checked) {
-            if (IFPMI.checked) {
-                var total = payment + taxespaid + insurancepaid + hoadues + pmi;
-                $("#payment_num").html(Math.round(total));
-                $("#pi").html("<span class=\"label\"><strong>P&I:</strong> $" + Math.round(payment) + "</span>");
-                $("#tax").html("<span class=\"label\"><strong>Taxes:</strong> $" + Math.round(taxespaid) + "</span>");
-                $("#ins").html("<span class=\"label\"><strong>Insurance:</strong> $" + Math.round(insurancepaid) + "</span>");
-                $("#hoa").html("<span class=\"label\"><strong>HOA:</strong> $" + Math.round(hoadues) + "</span>");
-                if (pmi > 0) {
-                    $("#pmi").html("<span class=\"label\"><strong>PMI:</strong> $" + Math.round(pmi) + "</span>");
-                } else {
-                    $("#pmi").html("<span class=\"label blank\">&nbsp;</span>");
-                }
-
-                var payment = payment / total * 100;
-                var taxespaid = taxespaid / total * 100;
-                var insurancepaid = insurancepaid / total * 100;
-                var hoadues = hoadues / total * 100;
-                var pmi = pmi / total * 100;
-            } else {
-                var pmi = 0;
-                var total = payment + taxespaid + insurancepaid + hoadues + pmi;
-                $("#payment_num").html(Math.round(total));
-                $("#pi").html("<span class=\"label\"><strong>P&I:</strong> $" + Math.round(payment) + "</span>");
-                $("#tax").html("<span class=\"label\"><strong>Taxes:</strong> $" + Math.round(taxespaid) + "</span>");
-                $("#ins").html("<span class=\"label\"><strong>Insurance:</strong> $" + Math.round(insurancepaid) + "</span>");
-                $("#hoa").html("<span class=\"label\"><strong>HOA:</strong> $" + Math.round(hoadues) + "</span>");
-                $("#pmi").html("<span class=\"label blank\">&nbsp;</span>");
-
-                var payment = payment / total * 100;
-                var taxespaid = taxespaid / total * 100;
-                var insurancepaid = insurancepaid / total * 100;
-                var hoadues = hoadues / total * 100;
-            }
-        } else {
-            if (IFPMI.checked) {
-                var insurancepaid = 0;
-                var taxespaid = 0;
-                var total = payment + taxespaid + insurancepaid + hoadues + pmi;
-                $("#payment_num").html(Math.round(total + pmi));
-                $("#pi").html("<span class=\"label\"><strong>P&I:</strong> $" + Math.round(payment) + "</span>");
-                $("#tax").html("<span class=\"label blank\">&nbsp;</span>");
-                $("#ins").html("<span class=\"label blank\">&nbsp;</span>");
-                $("#hoa").html("<span class=\"label\"><strong>HOA:</strong> $" + Math.round(hoadues) + "</span>");
-                if (pmi > 0) {
-                    $("#pmi").html("<span class=\"label\"><strong>PMI:</strong> $" + Math.round(pmi) + "</span>");
-                } else {
-                    $("#pmi").html("<span class=\"label blank\">&nbsp;</span>");
-                }
-
-                var payment = payment / total * 100;
-                var hoadues = hoadues / total * 100;
-                var pmi = pmi / total * 100;
-
-                //calc(payment,null,null,hoadues);
-            } else {
-                var taxespaid = 0;
-                var insurancepaid = 0;
-                var pmi = 0;
-                var total = payment + taxespaid + insurancepaid + hoadues + pmi;
-                $("#payment_num").html(Math.round(payment));
-                $("#pi").html("<span class=\"label blank\">&nbsp;</span>");
-                $("#tax").html("<span class=\"label blank\">&nbsp;</span>");
-                $("#ins").html("<span class=\"label blank\">&nbsp;</span>");
-                $("#hoa").html("<span class=\"label\"><strong>HOA:</strong> $" + Math.round(hoadues) + "</span>");
-                $("#pmi").html("<span class=\"label blank\">&nbsp;</span>");
-
-                var payment = payment / total * 100;
-                var hoadues = hoadues / total * 100;
-            }
-        }
-        calc(payment, taxespaid, insurancepaid, hoadues, pmi);
-
-        /*console.log("Payment: "+payment+"%");
-        console.log("Taxes: "+taxespaid+"%");
-        console.log("Insurance: "+insurancepaid+"%");
-        console.log("HOA: "+hoadues+"%");
-        console.log("PMI: "+pmi+"%");*/
-    });
-};
-
-window.submitable = false;
-$('#calcform').submit(function (event) {
-    event.preventDefault();
-});
-
-/***/ }),
-/* 129 */
 /***/ (function(module, exports) {
 
 /*!
@@ -31459,18 +31222,18 @@ var Popover = function ($) {
 
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * @namespace Chart
  */
-var Chart = __webpack_require__(149)();
+var Chart = __webpack_require__(148)();
 
 Chart.helpers = __webpack_require__(1);
 
 // @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
-__webpack_require__(148)(Chart);
+__webpack_require__(147)(Chart);
 
 Chart.defaults = __webpack_require__(2);
 Chart.Element = __webpack_require__(3);
@@ -31478,47 +31241,47 @@ Chart.elements = __webpack_require__(4);
 Chart.Interaction = __webpack_require__(7);
 Chart.platform = __webpack_require__(8);
 
-__webpack_require__(151)(Chart);
+__webpack_require__(150)(Chart);
+__webpack_require__(144)(Chart);
 __webpack_require__(145)(Chart);
 __webpack_require__(146)(Chart);
-__webpack_require__(147)(Chart);
-__webpack_require__(150)(Chart);
-__webpack_require__(153)(Chart);
+__webpack_require__(149)(Chart);
 __webpack_require__(152)(Chart);
-__webpack_require__(154)(Chart);
+__webpack_require__(151)(Chart);
+__webpack_require__(153)(Chart);
 
-__webpack_require__(169)(Chart);
-__webpack_require__(167)(Chart);
 __webpack_require__(168)(Chart);
+__webpack_require__(166)(Chart);
+__webpack_require__(167)(Chart);
+__webpack_require__(169)(Chart);
 __webpack_require__(170)(Chart);
 __webpack_require__(171)(Chart);
-__webpack_require__(172)(Chart);
 
 // Controllers must be loaded after elements
 // See Chart.core.datasetController.dataElementType
+__webpack_require__(137)(Chart);
 __webpack_require__(138)(Chart);
 __webpack_require__(139)(Chart);
 __webpack_require__(140)(Chart);
 __webpack_require__(141)(Chart);
 __webpack_require__(142)(Chart);
 __webpack_require__(143)(Chart);
-__webpack_require__(144)(Chart);
 
+__webpack_require__(130)(Chart);
 __webpack_require__(131)(Chart);
 __webpack_require__(132)(Chart);
 __webpack_require__(133)(Chart);
 __webpack_require__(134)(Chart);
 __webpack_require__(135)(Chart);
 __webpack_require__(136)(Chart);
-__webpack_require__(137)(Chart);
 
 // Loading built-it plugins
 var plugins = [];
 
 plugins.push(
+	__webpack_require__(163)(Chart),
 	__webpack_require__(164)(Chart),
-	__webpack_require__(165)(Chart),
-	__webpack_require__(166)(Chart)
+	__webpack_require__(165)(Chart)
 );
 
 Chart.plugins.register(plugins);
@@ -31543,7 +31306,7 @@ Chart.canvasHelpers = Chart.helpers.canvas;
 
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31561,7 +31324,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 132 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31578,7 +31341,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 133 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31596,7 +31359,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31614,7 +31377,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 135 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31632,7 +31395,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 136 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31650,7 +31413,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 137 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31665,7 +31428,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 138 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32093,7 +31856,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 139 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32280,7 +32043,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 140 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32586,7 +32349,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 141 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32926,7 +32689,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 142 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33155,7 +32918,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 143 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33330,7 +33093,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 144 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33379,7 +33142,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 145 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33558,7 +33321,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 146 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34469,7 +34232,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 147 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34806,7 +34569,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 148 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35416,7 +35179,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 149 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35472,7 +35235,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 150 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35901,7 +35664,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 151 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36303,7 +36066,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 152 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37241,7 +37004,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 153 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37293,7 +37056,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 154 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38248,7 +38011,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 155 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38362,7 +38125,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 156 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38460,7 +38223,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 157 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38573,7 +38336,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 158 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38797,7 +38560,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 159 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39018,7 +38781,7 @@ helpers.drawRoundedRectangle = function(ctx) {
 
 
 /***/ }),
-/* 160 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39275,7 +39038,7 @@ helpers.easingEffects = effects;
 
 
 /***/ }),
-/* 161 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39378,7 +39141,7 @@ module.exports = {
 
 
 /***/ }),
-/* 162 */
+/* 161 */
 /***/ (function(module, exports) {
 
 /**
@@ -39399,7 +39162,7 @@ module.exports = {
 
 
 /***/ }),
-/* 163 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39863,7 +39626,7 @@ helpers.removeEvent = removeEventListener;
 
 
 /***/ }),
-/* 164 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40191,7 +39954,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 165 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40765,7 +40528,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 166 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41015,7 +40778,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 167 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41155,7 +40918,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 168 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41354,7 +41117,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 169 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41493,7 +41256,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 170 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41744,7 +41507,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 171 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42281,7 +42044,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 172 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43044,11 +42807,11 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* MIT license */
-var colorNames = __webpack_require__(176);
+var colorNames = __webpack_require__(175);
 
 module.exports = {
    getRgba: getRgba,
@@ -43271,7 +43034,7 @@ for (var name in colorNames) {
 
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports) {
 
 /* MIT license */
@@ -43975,10 +43738,10 @@ for (var key in cssKeywords) {
 
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var conversions = __webpack_require__(174);
+var conversions = __webpack_require__(173);
 
 var convert = function() {
    return new Converter();
@@ -44072,7 +43835,7 @@ Converter.prototype.getValues = function(space) {
 module.exports = convert;
 
 /***/ }),
-/* 176 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44231,7 +43994,7 @@ module.exports = {
 
 
 /***/ }),
-/* 177 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -44480,10 +44243,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 177;
+webpackContext.id = 176;
 
 /***/ }),
-/* 178 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -50217,7 +49980,7 @@ S2.define('jquery.select2',[
 
 
 /***/ }),
-/* 179 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.4.0 */
@@ -52038,7 +51801,7 @@ return Tether;
 
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, exports) {
 
 var g;
@@ -52065,7 +51828,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -52093,7 +51856,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(126);

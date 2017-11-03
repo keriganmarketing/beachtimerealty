@@ -8,19 +8,20 @@ if (isset($_GET['mls'])) {
     $mlsNumber   = $_GET['mls'];
     $fullListing = new FullListing($mlsNumber);
     $listingInfo = $fullListing->create();
-    $isOurs = $fullListing->isOurs($listingInfo);
+    $isOurs      = $fullListing->isOurs($listingInfo);
     $user_id     = get_current_user_id();
     $title       = $listingInfo->street_number . ' ' . $listingInfo->street_name;
-    $buttonText  = $fullListing->isInFavorites($user_id, $listingInfo->mls_account) ? 'REMOVE FROM BUCKET' : 'SAVE TO BUCKET';
+    $buttonText  = $fullListing->isInFavorites($user_id,
+        $listingInfo->mls_account) ? 'REMOVE FROM BUCKET' : 'SAVE TO BUCKET';
     if ($isOurs) {
         $listingMember = ($isOurs == 'listing_member_shortid' ? $listingInfo->listing_member_shortid : $listingInfo->colisting_member_shortid);
-        $agents = new Agents;
-        $mlsData = $agents->getAgentById($listingMember);
-        $agentData = $agents->assembleAgentData($mlsData->data[0]->first_name. ' ' .$mlsData->data[0]->last_name);
+        $agents        = new Agents;
+        $mlsData       = $agents->getAgentById($listingMember);
+        $agentData     = $agents->assembleAgentData($mlsData->data[0]->first_name . ' ' . $mlsData->data[0]->last_name);
     }
     if (isset($_POST['user_id'])) {
         echo "<meta http-equiv='refresh' content='0'>";
-        $favorite  = new FavoriteProperty();
+        $favorite = new FavoriteProperty();
         $favorite->handleFavorite($_POST['user_id'], $_POST['mls_number']);
     }
 }
@@ -40,42 +41,42 @@ if (isset($_GET['mls'])) {
                 <div class="row">
                     <div class="col">
                         <?php if (in_array($listingInfo->class, ['G', 'A'], false)) {
-    ?>
+                            ?>
                             <div class="listing-residential">
                                 <?php include(locate_template('template-parts/partials/full-listing-residential.php')); ?>
                             </div>
-                        <?php
-} ?>
+                            <?php
+                        } ?>
                         <?php if (in_array($listingInfo->class, ['C'], false)) {
-        ?>
+                            ?>
                             <div class="listing-land">
                                 <?php include(locate_template('template-parts/partials/full-listing-land.php')); ?>
                             </div>
-                        <?php
-    } ?>
+                            <?php
+                        } ?>
                         <?php if (in_array($listingInfo->class, ['E', 'J', 'F'], false)) {
-        ?>
+                            ?>
                             <div class="listing-commercial">
                                 <?php include(locate_template('template-parts/partials/full-listing-commercial.php')); ?>
                             </div>
-                        <?php
-    } ?>
+                            <?php
+                        } ?>
                     </div>
                     <?php if ($isOurs && isset($agentData['name'])) {
-        ?>
+                        ?>
                         <div class="col-md-5">
                             <div class="listing-agent-box">
                                 <?php include(locate_template('template-parts/partials/mini-agent.php')); ?>
                             </div>
                         </div>
-                    <?php
-    } ?>
+                        <?php
+                    } ?>
                 </div>
                 <hr>
                 <?php include(locate_template('template-parts/partials/full-listing-features.php')); ?>
-                <hr>
-                <?php include(locate_template('template-parts/partials/mortgage-calculator.php')); ?>
             </div>
+            <hr>
+            <?php include(locate_template('template-parts/partials/mortgage-calculator.php')); ?>
         </div>
         <hr>
         <div class="row location-info card-deck">
