@@ -341,7 +341,14 @@ html {
         }
       }
     }
+    .omni-field-container {
+      .select2-selection__rendered {
+        background-image: none !important;
+      }
+    }
   }
+
+
 
   .search-control {
     //select2 adds to DOM dynamically

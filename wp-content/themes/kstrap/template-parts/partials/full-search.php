@@ -9,25 +9,28 @@
             <div class="row">
                 <input type="hidden" name="qs" value="true" >
                 <div class="col-md-6">
-                    <div class="input-container">
+                    <div class="input-container omni-field-container">
                         <select class="form-control form-control-lg select2-omni-field" name="omniField" >
                             <option value="">City, area, subdivision or zip</option>
+                            <?php echo (isset($_GET['omniField']) && $_GET['omniField'] != '' ? '
+                            <option value="'.$_GET['omniField'].'" selected >'.$_GET['omniField'].'</option>
+                            ' : ''); ?>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="input-container">
                         <select class="form-control form-control-lg select2-property-type" name="propertyType" >
-                            <option value="">Property type</option>
-                            <option value="Single Family Home">Single Family Home</option>
-                            <option value="Condo / Townhome">Condo / Townhome</option>
-                            <option value="Commercial">Commercial</option>
-                            <option value="Lots / Land">Lots / Land</option>
-                            <option value="Multi-Family Home">Multi-Family Home</option>
-                            <option value="Rental">Rental</option>
-                            <option value="Manufactured">Manufactured</option>
-                            <option value="Farms / Agricultural">Farms / Agricultural</option>
-                            <option value="Other">Other</option>
+                            <option value="" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == '' ? 'selected' : ''); ?> >Property type</option>
+                            <option value="Single Family Home" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Single Family Home' ? 'selected' : ''); ?> >Single Family Home</option>
+                            <option value="Condo / Townhome" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Condo / Townhome' ? 'selected' : ''); ?> >Condo / Townhome</option>
+                            <option value="Commercial" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Commercial' ? 'selected' : ''); ?> >Commercial</option>
+                            <option value="Lots / Land" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Lots / Land' ? 'selected' : ''); ?> >Lots / Land</option>
+                            <option value="Multi-Family Home" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Multi-Family Home' ? 'selected' : ''); ?> >Multi-Family Home</option>
+                            <option value="Rental" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Rental' ? 'selected' : ''); ?> >Rental</option>
+                            <option value="Manufactured" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Manufactured' ? 'selected' : ''); ?> Manufactured</option>
+                            <option value="Farms / Agricultural" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Farms / Agricultural' ? 'selected' : ''); ?> >Farms / Agricultural</option>
+                            <option value="Other" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Other' ? 'selected' : ''); ?> >Other</option>
                         </select>
                     </div>
                 </div>
@@ -54,10 +57,10 @@
                             <select class="form-control form-control-lg select2-price-min" name="minPrice" >
                                 <option value="">Min price</option>
                                 <?php for($i = 0; $i <= 1000000; $i+=100000){
-                                    echo '<option value="' . $i . '">$' . number_format( $i, 0, ".", ",") . '</option>';
+                                    echo '<option value="' . $i . '" '. (isset($_GET['minPrice']) && $_GET['minPrice'] == $i ? 'selected' : '') .' >$' . number_format( $i, 0, ".", ",") . '</option>';
                                 } ?>
                                 <?php for($i = 2000000; $i <= 5000000; $i+=1000000){
-                                    echo '<option value="' . $i . '">$' . number_format( $i, 0, ".", ",") . '</option>';
+                                    echo '<option value="' . $i . '" '. (isset($_GET['minPrice']) && $_GET['minPrice'] == $i ? 'selected' : '') .' >$' . number_format( $i, 0, ".", ",") . '</option>';
                                 } ?>
                             </select>
                         </div>
@@ -70,10 +73,10 @@
                             <select class="form-control form-control-lg select2-price-max" name="maxPrice">
                                 <option value="">Max price</option>
                                 <?php for($i = 100000; $i <= 1000000; $i+=100000){
-                                    echo '<option value="' . $i . '">$' . number_format( $i, 0, ".", ",") . '</option>';
+                                    echo '<option value="' . $i . '" '. (isset($_GET['maxPrice']) && $_GET['maxPrice'] == $i ? 'selected' : '') .' >$' . number_format( $i, 0, ".", ",") . '</option>';
                                 } ?>
                                 <?php for($i = 2000000; $i <= 5000000; $i+=1000000){
-                                    echo '<option value="' . $i . '">$' . number_format( $i, 0, ".", ",") . '</option>';
+                                    echo '<option value="' . $i . '" '. (isset($_GET['maxPrice']) && $_GET['maxPrice'] == $i ? 'selected' : '') .' >$' . number_format( $i, 0, ".", ",") . '</option>';
                                 } ?>
                             </select>
                         </div>
@@ -88,7 +91,7 @@
                                 <select name="sq_ft" id="sq_ft" class="form-control select2-generic" >
                                     <option value="" >Any</option>
 	                                <?php for($i = 800; $i < 10000; $i+=200){
-		                                echo '<option value="' . $i . '">' . number_format( $i, 0, ".", ",") . '</option>';
+		                                echo '<option value="' . $i . '" '. (isset($_GET['sq_ft']) && $_GET['sq_ft'] == $i ? 'selected' : '') .' >' . number_format( $i, 0, ".", ",") . '</option>';
 	                                } ?>
                                 </select>
                             </div>
@@ -113,7 +116,7 @@
                                     );
 
                                     foreach($acreageArray as $k => $v){
-		                                echo '<option value="' . $k . '">' . $v . '</option>';
+		                                echo '<option value="' . $k . '" '. (isset($_GET['acreage']) && $_GET['acreage'] == $k ? 'selected' : '') .' >' . $v . '</option>';
 	                                } ?>
                                 </select>
                             </div>
@@ -134,7 +137,7 @@
                             </label>
                             <?php for($i = 1; $i < 6; $i+=1){
                                 echo '<label class="custom-control custom-radio">
-                                <input type="radio" name="bedrooms" value="'.$i.'" class="custom-control-input" >
+                                <input type="radio" name="bedrooms" value="'.$i.'" class="custom-control-input" '. (isset($_GET['bedrooms']) && $_GET['bedrooms'] == $i ? 'checked' : '') .' >
                                 <span class="custom-control-indicator"></span>
                               <span class="custom-control-description">'.$i.' +</span>
                               </label>';
@@ -153,7 +156,7 @@
                             </label>
                             <?php for($i = 1; $i < 6; $i+=1){
                                 echo '<label class="custom-control custom-radio">
-                                <input type="radio" name="bathrooms" value="'.$i.'" class="custom-control-input" >
+                                <input type="radio" name="bathrooms" value="'.$i.'" class="custom-control-input" '. (isset($_GET['bathrooms']) && $_GET['bathrooms'] == $i ? 'checked' : '') .' >
                                 <span class="custom-control-indicator"></span>
                               <span class="custom-control-description">'.$i.' +</span>
                               </label>';
