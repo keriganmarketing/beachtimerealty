@@ -18,7 +18,7 @@ $listings = $featuredLiastings->getFeaturedListings();
     <div class="container-fluid">
         <h2 class="section-title text-center line-left line-right">Featured&nbsp;Listings</h2>
 
-        <div class="row">
+        <div class="row justify-content-center">
 		<?php
         foreach($listings as $mlsNumber){
             $fl     = new FullListing($mlsNumber);
