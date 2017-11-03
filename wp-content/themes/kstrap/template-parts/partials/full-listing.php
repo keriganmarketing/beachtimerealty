@@ -8,6 +8,7 @@ if (isset($_GET['mls'])) {
     $mlsNumber   = $_GET['mls'];
     $fullListing = new FullListing($mlsNumber);
     $listingInfo = $fullListing->create();
+    $fullListing->setListingSeo($listingInfo);
     $isOurs      = $fullListing->isOurs($listingInfo);
     $user_id     = get_current_user_id();
     $title       = $listingInfo->street_number . ' ' . $listingInfo->street_name;

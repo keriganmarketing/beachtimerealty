@@ -33,9 +33,9 @@
                 </div>
                 <div class="col text-right">
                     <div class="input-container">
-                    <div class="button-group">
-                        <button type="button" class="btn btn-default btn-lg dropdown-toggle btn-rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggler('advanced-menu');">Advanced</button>
-                        <button type="submit" class="btn btn-primary btn-lg btn-rounded" >Search</button>
+                    <div class="button-group mt-2 mb-2 text-center text-lg-right">
+                        <button type="button" class="btn btn-secondary dropdown-toggle btn-rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggler('advanced-menu');">Advanced</button>
+                        <button type="submit" class="btn btn-primary btn-rounded" >Search</button>
                     </div>
                     </div>
                 </div>
