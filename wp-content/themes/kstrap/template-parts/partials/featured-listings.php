@@ -32,7 +32,7 @@ $listings = $featuredLiastings->getFeaturedListings();
         </div>
         <div class="section-bottom">
             <div class="section-button text-center">
-                <a class="btn btn-primary btn-outlined btn-reversed" href="/properties/" >Search All Property Types</a>
+                <a class="btn btn-primary btn-outlined btn-reversed" href="/properties/" >Search All Listings</a>
             </div>
         </div>
     </div>

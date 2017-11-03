@@ -601,6 +601,19 @@ html {
       }
     }
 
+    .facebook-feed {
+      .facebook-feed-item {
+        color: #FFF;
+
+        p.time-posted, a {
+          font-style: italic;
+          font-size: .9em;
+          margin-bottom: .25rem;
+          color: rgba(255,255,255,.5);
+        }
+
+      }
+    }
 
   }
 
@@ -891,6 +904,10 @@ html {
     font-size: 1.3em;
     color: #196cad;
     line-height: 1.8em;
+
+    a {
+      color: #D85035;
+    }
   }
 
   .testimonial-author {
