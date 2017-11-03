@@ -323,8 +323,8 @@ class Leads
         $eol           = "\r\n";
         $emailTemplate = $this->createEmailTemplate($emailData);
         $headers       = 'From: ' . 'Website <noreply@' . $this->domain . $eol;
-        $headers       .= (isset($this->adminCc) ? 'Cc: ' . $this->adminCc . $eol : '');
-        $headers       .= (isset($this->adminBcc) ? 'Bcc: ' . $this->adminBcc . $eol : '');
+        $headers       .= (isset($this->ccEmail) ? 'Cc: ' . $this->ccEmail . $eol : '');
+        $headers       .= (isset($this->bccEmail) ? 'Bcc: ' . $this->bccEmail . $eol : '');
         $headers       .= 'MIME-Version: 1.0' . $eol;
         $headers       .= 'Content-type: text/html; charset=utf-8' . $eol;
 
