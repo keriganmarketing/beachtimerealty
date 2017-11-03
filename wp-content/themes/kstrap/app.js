@@ -27587,6 +27587,25 @@ $(document).ready(function (event) {
         },
         minimumInputLength: 3,
         dropdownParent: $('.search-control')
+    }).on('select2-open', function () {
+
+        // however much room you determine you need to prevent jumping
+        var requireHeight = 450;
+        var viewportBottom = $(window).scrollTop() + $(window).height();
+
+        // figure out if we need to make changes
+        if (viewportBottom < requireHeight) {
+            // determine how much padding we should add (via marginBottom)
+            var marginBottom = requireHeight - viewportBottom;
+
+            // adding padding so we can scroll down
+            $(".aLwrElmntOrCntntWrppr").css("marginBottom", marginBottom + "px");
+
+            // animate to just above the select2, now with plenty of room below
+            $('html, body').animate({
+                scrollTop: $("#mySelect2").offset().top - 10
+            }, 1000);
+        }
     });
 
     $('.select2-property-type').select2({

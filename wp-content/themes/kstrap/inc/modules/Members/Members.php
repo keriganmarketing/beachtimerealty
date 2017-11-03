@@ -357,9 +357,9 @@ class Members {
 			$rows[] = array(
 				'type'         => 'text',
 				'row_before'   => '<div class="col-md-6">',
-				'label'        => '<label for="selected_agent" class="sr-only">Choose a Username *</label>',
+				'label'        => '<label for="selected_agent" >Select an agent</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<select name="selected_agent" id="selected_agent" class="select form-control custom-select" required placeholder="My Agent" >' . $agentOptions . '</select>',
+				'field'        => '<select name="selected_agent" id="selected_agent" class="select form-control custom-select" placeholder="My Agent" >' . $agentOptions . '</select>',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);
