@@ -31,6 +31,7 @@ if(isset($_POST['user_id']) && isset($_POST['mls_account'])){
                 <?php echo ($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
             </div>
         </div>
+        <?php if(is_user_logged_in()){ ?>
             <div class="container-fluid">
                 <div class="entry-content">
                     <hr>
@@ -58,6 +59,17 @@ if(isset($_POST['user_id']) && isset($_POST['mls_account'])){
                 </div>
                 <p>&nbsp;</p>
             </div>
+        <?php }else{ ?>
+            <section class="content section">
+                <div class="container">
+                    <div class="entry-content">
+                        <script>
+                            window.location = '/my-account/user-login/'
+                        </script>
+                    </div>
+                </div>
+            </section>
+        <?php } ?>
 
     </article><!-- #post-## -->
 </div>

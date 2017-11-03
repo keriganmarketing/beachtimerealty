@@ -49,6 +49,10 @@ html {
         font-family: $font-family-serif;
       }
 
+      a.btn {
+        font-size: 17px !important;
+      }
+
       a.page-link[disabled] {
         color: #ccc;
       }
@@ -184,6 +188,11 @@ html {
   }
 
   .navbar {
+    a.nav-link {
+      color: #2a7491;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
     .dropdown-menu {
       margin-top: 0;
     }
@@ -341,13 +350,34 @@ html {
         }
       }
     }
+    .omni-field-container {
+      .select2-selection__rendered {
+        background-image: none !important;
+      }
+    }
   }
+
+
 
   .search-control {
     //select2 adds to DOM dynamically
     .select2-dropdown {
       border: 1px solid #1a4e94;
       border-radius: 0;
+    }
+
+    .select2-results__option--highlighted {
+      background-color: #d85035;
+      color:#FFF;
+      border-radius: 4px;
+    }
+
+    .select2-dropdown {
+      .select2-results {
+        max-height: 400px;
+        overflow: hidden;
+        overflow-y: scroll;
+      }
     }
 
     .select2-dropdown.select2-dropdown--below {
@@ -428,6 +458,10 @@ html {
         float: left;
         width: 100%;
 
+        @media screen and (min-width: 1200px) {
+          padding: 36% 0;
+        }
+
         h2 {
           font-size: .9em;
           color: #FFF;
@@ -476,10 +510,13 @@ html {
         transition: background-color .5s;
         background-color: rgba(0,0,0,.3);
         position: relative;
-        z-index: 1;
-        height: 100vh;
-        width: 100vh;
+        z-index: 0;
         display: block;
+        height: 0;
+        width: 100%;
+        margin-left: 0;
+        padding-bottom: 102%;
+        border-radius: 50%;
       }
 
       .button-link {
@@ -573,6 +610,19 @@ html {
       }
     }
 
+    .facebook-feed {
+      .facebook-feed-item {
+        color: #FFF;
+
+        p.time-posted, a {
+          font-style: italic;
+          font-size: .9em;
+          margin-bottom: .25rem;
+          color: rgba(255,255,255,.5);
+        }
+
+      }
+    }
 
   }
 
@@ -863,6 +913,10 @@ html {
     font-size: 1.3em;
     color: #196cad;
     line-height: 1.8em;
+
+    a {
+      color: #D85035;
+    }
   }
 
   .testimonial-author {
@@ -943,10 +997,11 @@ html {
 
   a.listing-link {
     position: absolute;
-    height: 100%;
     left: 1rem;
     right: 1rem;
     z-index: 100;
+    top: 0;
+    bottom: 1rem;
   }
 
   .tile-section {

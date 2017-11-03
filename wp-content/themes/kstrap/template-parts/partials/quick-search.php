@@ -13,7 +13,7 @@
             <input type="hidden" name="qs" value="true">
             <div class="row">
                 <div class="col-md-7">
-                    <div class="form-group">
+                    <div class="form-group omni-field-container">
                         <select class="form-control form-control-lg select2-omni-field" name="omniField" >
                             <option value="">City, area, subdivision or zip</option>
                         </select>

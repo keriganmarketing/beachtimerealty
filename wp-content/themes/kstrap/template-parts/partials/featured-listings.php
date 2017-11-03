@@ -18,7 +18,7 @@ $listings = $featuredLiastings->getFeaturedListings();
     <div class="container-fluid">
         <h2 class="section-title text-center line-left line-right">Featured&nbsp;Listings</h2>
 
-        <div class="row">
+        <div class="row justify-content-center">
 		<?php
         foreach($listings as $mlsNumber){
             $fl     = new FullListing($mlsNumber);
@@ -32,7 +32,7 @@ $listings = $featuredLiastings->getFeaturedListings();
         </div>
         <div class="section-bottom">
             <div class="section-button text-center">
-                <a class="btn btn-primary btn-outlined btn-reversed" href="/properties/" >Search All Property Types</a>
+                <a class="btn btn-primary btn-outlined btn-reversed" href="/properties/" >Search All Listings</a>
             </div>
         </div>
     </div>

@@ -16,6 +16,10 @@ class Members {
 
 	public function __construct() {
 
+        if ( ! current_user_can( 'manage_options' ) ) {
+            show_admin_bar( false );
+        }
+
 		//Set vars
 		$this->loginPage          = 30;
 		$this->registerPage       = 84;
@@ -52,7 +56,7 @@ class Members {
 			$args = array(
 
 				// wrappers
-				'heading_before'    => '<legend class="col-12">',
+				'heading_before'    => '<legend style="display:none !important;">',
 				'heading_after'     => '</legend>',
 				'fieldset_before'   => '<div class="row" style="width:100%">',
 				'fieldset_after'    => '</div>',
@@ -202,18 +206,30 @@ class Members {
 		}, 10, 2 );
 
 		add_filter( 'wpmem_reg_link_str', function ( $str, $link ) {
-			return '<p>New? <a href="' . $link . '">Set up your Account.</a></p>';
+			return '<h3>Don\'t have an account yet?</h3> <p><a href="' . $link . '">Set up one and start saving properties.</a></p>';
 		}, 10, 2 );
 
 	}
 
 	private function setRegisterForm() {
+
+        add_action( 'wpmem_pre_register_data', function ( $fields ) {
+
+            global $wpmem_themsg; //error message
+
+            //echo '<pre>',print_r($fields),'</pre>';
+
+            return;
+        } );
+
+
+
 		add_filter( 'wpmem_register_form_args', function ( $args, $toggle ) {
 
 			$args = array(
 
 				// wrappers
-				'heading_before'   => '<legend style="display:none;">',
+				'heading_before'   => '<legend style="display:none !important;">',
 				'heading_after'    => '</legend>',
 				'fieldset_before'  => '<h3>Contact Information</h3><div class="row" style="width:100%">',
 				'fieldset_after'   => '</div>',
@@ -259,6 +275,7 @@ class Members {
 	}
 
 	private function changeRegisterFormRows() {
+
 		add_filter( 'wpmem_register_form_rows', function ( $rows, $toggle ) {
 
 			/*
@@ -285,7 +302,8 @@ class Members {
 
 			$agents       = new Agents();
 			$agentArray   = $agents->getAgentNames();
-			$agentOptions = '<option value="" selected >First Available</option>';
+            $agentOptions = '<option value="" selected >Select an agent</option>';
+			$agentOptions .= '<option value="" >First available</option>';
 
 			$selectedAgent = ( isset( $currentUser['selected_agent'][0] ) ? $currentUser['selected_agent'][0] : null );
 			foreach ( $agentArray as $agent ) {
@@ -357,9 +375,9 @@ class Members {
 			$rows[] = array(
 				'type'         => 'text',
 				'row_before'   => '<div class="col-md-6">',
-				'label'        => '<label for="selected_agent" class="sr-only">Choose a Username *</label>',
+				'label'        => '<label for="selected_agent" class="sr-only" >Select an agent</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<select name="selected_agent" id="selected_agent" class="select form-control custom-select" required placeholder="My Agent" >' . $agentOptions . '</select>',
+				'field'        => '<select name="selected_agent" id="selected_agent" class="select form-control custom-select" placeholder="Select an agent" >' . $agentOptions . '</select>',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);

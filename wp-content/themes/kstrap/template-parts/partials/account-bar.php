@@ -14,7 +14,7 @@ $numberOfFavorites = FavoriteProperty::getNumberOfFavorites(is_user_logged_in() 
     <?php if (is_user_logged_in()) {
     ?>
         <div class="user-nav">
-            <p class="nav-item"><span class="num-saved-props"><?= $numberOfFavorites ?> </span><span class="saved-props-label">saved properties</span></p>
+            <a class="nav-item" href="/my-account/" style="text-decoration: none;"><span class="num-saved-props"><?= $numberOfFavorites ?> </span><span class="saved-props-label">saved properties</span></a>
             <a class="nav-item" href="/my-account/">My Account</a>
             <a class="nav-item" href="<?php echo wp_logout_url('/'); ?>">Log Out</a>
         </div>

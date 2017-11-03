@@ -6,7 +6,32 @@ global.Tether = tether;
 
 require('bootstrap');
 require('select2');
+
 $.fn.select2.defaults.set("theme", "bootstrap");
+$.fn.select2.amd.require([
+    'select2/selection/multiple',
+    'select2/selection/search',
+    'select2/dropdown',
+    'select2/dropdown/attachContainer',
+    'select2/dropdown/closeOnSelect',
+    'select2/utils'
+], function (MultipleSelection, Search, Dropdown, AttachContainer, CloseOnSelect, Utils) {
+    var SelectionAdapter = Utils.Decorate(
+        MultipleSelection,
+        Search
+    );
+
+    var DropdownAdapter = Utils.Decorate(
+        Utils.Decorate(
+            Dropdown,
+            CloseOnSelect
+        ),
+        AttachContainer
+    );
+
+
+
+});
 
 import Chart from 'chart.js';
 
@@ -47,6 +72,8 @@ $(document).ready(function (event) {
 
     $('.select2-omni-field').select2({
         placeholder: 'City, area, subdivision or zip',
+        selectOnClose: true,
+        tags: true,
         ajax: {
             url: 'https://mothership.kerigan.com/api/v1/omnibar',
             dataType: 'json',
