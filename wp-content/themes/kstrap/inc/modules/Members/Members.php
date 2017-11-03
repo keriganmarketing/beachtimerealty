@@ -259,6 +259,7 @@ class Members {
 	}
 
 	private function changeRegisterFormRows() {
+
 		add_filter( 'wpmem_register_form_rows', function ( $rows, $toggle ) {
 
 			/*
@@ -285,7 +286,8 @@ class Members {
 
 			$agents       = new Agents();
 			$agentArray   = $agents->getAgentNames();
-			$agentOptions = '<option value="" selected >First Available</option>';
+            $agentOptions = '<option value="" selected >Select an agent</option>';
+			$agentOptions .= '<option value="" >First available</option>';
 
 			$selectedAgent = ( isset( $currentUser['selected_agent'][0] ) ? $currentUser['selected_agent'][0] : null );
 			foreach ( $agentArray as $agent ) {
@@ -357,9 +359,9 @@ class Members {
 			$rows[] = array(
 				'type'         => 'text',
 				'row_before'   => '<div class="col-md-6">',
-				'label'        => '<label for="selected_agent" >Select an agent</label>',
+				'label'        => '<label for="selected_agent" class="sr-only" >Select an agent</label>',
 				'field_before' => '<div class="input-group mb-2">',
-				'field'        => '<select name="selected_agent" id="selected_agent" class="select form-control custom-select" placeholder="My Agent" >' . $agentOptions . '</select>',
+				'field'        => '<select name="selected_agent" id="selected_agent" class="select form-control custom-select" placeholder="Select an agent" >' . $agentOptions . '</select>',
 				'field_after'  => '</div>',
 				'row_after'    => '</div>'
 			);
