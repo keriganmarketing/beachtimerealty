@@ -52,7 +52,7 @@ class Members {
 			$args = array(
 
 				// wrappers
-				'heading_before'    => '<legend class="col-12">',
+				'heading_before'    => '<legend style="display:none !important;">',
 				'heading_after'     => '</legend>',
 				'fieldset_before'   => '<div class="row" style="width:100%">',
 				'fieldset_after'    => '</div>',
@@ -202,7 +202,7 @@ class Members {
 		}, 10, 2 );
 
 		add_filter( 'wpmem_reg_link_str', function ( $str, $link ) {
-			return '<p>New? <a href="' . $link . '">Set up your Account.</a></p>';
+			return '<h3>Don\'t have an account yet?</h3> <p><a href="' . $link . '">Set up one and start saving properties.</a></p>';
 		}, 10, 2 );
 
 	}
@@ -213,7 +213,7 @@ class Members {
 			$args = array(
 
 				// wrappers
-				'heading_before'   => '<legend style="display:none;">',
+				'heading_before'   => '<legend style="display:none !important;">',
 				'heading_after'    => '</legend>',
 				'fieldset_before'  => '<h3>Contact Information</h3><div class="row" style="width:100%">',
 				'fieldset_after'   => '</div>',
