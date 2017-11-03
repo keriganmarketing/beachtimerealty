@@ -47,6 +47,7 @@ $(document).ready(function (event) {
 
     $('.select2-omni-field').select2({
         placeholder: 'City, area, subdivision or zip',
+        selectOnClose: true,
         ajax: {
             url: 'https://mothership.kerigan.com/api/v1/omnibar',
             dataType: 'json',

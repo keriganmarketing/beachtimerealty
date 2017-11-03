@@ -350,6 +350,12 @@ html {
       border-radius: 0;
     }
 
+    .select2-results__option--highlighted {
+      background-color: #d85035;
+      color:#FFF;
+      border-radius: 4px;
+    }
+
     .select2-dropdown.select2-dropdown--below {
       margin-top: -55px;
 
@@ -943,10 +949,11 @@ html {
 
   a.listing-link {
     position: absolute;
-    height: 100%;
     left: 1rem;
     right: 1rem;
     z-index: 100;
+    top: 0;
+    bottom: 1rem;
   }
 
   .tile-section {
