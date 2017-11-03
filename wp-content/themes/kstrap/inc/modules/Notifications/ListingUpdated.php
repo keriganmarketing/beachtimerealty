@@ -64,7 +64,7 @@ class ListingUpdated
             $subject = 'A listing you saved from Beachtime Realty has been recently updated';
             $message = 'We\'re notifying you of a change to Listing #'. $mlsNumber .'.';
 
-            $sent = wp_mail($to, $subject, $message);
+            mail($to, $subject, $message);
         }
     }
 }
