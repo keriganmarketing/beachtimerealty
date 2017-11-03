@@ -27568,6 +27568,7 @@ $(document).ready(function (event) {
     $('.select2-omni-field').select2({
         placeholder: 'City, area, subdivision or zip',
         selectOnClose: true,
+        tags: true,
         ajax: {
             url: 'https://mothership.kerigan.com/api/v1/omnibar',
             dataType: 'json',
@@ -27585,7 +27586,13 @@ $(document).ready(function (event) {
             return markup;
         },
         minimumInputLength: 3,
-        dropdownParent: $('.search-control')
+        dropdownParent: $('.search-control'),
+        createTag: function createTag(params) {
+            return {
+                id: params.term,
+                text: 'search for ' + params.term + ' anyway?'
+            };
+        }
     });
 
     $('.select2-property-type').select2({
