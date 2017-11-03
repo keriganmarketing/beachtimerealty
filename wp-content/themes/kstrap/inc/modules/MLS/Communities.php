@@ -18,7 +18,7 @@ class Communities {
 	public function createPostType() {
 
 		$communities = new CustomPostType(
-			'Communities',
+			'Community',
 			array(
 				'supports'           => array('title', 'editor', 'thumbnail', 'revisions'),
 				'menu_icon'          => 'dashicons-location',
@@ -26,13 +26,14 @@ class Communities {
 				'menu_position'      => null,
 				'public'             => true,
 				'publicly_queryable' => true,
-                'capability_type'    => array('communities','communitiess'),
+                //'capability_type'    => array('community','communities'),
 			)
 		);
 
 		$communities->addMetaBox(
 			'Community Info',
 			array(
+			    'Area Image'    => 'image',
 				'Database Name' => 'text',
 				'Latitude'      => 'text',
 				'Longitude'     => 'text'
@@ -51,7 +52,7 @@ class Communities {
 			'offset'         => 0,
 			'order'          => 'ASC',
 			'orderby'        => 'menu_order',
-			'post_type'      => 'communities',
+			'post_type'      => 'community',
 			'post_status'    => 'publish',
 		));
 
@@ -63,8 +64,10 @@ class Communities {
 				'id'          => $community->ID,
 				'title'       => $community->post_title,
 				'name'        => get_post_meta( $community->ID, 'community_info_database_name', true ),
+                'photo'       => get_post_meta( $community->ID, 'community_info_area_image', true ),
 				'latitude'    => get_post_meta( $community->ID, 'community_info_latitude', true ),
-				'longitude'   => get_post_meta( $community->ID, 'community_info_longitude', true )
+				'longitude'   => get_post_meta( $community->ID, 'community_info_longitude', true ),
+                'link'        => get_permalink($community->ID)
 			);
 
 		}
