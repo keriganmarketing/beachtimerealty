@@ -6,6 +6,7 @@ use Includes\Modules\CPT\VirtualPage;
 use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Members\Members;
+use Includes\Modules\MLS\Communities;
 use Includes\Modules\Leads\RequestInfo;
 use Includes\Modules\MLS\AdminSettings;
 use Includes\Modules\Leads\HomeValuation;
