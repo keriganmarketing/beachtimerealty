@@ -2,6 +2,8 @@
 
 namespace Includes\Modules\Leads;
 
+use Includes\Modules\Agents\Agents;
+
 class RequestInfo extends Leads
 {
     public function __construct ()
@@ -17,5 +19,17 @@ class RequestInfo extends Leads
             ]
         );
     }
+
+    public function handleLead ($dataSubmitted = [])
+    {
+        $fullName                   = (isset($dataSubmitted['full_name']) ? $dataSubmitted['full_name'] : null);
+        $dataSubmitted['full_name'] = (isset($dataSubmitted['first_name']) && isset($dataSubmitted['last_name']) ? $dataSubmitted['first_name'] . ' ' . $dataSubmitted['last_name'] : $fullName);
+
+        $agent = new Agents();
+        $agentInfo = $agent->assembleAgentData($dataSubmitted['selected_agent']);
+        parent::set($this->adminEmail, ($agentInfo['email'] != '' ? $agentInfo['email'] : $this->adminEmail));
+
+    }
+
 
 }
