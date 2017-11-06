@@ -202,7 +202,7 @@ class Leads
                 'bcc'       => $this->bccEmail,
                 'replyto'   => $fullName . '<' . $emailAddress . '>',
                 'headline'  => 'You have a new ' . strtolower($this->postType),
-                'introcopy' => 'A ' . strtolower($this->postType) . 'was received from the website. Details are below:',
+                'introcopy' => 'A ' . strtolower($this->postType) . ' was received from the website. Details are below:',
                 'leadData'  => $tableData
             ]
         );
@@ -328,6 +328,6 @@ class Leads
         $headers       .= 'MIME-Version: 1.0' . $eol;
         $headers       .= 'Content-type: text/html; charset=utf-8' . $eol;
 
-        wp_mail($this->adminEmail, $emailData['subject'], $emailTemplate, $headers);
+        wp_mail($emailData['to'], $emailData['subject'], $emailTemplate, $headers);
     }
 }
