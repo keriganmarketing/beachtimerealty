@@ -309,8 +309,8 @@ class Leads
         $emailTemplate = str_replace('{introcopy}', $eol . $emailData['introcopy'] . $eol, $emailTemplate);
         $emailTemplate = str_replace('{data}', $eol . $emailData['leadData'] . $eol, $emailTemplate);
         $emailTemplate = str_replace('{datetime}', date('M j, Y') . ' @ ' . date('g:i a'), $emailTemplate);
-        $emailTemplate = str_replace('{website}', 'www.fbcpsj.org', $emailTemplate);
-        $emailTemplate = str_replace('{url}', 'https://fbcpsj.org', $emailTemplate);
+        $emailTemplate = str_replace('{website}', 'www.' . $this->domain, $emailTemplate);
+        $emailTemplate = str_replace('{url}', 'https://' . $this->domain, $emailTemplate);
         $emailTemplate = str_replace('{copyright}', date('Y') . ' ' . get_bloginfo(), $emailTemplate);
         return $emailTemplate;
     }
