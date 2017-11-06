@@ -7,11 +7,12 @@ use Includes\Modules\CPT\CustomPostType;
 class Leads
 {
     protected $postType;
-    protected $adminEmail;
-    protected $domain;
-    protected $ccEmail;
-    protected $bccEmail;
+    public    $adminEmail;
+    public    $domain;
+    public    $ccEmail;
+    public    $bccEmail;
     public    $additionalFields;
+    public    $siteName;
 
     /**
      * Leads constructor.
@@ -19,13 +20,13 @@ class Leads
      */
     public function __construct ()
     {
-        date_default_timezone_set('America/New_York');
+        date_default_timezone_set('America/Chicago');
 
         $this->postType   = 'Lead';
         $this->domain     = 'beachtimerealty.com';
 
         //separate multiple email addresses with a ';'
-        $this->adminEmail = 'bryan@kerigan.com';
+        $this->adminEmail = 'bthomaspcb@outlook.com';
         $this->ccEmail    = ''; //Admin email only
         $this->bccEmail   = 'support@kerigan.com';
 
@@ -70,7 +71,31 @@ class Leads
         $dataSubmitted['full_name'] = (isset($dataSubmitted['first_name']) && isset($dataSubmitted['last_name']) ? $dataSubmitted['first_name'] . ' ' . $dataSubmitted['last_name'] : $fullName);
 
         $this->addToDashboard($dataSubmitted);
+        if(!$this->validateSubmission($dataSubmitted)){ return false; }
         $this->sendNotifications($dataSubmitted);
+    }
+
+    /*
+     * Validate certain data types on the backend
+     * @param array $dataSubmitted
+     * @return boolean $passCheck
+     */
+    protected function validateSubmission($dataSubmitted)
+    {
+
+        $passCheck = true;
+        if ($dataSubmitted['email_address'] == '') {
+            $passCheck = false;
+        } elseif (!filter_var($dataSubmitted['email_address'], FILTER_VALIDATE_EMAIL) && !preg_match('/@.+\./',
+                $dataSubmitted['email_address'])) {
+            $passCheck = false;
+        }
+        if ($dataSubmitted['full_name'] == '') {
+            $passCheck = false;
+        }
+
+        return $passCheck;
+
     }
 
     /**
@@ -109,7 +134,7 @@ class Leads
      *
      * @return string
      */
-    protected function fullAddress ($street, $street2, $city, $state, $zip)
+    protected function toFullAddress ($street, $street2, $city, $state, $zip)
     {
         return $street . ' ' . $street2 . ' ' . $city . ', ' . $state . '  ' . $zip;
     }
@@ -127,6 +152,29 @@ class Leads
         ];
 
         $this->additionalFields = array_merge($default, $input);
+    }
+
+    public function getLeads($args = []){
+        $request = [
+            'posts_per_page' => - 1,
+            'offset'         => 0,
+            'post_type'      => $this->uglify($this->postType),
+            'post_status'    => 'publish',
+        ];
+
+        $args = array_merge( $request, $args );
+        $results = get_posts( $args );
+
+        $resultArray = [];
+        foreach ( $results as $item ){
+            $meta = get_post_meta($item->ID);
+            $resultArray[] = [
+                'object' => $item,
+                'meta'   => $meta
+            ];
+        }
+
+        return $resultArray;
     }
 
     /*
@@ -256,7 +304,7 @@ class Leads
     protected function createEmailTemplate ($emailData)
     {
         $eol           = "\r\n";
-        $emailTemplate = file_get_contents(wp_normalize_path(get_template_directory() . '/inc/Modules/Leads/emailtemplate.php'));
+        $emailTemplate = file_get_contents(wp_normalize_path(get_template_directory() . '/inc/modules/Leads/emailtemplate.php'));
         $emailTemplate = str_replace('{headline}', $eol . $emailData['headline'] . $eol, $emailTemplate);
         $emailTemplate = str_replace('{introcopy}', $eol . $emailData['introcopy'] . $eol, $emailTemplate);
         $emailTemplate = str_replace('{data}', $eol . $emailData['leadData'] . $eol, $emailTemplate);
@@ -271,24 +319,15 @@ class Leads
      * actually send an email
      * TODO: Add handling for attachments
      */
-    protected function sendEmail (
-        $emailData = [
-            'subject'   => 'Email from website',
-            'headline'  => 'This is an email from the website!',
-            'introcopy' => 'If we weren\'t testing, there would be stuff here.',
-            'filedata'  => '',
-            'fileinfo'  => '',
-            'leadData'  => ''
-        ]
-    ) {
+    public function sendEmail ( $emailData = [] ) {
         $eol           = "\r\n";
         $emailTemplate = $this->createEmailTemplate($emailData);
         $headers       = 'From: ' . 'Website <noreply@' . $this->domain . $eol;
-        $headers       .= (isset($this->adminCc) ? 'Cc: ' . $this->adminCc . $eol : '');
-        $headers       .= (isset($this->adminBcc) ? 'Bcc: ' . $this->adminBcc . $eol : '');
+        $headers       .= (isset($this->ccEmail) ? 'Cc: ' . $this->ccEmail . $eol : '');
+        $headers       .= (isset($this->bccEmail) ? 'Bcc: ' . $this->bccEmail . $eol : '');
         $headers       .= 'MIME-Version: 1.0' . $eol;
         $headers       .= 'Content-type: text/html; charset=utf-8' . $eol;
 
-        mail($this->adminEmail, $emailData['subject'], $emailTemplate, $headers);
+        wp_mail($this->adminEmail, $emailData['subject'], $emailTemplate, $headers);
     }
 }
