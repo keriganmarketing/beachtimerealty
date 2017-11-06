@@ -42,7 +42,7 @@ class RequestInfo extends Leads
             </div>';
             return;
         }
-        //parent::sendNotifications($dataSubmitted);
+        parent::sendNotifications($dataSubmitted);
 
     }
 
