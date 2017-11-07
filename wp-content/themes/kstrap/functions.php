@@ -102,8 +102,10 @@ function kstrap_scripts()
 }
 
 // if (! wp_next_scheduled('send_notifications')) {
-    wp_schedule_single_event(time(), 'daily', 'notifications_hook');
+//     wp_schedule_event(time(), 'daily', 'notifications_hook');
 // }
+
+wp_schedule_single_event(time(), 'notifications_hook', 10);
 
 add_action('notifications_hook', 'send_notifications');
 
