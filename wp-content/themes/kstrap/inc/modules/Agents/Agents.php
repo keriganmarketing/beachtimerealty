@@ -168,8 +168,13 @@ class Agents {
 	public function getSingleAgent( $name ) {
 
 		$output = $this->getTeam( [
-			'title'          => $name,
 			'posts_per_page' => 1,
+            'meta_query' => [
+                [
+                    'key' => 'contact_info_display_name',
+                    'value' => $name,
+                ]
+            ]
 		] );
 
         if(isset($output[0])){

@@ -34,7 +34,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                     <div class="row">
                         <?php foreach ($agents as $agent) { ?>
                             <div class="col-sm-6 col-lg-4 mb-5">
-                                <?php $agentData = $team->assembleAgentData( $agent['mls_name'] ); ?>
+                                <?php $agentData = $team->assembleAgentData( $agent['name'] ); ?>
                                 <?php include(locate_template('template-parts/partials/mini-agent.php')); ?>
                             </div>
                         <?php } ?>

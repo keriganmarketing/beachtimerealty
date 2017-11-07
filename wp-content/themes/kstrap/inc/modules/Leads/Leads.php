@@ -202,7 +202,7 @@ class Leads
                 'bcc'       => $this->bccEmail,
                 'replyto'   => $fullName . '<' . $emailAddress . '>',
                 'headline'  => 'You have a new ' . strtolower($this->postType),
-                'introcopy' => 'A ' . strtolower($this->postType) . 'was received from the website. Details are below:',
+                'introcopy' => 'A ' . strtolower($this->postType) . ' was received from the website. Details are below:',
                 'leadData'  => $tableData
             ]
         );
@@ -309,8 +309,8 @@ class Leads
         $emailTemplate = str_replace('{introcopy}', $eol . $emailData['introcopy'] . $eol, $emailTemplate);
         $emailTemplate = str_replace('{data}', $eol . $emailData['leadData'] . $eol, $emailTemplate);
         $emailTemplate = str_replace('{datetime}', date('M j, Y') . ' @ ' . date('g:i a'), $emailTemplate);
-        $emailTemplate = str_replace('{website}', 'www.fbcpsj.org', $emailTemplate);
-        $emailTemplate = str_replace('{url}', 'https://fbcpsj.org', $emailTemplate);
+        $emailTemplate = str_replace('{website}', 'www.' . $this->domain, $emailTemplate);
+        $emailTemplate = str_replace('{url}', 'https://' . $this->domain, $emailTemplate);
         $emailTemplate = str_replace('{copyright}', date('Y') . ' ' . get_bloginfo(), $emailTemplate);
         return $emailTemplate;
     }
@@ -322,12 +322,13 @@ class Leads
     public function sendEmail ( $emailData = [] ) {
         $eol           = "\r\n";
         $emailTemplate = $this->createEmailTemplate($emailData);
-        $headers       = 'From: ' . 'Website <noreply@' . $this->domain . $eol;
-        $headers       .= (isset($this->ccEmail) ? 'Cc: ' . $this->ccEmail . $eol : '');
-        $headers       .= (isset($this->bccEmail) ? 'Bcc: ' . $this->bccEmail . $eol : '');
+        $headers       = 'From: ' . $emailData['from'] . $eol;
+        $headers       .= (isset($emailData['cc']) ? 'Cc: ' . $emailData['cc'] . $eol : '');
+        $headers       .= (isset($emailData['bcc']) ? 'Bcc: ' . $emailData['bcc'] . $eol : '');
+        $headers       .= (isset($emailData['replyto']) ? 'Reply-To: ' . $emailData['replyto'] . $eol : '');
         $headers       .= 'MIME-Version: 1.0' . $eol;
         $headers       .= 'Content-type: text/html; charset=utf-8' . $eol;
 
-        wp_mail($this->adminEmail, $emailData['subject'], $emailTemplate, $headers);
+        wp_mail($emailData['to'], $emailData['subject'], $emailTemplate, $headers);
     }
 }

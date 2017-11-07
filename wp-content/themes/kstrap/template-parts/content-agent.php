@@ -30,20 +30,20 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
                     <div class="row">
                         <div class="col-sm-6 col-lg-4">
                             <img class="img-fluid" src="<?php echo ($agentData['thumbnail'] != '' ? $agentData['thumbnail'] : get_template_directory_uri().'/img/beachybeach-placeholder.jpg' ); ?>" alt="<?php echo $agentData['name']; ?>" style="width:500px;">
-                            <div class="mini-agent">
-                                <ul class="contact-info">
-					                <?php if($agentData['cell_phone'] != ''){?><li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:<?php echo $agentData['cell_phone']; ?>" ><?php echo $agentData['cell_phone']; ?></a> <span class="label">Cell</span></li><?php } ?>
-					                <?php if($agentData['office_phone'] != ''){?><li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:<?php echo $agentData['office_phone']; ?>" ><?php echo $agentData['office_phone']; ?></a> <span class="label">Office</span></li><?php } ?>
-					                <?php if($agentData['email_address'] != ''){?><li class="email"><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:<?php echo $agentData['email_address']; ?>" ><?php echo $agentData['email_address']; ?></a></li><?php } ?>
-					                <?php if($agentData['website'] != ''){?><li class="web"><i class="fa fa-link" aria-hidden="true"></i><a target="_blank" href="<?php echo $agentData['website']; ?>" ><?php echo str_replace('http://','',$agentData['website']); ?></a></li><?php } ?>
-                                </ul>
-                            </div>
                         </div>
                         <div class="col-sm-6 col-lg-8">
                             <div class="row">
                                 <div class="col-md-7">
                                     <h1><?php echo ($agentData['name'] != '' ? $agentData['name'] : '' ); ?></h1>
                                     <h4><?php echo ($agentData['title'] != '' ? $agentData['title'] : 'Realtor' ); ?></h4>
+                                    <div class="mini-agent">
+                                        <ul class="contact-info">
+                                            <?php if($agentData['cell_phone'] != ''){?><li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:<?php echo $agentData['cell_phone']; ?>" ><?php echo $agentData['cell_phone']; ?></a> <span class="label">Cell</span></li><?php } ?>
+                                            <?php if($agentData['office_phone'] != ''){?><li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:<?php echo $agentData['office_phone']; ?>" ><?php echo $agentData['office_phone']; ?></a> <span class="label">Office</span></li><?php } ?>
+                                            <?php if($agentData['email_address'] != ''){?><li class="email"><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:<?php echo $agentData['email_address']; ?>" ><?php echo $agentData['email_address']; ?></a></li><?php } ?>
+                                            <?php if($agentData['website'] != ''){?><li class="web"><i class="fa fa-link" aria-hidden="true"></i><a target="_blank" href="<?php echo $agentData['website']; ?>" ><?php echo str_replace('http://','',$agentData['website']); ?></a></li><?php } ?>
+                                        </ul>
+                                    </div>
                                     <div class="social agent">
 	                                    <?php
 	                                    $socialLinks = new SocialSettingsPage();
