@@ -10,10 +10,10 @@
     <div class="col-md-6 flex-order-md-second">
         <div id="req-info-btn" class="text-center text-md-right">
             <form class="form form-inline" action="/contact/" method="get" style="display:inline-block;" >
-                <input type="hidden" name="reason" value="Property inquiry" />
+                <input type="hidden" name="reason_for_contact" value="Property inquiry" />
                 <input type="hidden" name="user_id" value="<?php echo get_current_user_id(); ?>" />
                 <input type="hidden" name="mls_number" value="<?php echo $listingInfo->mls_account; ?>" />
-                <input type="hidden" name="selected_agent" value="<?php echo ($isOurs ? $agentData->full_name : ''); ?>" />
+                <input type="hidden" name="selected_agent" value="<?php echo ($isOurs && isset($agentData['name']) ? $agentData['name'] : ''); ?>" />
                 <button type="submit" class="btn btn-primary btn-outlined mb-2" >Request Info</button>
             </form>
             <?php if(is_user_logged_in()){?>
