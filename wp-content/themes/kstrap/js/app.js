@@ -69,7 +69,6 @@ $(document).ready(function (event) {
         minimumInputLength: 3,
         dropdownParent: $('.search-control')
     });
-
     $('.select2-property-type').select2({
         placeholder: 'Property type',
         dropdownParent: $('.search-control')
