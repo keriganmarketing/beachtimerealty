@@ -105,7 +105,7 @@ function kstrap_scripts()
 //     wp_schedule_event(time(), 'daily', 'notifications_hook');
 // }
 
-wp_schedule_single_event(time(), 'notifications_hook');
+wp_schedule_single_event(time()+1, 'notifications_hook');
 
 add_action('notifications_hook', 'send_notifications');
 

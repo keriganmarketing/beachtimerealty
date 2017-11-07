@@ -75,11 +75,17 @@ class ListingUpdated
 
     private function notifyUserOfChanges($userId)
     {
-        $to       = get_userdata($userId)->user_email;
-        $subject  = 'Properties that you saved have been recently updated';
-        $message  = 'There have been changes to one or more properties that you have saved at beachtimerealty.com.
+        $eol     = "\r\n";
+        $to      = get_userdata($userId)->user_email;
+
+        $subject = 'Properties that you saved have been recently updated';
+        $message = 'There have been changes to one or more properties that you have saved at beachtimerealty.com.
                      Check them out <a href = "https://beachtimerealty.com/my-account">here </a>';
 
-        mail($to, $subject, $message);
+        $headers = 'From: noreply@beachtime.com' . $eol;
+        $headers .= 'MIME-Version: 1.0' . $eol;
+        $headers .= 'Content-type: text/html; charset=utf-8' . $eol;
+
+        wp_mail($to, $subject, $message, $headers);
     }
 }
