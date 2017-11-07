@@ -101,9 +101,9 @@ function kstrap_scripts()
     //wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
 
-if (! wp_next_scheduled('send_notifications')) {
-    wp_schedule_event(time(), 'daily', 'notifications_hook');
-}
+// if (! wp_next_scheduled('send_notifications')) {
+//     wp_schedule_event(time(), 'daily', 'notifications_hook');
+// }
 
 add_action('notifications_hook', 'send_notifications');
 
