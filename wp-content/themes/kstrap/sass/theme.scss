@@ -356,11 +356,6 @@ html {
       }
     }
   }
-.select2-container--bootstrap .select2-results > .select2-results__options {
-  max-height: 250px;
-  overflow-y: scroll;
-}
-
 
   .search-control {
     //select2 adds to DOM dynamically
@@ -377,9 +372,12 @@ html {
 
     .select2-dropdown {
       .select2-results {
-        max-height: 400px;
+        max-height: 250px;
         overflow: hidden;
         overflow-y: scroll;
+         .select2-results__options {
+          max-height: 250px;
+        }
       }
     }
 
