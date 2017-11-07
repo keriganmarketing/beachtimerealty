@@ -95,7 +95,6 @@ class Leads
         }
 
         return $passCheck;
-
     }
 
     /**
@@ -104,7 +103,6 @@ class Leads
      */
     protected function addToDashboard ($leadInfo)
     {
-
         $fieldArray = [];
         foreach($this->additionalFields as $name => $label){
             $fieldArray['lead_info_' . $name] = (isset($leadInfo[$name]) ? $leadInfo[$name] :  null);
@@ -218,7 +216,6 @@ class Leads
                 'leadData'  => $tableData
             ]
         );
-
     }
 
     /**
@@ -226,7 +223,6 @@ class Leads
      */
     protected function createPostType ()
     {
-
         $leads = new CustomPostType(
             $this->postType,
             [
@@ -254,7 +250,6 @@ class Leads
      */
     protected function createAdminColumns ()
     {
-
         //Adds Column labels. Can be enabled/disabled using screen options.
         add_filter('manage_' . $this->uglify($this->postType) . '_posts_columns', function () {
 
