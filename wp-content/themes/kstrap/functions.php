@@ -105,13 +105,15 @@ function kstrap_scripts()
 //     wp_schedule_event(time(), 'daily', 'notifications_hook');
 // }
 
-wp_schedule_single_event(time(), 'notifications_hook', 10);
+wp_schedule_single_event(time(), 'notifications_hook');
 
 add_action('notifications_hook', 'send_notifications');
 
 function send_notifications()
 {
-    (new ListingUpdated())->notify();
+    $listingUpdated = new ListingUpdated();
+
+    $listingUpdated->notify();
 }
 
 add_action('wp_enqueue_scripts', 'kstrap_scripts');
