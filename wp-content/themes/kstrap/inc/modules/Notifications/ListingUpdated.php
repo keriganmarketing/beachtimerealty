@@ -7,16 +7,38 @@ class ListingUpdated
 {
     public function notify()
     {
-        $updatedListings     = $this->fetchUpdatedListings();
-        $favoritedListings   = $this->getAllFavoritedListings();
-        $favoritedMlsNumbers = $this->flattenListings($favoritedListings);
+        $users = $this->getUsersWithSavedProperties();
 
-        foreach ($updatedListings as $ul) {
-            if (in_array($ul->mls_account, $favoritedMlsNumbers)) {
-                $this->notifyUsersOfChange($ul->mls_account);
+        foreach ($users as $user) {
+            if ($this->userHasUpdatedFavorites($user->user_id)) {
+                $this->notifyUserOfChanges($user->user_id);
             }
         }
     }
+
+    private function userHasUpdatedFavorites($userId)
+    {
+        $favorites       = $this->flattenListings($this->favoritedListings($userId));
+        $updatedListings = $this->flattenListings($this->fetchUpdatedListings());
+
+        foreach ($favorites as $favorite) {
+            if (in_array($favorite, $updatedListings)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private function getUsersWithSavedProperties()
+    {
+        global $wpdb;
+
+        $query   = "SELECT DISTINCT user_id from favorite_properties";
+        $results = $wpdb->get_results($query);
+
+        return $results;
+    }
+
     private function fetchUpdatedListings()
     {
         $client = new Client(['base_uri' => 'https://mothership.kerigan.com/api/v1/']);
@@ -30,17 +52,17 @@ class ListingUpdated
         return $updatedListings;
     }
 
-    private function getAllFavoritedListings()
+    private function favoritedListings($userId)
     {
         global $wpdb;
 
-        $query   = "SELECT DISTINCT mls_account FROM favorite_properties";
+        $query   = "SELECT DISTINCT mls_account FROM favorite_properties WHERE user_id = {$userId}";
         $results = $wpdb->get_results($query);
 
         return $results;
     }
 
-    protected function flattenListings($listings)
+    private function flattenListings($listings)
     {
         $mlsNumberArray = [];
 
@@ -51,20 +73,13 @@ class ListingUpdated
         return $mlsNumberArray;
     }
 
-    protected function notifyUsersOfChange($mlsNumber)
+    private function notifyUserOfChanges($userId)
     {
-        global $wpdb;
+        $to       = get_userdata($userId)->user_email;
+        $subject  = 'Properties that you saved have been recently updated';
+        $message  = 'There have been changes to one or more properties that you have saved at beachtimerealty.com.
+                     Check them out <a href = "https://beachtimerealty.com/my-account">here </a>';
 
-        $query = "SELECT DISTINCT user_id FROM favorite_properties WHERE mls_account LIKE {$mlsNumber}";
-
-        $results = $wpdb->get_results($query);
-
-        foreach ($results as $result) {
-            $to = get_userdata($result->user_id)->user_email;
-            $subject = 'A listing you saved from Beachtime Realty has been recently updated';
-            $message = 'We\'re notifying you of a change to Listing #'. $mlsNumber .'.';
-
-            mail($to, $subject, $message);
-        }
+        mail($to, $subject, $message);
     }
 }

@@ -13,6 +13,7 @@ use Includes\Modules\Leads\HomeValuation;
 use Includes\Modules\MLS\FeaturedListings;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
+use Includes\Modules\Notifications\ListingUpdated;
 
 require('vendor/autoload.php');
 
@@ -100,15 +101,15 @@ function kstrap_scripts()
     //wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
 
-// if (! wp_next_scheduled('send_notifications')) {
-//     wp_schedule_event(time(), 'daily', 'notifications_hook');
-// }
+if (! wp_next_scheduled('send_notifications')) {
+    wp_schedule_event(time(), 'daily', 'notifications_hook');
+}
 
-// add_action('notifications_hook', 'send_notifications');
+add_action('notifications_hook', 'send_notifications');
 
-// function send_notifications()
-// {
-//     wp_mail('your@email.com', 'Automatic email', 'Automatic scheduled email from WordPress.');
-// }
+function send_notifications()
+{
+    (new ListingUpdated())->notify();
+}
 
 add_action('wp_enqueue_scripts', 'kstrap_scripts');
