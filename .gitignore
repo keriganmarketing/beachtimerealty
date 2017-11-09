@@ -7,3 +7,4 @@ php.ini
 *error_log
 */cache/
 wp-content/themes/kstrap/node_modules/
+wp-content/themes/kstrap/vendor/
