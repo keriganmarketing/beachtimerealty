@@ -1,6 +1,6 @@
 <?php
 
-use Includes\Modules\Agents\Agents;
+use KeriganSolutions\Agents\Agents;
 
 /**
  * @package KMA

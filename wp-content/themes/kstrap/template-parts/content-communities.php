@@ -1,6 +1,6 @@
 <?php
 
-use Includes\Modules\MLS\Communities;
+use KeriganSolutions\MLS\Communities;
 
 /**
  * @package KMA
