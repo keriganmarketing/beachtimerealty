@@ -78,7 +78,7 @@ class ListingUpdated
         $eol     = "\r\n";
         $to      = get_userdata($userId)->user_email;
 
-        $subject = 'Properties that you saved have been recently updated';
+        $subject = 'Updated Property Alert';
         $message = 'There have been changes to one or more properties that you have saved at beachtimerealty.com.
                      Check them out <a href = "https://beachtimerealty.com/my-account">here </a>';
 
