@@ -2,7 +2,7 @@
 
 namespace Includes\Modules\Layouts;
 
-use KeriganSolutions\CPT\CustomPostType;
+use Includes\Modules\CPT\CustomPostType;
 
 /**
  * Layouts class

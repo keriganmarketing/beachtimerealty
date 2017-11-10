@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ae8a3f5b0005ea1af1a5e3aa2620e81",
+    "content-hash": "19c19ef56758c2eb5ca9cc7e856eb493",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -73,23 +73,23 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "dev-master",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "e9cdab6ff93ff789b5b599326c727f51d10893a6"
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/e9cdab6ff93ff789b5b599326c727f51d10893a6",
-                "reference": "e9cdab6ff93ff789b5b599326c727f51d10893a6",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.36"
+                "phpunit/phpunit": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -120,20 +120,20 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2017-10-06T12:25:00+00:00"
+            "time": "2016-12-20T10:07:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "dev-master",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "d2537c86fa8b004c29e9b9f5e10028f0a29df101"
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/d2537c86fa8b004c29e9b9f5e10028f0a29df101",
-                "reference": "d2537c86fa8b004c29e9b9f5e10028f0a29df101",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
                 "shasum": ""
             },
             "require": {
@@ -185,144 +185,11 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-10-07T03:19:56+00:00"
-        },
-        {
-            "name": "kerigansolutions/agents",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kerigansolutions/agents.git",
-                "reference": "56ef43f7e8c906bd7753799933c84ff188b9c080"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kerigansolutions/agents/zipball/56ef43f7e8c906bd7753799933c84ff188b9c080",
-                "reference": "56ef43f7e8c906bd7753799933c84ff188b9c080",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "KeriganSolutions\\Agents\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daron Adkins",
-                    "email": "daron.adkins@gmail.com"
-                }
-            ],
-            "description": "Adds agent functionality to the WordPress MLS package from Kerigan Solutions",
-            "time": "2017-11-09T19:55:42+00:00"
-        },
-        {
-            "name": "kerigansolutions/cpt",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kerigansolutions/cpt.git",
-                "reference": "fcb20bd44f0bea15017d0cf56cc7d6f089d393be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kerigansolutions/cpt/zipball/fcb20bd44f0bea15017d0cf56cc7d6f089d393be",
-                "reference": "fcb20bd44f0bea15017d0cf56cc7d6f089d393be",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "KeriganSolutions\\CPT\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bryan Baird",
-                    "email": "bryan@kerigan.com"
-                }
-            ],
-            "description": "Adds additional custom post type functionality for our WordPress sites",
-            "time": "2017-11-09T19:55:12+00:00"
-        },
-        {
-            "name": "kerigansolutions/facebookfeed",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kerigansolutions/facebookfeed.git",
-                "reference": "e7484756bc3bc218a475e41f944d03bc02b43058"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kerigansolutions/facebookfeed/zipball/e7484756bc3bc218a475e41f944d03bc02b43058",
-                "reference": "e7484756bc3bc218a475e41f944d03bc02b43058",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "KeriganSolutions\\FacebookFeed\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-11-08T22:33:13+00:00"
-        },
-        {
-            "name": "kerigansolutions/mls",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kerigansolutions/mls.git",
-                "reference": "f9df2a660a9215d653a9b3b39ece5f4932a8c354"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kerigansolutions/mls/zipball/f9df2a660a9215d653a9b3b39ece5f4932a8c354",
-                "reference": "f9df2a660a9215d653a9b3b39ece5f4932a8c354",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.3",
-                "kerigansolutions/agents": "dev-master",
-                "kerigansolutions/cpt": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "KeriganSolutions\\MLS\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daron Adkins",
-                    "email": "daron.adkins@gmail.com"
-                }
-            ],
-            "description": "Wordpress package to get MLS data from the KMA Mothership",
-            "time": "2017-11-09T19:54:38+00:00"
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "psr/http-message",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
@@ -464,11 +331,8 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "kerigansolutions/mls": 20,
-        "kerigansolutions/facebookfeed": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -1,5 +1,4 @@
 {
-  "minimum-stability": "dev",
   "require-dev": {
     "panique/laravel-sass": "1.0"
   },
@@ -9,8 +8,6 @@
     }
   },
   "require": {
-    "guzzlehttp/guzzle": "^6.3",
-    "kerigansolutions/mls": "dev-master",
-    "kerigansolutions/facebookfeed": "dev-master"
+    "guzzlehttp/guzzle": "^6.3"
   }
 }

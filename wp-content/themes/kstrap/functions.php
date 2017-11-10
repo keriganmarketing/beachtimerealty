@@ -1,16 +1,16 @@
 <?php
 
-use KeriganSolutions\Agents\Agents;
+use Includes\Modules\Agents\Agents;
 use Includes\Modules\Slider\Slider;
-use KeriganSolutions\CPT\VirtualPage;
+use Includes\Modules\CPT\VirtualPage;
 use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Members\Members;
-use KeriganSolutions\MLS\Communities;
+use Includes\Modules\MLS\Communities;
 use Includes\Modules\Leads\RequestInfo;
-use KeriganSolutions\MLS\AdminSettings;
+use Includes\Modules\MLS\AdminSettings;
 use Includes\Modules\Leads\HomeValuation;
-use KeriganSolutions\MLS\FeaturedListings;
+use Includes\Modules\MLS\FeaturedListings;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
 use Includes\Modules\Notifications\ListingUpdated;
