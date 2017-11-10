@@ -1,7 +1,7 @@
 <?php
 
 use Includes\Modules\Social\SocialSettingsPage;
-use Includes\Modules\Agents\Agents;
+use KeriganSolutions\Agents\Agents;
 
 $agents = new Agents();
 $offices = $agents->getOffices();

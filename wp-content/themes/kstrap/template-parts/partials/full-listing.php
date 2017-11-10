@@ -1,8 +1,8 @@
 <?php
 
-use Includes\Modules\Agents\Agents;
-use Includes\Modules\MLS\FullListing;
-use Includes\Modules\MLS\FavoriteProperty;
+use KeriganSolutions\Agents\Agents;
+use KeriganSolutions\MLS\FullListing;
+use KeriganSolutions\MLS\FavoriteProperty;
 
 if (isset($_GET['mls'])) {
     $mlsNumber   = $_GET['mls'];

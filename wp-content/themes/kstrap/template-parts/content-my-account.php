@@ -1,6 +1,6 @@
 <?php
 
-use Includes\Modules\MLS\FavoriteProperty;
+use KeriganSolutions\MLS\FavoriteProperty;
 /**
  * @package KMA
  * @subpackage kstrap
