@@ -1,5 +1,5 @@
 <?php
-use KeriganSolutions\MLS\FullListing;
+use Includes\Modules\MLS\FullListing;
 
 $path = $_SERVER['DOCUMENT_ROOT'];
 include_once $path . '/wp-load.php';

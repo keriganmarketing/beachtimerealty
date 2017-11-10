@@ -1,5 +1,5 @@
 <?php
-use KeriganSolutions\Agents\Agents;
+use Includes\Modules\Agents\Agents;
 /**
  * @package KMA
  * @subpackage kmaslim

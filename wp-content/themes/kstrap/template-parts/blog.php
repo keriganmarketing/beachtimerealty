@@ -1,6 +1,6 @@
 <?php
 
-use KeriganSolutions\FacebookFeed\FacebookFeed;
+use Includes\Modules\Facebook\FacebookFeed;
 
 /**
  * @package KMA

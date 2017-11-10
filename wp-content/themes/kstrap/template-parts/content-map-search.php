@@ -1,7 +1,7 @@
 <?php
 
 use GuzzleHttp\Client;
-use KeriganSolutions\MLS\QuickSearch;
+use Includes\Modules\MLS\QuickSearch;
 
 /**
  * @package KMA

@@ -2,87 +2,83 @@
 
 namespace Includes\Modules\Testimonials;
 
-use KeriganSolutions\CPT\CustomPostType;
+use Includes\Modules\CPT\CustomPostType;
 
 /**
  * Testimonials
  */
 
 // Exit if accessed directly.
-if (! defined('ABSPATH')) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-class Testimonials
-{
-    /**
-     * Testimonials constructor.
-     */
-    public function __construct()
-    {
-    }
+class Testimonials {
+	/**
+	 * Testimonials constructor.
+	 */
+	public function __construct() {
+	}
 
-    /**
-     * @return null
-     */
-    public function createPostType()
-    {
-        $quote = new CustomPostType('Testimonial', [
-            'supports'           => [ 'title', 'editor', 'revisions' ],
-            'menu_icon'          => 'dashicons-format-quote',
-            'rewrite'            => [ 'slug' => 'testimonials' ],
-            'has_archive'        => false,
-            'menu_position'      => null,
-            'public'             => true,
-            'publicly_queryable' => true,
-        ]);
+	/**
+	 * @return null
+	 */
+	public function createPostType() {
+		$quote = new CustomPostType( 'Testimonial', [
+			'supports'           => [ 'title', 'editor', 'revisions' ],
+			'menu_icon'          => 'dashicons-format-quote',
+			'rewrite'            => [ 'slug' => 'testimonials' ],
+			'has_archive'        => false,
+			'menu_position'      => null,
+			'public'             => true,
+			'publicly_queryable' => true,
+		] );
 
-        $quote->addTaxonomy('Testimonial Category');
+		$quote->addTaxonomy( 'Testimonial Category' );
 
-        $quote->addMetaBox('Author Info', [
-            'Name'          => 'text',
-            'Company'       => 'text',
-            'Short Version' => 'longtext',
-            'Featured'      => 'boolean'
-        ]);
-    }
+		$quote->addMetaBox( 'Author Info', [
+			'Name'          => 'text',
+			'Company'       => 'text',
+			'Short Version' => 'longtext',
+			'Featured'      => 'boolean'
+		] );
+	}
 
-    /**
-     * @return null
-     */
-    public function createAdminColumns()
-    {
+	/**
+	 * @return null
+	 */
+	public function createAdminColumns() {
 
-        //TODO: make this work...
-    }
+		//TODO: make this work...
+	}
 
-    public function getRandomTestimonial()
-    {
-        $request =  $this->getTestimonials([
-            'order'          => 'rand',
-            'posts_per_page' => 1
-        ]);
+	public function getRandomTestimonial() {
+
+		$request =  $this->getTestimonials( [
+			'order'          => 'rand',
+			'posts_per_page' => 1
+		] );
 
         return $request[0];
-    }
 
-    public function getTestimonials($args)
-    {
-        $outputArray = [];
+	}
 
-        $request = [
-            'posts_per_page' => - 1,
-            'offset'         => 0,
-            'order'          => 'DESC',
-            'orderby'        => 'date_posted',
-            'post_type'      => 'testimonial',
-            'post_status'    => 'publish',
-        ];
+	public function getTestimonials( $args ) {
+		$outputArray = [];
 
-        $request   = array_merge($request, $args);
-        $postArray = get_posts($request);
+		$request = [
+			'posts_per_page' => - 1,
+			'offset'         => 0,
+			'order'          => 'DESC',
+			'orderby'        => 'date_posted',
+			'post_type'      => 'testimonial',
+			'post_status'    => 'publish',
+		];
 
-        foreach ($postArray as $post) {
+		$request   = array_merge( $request, $args );
+		$postArray = get_posts( $request );
+
+		foreach ( $postArray as $post ) {
             $outputArray[] = [
                 'content'       => $post->post_content,
                 'author'        => get_post_meta($post->ID, 'author_info_name', true),
@@ -90,8 +86,8 @@ class Testimonials
                 'featured'      => get_post_meta($post->ID, 'author_info_featured', true),
                 'short_version' => get_post_meta($post->ID, 'author_info_short_version', true)
             ];
-        }
+		}
 
-        return $outputArray;
-    }
+		return $outputArray;
+	}
 }

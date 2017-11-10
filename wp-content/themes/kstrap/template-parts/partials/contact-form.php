@@ -1,6 +1,6 @@
 <?php
 
-use KeriganSolutions\Agents\Agents;
+use Includes\Modules\Agents\Agents;
 use Includes\Modules\Leads\RequestInfo;
 
 //DEFAULT FORM VARS

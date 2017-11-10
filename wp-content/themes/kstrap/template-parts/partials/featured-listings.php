@@ -1,7 +1,7 @@
 <?php
 
-use KeriganSolutions\MLS\FeaturedListings;
-use KeriganSolutions\MLS\FullListing;
+use Includes\Modules\MLS\FeaturedListings;
+use Includes\Modules\MLS\FullListing;
 
 /**
  * @package KMA

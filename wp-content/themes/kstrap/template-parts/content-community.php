@@ -1,5 +1,5 @@
 <?php
-use KeriganSolutions\MLS\QuickSearch;
+use Includes\Modules\MLS\QuickSearch;
 /**
 * @package KMA
 * @subpackage kstrap
