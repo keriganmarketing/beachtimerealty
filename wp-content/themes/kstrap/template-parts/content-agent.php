@@ -8,9 +8,7 @@ use Includes\Modules\Social\SocialSettingsPage;
  * @subpackage kstrap
  * @since 1.0
  * @version 1.2
- * B0678
  */
-include(locate_template('template-parts/partials/top.php'));
 
 $agents = new Agents();
 $agentData = $agents->assembleAgentData( $post->post_title );
@@ -19,6 +17,8 @@ $agentData['listings'] = ($agentData['short_ids'] != '' ? $agents->getAgentListi
 
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
+
+include(locate_template('template-parts/partials/top.php'));
 ?>
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
