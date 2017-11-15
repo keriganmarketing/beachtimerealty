@@ -1,6 +1,7 @@
 <?php
 
-use Includes\Modules\Facebook\FacebookFeed;
+use KeriganSolutions\FacebookFeed\FacebookFeed;
+
 
 /**
  * @package KMA
@@ -31,7 +32,7 @@ $now     = time();
             <div class="container">
                 <div class="row">
                 <?php
-                foreach ($results->data as $result) {
+                foreach ($results->posts as $result) {
                     if(isset($result->message)) {
                         if (strlen($result->message) > 0) {
                             $trimmed = wp_trim_words($result->message, $num_words = 26, '...');
@@ -41,7 +42,7 @@ $now     = time();
                     }
 
 
-                    $photo_url = $feed->photo($result);
+                    $photo_url = $result->full_picture;
                     ?>
                     <div class="col-md-6 col-lg-4">
                         <?php include(locate_template('template-parts/partials/mini-article.php')); ?>

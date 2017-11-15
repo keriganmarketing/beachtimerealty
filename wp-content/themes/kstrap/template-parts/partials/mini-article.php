@@ -28,7 +28,7 @@
         <p><?php echo $trimmed; ?></p>
     </div>
     <div class="card-footer">
-        <a class="article-footer-item" href="<?php echo $result->link; ?>" target="_blank" >Read more on Facebook</a>
+        <a class="article-footer-item" href="<?php echo $result->permalink_url; ?>" target="_blank" >Read more on Facebook</a>
     </div>
 </div>
 
