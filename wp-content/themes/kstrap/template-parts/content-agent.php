@@ -11,7 +11,7 @@ use Includes\Modules\Social\SocialSettingsPage;
  */
 
 $agents = new Agents();
-$agentData = $agents->assembleAgentData( $post->post_title );
+$agentData = $agents->assembleAgentData( $post->contact_info_display_name );
 $agents->setAgentSeo($agentData);
 $agentData['listings'] = ($agentData['short_ids'] != '' ? $agents->getAgentListings($agentData['short_ids']) : '' );
 
