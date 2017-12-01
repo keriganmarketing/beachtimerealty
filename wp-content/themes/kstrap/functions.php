@@ -102,16 +102,15 @@ function kstrap_scripts()
 }
 
 if (! wp_next_scheduled('notifications_hook')) {
-    wp_schedule_event(time(), 'daily', 'notifications_hook');
+    //wp_schedule_event(time(), 'daily', 'notifications_hook');
 }
 
-add_action('notifications_hook', 'send_notifications');
-
-function send_notifications()
+add_action('notifications_hook', function()
 {
     $listingUpdated = new ListingUpdated();
 
     $listingUpdated->notify();
-}
+});
+
 
 add_action('wp_enqueue_scripts', 'kstrap_scripts');

@@ -2,6 +2,7 @@
 namespace Includes\Modules\Notifications;
 
 use GuzzleHttp\Client;
+use Includes\Modules\Leads;
 
 class ListingUpdated
 {
