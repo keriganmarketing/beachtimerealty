@@ -3,6 +3,7 @@ namespace Includes\Modules\Notifications;
 
 use GuzzleHttp\Client;
 use Includes\Modules\Leads\Leads;
+use Includes\Modules\MLS\FullListing;
 
 class ListingUpdated
 {
@@ -85,22 +86,34 @@ class ListingUpdated
 
         $tableData = '';
         foreach($mlsIds as $mlsId){
+            $fullListing = new FullListing($mlsId);
+            $listingInfo = $fullListing->create();
 
-            $tableData .= '<tr><td>' . $mlsId . '</td></tr>';
+            $tableData .= '<tr><td width="50%"><img src="' . $listingInfo->preferred_image . '" width="100%" ></td>
+            <td><table>
+                <tr><td>
+                <p>' . $listingInfo->street_number.' '.$listingInfo->street_name . '<br>
+                ' . $listingInfo->city . ', FL</p>
+                <p><strong>$' . number_format($listingInfo->price) . '</strong></p></td></tr>
+                <tr><td><a style="display: block; line-height: 20px;" href="https://beachtimerealty.com/listing/?mls=' . $mlsId . '" >View property</a></td></tr>
+            </table>
+            </td></tr><tr><td>&nbsp;</td></tr>';
         }
+
+        $tableData .= '<tr><td colspan="2" align="center"><a style="display: block; line-height: 20px;" href="https://beachtimerealty.com/my-account/" >View all saved properties</a></td></tr>';
 
         $email = new Leads();
 
         $email->sendEmail(
             [
-                'to'        => 'bryan@kerigan.com',
+                'to'        => $to,
                 'from'      => get_bloginfo() . ' <noreply@' . $email->domain . '>',
                 'subject'   => 'Updated Property Alert',
                 'cc'        => '',
                 'bcc'       => $email->bccEmail,
                 'replyto'   => '',
                 'headline'  => 'Updated Property Alert',
-                'introcopy' => 'One or more properties in your favorites have been updated. Details are below:',
+                'introcopy' => 'One or more properties in your favorites has been updated. Details are below:',
                 'leadData'  => $tableData
             ]
         );
