@@ -334,23 +334,23 @@
     },
     {
         "name": "kerigansolutions/facebookfeed",
-        "version": "0.12",
-        "version_normalized": "0.12.0.0",
+        "version": "0.14.0",
+        "version_normalized": "0.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kerigansolutions/facebookfeed.git",
-            "reference": "4fa46e6353a7129b5d9589e7315bc4ced59df9a0"
+            "reference": "7171b0069a9904bae4b9d02732673614b8458683"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kerigansolutions/facebookfeed/zipball/4fa46e6353a7129b5d9589e7315bc4ced59df9a0",
-            "reference": "4fa46e6353a7129b5d9589e7315bc4ced59df9a0",
+            "url": "https://api.github.com/repos/kerigansolutions/facebookfeed/zipball/7171b0069a9904bae4b9d02732673614b8458683",
+            "reference": "7171b0069a9904bae4b9d02732673614b8458683",
             "shasum": ""
         },
         "require": {
             "guzzlehttp/guzzle": "^6.3"
         },
-        "time": "2017-11-15T23:05:59+00:00",
+        "time": "2017-12-01T15:54:48+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

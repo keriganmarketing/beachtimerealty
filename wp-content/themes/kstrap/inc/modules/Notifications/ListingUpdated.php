@@ -2,7 +2,7 @@
 namespace Includes\Modules\Notifications;
 
 use GuzzleHttp\Client;
-use Includes\Modules\Leads;
+use Includes\Modules\Leads\Leads;
 
 class ListingUpdated
 {
@@ -11,8 +11,9 @@ class ListingUpdated
         $users = $this->getUsersWithSavedProperties();
 
         foreach ($users as $user) {
-            if ($this->userHasUpdatedFavorites($user->user_id)) {
-                $this->notifyUserOfChanges($user->user_id);
+            $changed = $this->userHasUpdatedFavorites($user->user_id);
+            if (count($changed) > 0) {
+                $this->notifyUserOfChanges($user->user_id, $changed);
             }
         }
     }
@@ -21,13 +22,14 @@ class ListingUpdated
     {
         $favorites       = $this->flattenListings($this->favoritedListings($userId));
         $updatedListings = $this->flattenListings($this->fetchUpdatedListings());
+        $changed         = [];
 
         foreach ($favorites as $favorite) {
             if (in_array($favorite, $updatedListings)) {
-                return true;
+                $changed[] = $favorite;
             }
         }
-        return false;
+        return $changed;
     }
 
     private function getUsersWithSavedProperties()
@@ -74,19 +76,34 @@ class ListingUpdated
         return $mlsNumberArray;
     }
 
-    private function notifyUserOfChanges($userId)
+    private function notifyUserOfChanges($userId, $mlsIds)
     {
-        $eol     = "\r\n";
-        $to      = get_userdata($userId)->user_email;
 
-        $subject = 'Updated Property Alert';
-        $message = 'There have been changes to one or more properties that you have saved at beachtimerealty.com.
-                     Check them out <a href = "https://beachtimerealty.com/my-account">here </a>';
+        $user = get_userdata($userId);
 
-        $headers = 'From: noreply@beachtime.com' . $eol;
-        $headers .= 'MIME-Version: 1.0' . $eol;
-        $headers .= 'Content-type: text/html; charset=utf-8' . $eol;
+        $to   = $user->user_nicename . ' <' . $user->user_email . '>';
 
-        wp_mail($to, $subject, $message, $headers);
+        $tableData = '';
+        foreach($mlsIds as $mlsId){
+
+            $tableData .= '<tr><td>' . $mlsId . '</td></tr>';
+        }
+
+        $email = new Leads();
+
+        $email->sendEmail(
+            [
+                'to'        => 'bryan@kerigan.com',
+                'from'      => get_bloginfo() . ' <noreply@' . $email->domain . '>',
+                'subject'   => 'Updated Property Alert',
+                'cc'        => '',
+                'bcc'       => $email->bccEmail,
+                'replyto'   => '',
+                'headline'  => 'Updated Property Alert',
+                'introcopy' => 'One or more properties in your favorites have been updated. Details are below:',
+                'leadData'  => $tableData
+            ]
+        );
+
     }
 }
