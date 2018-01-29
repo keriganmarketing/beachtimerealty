@@ -1,4 +1,4 @@
-<div class="card text-center">
+<div class="card text-center <?= !isset($photo_url) ? 'no-photo' : '' ?>">
     <div class="article-image">
         <?php if($result->type != 'video') { ?>
             <div class="card-image embed-responsive embed-responsive-4by3">
@@ -18,14 +18,13 @@
                     class="article-image"
                     width="100%"
                     height="460">
-
                 </iframe>
             </figure>
         <?php } ?>
     </div>
     <div class="card-block">
         <p>posted <?php echo human_time_diff($now, strtotime($result->created_time)); ?> ago</p>
-        <p><?php echo $trimmed; ?></p>
+        <p class="article-text"><?php echo $trimmed; ?></p>
     </div>
     <div class="card-footer">
         <a class="article-footer-item" href="<?php echo $result->permalink_url; ?>" target="_blank" >Read more on Facebook</a>

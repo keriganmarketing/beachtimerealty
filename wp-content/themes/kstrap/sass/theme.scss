@@ -1301,6 +1301,7 @@ html {
 
   .card {
     margin-bottom: 1.5rem;
+    height: 100%;
   }
 
   .article-image {
@@ -1333,6 +1334,34 @@ html {
         top: 2.5rem;
         left: 0;
         margin: auto;
+      }
+    }
+  }
+
+  .card.no-photo {
+    .card-image {
+      display: none;
+    }
+    .card-block{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#23397b+0,139fd8+51,7ccdf2+100 */
+      background: #23397b; /* Old browsers */
+      background: -moz-linear-gradient(-45deg,  #23397b 0%, #139fd8 51%, #7ccdf2 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(-45deg,  #23397b 0%,#139fd8 51%,#7ccdf2 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(135deg,  #23397b 0%,#139fd8 51%,#7ccdf2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23397b', endColorstr='#7ccdf2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+      p {
+        color: #FFF;
+      }
+
+      .article-text {
+        font-size:1.8em;
+        line-height: 1.2em;
       }
     }
   }

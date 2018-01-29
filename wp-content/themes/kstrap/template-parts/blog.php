@@ -44,7 +44,7 @@ $now     = time();
 
                     $photo_url = $result->full_picture;
                     ?>
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 pb-4">
                         <?php include(locate_template('template-parts/partials/mini-article.php')); ?>
                     </div>
                 <?php } ?>
