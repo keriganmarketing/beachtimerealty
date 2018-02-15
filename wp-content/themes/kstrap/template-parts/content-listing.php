@@ -20,7 +20,7 @@ if (isset($_GET['mls'])) {
         $fullListing->setListingSeo($listingInfo);
         $isOurs     = $fullListing->isOurs($listingInfo);
         $user_id    = get_current_user_id();
-        $title      = $listingInfo->street_number . ' ' . $listingInfo->street_name;
+        $title      = $listingInfo->street_number . ' ' . $listingInfo->street_name . ' ' . $listingInfo->street_suffix;
         $buttonText = $fullListing->isInFavorites($user_id,
             $listingInfo->mls_account) ? 'REMOVE FROM BUCKET' : 'SAVE TO BUCKET';
         if ($isOurs) {
