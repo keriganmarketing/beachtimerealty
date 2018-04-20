@@ -199,17 +199,17 @@
                             <div class="col-12 col-md-2 label input-group-addon" >Status</div>
                             <div class="col form-check form-check-inline">
                                 <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" <?php echo (in_array('active',$status) ? 'checked' : ''); ?> name="status[]" value="active">
+                                    <input type="checkbox" class="custom-control-input" <?php //echo (in_array('active',$status) ? 'checked' : ''); ?> name="status[]" value="active">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Active</span>
                                 </label>
                                 <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" <?php echo (in_array('sold',$status) ? 'checked' : ''); ?> name="status[]" value="sold">
+                                    <input type="checkbox" class="custom-control-input" <?php //echo (in_array('sold',$status) ? 'checked' : ''); ?> name="status[]" value="sold">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Sold</span>
                                 </label>
                                 <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" <?php echo (in_array('pending',$status) ? 'checked' : ''); ?> name="status[]" value="pending">
+                                    <input type="checkbox" class="custom-control-input" <?php //echo ((in_array('pending',$status) ? 'checked' : ''); ?> name="status[]" value="pending">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Pending</span>
                                 </label>
