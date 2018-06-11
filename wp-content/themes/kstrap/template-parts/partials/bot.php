@@ -108,7 +108,7 @@ $offices = $agents->getOffices();
                     </div>
                 </div>
                 <div class="col-md-6 my-auto mx-auto justify-content-center text-center">
-                    <p class="copyright">&copy;<?php echo date('Y'); ?> <?php echo get_bloginfo(); ?>. All Rights Reserved.</p>
+                    <p class="copyright">&copy;<?php echo date('Y'); ?> <?php echo get_bloginfo(); ?>. All Rights Reserved. | <a href="/sitemap_index.xml">SITEMAP</a></p>
                 </div>
                 <div class="col-md-3 my-auto justify-content-center justify-content-sm-end text-center text-sm-right">
                     <p class="siteby" style="display: none;"><svg version="1.1" id="kma" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="14" width="20" viewBox="0 0 12.5 8.7" style="enable-background:new 0 0 12.5 8.7;" xml:space="preserve">
