@@ -16,7 +16,7 @@ $listings = $featuredLiastings->getFeaturedListings();
 ?>
 <div class="container-fluid">
     <div class="container-fluid">
-        <h2 class="section-title text-center line-left line-right">Featured&nbsp;Listings</h2>
+        <h3 class="section-title text-center line-left line-right">Featured&nbsp;Listings</h3>
 
         <div class="row justify-content-center">
 		<?php
