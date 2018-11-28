@@ -423,4 +423,4 @@ include(locate_template('template-parts/partials/bot.php'));
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js" ></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4&callback=initializeMap" ></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyBRThzvtP_UzOiLMxOWjKyswCK4KH3BViU&callback=initializeMap" ></script>
