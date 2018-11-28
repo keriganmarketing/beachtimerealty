@@ -13,5 +13,4 @@ class SimpleContact extends Leads
             ]
         );
     }
-
 }

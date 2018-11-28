@@ -61,7 +61,7 @@ use Includes\Modules\Agents\Agents;
     }
 </script>
 <div id="contact-map"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4&callback=initMap" ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRThzvtP_UzOiLMxOWjKyswCK4KH3BViU&callback=initMap" ></script>
 <script>
 <?php
     $agents = new Agents();
