@@ -136,7 +136,7 @@ class Leads
         ], $_SERVER);
 
         $spam = $result->isSpam();
-        echo '<pre>',print_r($result),'</pre>';
+        //echo '<pre>',print_r($result),'</pre>';
 
         return $spam; // Boolean 
     }
