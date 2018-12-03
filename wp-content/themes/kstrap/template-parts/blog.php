@@ -1,7 +1,6 @@
 <?php
 
-use KeriganSolutions\FacebookFeed\FacebookFeed;
-
+use Includes\Modules\KMAFacebook\FacebookController;
 
 /**
  * @package KMA
@@ -15,8 +14,8 @@ $headline = ($post->page_information_headline != '' ? $post->page_information_he
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : get_the_archive_description());
 
 $numberOfPosts = is_page('home') ? 3 : 9;
-$feed    = new FacebookFeed();
-$results = $feed->fetch($numberOfPosts);
+$facebook = new FacebookController();
+$results = $facebook->getFeed(2);
 $now     = time();
 
 if (! property_exists($results, 'error')) { ?>
@@ -42,7 +41,7 @@ if (! property_exists($results, 'error')) { ?>
                     }
 
 
-                    $photo_url = $result->full_picture;
+                    $photo_url = (isset($result->full_picture) && $result->full_picture != '' ? $result->full_picture : null);
                     ?>
                     <div class="col-md-6 col-lg-4 pb-4">
                         <?php include(locate_template('template-parts/partials/mini-article.php')); ?>

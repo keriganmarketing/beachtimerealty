@@ -6,7 +6,8 @@ $facebook = new FacebookController();
 //$reviews  = $facebook->getReviews(4);
 //echo '<pre>',print_r($reviews),'</pre>';
 
-$feed     = $facebook->getFeed(4);
+$facebook = new FacebookController();
+$feed = $facebook->getFeed(4);
 
 //echo '<pre>',print_r($feed),'</pre>';
 ?>

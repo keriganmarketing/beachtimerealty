@@ -1,9 +1,9 @@
 <?php
 
-use KeriganSolutions\FacebookFeed\FacebookFeed;
+use Includes\Modules\KMAFacebook\FacebookController;
 
-$feed    = new FacebookFeed();
-$results = $feed->fetch(2);
+$facebook = new FacebookController();
+$results = $facebook->getFeed(2);
 $now     = time();
 
 ?>
