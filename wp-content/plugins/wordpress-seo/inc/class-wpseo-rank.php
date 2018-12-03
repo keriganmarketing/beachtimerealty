@@ -1,5 +1,7 @@
 <?php
 /**
+ * WPSEO plugin file.
+ *
  * @package WPSEO\Internals
  */
 
@@ -58,7 +60,7 @@ class WPSEO_Rank {
 	 * @param int $rank The actual rank.
 	 */
 	public function __construct( $rank ) {
-		if ( ! in_array( $rank, self::$ranks ) ) {
+		if ( ! in_array( $rank, self::$ranks, true ) ) {
 			$rank = self::BAD;
 		}
 
@@ -115,7 +117,7 @@ class WPSEO_Rank {
 	 */
 	public function get_drop_down_label() {
 		$labels = array(
-			self::NO_FOCUS => __( 'SEO: No Focus Keyword', 'wordpress-seo' ),
+			self::NO_FOCUS => __( 'SEO: No Focus Keyphrase', 'wordpress-seo' ),
 			self::BAD      => __( 'SEO: Needs improvement', 'wordpress-seo' ),
 			self::OK       => __( 'SEO: OK', 'wordpress-seo' ),
 			self::GOOD     => __( 'SEO: Good', 'wordpress-seo' ),

@@ -4,10 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite3b0963dd551d2fa8fb82fec2bf86750
+class ComposerStaticInit165ecda78b76b99274822385bbcb8c5b
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
@@ -15,6 +16,12 @@ class ComposerStaticInite3b0963dd551d2fa8fb82fec2bf86750
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Contracts\\' => 18,
+            'Symfony\\Component\\Translation\\' => 30,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
@@ -37,13 +44,25 @@ class ComposerStaticInite3b0963dd551d2fa8fb82fec2bf86750
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Contracts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/contracts',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'KeriganSolutions\\FacebookFeed\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kerigansolutions/facebookfeed/src',
+            0 => __DIR__ . '/..' . '/kerigansolutions/fb-autoblog-wp/src',
         ),
         'Includes\\Modules\\' => 
         array (
@@ -67,6 +86,10 @@ class ComposerStaticInite3b0963dd551d2fa8fb82fec2bf86750
         ),
     );
 
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
+    );
+
     public static $classMap = array (
         'scss_formatter' => __DIR__ . '/..' . '/leafo/scssphp/scss.inc.php',
         'scss_formatter_compressed' => __DIR__ . '/..' . '/leafo/scssphp/scss.inc.php',
@@ -80,9 +103,10 @@ class ComposerStaticInite3b0963dd551d2fa8fb82fec2bf86750
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite3b0963dd551d2fa8fb82fec2bf86750::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite3b0963dd551d2fa8fb82fec2bf86750::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite3b0963dd551d2fa8fb82fec2bf86750::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit165ecda78b76b99274822385bbcb8c5b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit165ecda78b76b99274822385bbcb8c5b::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit165ecda78b76b99274822385bbcb8c5b::$fallbackDirsPsr4;
+            $loader->classMap = ComposerStaticInit165ecda78b76b99274822385bbcb8c5b::$classMap;
 
         }, null, ClassLoader::class);
     }

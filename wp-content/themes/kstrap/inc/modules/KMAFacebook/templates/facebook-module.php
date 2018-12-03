@@ -13,7 +13,7 @@ $feed     = $facebook->getFeed(4);
 <div class="columns is-multiline" >
 <?php foreach ($feed->posts as $fbPost) {
     $isVideo  = ($fbPost->type == 'video');
-    $hasImage = ($fbPost->full_picture != '' && $isVideo == false);
+    $hasImage = (isset($fbPost->full_picture) && $fbPost->full_picture != '' && $isVideo == false);
     $date     = date('M j') . ' at ' . date('g:i a');
     ?>
     <div class="column is-6-tablet is-4-desktop is-3-fullhd">

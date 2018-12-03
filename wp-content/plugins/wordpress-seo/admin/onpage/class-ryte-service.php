@@ -1,5 +1,7 @@
 <?php
 /**
+ * WPSEO plugin file.
+ *
  * @package WPSEO\Admin\OnPage
  */
 
@@ -28,6 +30,9 @@ class WPSEO_Ryte_Service {
 	 * @return WP_REST_Response The response object.
 	 */
 	public function get_statistics() {
+		// Switch to the user locale with fallback to the site locale.
+		switch_to_locale( WPSEO_Language_Utils::get_user_locale() );
+
 		$result = false;
 
 		if ( $this->option->is_enabled() ) {
@@ -58,7 +63,7 @@ class WPSEO_Ryte_Service {
 			return array(
 				'score'     => 'bad',
 				'label'     => sprintf(
-				/* translators: %1$s: opens a link to a related knowledge base article. %2$s: closes the link. */
+					/* translators: %1$s: opens a link to a related knowledge base article. %2$s: closes the link. */
 					__( '%1$sYour homepage cannot be indexed by search engines%2$s. This is very bad for SEO and should be fixed.', 'wordpress-seo' ),
 					'<a href="' . WPSEO_Shortlinker::get( 'https://yoa.st/onpageindexerror' ) . '" target="_blank">',
 					'</a>'
@@ -71,7 +76,7 @@ class WPSEO_Ryte_Service {
 			return array(
 				'score'     => 'na',
 				'label'     => sprintf(
-				/* translators: %1$s: opens a link to a related knowledge base article, %2$s: expands to Yoast SEO, %3$s: closes the link, %4$s: expands to Ryte. */
+					/* translators: %1$s: opens a link to a related knowledge base article, %2$s: expands to Yoast SEO, %3$s: closes the link, %4$s: expands to Ryte. */
 					__( '%1$s%2$s has not been able to fetch your site\'s indexability status%3$s from %4$s', 'wordpress-seo' ),
 					'<a href="' . WPSEO_Shortlinker::get( 'https://yoa.st/onpagerequestfailed' ) . '" target="_blank">',
 					'Yoast SEO',
@@ -86,7 +91,7 @@ class WPSEO_Ryte_Service {
 			return array(
 				'score'     => 'na',
 				'label'     => esc_html( sprintf(
-				/* translators: %1$s: expands to Yoast SEO, %2$s: expands to Ryte. */
+					/* translators: %1$s: expands to Yoast SEO, %2$s: expands to Ryte. */
 					__( '%1$s has not fetched your site\'s indexability status yet from %2$s', 'wordpress-seo' ),
 					'Yoast SEO',
 					'Ryte'
