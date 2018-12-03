@@ -14,6 +14,8 @@ use Includes\Modules\MLS\FeaturedListings;
 use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Testimonials\Testimonials;
 use Includes\Modules\Notifications\ListingUpdated;
+use Includes\Modules\KMAFacebook\FacebookController;
+
 
 require('vendor/autoload.php');
 
@@ -58,6 +60,9 @@ $idxSettings->setupPage();
 
 $communities = new Communities();
 $communities->createPostType();
+
+$facebook = new FacebookController();
+$facebook->setupAdmin();
 
 function kstrap_setup()
 {
