@@ -15,7 +15,7 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
 
 $numberOfPosts = is_page('home') ? 3 : 9;
 $facebook = new FacebookController();
-$results = $facebook->getFeed(2);
+$results = $facebook->getFeed(6);
 $now     = time();
 
 if (! property_exists($results, 'error')) { ?>
