@@ -54,4 +54,5 @@ if (! property_exists($results, 'error')) { ?>
     </article>
 </div>
 <?php
+}
 include(locate_template('template-parts/partials/bot.php'));
