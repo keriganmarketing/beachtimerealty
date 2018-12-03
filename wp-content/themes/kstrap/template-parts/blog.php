@@ -19,7 +19,7 @@ $feed    = new FacebookFeed();
 $results = $feed->fetch($numberOfPosts);
 $now     = time();
 
-?>
+if (! property_exists($results, 'error')) { ?>
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="section-wrapper support-mast">
