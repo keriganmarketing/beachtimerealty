@@ -23,7 +23,8 @@ $listings = $featuredLiastings->getFeaturedListings();
         foreach($listings as $mlsNumber){
             $fl     = new FullListing($mlsNumber);
             $result = $fl->create();
-            if($result){
+            if($result->mls_account){
+                // echo '<pre>',print_r($result),'</pre>';
             ?>
 			<div class="col-sm-6 col-md-4 col-lg-3 text-center">
 				<?php include( locate_template( 'template-parts/partials/mini-listing.php' ) ); ?>
