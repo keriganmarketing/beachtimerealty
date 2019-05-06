@@ -5,13 +5,13 @@
  * Functions to manage the plugin options tab.
  * 
  * This file is part of the WP-Members plugin by Chad Butler
- * You can find out more about this plugin at http://rocketgeek.com
- * Copyright (c) 2006-2017  Chad Butler
+ * You can find out more about this plugin at https://rocketgeek.com
+ * Copyright (c) 2006-2019  Chad Butler
  * WP-Members(tm) is a trademark of butlerblog.com
  *
  * @package WP-Members
  * @author Chad Butler
- * @copyright 2006-2017
+ * @copyright 2006-2019
  *
  * Functions included:
  * - wpmem_a_build_options
@@ -28,6 +28,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Creates the tab.
+ *
+ * @since 3.2.0
+ *
+ * @param  string      $tab The admin tab being displayed.
+ * @return string|bool      The about tab, otherwise false.
+ */
+function wpmem_a_options_tab( $tab ) {
+	if ( $tab == 'options' || ! $tab ) {
+		// Render the about tab.
+		return wpmem_a_build_options();
+	} else {
+		return false;
+	}
+}
+
+/**
  * Builds the settings panel.
  *
  * @since 2.2.2
@@ -40,14 +57,14 @@ function wpmem_a_build_options() {
 
 	/** This filter is documented in wp-members/inc/email.php */
 	$admin_email = apply_filters( 'wpmem_notify_addr', get_option( 'admin_email' ) );
-	$chg_email   = __( sprintf( '%sChange%s or %sFilter%s this address', '<a href="' . site_url( 'wp-admin/options-general.php', 'admin' ) . '">', '</a>', '<a href="http://rocketgeek.com/plugins/wp-members/users-guide/filter-hooks/wpmem_notify_addr/">', '</a>' ), 'wp-members' );
-	$help_link   = __( sprintf( 'See the %sUsers Guide on plugin options%s.', '<a href="http://rocketgeek.com/plugins/wp-members/users-guide/plugin-settings/options/" target="_blank">', '</a>' ), 'wp-members' );	
+	$chg_email   = sprintf( __( '%sChange%s or %sFilter%s this address', 'wp-members' ), '<a href="' . site_url( 'wp-admin/options-general.php', 'admin' ) . '">', '</a>', '<a href="https://rocketgeek.com/plugins/wp-members/users-guide/filter-hooks/wpmem_notify_addr/">', '</a>' );
+	$help_link   = sprintf( __( 'See the %sUsers Guide on plugin options%s.', 'wp-members' ), '<a href="https://rocketgeek.com/plugins/wp-members/users-guide/plugin-settings/options/" target="_blank">', '</a>' );	
 
 	// Build an array of post types
 	$post_types = get_post_types( array( 'public' => true, '_builtin' => false ), 'names', 'and' );
 	$post_arr = array(
-		'post' => 'Posts',
-		'page' => 'Pages',
+		'post' => __( 'Posts' ),
+		'page' => __( 'Pages' ),
 	);
 	if ( $post_types ) {
 		foreach ( $post_types  as $post_type ) { 
@@ -60,10 +77,12 @@ function wpmem_a_build_options() {
 
 		<div class="inner-sidebar">
 			<?php wpmem_a_meta_box(); ?>
+			<?php wpmem_a_rating_box(); ?>
 			<div class="postbox">
 				<h3><span><?php _e( 'Need help?', 'wp-members' ); ?></span></h3>
 				<div class="inside">
-					<strong><i><?php echo $help_link; ?></i></strong>
+					<p><strong><i><?php echo $help_link; ?></i></strong></p>
+					<p><button id="opener">Get Settings Information</button></p>
 				</div>
 			</div>
 			<?php wpmem_a_rss_box(); ?>
@@ -164,6 +183,8 @@ function wpmem_a_build_options() {
 							/** This filter is defined in class-wp-members.php */
 							$dropin_folder = apply_filters( 'wpmem_dropin_folder', WPMEM_DROPIN_DIR );
 							$arr = array(
+								array(__('Enable Products', 'wp-members'),'wpmem_settings_products',__('Enables creation of different membership products','wp-members'),'enable_products'),
+								array(__('Clone menus','wp-members'),'wpmem_settings_menus',__('Enables logged in menus','wp-members'),'clone_menus'),
 								array(__('Notify admin','wp-members'),'wpmem_settings_notify',sprintf(__('Notify %s for each new registration? %s','wp-members'),$admin_email,$chg_email),'notify'),
 								array(__('Moderate registration','wp-members'),'wpmem_settings_moderate',__('Holds new registrations for admin approval','wp-members'),'mod_reg'),
 								array(__('Ignore warning messages','wp-members'),'wpmem_settings_ignore_warnings',__('Ignores WP-Members warning messages in the admin panel','wp-members'),'warnings'),
@@ -185,7 +206,7 @@ function wpmem_a_build_options() {
 								<label><?php _e( 'Enable CAPTCHA', 'wp-members' ); ?></label>
 								<?php $captcha = array( __( 'None', 'wp-members' ) . '|0' );
 								if ( 1 == $wpmem->captcha ) {
-									$wpmem->captcha = 3; // @todo reCAPTCHA v1 is fully obsolete. Change it to v2.
+									$wpmem->captcha = 3; // reCAPTCHA v1 is fully obsolete. Change it to v2.
 								}
 								$captcha[] = __( 'reCAPTCHA', 'wp-members' ) . '|3';
 								$captcha[] = __( 'Really Simple CAPTCHA', 'wp-members' ) . '|2';
@@ -243,11 +264,11 @@ function wpmem_a_build_options() {
 									<input class="regular-text code" type="text" name="wpmem_settings_cssurl" value="<?php echo $wpmem_cssurl; ?>" size="50" />
 								  </li>
 							  </div>
-								<br /></br />
 								<input type="hidden" name="wpmem_admin_a" value="update_settings">
 								<?php submit_button( __( 'Update Settings', 'wp-members' ) ); ?>
 							</ul>
 						</form>
+						<p>If you like <strong>WP-Members</strong> please give it a <a href="https://wordpress.org/support/plugin/wp-members/reviews?rate=5#new-post">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. Thanks!!</p>
 					</div><!-- .inside -->
 				</div>
 				<?php if ( $post_types ) { ?>
@@ -261,7 +282,7 @@ function wpmem_a_build_options() {
 									<th scope="row"><?php _e( 'Add to WP-Members Settings', 'wp-members' ); ?></th>
 									<td><fieldset><?php
 									foreach ( $post_arr as $key => $val ) {
-										if ( 'post' != $key && 'page' != $key ) {
+										if ( 'post' != $key && 'page' != $key && 'wpmem_product' != $key ) {
 											$checked = ( isset( $wpmem->post_types ) && array_key_exists( $key, $wpmem->post_types ) ) ? ' checked' : '';
 											echo '<label for="' . $key . '"><input type="checkbox" name="wpmembers_handle_cpts[]" value="' . $key . '"' . $checked . ' />' . $val . '</label><br />';
 										}
@@ -281,6 +302,62 @@ function wpmem_a_build_options() {
 			</div><!-- #post-body-content -->
 		</div><!-- #post-body -->
 	</div><!-- .metabox-holder -->
+<script>
+jQuery(document).ready(function($){
+	$( function() {
+		$( "#dialog-message" ).dialog({
+			autoOpen: false,
+			modal: true,
+			buttons: {
+				<?php _e( 'Close', 'wp-members' ); ?>: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+		$( "#opener" ).on( "click", function() {
+			$( "#dialog-message" ).dialog( "open" );
+		});
+	} );
+	$("#select_all").click(function(){
+		$("textarea").select();
+		document.execCommand('copy');
+	});
+	$(window).resize(function() {
+		$("#dialog-message").dialog("option", "position", {my: "center", at: "center", of: window});
+	});
+});
+</script>
+<div id="dialog-message" title="<?php _e( 'WP-Members Settings', 'wp-members' ); ?>">
+<h3><span><?php _e( 'WP-Members Settings', 'wp-members' ); ?></span></h3>
+<p><?php _e( 'The following is your WP-Members settings information if needed for support.', 'wp-members' ); ?></p>
+<pre>
+<textarea cols=80 rows=10 align=left wrap=soft style="width:100%;" id="supportinfo" wrap="soft"><?php
+global $wp_version, $wpdb, $wpmem;
+echo "WP Version: " . $wp_version . "\r\n";
+echo "PHP Version: " . phpversion() . "\r\n";
+echo "MySQL Version: " . $wpdb->db_version() . "\r\n";
+wpmem_fields();
+print_r( $wpmem );
+
+echo '***************** Plugin Info *******************' . "\r\n";
+$all_plugins    = get_plugins();
+$active_plugins = get_option( 'active_plugins' );
+$active_display = ''; $inactive_display = '';
+foreach ( $all_plugins as $key => $value ) {
+if ( in_array( $key, $active_plugins ) ) {
+	$active_display.= $key . " | " . $value['Name'] . " | Version: " . $value['Version'] . "\r\n";
+} else {
+	$inactive_display.= $key . " | " . $value['Name'] . " | Version: " . $value['Version'] . "\r\n";
+}
+}
+echo "*************** Active Plugins **************** \r\n";
+echo $active_display;
+echo "*************** Inactive Plugins **************** \r\n";
+echo $inactive_display;
+?></textarea>
+</pre>
+<button id="select_all" class="ui-button-text"><?php _e( 'Click to Copy', 'wp-members' ); ?></button>
+	</div>
 	<?php
 }
 
@@ -306,9 +383,11 @@ function wpmem_update_cpts() {
 	$post_arr = array();
 	$post_types = get_post_types( array( 'public' => true, '_builtin' => false ), 'names', 'and' );
 	if ( $post_types ) {
-		foreach ( $post_types as $post_type ) { 
+		foreach ( $post_types as $post_type ) {
 			$cpt_obj = get_post_type_object( $post_type );
-			$post_arr[ $cpt_obj->name ] = $cpt_obj->labels->name;
+			if ( $cpt_obj->labels->name != 'wpmem_product' ) {
+				$post_arr[ $cpt_obj->name ] = $cpt_obj->labels->name;
+			}
 		}
 	}
 
@@ -402,6 +481,8 @@ function wpmem_update_options() {
 
 	$wpmem_newsettings = array(
 		'version' => WPMEM_VERSION,
+		'enable_products' => filter_var( wpmem_get( 'wpmem_settings_products', 0 ), FILTER_SANITIZE_NUMBER_INT ),
+		'clone_menus' => filter_var( wpmem_get( 'wpmem_settings_menus', 0 ), FILTER_SANITIZE_NUMBER_INT ),
 		'notify'    => filter_var( wpmem_get( 'wpmem_settings_notify', 0 ), FILTER_SANITIZE_NUMBER_INT ),
 		'mod_reg'   => filter_var( wpmem_get( 'wpmem_settings_moderate', 0 ), FILTER_SANITIZE_NUMBER_INT ),
 		'captcha'   => filter_var( wpmem_get( 'wpmem_settings_captcha', 0 ), FILTER_SANITIZE_NUMBER_INT ),
@@ -431,11 +512,6 @@ function wpmem_update_options() {
 	// Leave form tag settings alone.
 	if ( isset( $wpmem->form_tags ) ) {
 		$wpmem_newsettings['form_tags'] = $wpmem->form_tags;
-	}
-
-	// Leave email settings alone.
-	if ( isset( $wpmem->email ) ) {
-		$wpmem_newsettings['email'] = $wpmem->email;
 	}
 
 	// Get settings for blocking, excerpts, show login, and show registration for posts, pages, and custom post types.
@@ -498,7 +574,7 @@ function wpmem_admin_new_settings( $new ) {
 				$val[ $subkey ] = ( is_numeric( $subval ) ) ? get_page_link( $subval ) : $subval;
 			}
 		}
-		$wpmem->$key = $val;
+		$wpmem->{$key} = $val;
 	}
 }
 
@@ -520,10 +596,10 @@ function wpmem_admin_style_list( $style ) {
 		'Twenty Fifteen - no float'  => WPMEM_DIR . 'css/wp-members-2015-no-float.css',
 		'Twenty Fourteen'            => WPMEM_DIR . 'css/wp-members-2014.css',
 		'Twenty Fourteen - no float' => WPMEM_DIR . 'css/wp-members-2014-no-float.css',
-		'Twenty Thirteen'            => WPMEM_DIR . 'css/wp-members-2013.css',
-		'Twenty Twelve'              => WPMEM_DIR . 'css/wp-members-2012.css',
-		'Twenty Eleven'              => WPMEM_DIR . 'css/wp-members-2011.css',
-		'Twenty Ten'                 => WPMEM_DIR . 'css/wp-members.css',
+		//'Twenty Thirteen'            => WPMEM_DIR . 'css/wp-members-2013.css',
+		//'Twenty Twelve'              => WPMEM_DIR . 'css/wp-members-2012.css',
+		//'Twenty Eleven'              => WPMEM_DIR . 'css/wp-members-2011.css',
+		//'Twenty Ten'                 => WPMEM_DIR . 'css/wp-members.css',
 		//'Kubrick'                    => WPMEM_DIR . 'css/wp-members-kubrick.css',
 	);
 
