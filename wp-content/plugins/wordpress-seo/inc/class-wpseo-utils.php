@@ -88,11 +88,13 @@ class WPSEO_Utils {
 	 * @return bool
 	 */
 	public static function is_apache() {
-		if ( isset( $_SERVER['SERVER_SOFTWARE'] ) && stristr( $_SERVER['SERVER_SOFTWARE'], 'apache' ) !== false ) {
-			return true;
+		if ( ! isset( $_SERVER['SERVER_SOFTWARE'] ) ) {
+			return false;
 		}
 
-		return false;
+		$software = sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) );
+
+		return stripos( $software, 'apache' ) !== false;
 	}
 
 	/**
@@ -105,11 +107,13 @@ class WPSEO_Utils {
 	 * @return bool
 	 */
 	public static function is_nginx() {
-		if ( isset( $_SERVER['SERVER_SOFTWARE'] ) && stristr( $_SERVER['SERVER_SOFTWARE'], 'nginx' ) !== false ) {
-			return true;
+		if ( ! isset( $_SERVER['SERVER_SOFTWARE'] ) ) {
+			return false;
 		}
 
-		return false;
+		$software = sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) );
+
+		return stripos( $software, 'nginx' ) !== false;
 	}
 
 	/**
@@ -833,6 +837,7 @@ class WPSEO_Utils {
 			'wpseo_tools',
 			'wpseo_search_console',
 			'wpseo_licenses',
+			'wpseo_courses',
 		);
 
 		return in_array( $current_page, $yoast_seo_free_pages, true );
@@ -1119,11 +1124,63 @@ SVG;
 	 * @return string The log level to use.
 	 */
 	public static function get_analysis_worker_log_level() {
-		if ( defined( 'YOAST_SEO_DEBUG' ) && YOAST_SEO_DEBUG  ) {
+		if ( defined( 'YOAST_SEO_DEBUG' ) && YOAST_SEO_DEBUG ) {
 			return defined( 'YOAST_SEO_DEBUG_ANALYSIS_WORKER' ) ? YOAST_SEO_DEBUG_ANALYSIS_WORKER : 'INFO';
 		}
 
 		return 'ERROR';
+	}
+
+	/**
+	 * Returns the home url with the following modifications:
+	 *
+	 * In case of a multisite setup we return the network_home_url.
+	 * In case of no multisite setup we return the home_url while overriding the WPML filter.
+	 *
+	 * @codeCoverageIgnore
+	 *
+	 * @return string The home url.
+	 */
+	public static function get_home_url() {
+		// Add a new filter to undo WPML's changing of home url.
+		add_filter( 'wpml_get_home_url', array( 'WPSEO_Utils', 'wpml_get_home_url' ), 10, 2 );
+
+		$url = home_url();
+
+		// If the plugin is network activated, use the network home URL.
+		if ( self::is_plugin_network_active() ) {
+			$url = network_home_url();
+		}
+
+		remove_filter( 'wpml_get_home_url', array( 'WPSEO_Utils', 'wpml_get_home_url' ), 10 );
+
+		return $url;
+	}
+
+	/**
+	 * Returns the original URL instead of the language-enriched URL.
+	 * This method gets automatically triggered by the wpml_get_home_url filter
+	 *
+	 * @codeCoverageIgnore
+	 *
+	 * @param string $home_url The url altered by WPML. Unused.
+	 * @param string $url      The url that isn't altered by WPML.
+	 *
+	 * @return string The original url.
+	 */
+	public static function wpml_get_home_url( $home_url, $url ) {
+		return $url;
+	}
+
+	/**
+	 * Checks if the current installation supports MyYoast access tokens.
+	 *
+	 * @codeCoverageIgnore
+	 *
+	 * @return bool True if access_tokens are supported.
+	 */
+	public static function has_access_token_support() {
+		return class_exists( 'WPSEO_MyYoast_Client' );
 	}
 
 	/* ********************* DEPRECATED METHODS ********************* */
@@ -1133,13 +1190,14 @@ SVG;
 	 *
 	 * @see        WPSEO_Language_Utils::get_language()
 	 *
-	 * @since      3.4
+	 * @since      9.5
 	 *
 	 * @param string $locale The locale to get the language of.
 	 *
-	 * @returns string The language part of the locale.
+	 * @return string The language part of the locale.
 	 */
 	public static function get_language( $locale ) {
+		_deprecated_function( __METHOD__, 'WPSEO 9.5', 'WPSEO_Language_Utils::get_language' );
 		return WPSEO_Language_Utils::get_language( $locale );
 	}
 
@@ -1154,11 +1212,13 @@ SVG;
 	 *
 	 * @see        WPSEO_Language_Utils::get_user_locale()
 	 *
-	 * @since      4.1
+	 * @since      9.5
 	 *
-	 * @returns string The locale.
+	 * @return string The locale.
 	 */
 	public static function get_user_locale() {
+		_deprecated_function( __METHOD__, 'WPSEO 9.5', 'WPSEO_Language_Utils::get_user_locale' );
+
 		return WPSEO_Language_Utils::get_user_locale();
 	}
 }

@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "51550284ec13f4f178729708d3c1c367",
@@ -266,7 +266,7 @@
                     "email": "daron.adkins@gmail.com"
                 }
             ],
-            "time": "2018-06-07 20:56:20"
+            "time": "2018-06-07T20:56:20+00:00"
         },
         {
             "name": "nesbot/carbon",
