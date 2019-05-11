@@ -110,10 +110,17 @@ class FavoriteProperty
 
         $mlsString = implode('|', $mlsNumbers);
 
-        $client = new Client(['base_uri' => 'https://mothership.kerigan.com/api/v1/listings']);
+        $client = new Client([
+            'base_uri' => 'https://mothership.kerigan.com/api/v1/',
+            'http_errors' => false,
+            'headers' => [
+                'Referrer' => $_SERVER['HTTP_USER_AGENT']
+            ]
+        ]);
+
         $raw = $client->request(
             'GET',
-            '?mlsNumbers='.$mlsString
+            'listings?mlsNumbers='.$mlsString
         );
 
         $listings = json_decode($raw->getBody());
@@ -212,13 +219,18 @@ class FavoriteProperty
     public function getListingsFromMothership($mlsNumberArray)
     {
         $mlsNumberString = implode('|', $mlsNumberArray);
-        $client          = new Client([
-            'base_uri'   => 'https://mothership.kerigan.com/api/v1'
+        
+        $client = new Client([
+            'base_uri' => 'https://mothership.kerigan.com/api/v1/',
+            'http_errors' => false,
+            'headers' => [
+                'Referrer' => $_SERVER['HTTP_USER_AGENT']
+            ]
         ]);
 
         $raw = $client->request([
             'GET',
-            '/listings?mlsNumbers='. $mlsNumberString
+            'listings?mlsNumbers='. $mlsNumberString
         ]);
 
         $results = json_decode($raw);
