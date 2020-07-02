@@ -15,10 +15,10 @@ $subhead = ($post->page_information_subhead != '' ? $post->page_information_subh
 
 $numberOfPosts = is_page('home') ? 3 : 9;
 $facebook = new FacebookController();
-$results = $facebook->getFeed(6);
+$feed = $facebook->getFbPosts(9);
 $now     = time();
 
-if (! property_exists($results, 'error')) { ?>
+?>
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="section-wrapper support-mast">
@@ -30,28 +30,27 @@ if (! property_exists($results, 'error')) { ?>
         <section id="content" class="content section news">
             <div class="container">
                 <div class="row">
-                <?php
-                foreach ($results->posts as $result) {
-                    if(isset($result->message)) {
-                        if (strlen($result->message) > 0) {
-                            $trimmed = wp_trim_words($result->message, $num_words = 26, '...');
+                <?php if(count($feed) > 0){ ?>
+                    <?php foreach ($feed as $result) {
+                        if(isset($result->post_content)) {
+                            if (strlen($result->post_content) > 0) {
+                                $trimmed = wp_trim_words($result->post_content, $num_words = 26, '...');
+                            }
+                        } else {
+                            $trimmed = 'This just in...';
                         }
-                    } else {
-                        $trimmed = 'This just in...';
-                    }
 
 
-                    $photo_url = (isset($result->full_picture) && $result->full_picture != '' ? $result->full_picture : null);
-                    ?>
-                    <div class="col-md-6 col-lg-4 pb-4">
-                        <?php include(locate_template('template-parts/partials/mini-article.php')); ?>
-                    </div>
+                        $photo_url = (isset($result->full_image_url) && $result->full_image_url != '' ? $result->full_image_url : null);
+                        ?>
+                        <div class="col-md-6 col-lg-4 pb-4">
+                            <?php include(locate_template('template-parts/partials/mini-article.php')); ?>
+                        </div>
+                    <?php } ?>
                 <?php } ?>
                 </div>
             </div>
         </section>
     </article>
 </div>
-<?php
-}
-include(locate_template('template-parts/partials/bot.php'));
+<?php include(locate_template('template-parts/partials/bot.php'));

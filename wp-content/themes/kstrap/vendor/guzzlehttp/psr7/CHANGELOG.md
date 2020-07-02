@@ -10,6 +10,40 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [1.6.0]
+
+### Added
+
+- Allowed version `^3.0` of `ralouphie/getallheaders` dependency (#244)
+- Added MIME type for WEBP image format (#246)
+- Added more validation of values according to PSR-7 and RFC standards, e.g. status code range (#250, #272)
+
+### Changed
+
+- Tests don't pass with HHVM 4.0, so HHVM support got dropped. Other libraries like composer have done the same. (#262)
+- Accept port number 0 to be valid (#270)
+
+### Fixed
+
+- Fixed subsequent reads from `php://input` in ServerRequest (#247)
+- Fixed readable/writable detection for certain stream modes (#248)
+- Fixed encoding of special characters in the `userInfo` component of an URI (#253)
+
+
+## [1.5.2] - 2018-12-04
+
+### Fixed
+
+- Check body size when getting the message summary
+
+
+## [1.5.1] - 2018-12-04
+
+### Fixed
+
+- Get the summary of a body only if it is readable
+
+
 ## [1.5.0] - 2018-12-03
 
 ### Added
@@ -195,7 +229,10 @@ Currently unsupported:
 
 
 
-[Unreleased]: https://github.com/guzzle/psr7/compare/1.5.0...HEAD
+[Unreleased]: https://github.com/guzzle/psr7/compare/1.6.0...HEAD
+[1.6.0]: https://github.com/guzzle/psr7/compare/1.5.2...1.6.0
+[1.5.2]: https://github.com/guzzle/psr7/compare/1.5.1...1.5.2
+[1.5.1]: https://github.com/guzzle/psr7/compare/1.5.0...1.5.1
 [1.5.0]: https://github.com/guzzle/psr7/compare/1.4.2...1.5.0
 [1.4.2]: https://github.com/guzzle/psr7/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/guzzle/psr7/compare/1.4.0...1.4.1

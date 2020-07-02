@@ -3,23 +3,23 @@
 use Includes\Modules\KMAFacebook\FacebookController;
 
 $facebook = new FacebookController();
-$results = $facebook->getFeed(2);
+$feed = $facebook->getFbPosts(2);
 $now     = time();
 
 ?>
-<?php if (! property_exists($results, 'error')) { ?>
+<?php if(count($feed) > 0){ ?>
     <div class="facebook-feed">
-        <?php foreach ($results->posts as $result) {
-            $message = $result->message ?? 'This just in...';
+        <?php foreach ($feed as $result) {
+            $message = $result->post_content ?? 'This just in...';
             $trimmed = wp_trim_words( $message, $num_words = 22, '...' );
-            $photo_url = (! isset($result->full_picture) || $result->full_picture == '') ? 'https://beachtimerealty.com/wp-content/uploads/2018/09/Laketown-Wharf-real-estate-sales-team-Desiree-Gardner-Photography-Oct-2017-print-quality-30-e1536949164524-300x281.jpg' : $result->full_picture;
+            $photo_url = (! isset($result->full_image_url) || $result->full_image_url == '') ? 'https://beachtimerealty.com/wp-content/uploads/2018/09/Laketown-Wharf-real-estate-sales-team-Desiree-Gardner-Photography-Oct-2017-print-quality-30-e1536949164524-300x281.jpg' : $result->full_image_url;
             ?>
 
             <div class="facebook-feed-item" id="<?php echo $result->id; ?>" >
 
                 <div class="row">
                     <div class="col-4">
-                        <img src="<?php echo $photo_url; ?>" class="img-fluid" alt="<?php echo $result->caption ?? 'The photo'; ?>" >
+                        <img src="<?php echo $photo_url; ?>" class="img-fluid" alt="<?php echo $message ?? 'The photo'; ?>" >
                     </div>
                     <div class="col-8">
                         <p class="time-posted">posted <?php echo human_time_diff($now,strtotime($result->created_time)); ?> ago</p>
