@@ -22,7 +22,7 @@ $now     = time();
                         <img src="<?php echo $photo_url; ?>" class="img-fluid" alt="<?php echo $message ?? 'The photo'; ?>" >
                     </div>
                     <div class="col-8">
-                        <p class="time-posted">posted <?php echo human_time_diff($now,strtotime($result->created_time)); ?> ago</p>
+                        <p class="time-posted">posted <?php echo human_time_diff($now,strtotime($result->post_date)); ?> ago</p>
                         <p style="margin:0;"><?php echo $trimmed; ?> <a target="_blank" href="<?php echo $result->permalink_url; ?>" >read more</a></p>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <div class="card text-center <?= !isset($photo_url) ? 'no-photo' : '' ?>">
     <div class="article-image">
-        <?php if($result->type != 'video') { ?>
+        <?php if($result->status_type != 'added_video') { ?>
             <div class="card-image embed-responsive embed-responsive-4by3">
                 <a href="<?php echo $result->link; ?>" target="_blank">
                     <img src="<?php echo $photo_url; ?>" alt="<?php echo isset($result->caption) ? $result->caption : ''; ?>" >
@@ -9,7 +9,7 @@
         <?php } else { ?>
             <figure class="image video is-4by3">
                 <iframe
-                    src="<?php echo 'https://www.facebook.com/plugins/video.php?href='.$result->link ?>"
+                    src="<?= $fbPost->video_url; ?>"
                     style="border:none;overflow:hidden"
                     scrolling="no"
                     frameborder="0"
@@ -23,11 +23,11 @@
         <?php } ?>
     </div>
     <div class="card-block">
-        <p>posted <?php echo human_time_diff($now, strtotime($result->created_time)); ?> ago</p>
+        <p>posted <?php echo human_time_diff($now, strtotime($result->post_date)); ?> ago</p>
         <p class="article-text"><?php echo $trimmed; ?></p>
     </div>
     <div class="card-footer">
-        <a class="article-footer-item" href="<?php echo $result->permalink_url; ?>" target="_blank" >Read more on Facebook</a>
+        <a class="article-footer-item" href="<?php echo $result->post_link; ?>" target="_blank" >Read more on Facebook</a>
     </div>
 </div>
 
