@@ -123,3 +123,182 @@ add_action('notifications_hook', function()
 
 
 add_action('wp_enqueue_scripts', 'kstrap_scripts');
+
+add_filter( 'yoast_seo_development_mode', '__return_true' );
+
+add_filter( 'wpseo_schema_webpage', 'change_yoast_schema' );
+
+/**
+ * Changes @type of Article Schema data.
+ * @param array $data Schema.org Article data array.
+ * @return array Schema.org Article data array.
+ */
+function change_yoast_schema( $data ) {
+    
+    $data['@context']  = "https://schema.org";
+    $data['@type']     = "LocalBusiness";
+    $data['name']      = "Beachtime Realty";
+    $data['image']     = "https://beachtimerealty.com/themes/kstrap/screenshot.png";
+    $data['@id']       = get_permalink(get_the_ID());
+    $data['url']       = get_permalink(get_the_ID());
+    $data['isPartOf']  = ['@id' => get_permalink(get_option('page_on_front')) ];
+    $data['telephone'] = "(850)588-7791";
+    $data['address']   = [
+        "@type" => "PostalAddress",
+        "streetAddress" => "305 North Arnold Drive",
+        "addressLocality" => "Panama City Beach",
+        "addressRegion" => "FL",
+        "postalCode" => "32413",
+        "addressCountry" => "US"
+    ];
+    $data['geo']   = [
+        '@type' => "GeoCoordinates",
+        'latitude' => 30.2327252,
+        'longitude' => -85.88696039999999
+    ];
+    $data['openingHoursSpecification'][0] = [
+        '@type' => "OpeningHoursSpecification",
+        'dayOfWeek' => [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+        ],
+        'opens' => "09:00",
+        'closes' => "19:00"
+    ];
+
+    $data['areaServed'] = [
+        [
+        '@type' => "City",
+        'name' => "Panama City Beach",
+        'sameAs' => "https://en.wikipedia.org/wiki/Panama_City_Beach,_Florida"
+        ],
+        [
+        '@type' => "City",
+        'name' => "Panama City",
+        'sameAs' => "https://en.wikipedia.org/wiki/Panama_City,_Florida"
+        ],
+        [
+        '@type' => "City",
+        'name' => "Upper Grand Lagoon",
+        'sameAs' => "https://en.wikipedia.org/wiki/Upper_Grand_Lagoon,_Florida"
+        ],
+        [
+        '@type' => "City",
+        'name' => "Lower Grand Lagoon",
+        'sameAs' => "https://en.wikipedia.org/wiki/Lower_Grand_Lagoon,_Florida"
+        ],
+        '@type' => "City",
+        'name' => "Laguna Beach",
+        'sameAs' => "https://en.wikipedia.org/wiki/Laguna_Beach,_Florida"
+        ],
+        [
+        '@type' => "City",
+        'name' => "Sunnyside",
+        'sameAs' => "https://en.wikipedia.org/wiki/Sunnyside,_Florida"
+        ],
+        [
+        '@type' => "City",
+        'name' => "Rosemary Beach",
+        'sameAs' => "https://en.wikipedia.org/wiki/Rosemary_Beach,_Florida"
+        ],
+        [
+        '@type' => "City",
+        'name' => "Destin",
+        'sameAs' => "https://en.wikipedia.org/wiki/Destin,_Florida"
+        ]
+    ];
+
+    $data['sameAs'] = [
+        "https://www.facebook.com/beachtimerealtypcb/",
+        "https://beachtimerealty.com/"
+    ];
+
+    $data['department'] = [
+        $data['@type']     = "LocalBusiness";
+        $data['name']      = "Beachtime Realty - Thomas Drive Location";
+        $data['image']     = "https://beachtimerealty.com/themes/kstrap/screenshot.png";
+        $data['@id']       = get_permalink(get_the_ID());
+        $data['url']       = get_permalink(get_the_ID());
+        $data['isPartOf']  = ['@id' => get_permalink(get_option('page_on_front')) ];
+        $data['telephone'] = "(850)588-7791";
+        $data['address']   = [
+            "@type" => "PostalAddress",
+            "streetAddress" => "9902 S. Thomas Drive",
+            "addressLocality" => "Panama City Beach",
+            "addressRegion" => "FL",
+            "postalCode" => "32408",
+            "addressCountry" => "US"
+        ];
+        $data['geo']   = [
+            '@type' => "GeoCoordinates",
+            'latitude' => 30.1765721,
+            'longitude' => -85.88696039999999
+        ];
+        $data['openingHoursSpecification'][0] = [
+            '@type' => "OpeningHoursSpecification",
+            'dayOfWeek' => [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+            ],
+            'opens' => "09:00",
+            'closes' => "19:00"
+        ];
+
+        $data['areaServed'] = [
+            [
+            '@type' => "City",
+            'name' => "Panama City Beach",
+            'sameAs' => "https://en.wikipedia.org/wiki/Panama_City_Beach,_Florida"
+            ],
+            [
+            '@type' => "City",
+            'name' => "Panama City",
+            'sameAs' => "https://en.wikipedia.org/wiki/Panama_City,_Florida"
+            ],
+            [
+            '@type' => "City",
+            'name' => "Upper Grand Lagoon",
+            'sameAs' => "https://en.wikipedia.org/wiki/Upper_Grand_Lagoon,_Florida"
+            ],
+            [
+            '@type' => "City",
+            'name' => "Lower Grand Lagoon",
+            'sameAs' => "https://en.wikipedia.org/wiki/Lower_Grand_Lagoon,_Florida"
+            ],
+            '@type' => "City",
+            'name' => "Laguna Beach",
+            'sameAs' => "https://en.wikipedia.org/wiki/Laguna_Beach,_Florida"
+            ],
+            [
+            '@type' => "City",
+            'name' => "Sunnyside",
+            'sameAs' => "https://en.wikipedia.org/wiki/Sunnyside,_Florida"
+            ],
+            [
+            '@type' => "City",
+            'name' => "Rosemary Beach",
+            'sameAs' => "https://en.wikipedia.org/wiki/Rosemary_Beach,_Florida"
+            ],
+            [
+            '@type' => "City",
+            'name' => "Destin",
+            'sameAs' => "https://en.wikipedia.org/wiki/Destin,_Florida"
+            ]
+        ];
+
+        $data['sameAs'] = [
+            "https://www.facebook.com/beachtimerealtypcb/",
+            "https://beachtimerealty.com/"
+        ];    
+    return $data;
+}
