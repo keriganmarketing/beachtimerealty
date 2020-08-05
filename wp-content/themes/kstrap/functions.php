@@ -124,7 +124,7 @@ add_action('notifications_hook', function()
 
 add_action('wp_enqueue_scripts', 'kstrap_scripts');
 
-add_filter( 'yoast_seo_development_mode', '__return_true' );
+//add_filter( 'yoast_seo_development_mode', '__return_true' );
 
 add_filter( 'wpseo_schema_webpage', 'change_yoast_schema' );
 
