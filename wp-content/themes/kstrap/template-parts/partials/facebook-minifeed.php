@@ -23,7 +23,7 @@ $now     = time();
                     </div>
                     <div class="col-8">
                         <p class="time-posted">posted <?php echo human_time_diff($now,strtotime($result->post_date)); ?> ago</p>
-                        <p style="margin:0;"><?php echo $trimmed; ?> <a target="_blank" href="<?php echo $result->permalink_url; ?>" >read more</a></p>
+                        <p style="margin:0;"><?php echo $trimmed; ?> <a target="_blank" href="<?php echo $result->post_link; ?>" >read more</a></p>
                     </div>
                 </div>
                 <hr>
