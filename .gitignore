@@ -1,10 +1,46 @@
+# IDE/OS
 .idea/
+.vscode/
 .DS_Store
-wp-config.php
 tags
 .user.ini
-php.ini
-*error_log
-*/cache/
-wp-content/themes/kstrap/node_modules/
+
+# ERRORS AND CACHE
+**/error_log
+**/cache
+
+# CONFIG & PACKAGES
+wp-config.php
 wp-content/themes/kstrap/vendor/
+wp-content/themes/kstrap/node_modules/
+
+# WP CONTENT
+wp-content/plugins/*
+!wp-content/plugins/index.php
+!wp-content/plugins/kma-*/
+wp-content/upgrade/*
+wp-content/uploads/*
+wp-content/wflogs/*
+
+# WP CORE
+wp-admin/*
+wp-includes/*
+index.php
+license.txt
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config-sample.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+readme.*
+
+# MISC
+bannerads
