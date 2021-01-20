@@ -21,6 +21,7 @@ wp-content/plugins/*
 wp-content/upgrade/*
 wp-content/uploads/*
 wp-content/wflogs/*
+wordfence-waf.php
 
 # WP CORE
 wp-admin/*
@@ -40,7 +41,4 @@ wp-settings.php
 wp-signup.php
 wp-trackback.php
 xmlrpc.php
-readme.*
-
-# MISC
-bannerads
+readme.html

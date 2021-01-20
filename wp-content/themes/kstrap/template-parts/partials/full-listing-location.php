@@ -50,63 +50,13 @@
 </div>
 <div class="col-md-7">
     <div class="card">
-    <div id="listing-map" style="height: 100%; min-height:200px; height: 392px; margin-top:0;"></div>
-	<script type="text/javascript">
-
-        var map,
-            marker,
-            mapElement,
-            mapOptions,
-            myLatLng = {lat: <?php echo $listingInfo->latitude; ?>, lng: <?php echo $listingInfo->longitude; ?> },
-            status = '<?php echo($listingInfo->status != '' ? strtolower($listingInfo->status) : ''); ?>',
-            type = '<?php echo($listingInfo->property_type != '' ? $listingInfo->property_type : ''); ?>',
-            pin;
-
-            console.log(type);
-            console.log(status);
-            console.log(myLatLng);
-
-        function initMap() {
-
-            mapOptions = {
-                zoom: 11,
-                center: myLatLng,
-                disableDefaultUI: true,
-                zoomControl: true
-            };
-
-            mapElement = document.getElementById('listing-map');
-            map = new google.maps.Map(mapElement, mapOptions);
-
-            switch(type) {
-                case 'G':
-                case 'A':
-                    pin = '/wp-content/themes/kstrap/img/residential-'+status+'-pin.png';
-                    break;
-                case 'E':
-                case 'J':
-                case 'F':
-                    pin = '/wp-content/themes/kstrap/img/commercial-'+status+'-pin.png';
-                    break;
-                case 'C':
-                    pin = '/wp-content/themes/kstrap/img/land-'+status+'-pin.png';
-                    break;
-                default:
-                    pin = 'http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1';
-            }
-
-            marker = new google.maps.Marker({
-                title: '<?php echo $listingInfo->mls_account; ?>',
-                position: myLatLng,
-                map: map,
-                icon: pin
-            });
-
-            console.log('map loaded');
-
-        }
-
-	</script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4&callback=initMap" ></script>
-</div>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe
+                title="map location" 
+                class="embed-responsive-item"  
+                style="overflow: hidden; border: none; margin: 0;" 
+                src="https://maps.google.com/maps?q=<?php echo $listingInfo->latitude; ?>,<?php echo $listingInfo->longitude; ?>&center=<?php echo $listingInfo->latitude; ?>,<?php echo $listingInfo->longitude; ?>&hl=es;z=17&amp;output=embed"
+            ></iframe>
+        </div>
+    </div>
 </div>

@@ -20,7 +20,7 @@
                 <form class="form form-inline" method="post" style="display:inline-block;" >
                     <input type="hidden" name="user_id" value="<?php echo get_current_user_id(); ?>" />
                     <input type="hidden" name="mls_number" value="<?php echo $listingInfo->mls_account; ?>" />
-                    <button type="submit" class="btn btn-primary btn-outlined mb-2" ><i class="fa fa-star" aria-hidden="true"></i> <?php echo $buttonText; ?></button>
+                    <button type="submit" class="btn btn-primary btn-outlined mb-2" ><?php echo $buttonText; ?></button>
                 </form>
             <?php } ?>
             <button type="button" class="btn btn-primary btn-outlined hidden-md-up mb-2" data-toggle="modal" data-target="#lightbox" >View more photos</button>

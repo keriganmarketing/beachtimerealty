@@ -55,14 +55,12 @@ $subhead  = ($post->page_information_subhead != '' ? $post->page_information_sub
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a class="page-link" <?php echo(1 != $currentPage ? 'href="'.$currentUrl.'&pg=1"' : 'disabled'); ?> aria-label="First">
-                                        <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
-                                        <span class="sr-only">First</span>
+                                        First
                                     </a>
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" <?php echo(1 != $currentPage ? 'href="'.$currentUrl.'&pg='.($currentPage - 1).'"' : 'disabled'); ?> aria-label="Previous">
-                                        <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
-                                        <span class="sr-only">Previous</span>
+                                        Prev
                                     </a>
                                 </li>
                                 <li class="page-item">
@@ -70,14 +68,12 @@ $subhead  = ($post->page_information_subhead != '' ? $post->page_information_sub
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" <?php echo($lastPage != $currentPage ? 'href="'.$currentUrl.'&pg='.($currentPage + 1).'"' : 'disabled'); ?> aria-label="Next">
-                                        <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                                        <span class="sr-only">Next</span>
+                                        Next
                                     </a>
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" <?php echo($lastPage != $currentPage ? 'href="'.$currentUrl.'&pg='.$lastPage.'"' : 'disabled'); ?> aria-label="Next">
-                                        <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
-                                        <span class="sr-only">Last</span>
+                                        Last
                                     </a>
                                 </li>
                             </ul>
