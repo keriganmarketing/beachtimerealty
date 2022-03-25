@@ -11,7 +11,7 @@ include(locate_template('template-parts/partials/top.php'));
 $currentPage  = (isset($_GET['pg']) ? $_GET['pg'] : 1);
 $searchCriteria = (isset($_GET['qs']) ? $_GET : [
     'omniField'    => 'Panama City Beach',
-    'status'       => 'Active',
+    'status'       => ['Active','Pending','Under Contract - Taking Backups'],
     'propertyType' => 'Single Family Home',
     'minPrice'     => 0,
     'maxPrice'     => 9000000000,

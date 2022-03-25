@@ -21,16 +21,46 @@
                 <div class="col-sm-6 col-lg-3">
                     <div class="input-container">
                         <select class="form-control form-control-lg select2-property-type" name="propertyType" >
-                            <option value="" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == '' ? 'selected' : ''); ?> >Property type</option>
-                            <option value="Single Family Home" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Single Family Home' ? 'selected' : ''); ?> >Single Family Home</option>
-                            <option value="Condo / Townhome" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Condo / Townhome' ? 'selected' : ''); ?> >Condo / Townhome</option>
-                            <option value="Commercial" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Commercial' ? 'selected' : ''); ?> >Commercial</option>
-                            <option value="Lots / Land" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Lots / Land' ? 'selected' : ''); ?> >Lots / Land</option>
-                            <option value="Multi-Family Home" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Multi-Family Home' ? 'selected' : ''); ?> >Multi-Family Home</option>
-                            <option value="Rental" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Rental' ? 'selected' : ''); ?> >Rental</option>
-                            <option value="Manufactured" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Manufactured' ? 'selected' : ''); ?> Manufactured</option>
-                            <option value="Farms / Agricultural" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Farms / Agricultural' ? 'selected' : ''); ?> >Farms / Agricultural</option>
-                            <option value="Other" <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Other' ? 'selected' : ''); ?> >Other</option>
+                            <option 
+                                value="" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == '' ? 'selected' : ''); ?> 
+                            >Property type</option>
+                            <option 
+                                value="Single Family Home" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Single Family Home' ? 'selected' : ''); ?> 
+                            >Single Family Home</option>
+                            <option 
+                                value="Condo / Townhome" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Condo / Townhome' ? 'selected' : ''); ?> 
+                            >Condo / Townhome</option>
+                            <option 
+                                value="Commercial" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Commercial' ? 'selected' : ''); ?> 
+                            >Commercial</option>
+                            <option 
+                                value="Lots / Land" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Lots / Land' ? 'selected' : ''); ?> 
+                            >Lots / Land</option>
+                            <option 
+                                value="Multi-Family Home" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Multi-Family Home' ? 'selected' : ''); ?> 
+                            >Multi-Family Home</option>
+                            <option 
+                                value="Rental" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Rental' ? 'selected' : ''); ?> 
+                            >Rental</option>
+                            <option 
+                                value="Manufactured" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Manufactured' ? 'selected' : ''); ?> 
+                            >Manufactured</option>
+                            <option 
+                                value="Farms / Agricultural" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Farms / Agricultural' ? 'selected' : ''); ?> 
+                            >Farms / Agricultural</option>
+                            <option 
+                                value="Other" 
+                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Other' ? 'selected' : ''); ?> 
+                            >Other</option>
                         </select>
                     </div>
                 </div>
@@ -167,7 +197,13 @@
                         <div class="col-12 col-md-2 label input-group-addon" >Beds</div>
                         <div class="col form-check form-check-inline">
                             <label class="custom-control custom-radio">
-                                <input type="radio" name="bedrooms" value="" class="custom-control-input" >
+                                <input 
+                                    type="radio" 
+                                    name="bedrooms" 
+                                    value="" 
+                                    class="custom-control-input" 
+                                    <?php echo (!isset($_GET['bedrooms']) || $_GET['bedrooms'] == '' ? 'checked' : ''); ?> 
+                                >
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description">Any</span>
                             </label>
@@ -186,7 +222,13 @@
                         <div class="col-12 col-md-2 label input-group-addon" >Baths</div>
                         <div class="col form-check form-check-inline">
                             <label class="custom-control custom-radio">
-                                <input type="radio" name="bathrooms" value="" class="custom-control-input" >
+                                <input 
+                                    type="radio" 
+                                    name="bathrooms" 
+                                    value="" 
+                                    class="custom-control-input" 
+                                    <?php echo (!isset($_GET['bathrooms']) || $_GET['bathrooms'] == '' ? 'checked' : ''); ?> 
+                                >
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description">Any</span>
                             </label>
@@ -211,17 +253,41 @@
                             <div class="col-12 col-md-2 label input-group-addon" >Status</div>
                             <div class="col form-check form-check-inline">
                                 <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" <?php echo (in_array('active',$status) ? 'checked' : ''); ?> name="status[]" value="active">
+                                    <input 
+                                        type="checkbox" 
+                                        class="custom-control-input"
+                                        <?php echo (in_array('active',$searchCriteria['status']) ? 'checked' : ''); ?> 
+                                        name="status[]" 
+                                        value="Active">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Active</span>
                                 </label>
                                 <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" <?php echo (in_array('sold',$status) ? 'checked' : ''); ?> name="status[]" value="sold">
+                                    <input 
+                                        type="checkbox" 
+                                        class="custom-control-input" 
+                                        <?php echo (in_array('Under Contract - Taking Backups',$searchCriteria['status']) ? 'checked' : ''); ?> 
+                                        name="status[]" 
+                                        value="Under Contract - Taking Backups">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Under Contract - Taking Backups</span>
+                                </label>
+                                <label class="custom-control custom-checkbox">
+                                    <input 
+                                        type="checkbox" 
+                                        class="custom-control-input" 
+                                        <?php echo (in_array('Sold',$searchCriteria['status']) ? 'checked' : ''); ?> name="status[]" 
+                                        value="Sold">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Sold</span>
                                 </label>
                                 <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" <?php echo (in_array('pending',$status) ? 'checked' : ''); ?> name="status[]" value="pending">
+                                    <input 
+                                        type="checkbox" 
+                                        class="custom-control-input" 
+                                        <?php echo (in_array('Pending',$searchCriteria['status']) ? 'checked' : ''); ?> 
+                                        name="status[]" 
+                                        value="Pending">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Pending</span>
                                 </label>

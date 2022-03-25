@@ -11,5 +11,10 @@
     "guzzlehttp/guzzle": "^6.3",
     "kerigansolutions/fb-autoblog-wp": "^0.24",
     "gothick/php-akismet": "^1.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true
+    }
   }
 }
