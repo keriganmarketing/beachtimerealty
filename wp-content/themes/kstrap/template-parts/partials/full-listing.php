@@ -56,6 +56,8 @@
             </div>
             <hr>
             <?php include(locate_template('template-parts/partials/mortgage-calculator.php')); ?>
+            <hr>
+            <?php include(locate_template('template-parts/partials/disclaimer.php')); ?>
         </div>
     </div>
 <?php } else { ?>

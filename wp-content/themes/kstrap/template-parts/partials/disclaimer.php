@@ -1,0 +1,2 @@
+<p class="text-center">Real estate property information provided by Central Panhandle Association of REALTORS® (CPAR) and the Emerald Coast Association of REALTORS® (ECAR). IDX information is provided exclusively for consumers personal, non-commercial use, and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. This data is deemed reliable but is not guaranteed accurate by the MLS. Vendor ID: 28322
+</p>
