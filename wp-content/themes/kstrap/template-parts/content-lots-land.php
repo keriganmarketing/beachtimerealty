@@ -42,27 +42,25 @@ $subhead  = ($post->page_information_subhead != '' ? $post->page_information_sub
             <div class="container-fluid">
                 <div class="entry-content">
                     <?php the_content(); ?>
+                    <small>Showing <?php echo $totalResults; ?> results...</small>
                     <div class="row">
-                        <?php foreach ($listings as $result) {
-                        ?>
-                        <div class="col-sm-6 col-md-4 col-lg-3 text-center"> <?php include(locate_template('template-parts/partials/mini-listing.php')); ?>
+                        <?php foreach ($listings as $result) {  ?>
+                        <div class="col-sm-6 col-md-4 col-lg-3 text-center"> 
+                            <?php include(locate_template('template-parts/partials/mini-listing.php')); ?>
                         </div>
-                        <?php
-                        } ?>
+                        <?php } ?>
                     </div>
                     <div class="row justify-content-center">
                         <nav aria-label="search-pagination">
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a class="page-link" <?php echo(1 != $currentPage ? 'href="'.$currentUrl.'&pg=1"' : 'disabled'); ?> aria-label="First">
-                                        <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
-                                        <span class="sr-only">First</span>
+                                        First
                                     </a>
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" <?php echo(1 != $currentPage ? 'href="'.$currentUrl.'&pg='.($currentPage - 1).'"' : 'disabled'); ?> aria-label="Previous">
-                                        <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
-                                        <span class="sr-only">Previous</span>
+                                        Previous
                                     </a>
                                 </li>
                                 <li class="page-item">
@@ -70,14 +68,12 @@ $subhead  = ($post->page_information_subhead != '' ? $post->page_information_sub
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" <?php echo($lastPage != $currentPage ? 'href="'.$currentUrl.'&pg='.($currentPage + 1).'"' : 'disabled'); ?> aria-label="Next">
-                                        <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                                        <span class="sr-only">Next</span>
+                                        Next
                                     </a>
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" <?php echo($lastPage != $currentPage ? 'href="'.$currentUrl.'&pg='.$lastPage.'"' : 'disabled'); ?> aria-label="Next">
-                                        <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
-                                        <span class="sr-only">Last</span>
+                                        Last
                                     </a>
                                 </li>
                             </ul>

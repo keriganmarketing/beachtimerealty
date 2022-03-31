@@ -3,14 +3,14 @@
 ?>
 <div class="search-bar-container">
     <div class="search-control"></div>
-    <form class="form-inline" method="get" id="mainsearch" >
+    <form class="form-inline" method="get" id="mainsearch" autocomplete="off" >
         <div class="search-bar">
             <div class="container-fluid">
             <div class="row">
                 <input type="hidden" name="qs" value="true" >
                 <div class="col-md-6">
                     <div class="input-container omni-field-container">
-                        <select class="form-control form-control-lg select2-omni-field" name="omniField" >
+                        <select class="form-control form-control-lg select2-omni-field" name="omniField" autocomplete="off">
                             <option value="">City, area, subdivision or zip</option>
                             <?php echo (isset($_GET['omniField']) && $_GET['omniField'] != '' ? '
                             <option value="'.$_GET['omniField'].'" selected >'.$_GET['omniField'].'</option>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="input-container">
-                        <select class="form-control form-control-lg select2-property-type" name="propertyType" >
+                        <select class="form-control form-control-lg select2-property-type" name="propertyType" autocomplete="off">
                             <option 
                                 value="" 
                                 <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == '' ? 'selected' : ''); ?> 
@@ -46,10 +46,6 @@
                                 <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Multi-Family Home' ? 'selected' : ''); ?> 
                             >Multi-Family Home</option>
                             <option 
-                                value="Rental" 
-                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Rental' ? 'selected' : ''); ?> 
-                            >Rental</option>
-                            <option 
                                 value="Manufactured" 
                                 <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Manufactured' ? 'selected' : ''); ?> 
                             >Manufactured</option>
@@ -57,10 +53,6 @@
                                 value="Farms / Agricultural" 
                                 <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Farms / Agricultural' ? 'selected' : ''); ?> 
                             >Farms / Agricultural</option>
-                            <option 
-                                value="Other" 
-                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Other' ? 'selected' : ''); ?> 
-                            >Other</option>
                         </select>
                     </div>
                 </div>
@@ -120,7 +112,7 @@
                         <label class="sr-only" for="min_price">Min Price</label>
                         <div class="input-group mb-2 mb-sm-0">
                             <div class="input-group-addon">Min Price</div>
-                            <select class="form-control form-control-lg select2-price-min" name="minPrice" >
+                            <select class="form-control form-control-lg select2-price-min" name="minPrice" autocomplete="off">
                                 <option value="">Min price</option>
                                 <?php for($i = 0; $i <= 1000000; $i+=100000){
                                     echo '<option value="' . $i . '" '. (isset($_GET['minPrice']) && $_GET['minPrice'] == $i ? 'selected' : '') .' >$' . number_format( $i, 0, ".", ",") . '</option>';
@@ -136,7 +128,7 @@
                         <label class="sr-only" for="PRICE_MAX">Max Price</label>
                         <div class="input-group mb-2 mb-sm-0">
                             <div class="input-group-addon">Max Price</div>
-                            <select class="form-control form-control-lg select2-price-max" name="maxPrice">
+                            <select class="form-control form-control-lg select2-price-max" name="maxPrice" autocomplete="off">
                                 <option value="">Max price</option>
                                 <?php for($i = 100000; $i <= 1000000; $i+=100000){
                                     echo '<option value="' . $i . '" '. (isset($_GET['maxPrice']) && $_GET['maxPrice'] == $i ? 'selected' : '') .' >$' . number_format( $i, 0, ".", ",") . '</option>';
@@ -154,7 +146,7 @@
                             <label class="sr-only" for="TOT_HEAT_SQFT">Total H/C Sqft</label>
                             <div class="input-group mb-2 mb-sm-0">
                                 <div class="input-group-addon">Total H/C Sqft</div>
-                                <select name="sq_ft" id="sq_ft" class="form-control select2-generic" >
+                                <select name="sq_ft" id="sq_ft" class="form-control select2-generic" autocomplete="off">
                                     <option value="" >Any</option>
 	                                <?php for($i = 800; $i < 10000; $i+=200){
 		                                echo '<option value="' . $i . '" '. (isset($_GET['sq_ft']) && $_GET['sq_ft'] == $i ? 'selected' : '') .' >' . number_format( $i, 0, ".", ",") . '</option>';
@@ -167,7 +159,7 @@
                             <label class="sr-only" for="acreage">Acreage</label>
                             <div class="input-group mb-2 mb-sm-0">
                                 <div class="input-group-addon">Acreage</div>
-                                <select name="acreage" id="acreage" class="form-control select2-generic" >
+                                <select name="acreage" id="acreage" class="form-control select2-generic" autocomplete="off">
                                     <option value="" >Any</option>
 	                                <?php $acreageArray = array(
                                         '.5' => '1/2 or more acres',
@@ -256,7 +248,7 @@
                                     <input 
                                         type="checkbox" 
                                         class="custom-control-input"
-                                        <?php echo (in_array('active',$searchCriteria['status']) ? 'checked' : ''); ?> 
+                                        <?php echo (in_array('active',$status) ? 'checked' : ''); ?> 
                                         name="status[]" 
                                         value="Active">
                                     <span class="custom-control-indicator"></span>
@@ -266,9 +258,9 @@
                                     <input 
                                         type="checkbox" 
                                         class="custom-control-input" 
-                                        <?php echo (in_array('Under Contract - Taking Backups',$searchCriteria['status']) ? 'checked' : ''); ?> 
+                                        <?php echo (in_array('Active Under Contract',$status) ? 'checked' : ''); ?> 
                                         name="status[]" 
-                                        value="Under Contract - Taking Backups">
+                                        value="Active Under Contract">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Under Contract - Taking Backups</span>
                                 </label>
@@ -276,7 +268,7 @@
                                     <input 
                                         type="checkbox" 
                                         class="custom-control-input" 
-                                        <?php echo (in_array('Sold',$searchCriteria['status']) ? 'checked' : ''); ?> name="status[]" 
+                                        <?php echo (in_array('Sold',$status) ? 'checked' : ''); ?> name="status[]" 
                                         value="Sold">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Sold</span>
@@ -285,7 +277,7 @@
                                     <input 
                                         type="checkbox" 
                                         class="custom-control-input" 
-                                        <?php echo (in_array('Pending',$searchCriteria['status']) ? 'checked' : ''); ?> 
+                                        <?php echo (in_array('Pending',$status) ? 'checked' : ''); ?> 
                                         name="status[]" 
                                         value="Pending">
                                     <span class="custom-control-indicator"></span>

@@ -36,22 +36,11 @@ class QuickSearch
         $page         = $this->searchCriteria['pg'] ?? 1;
         $sortBy       = $this->searchCriteria['sortBy'] ?? 'date_modified';
         $orderBy      = $this->searchCriteria['orderBy'] ?? 'DESC';
-        $status       = '';
-
-        /*
-         * If multiple statuses are selected, create a string from the indexes.
-         * Otherwise, just use the specified status or just default to "Active".
-         */
-        if (isset($this->searchCriteria['status'])) {
-            if (is_array($this->searchCriteria['status'])) {
-                $status = implode('|', $this->searchCriteria['status']);
-            } else {
-                $status = $this->searchCriteria['status'];
-            }
-        }
+        $status       = isset($this->searchCriteria['status']) && $this->searchCriteria['status'] != '' ?
+            implode('|', self::setStatus($this->searchCriteria['status'])) : '';
 
         $client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/',
+            'base_uri' => 'https://mothership2.kerigan.com/api/v1/',
             'http_errors' => false,
             'headers' => [
                 'Referrer' => $_SERVER['HTTP_USER_AGENT']
@@ -83,24 +72,56 @@ class QuickSearch
         return $results;
     }
 
-    public static function getPropertyTypes($class = null)
+    public static function getPropertyTypes($array = [])
     {
-        $typeArray = [
-            'Single Family Home'   => ['Detached Single Family'],
-            'Condo / Townhome'     => ['Condominium', 'Townhouse', 'Townhomes'],
-            'Commercial'           => ['Office', 'Retail', 'Industrial', 'Income Producing', 'Unimproved Commercial', 'Business Only', 'Auto Repair', 'Improved Commercial', 'Hotel/Motel'],
-            'Lots / Land'          => ['Vacant Land', 'Residential Lots', 'Land', 'Land/Acres', 'Lots/Land'],
-            'Multi-Family Home'    => ['Duplex Multi-Units', 'Triplex Multi-Units'],
-            'Rental'               => ['Rental'],
-            'Manufactured'         => ['Mobile Home', 'Mobile/Manufactured'],
-            'Farms / Agricultural' => ['Farm', 'Agricultural', 'Farm/Ranch', 'Farm/Timberland'],
-            'Other'                => ['Attached Single Unit', 'Attached Single Family', 'Dock/Wet Slip', 'Dry Storage', 'Mobile/Trailer Park', 'Mobile Home Park', 'Residential Income', 'Parking Space', 'RV/Mobile Park']
-        ];
-
-        if ($class != null) {
-            return $typeArray[$class];
+        if(!is_array($array)){
+            $array = explode('|',$array);
         }
 
-        return $typeArray;
+        $typeArray = [
+            'Single Family Home'   => ['Detached Single Family', 'Detached', 'Residential', 'SingleFamilyResidence'],
+            'Condo / Townhome'     => ['Condominium', 'Townhouse', 'Townhomes'],
+            'Commercial'           => ['Income Producing','BuildingBusiness', 'Unimproved Commercial', 'Business Only', 'Auto Repair', 'Improved Commercial', 'Hotel/Motel','Business','Commercial'],
+            'Lots / Land'          => ['Vacant Land', 'Residential Lots', 'Land', 'Land/Acres', 'Lots/Land','Acreage'],
+            'Multi-Family Home'    => ['Duplex Multi-Units', 'Triplex Multi-Units','MultiFamily', 'Multi Family', 'Attached', 'Duplex', 'Quadruplex', 'Triplex'],
+            'Rental'               => ['Rental'],
+            'Manufactured'         => ['Mobile Home', 'Mobile/Manufactured','MobileHome','ModularHome'],
+            'Farms / Agricultural' => ['Farm', 'Agricultural', 'Farm/Ranch', 'Farm/Timberland','Agriculture','Ranch'],
+            'Other'                => ['Attached Single Unit', 'Attached Single Family', 'Dock/Wet Slip', 'Dry Storage', 'Mobile/Trailer Park', 'Mobile Home Park', 'Residential Income', 'Parking Space', 'RV/Mobile Park','Dockominium']
+        ];
+
+        $value = [];
+
+        foreach($array as $item){
+            if(isset($typeArray[$item])){
+                $value = array_merge($value, $typeArray[$item]);
+            }
+        }
+
+        return $value;
+    }
+
+    public function setStatus($array)
+    {
+        if(!is_array($array)){
+            $array = explode('|',$array);
+        }
+
+        $statusArray = [
+            'Active'                    => ['Active'],
+            'Active Under Contract'     => ['Active Under Contract'],
+            'Pending'                   => ['Pending'],
+            'Sold'                      => ['Sold','Closed'],
+        ];
+
+        $value = [];
+
+        foreach($array as $item){
+            if(isset($statusArray[$item])){
+                $value = array_merge($value, $statusArray[$item]);
+            }
+        }
+
+        return $value;
     }
 }

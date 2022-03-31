@@ -13,27 +13,9 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <?php if (in_array($listingInfo->class, ['G', 'A'], false)) {
-                                ?>
-                                <div class="listing-residential">
-                                    <?php include(locate_template('template-parts/partials/full-listing-residential.php')); ?>
-                                </div>
-                                <?php
-                            } ?>
-                            <?php if (in_array($listingInfo->class, ['C'], false)) {
-                                ?>
-                                <div class="listing-land">
-                                    <?php include(locate_template('template-parts/partials/full-listing-land.php')); ?>
-                                </div>
-                                <?php
-                            } ?>
-                            <?php if (in_array($listingInfo->class, ['E', 'J', 'F'], false)) {
-                                ?>
-                                <div class="listing-commercial">
-                                    <?php include(locate_template('template-parts/partials/full-listing-commercial.php')); ?>
-                                </div>
-                                <?php
-                            } ?>
+                            <div class="listing-residential">
+                                <?php include(locate_template('template-parts/partials/full-listing-residential.php')); ?>
+                            </div>
                         </div>
                         <?php if ($isOurs && isset($agentData['name'])) {
                             ?>

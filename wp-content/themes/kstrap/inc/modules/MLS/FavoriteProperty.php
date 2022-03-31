@@ -111,7 +111,7 @@ class FavoriteProperty
         $mlsString = implode('|', $mlsNumbers);
 
         $client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/',
+            'base_uri' => 'https://mothership2.kerigan.com/api/v1/',
             'http_errors' => false,
             'headers' => [
                 'Referrer' => $_SERVER['HTTP_USER_AGENT']
@@ -221,7 +221,7 @@ class FavoriteProperty
         $mlsNumberString = implode('|', $mlsNumberArray);
         
         $client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/',
+            'base_uri' => 'https://mothership2.kerigan.com/api/v1/',
             'http_errors' => false,
             'headers' => [
                 'Referrer' => $_SERVER['HTTP_USER_AGENT']

@@ -21,7 +21,7 @@
         <tr><td class="title">Waterfront</td><td class="data"><?php echo $listingInfo->waterfront; ?></td></tr>
 		<?php }else{ echo '<tr><td class="title">Waterfront</td><td class="data">No</td></tr>'; } ?>
 		<?php if( isset($listingInfo->waterview_description) && $listingInfo->waterview_description != null ){ ?>
-        <tr><td class="title">Waterfront</td><td class="data"><?php echo $listingInfo->waterview_description; ?></td></tr>
+        <tr><td class="title">Waterview</td><td class="data"><?php echo $listingInfo->waterview_description; ?></td></tr>
 		<?php } ?>
 		<?php if( isset($listingInfo->elementary_school) ){ ?>
             <tr><td class="title">Elementary School</td><td class="data"><?php echo $listingInfo->elementary_school; ?></td></tr>
