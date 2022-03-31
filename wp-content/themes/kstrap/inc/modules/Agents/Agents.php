@@ -222,7 +222,7 @@ class Agents {
 	public function getAgentListings( $agentIds ){
 
         $client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/',
+            'base_uri' => 'https://mothership2.kerigan.com/api/v1/',
             'http_errors' => false,
             'headers' => [
                 'Referrer' => $_SERVER['HTTP_USER_AGENT']
@@ -269,7 +269,7 @@ class Agents {
     {
 
         $client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/',
+            'base_uri' => 'https://mothership2.kerigan.com/api/v1/',
             'http_errors' => false,
             'headers' => [
                 'Referrer' => $_SERVER['HTTP_USER_AGENT']
@@ -356,7 +356,7 @@ class Agents {
     public function getAgentById($shortId)
     {
         $client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/',
+            'base_uri' => 'https://mothership2.kerigan.com/api/v1/',
             'http_errors' => false,
             'headers' => [
                 'Referrer' => $_SERVER['HTTP_USER_AGENT']

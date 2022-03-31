@@ -24,7 +24,7 @@ class FullListing
     public function create()
     {
         $client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/listing/',
+            'base_uri' => 'https://mothership2.kerigan.com/api/v1/listing/',
             'http_errors' => false,
             'headers' => [
                 'Referrer' => $_SERVER['HTTP_USER_AGENT']

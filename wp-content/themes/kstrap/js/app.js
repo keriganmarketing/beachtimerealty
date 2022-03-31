@@ -51,7 +51,7 @@ $(document).ready(function (event) {
         selectOnClose: true,
         tags: true,
         ajax: {
-            url: 'https://mothership.kerigan.com/api/v1/omnibar',
+            url: 'https://mothership2kerigan.com/api/v1/omnibar',
             dataType: 'json',
             delay: 175,
             cache: true,

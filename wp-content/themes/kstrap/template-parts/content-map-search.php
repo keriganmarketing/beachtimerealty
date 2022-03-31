@@ -194,7 +194,7 @@ include(locate_template('template-parts/partials/bot.php'));
     $.ajax({
         type: 'get',
         dataType: 'json',
-        url: 'https://mothership.kerigan.com/api/v1/allMapListings',
+        url: 'https://mothership2.kerigan.com/api/v1/allMapListings',
         data: {
             // qs: true,
             city: '<?= (isset($_GET['omniField']) ? $_GET['omniField'] : null); ?>',
