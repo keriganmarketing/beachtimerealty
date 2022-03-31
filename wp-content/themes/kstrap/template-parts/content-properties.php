@@ -41,14 +41,13 @@ $subhead  = ($post->page_information_subhead != '' ? $post->page_information_sub
             <div class="container-fluid">
                 <div class="entry-content">
                     <?php the_content(); ?>
+                    <small>Showing <?php echo $totalResults; ?> results...</small>
                     <div class="row">
-                        <?php foreach ($listings as $result) {
-                        ?>
+                        <?php foreach ($listings as $result) { ?>
                         <div class="col-sm-6 col-md-4 col-lg-3 text-center">
                             <?php include(locate_template('template-parts/partials/mini-listing.php')); ?>
                         </div>
-                        <?php
-                        } ?>
+                        <?php } ?>
                     </div>
                     <div class="row justify-content-center">
                         <nav aria-label="search-pagination">

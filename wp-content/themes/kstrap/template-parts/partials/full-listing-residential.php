@@ -11,9 +11,13 @@
 	<tbody>
 	<tr><td class="title">MLS#</td><td class="data"><?php echo $listingInfo->mls_account; ?></td></tr>
 	<tr><td class="title">Property Type</td><td class="data"><?php echo $listingInfo->property_type; ?></td></tr>
-    <tr><td class="title">Listing Status</td><td class="data"><?php echo $listingInfo->status; ?></td></tr>
+	<tr><td class="title">Listing Status</td><td class="data"><?php echo $listingInfo->status; ?></td></tr>
+	<?php if(intval($listingInfo->bedrooms) > 0){ ?>
 	<tr><td class="title">Bedrooms</td><td class="data"><?php echo $listingInfo->bedrooms; ?></td></tr>
+	<?php } ?>
+	<?php if(intval($listingInfo->full_baths) > 0){ ?>
 	<tr><td class="title">Bathrooms</td><td class="data"><?php echo $listingInfo->full_baths; ?> full, <?php echo $listingInfo->half_baths; ?> half</td></tr>
+	<?php } ?>
 	<tr><td class="title">H/C Sqft</td><td class="data"><?php echo number_format( intval($listingInfo->sq_ft), 0, '.', ',' ); ?></td></tr>
 	<?php if(intval($listingInfo->acreage) > 0){ ?>
     <tr><td class="title">Acreage</td><td class="data">$<?php echo number_format( intval($listingInfo->acreage), 2,'.',','); ?> in <?php echo $listingInfo->last_tax_year; ?></td></tr>

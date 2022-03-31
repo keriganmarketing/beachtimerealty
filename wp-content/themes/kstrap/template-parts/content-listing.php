@@ -23,7 +23,7 @@ if (isset($_GET['mls'])) {
         $title      = $listingInfo->street_number . ' ' . $listingInfo->street_name . ' ' . $listingInfo->street_suffix;
         $buttonText = $fullListing->isInFavorites($user_id,
             $listingInfo->mls_account) ? 'REMOVE FROM BUCKET' : 'SAVE TO BUCKET';
-        if ($isOurs) {
+        if ($isOurs && isset($listingInfo->agent->id)) {
             $listingMember = ($isOurs == 'listing_member_shortid' ? $listingInfo->listing_member_shortid : $listingInfo->colisting_member_shortid);
             $agents        = new Agents;
             $mlsData       = $agents->getAgentById($listingMember);

@@ -46,10 +46,6 @@
                                 <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Multi-Family Home' ? 'selected' : ''); ?> 
                             >Multi-Family Home</option>
                             <option 
-                                value="Rental" 
-                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Rental' ? 'selected' : ''); ?> 
-                            >Rental</option>
-                            <option 
                                 value="Manufactured" 
                                 <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Manufactured' ? 'selected' : ''); ?> 
                             >Manufactured</option>
@@ -57,10 +53,6 @@
                                 value="Farms / Agricultural" 
                                 <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Farms / Agricultural' ? 'selected' : ''); ?> 
                             >Farms / Agricultural</option>
-                            <option 
-                                value="Other" 
-                                <?php echo (isset($_GET['propertyType']) && $_GET['propertyType'] == 'Other' ? 'selected' : ''); ?> 
-                            >Other</option>
                         </select>
                     </div>
                 </div>
