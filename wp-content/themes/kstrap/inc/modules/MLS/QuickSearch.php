@@ -79,10 +79,10 @@ class QuickSearch
         }
 
         $typeArray = [
-            'Single Family Home'   => ['Detached Single Family', 'Detached', 'Residential', 'SingleFamilyResidence'],
+            'Single Family Home'   => ['Detached Single Family', 'Detached', 'SingleFamilyResidence'],
             'Condo / Townhome'     => ['Condominium', 'Townhouse', 'Townhomes'],
             'Commercial'           => ['Income Producing','BuildingBusiness', 'Unimproved Commercial', 'Business Only', 'Auto Repair', 'Improved Commercial', 'Hotel/Motel','Business','Commercial'],
-            'Lots / Land'          => ['Vacant Land', 'Residential Lots', 'Land', 'Land/Acres', 'Lots/Land','Acreage'],
+            'Lots / Land'          => ['Vacant Land', 'Residential Lots', 'Land', 'Land/Acres', 'Lots/Land','Acreage', 'Residential'],
             'Multi-Family Home'    => ['Duplex Multi-Units', 'Triplex Multi-Units','MultiFamily', 'Multi Family', 'Attached', 'Duplex', 'Quadruplex', 'Triplex'],
             'Rental'               => ['Rental'],
             'Manufactured'         => ['Mobile Home', 'Mobile/Manufactured','MobileHome','ModularHome'],
