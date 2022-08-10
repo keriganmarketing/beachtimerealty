@@ -18,8 +18,8 @@ $listing_state       = '';
 //IS USER LOGGED IN?
 $currentUser     = get_user_meta(get_current_user_id());
 $currentUserInfo = get_userdata(get_current_user_id());
-$yourname        = ($currentUser['first_name'][0] != '' ? $currentUser['first_name'][0] : $yourname);
-$yourname        = ($currentUser['last_name'][0] != '' ? $yourname . ' ' . $currentUser['last_name'][0] : $yourname);
+$yourname        = (isset($currentUser['first_name'][0]) && $currentUser['first_name'][0] != '' ? $currentUser['first_name'][0] : $yourname);
+$yourname        = (isset($currentUser['last_name'][0]) && $currentUser['last_name'][0] != '' ? $yourname . ' ' . $currentUser['last_name'][0] : $yourname);
 $youremail       = (isset($currentUserInfo->user_email) ? $currentUserInfo->user_email : $youremail);
 $phone           = (isset($currentUser['phone1'][0]) ? $currentUser['phone1'][0] : $phone);
 
@@ -38,8 +38,8 @@ $formID        = (isset($_POST['formID']) ? $_POST['formID'] : '');
 $securityFlag  = (isset($_POST['secu']) ? $_POST['secu'] : '');
 $formSubmitted = ($formID == 'homevaluation' && $securityFlag == '' ? true : false);
 
+$leads = new HomeValuation();
 if ($formSubmitted) { //FORM WAS SUBMITTED
-    $leads = new HomeValuation();
     $leads->handleLead($_POST);
 }
 
@@ -47,6 +47,9 @@ if ($formSubmitted) { //FORM WAS SUBMITTED
 <a id="homeval" class="pad-anchor"></a>
 <form class="form homevalform" enctype="multipart/form-data" method="post" action="#homeval" id="homeval">
     <input type="hidden" name="formID" value="homevaluation" >
+    <input type="hidden" name="user_agent" value="<?php echo $_SERVER['HTTP_USER_AGENT']; ?>" >
+    <input type="hidden" name="ip_address" value="<?php echo $leads->getIP(); ?>" >
+    <input type="hidden" name="referrer" value="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''; ?>" >
     <h3>Contact Information</h3>
     <div class="row" style="width:100%">
         <div class="col-md-6 col-lg-4">

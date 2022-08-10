@@ -4,13 +4,11 @@ namespace Includes\Modules\Leads;
 
 class SimpleContact extends Leads
 {
-    public function __construct ()
-    {
-        parent::__construct ();
-        parent::assembleLeadData(
-            [
-                'message' => 'Message'
-            ]
-        );
-    }
+
+    public $additionalFields = [
+        'full_name'     => 'Name',
+        'email_address' => 'Email Address',
+        'message' => 'Message'
+    ];
+
 }

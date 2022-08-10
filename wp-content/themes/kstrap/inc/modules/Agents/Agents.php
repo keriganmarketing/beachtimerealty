@@ -340,9 +340,12 @@ class Agents {
     {
 
         $agentData = $this->getSingleAgent($agentName);
-        $agentData['short_ids']  = trim(implode('|', explode(',', $agentData['short_ids'])));
-        return $agentData;
 
+        if($agentData){
+            $agentData['short_ids']  = trim(implode('|', explode(',', $agentData['short_ids'])));
+            return $agentData;
+        }
+        
     }
 
     public function updateAgent($agentData)

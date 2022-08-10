@@ -17,8 +17,8 @@ $agentOptions        = '';
 //IS USER LOGGED IN?
 $currentUser     = get_user_meta(get_current_user_id());
 $currentUserInfo = get_userdata(get_current_user_id());
-$yourname        = ($currentUser['first_name'][0] != '' ? $currentUser['first_name'][0] : $yourname);
-$yourname        = ($currentUser['last_name'][0] != '' ? $yourname . ' ' . $currentUser['last_name'][0] : $yourname);
+$yourname        = (isset($currentUser['first_name'][0]) && $currentUser['first_name'][0] != '' ? $currentUser['first_name'][0] : $yourname);
+$yourname        = (isset($currentUser['last_name'][0]) && $currentUser['last_name'][0] != '' ? $yourname . ' ' . $currentUser['last_name'][0] : $yourname);
 $youremail       = (isset($currentUserInfo->user_email) ? $currentUserInfo->user_email : $youremail);
 $phone           = (isset($currentUser['phone1'][0]) ? $currentUser['phone1'][0] : $phone);
 $selectedAgent   = (isset($currentUser['selected_agent'][0]) ? $currentUser['selected_agent'][0] : null); //get agent from user data.
@@ -46,8 +46,8 @@ $formID        = (isset($_POST['formID']) ? $_POST['formID'] : '');
 $securityFlag  = (isset($_POST['secu']) ? $_POST['secu'] : '');
 $formSubmitted = ($formID == 'requestinfo' && $securityFlag == '' ? true : false);
 
+$leads = new RequestInfo();
 if ($formSubmitted) { //FORM WAS SUBMITTED
-    $leads = new RequestInfo();
     $leads->handleLead($_POST);
 }
 
@@ -55,8 +55,8 @@ if ($formSubmitted) { //FORM WAS SUBMITTED
 <a id="request-info-form" class="pad-anchor"></a>
 <form class="form leadform" enctype="multipart/form-data" method="post" action="#request-info-form" id="requestinfo">
     <input type="hidden" name="user_agent" value="<?php echo $_SERVER['HTTP_USER_AGENT']; ?>" >
-    <input type="hidden" name="ip_address" value="<?php echo (new RequestInfo())->getIP(); ?>" >
-    <input type="hidden" name="referrer" value="<?php echo $_SERVER['HTTP_REFERER']; ?>" >
+    <input type="hidden" name="ip_address" value="<?php echo $leads->getIP(); ?>" >
+    <input type="hidden" name="referrer" value="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''; ?>" >
     <input type="hidden" name="formID" value="requestinfo">
     <div class="row">
         <div class="col-sm-6">
