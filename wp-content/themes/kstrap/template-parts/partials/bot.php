@@ -26,7 +26,6 @@ $offices = $agents->getOffices();
                         <div class="col-md-6 office text-center text-md-left">
                             <p class="address"><?php echo $office['address']; ?></p>
                             <p class="phone-office" ><span class="address-label" >office:</span> <?php echo $office['phone']; ?></p>
-                            <p class="phone-fax" ><span class="address-label" >fax:</span> <?php echo $office['fax']; ?></p>
                         </div>
                         <?php } ?>
                     </div>

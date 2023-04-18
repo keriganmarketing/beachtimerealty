@@ -57,7 +57,6 @@ class Agents {
 		$team->addTaxonomy( 'office' );
 		$team->createTaxonomyMeta( 'office', [ 'label' => 'Address', 'type' => 'textarea' ] );
 		$team->createTaxonomyMeta( 'office', [ 'label' => 'Phone Number', 'type' => 'text' ] );
-		$team->createTaxonomyMeta( 'office', [ 'label' => 'Fax Number', 'type' => 'text' ] );
 		$team->createTaxonomyMeta( 'office', [ 'label' => 'GPS Coordinates', 'type' => 'text' ] );
 
 		$team->addMetaBox(
@@ -209,7 +208,6 @@ class Agents {
 				'slug'      => $item->slug,
 				'address'   => get_term_meta( $item->term_id, 'office_address', true ),
 				'phone'     => get_term_meta( $item->term_id, 'office_phone_number', true ),
-				'fax'       => get_term_meta( $item->term_id, 'office_fax_number', true ),
 				'latitude'  => $coordinates[0],
 				'longitude' => $coordinates[1]
 			];
