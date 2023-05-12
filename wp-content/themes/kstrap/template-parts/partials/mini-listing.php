@@ -12,7 +12,7 @@
     <div class="embed-responsive embed-responsive-16by9">
         <div class="embed-responsive-item listing-tile-photo">
 
-			<?php if ( $result->status == 'Sold' ) { ?>
+			<?php if ( $result->status == 'Sold' || $result->status == 'Closed') { ?>
                 <span class="status-flag sold">Sold</span>
 			<?php } ?>
 			<?php if ( $result->status == 'Pending' ) { ?>
@@ -21,7 +21,7 @@
 			<?php if ( $result->status == 'Contingent' ) { ?>
                 <span class="status-flag contingent">SALE CONTINGENT</span>
 			<?php } ?>
-            <?php if ( $result->status == 'Under Contract - Taking Backups' ) { ?>
+            <?php if ( $result->status == 'Under Contract - Taking Backups' || $result->status == 'Active Under Contract' || $result->status == 'Under Contract' ) { ?>
                 <span class="status-flag contingent">TAKING BACKUP OFFERS</span>
 			<?php } ?>
             <img src="<?php echo( $result->preferred_image != '' ? $result->preferred_image : get_template_directory_uri() . '/img/property-placeholder.jpg' ); ?>"
