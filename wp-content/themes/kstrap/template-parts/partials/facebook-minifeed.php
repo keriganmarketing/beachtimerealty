@@ -35,6 +35,6 @@ $now     = time();
 
 <div class="section-bottom">
 	<div class="section-button text-center text-md-left">
-		<a class="btn btn-primary btn-outlined btn-reversed" href="https://www.facebook.com/beachtimerealtypcb/" >Follow us on Facebook</a>
+		<a class="btn btn-primary btn-outlined btn-reversed" target="_blank" href="https://www.facebook.com/beachtimerealtypcb/" >Follow us on Facebook</a>
 	</div>
 </div>
